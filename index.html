@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Antuara — Entregables</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brown-dark: #3b2314; --brown-medium: #5c3a1e;
+            --brown-gradient: linear-gradient(135deg, #3b2314 0%, #5c3a1e 50%, #7a4f2b 100%);
+            --gold: #c9a96e; --gold-light: #e8d5b0;
+            --gold-gradient: linear-gradient(135deg, #c9a96e, #d4b896);
+            --text: #2d2d2d; --text-light: #6b6b6b;
+            --bg: #faf6f1; --white: #ffffff; --border: #e0d5c8;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh; }
+        .container { max-width: 880px; margin: 0 auto; padding: 0 28px; }
+        .hero { background: var(--brown-gradient); color: white; padding: 80px 0 60px; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(201,169,110,0.12) 0%, transparent 70%); }
+        .hero-badge { display: inline-block; background: rgba(201,169,110,0.15); border: 1px solid rgba(201,169,110,0.3); padding: 6px 22px; border-radius: 30px; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 18px; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700; margin-bottom: 14px; position: relative; z-index: 1; }
+        .hero-subtitle { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 560px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero-gold-line { position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--gold-gradient); }
+
+        .content { padding: 60px 0 80px; }
+        .section-label { font-size: 0.72rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 8px; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 1.7rem; color: var(--brown-dark); margin-bottom: 30px; padding-bottom: 14px; border-bottom: 2px solid var(--border); }
+
+        .entregables-list { display: flex; flex-direction: column; gap: 14px; }
+        .entregable { background: var(--white); border-radius: 14px; padding: 26px 30px; border: 1px solid var(--border); text-decoration: none; color: inherit; display: block; transition: transform 0.2s ease, box-shadow 0.2s ease; position: relative; overflow: hidden; }
+        .entregable::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 4px; background: var(--gold-gradient); transition: width 0.2s ease; }
+        .entregable:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(59,35,20,0.08); }
+        .entregable:hover::before { width: 6px; }
+        .entregable-header { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
+        .entregable-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--brown-dark); font-weight: 700; }
+        .entregable-date { font-size: 0.78rem; color: var(--text-light); font-weight: 500; letter-spacing: 0.5px; }
+        .entregable-description { font-size: 0.9rem; color: var(--text-light); }
+
+        footer { background: var(--brown-gradient); color: white; text-align: center; padding: 40px 24px; }
+        .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--gold); letter-spacing: 3px; }
+        .footer-tagline { font-size: 0.85rem; opacity: 0.6; margin-top: 4px; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.1rem; }
+            .entregable { padding: 22px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <div class="hero-badge">Antuara</div>
+    <h1>Entregables</h1>
+    <p class="hero-subtitle">Portal de consulta de documentos estratégicos de la consultora.</p>
+    <div class="hero-gold-line"></div>
+</div>
+
+<div class="container content">
+    <div class="section-label">Pulso Semanal</div>
+    <h2 class="section-title">Actualizaciones recientes</h2>
+
+    <div class="entregables-list">
+        <a href="pulso-2026-04-19.html" class="entregable">
+            <div class="entregable-header">
+                <div class="entregable-title">Pulso Semanal — Semana del 20 al 26 de abril 2026</div>
+                <div class="entregable-date">19 ABR 2026</div>
+            </div>
+            <div class="entregable-description">Brief ejecutivo del portfolio de 13 clientes · foco semanal · alertas · observación estratégica.</div>
+        </a>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-brand">ANTUARA</div>
+    <div class="footer-tagline">Planificación comercial estratégica</div>
+</footer>
+
+</body>
+</html>

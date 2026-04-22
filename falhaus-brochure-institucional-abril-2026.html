@@ -33,6 +33,7 @@ body{font-family:'Inter',sans-serif;color:var(--t);background:var(--bg);line-hei
 .hero::before{content:"";position:absolute;top:0;right:-120px;width:500px;height:500px;border:1px solid rgba(255,255,255,.08);border-radius:50%}
 .hero::after{content:"";position:absolute;bottom:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--r),transparent 50%,var(--r) 100%)}
 .hero-inner{position:relative;z-index:2}
+.hero-logo{display:block;width:280px;max-width:80%;height:auto;margin-bottom:44px;filter:brightness(0) invert(1);opacity:.97}
 .hero .eyebrow{display:inline-block;font-size:.72rem;letter-spacing:4px;text-transform:uppercase;color:#f0d3cc;font-weight:600;margin-bottom:32px;padding:8px 22px;border:1px solid rgba(193,74,59,.6);border-radius:2px;background:rgba(193,74,59,.12)}
 .hero h1{font-family:'Playfair Display',serif;font-size:3.6rem;font-weight:700;line-height:1.15;margin-bottom:24px;letter-spacing:-.4px;max-width:950px}
 .hero .sub{font-family:'Playfair Display',serif;font-style:italic;font-size:1.45rem;font-weight:400;color:#e8d5ce;line-height:1.5;max-width:780px;margin-bottom:50px}
@@ -43,7 +44,8 @@ body{font-family:'Inter',sans-serif;color:var(--t);background:var(--bg);line-hei
 /* NAV TOC */
 nav.toc{position:sticky;top:0;background:var(--w);border-bottom:2px solid var(--br);z-index:100;box-shadow:0 3px 14px rgba(30,58,111,.06)}
 nav.toc .container{display:flex;gap:24px;padding:16px 44px;overflow-x:auto;align-items:center}
-nav.toc .brand{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--bl);font-weight:700;letter-spacing:1px;white-space:nowrap;padding-right:22px;border-right:1px solid var(--br);margin-right:8px}
+nav.toc .brand{display:flex;align-items:center;padding-right:22px;border-right:1px solid var(--br);margin-right:8px}
+nav.toc .brand img{height:32px;width:auto;display:block}
 nav.toc a{color:var(--tl);text-decoration:none;font-size:.72rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;transition:color .2s;padding-bottom:3px;border-bottom:2px solid transparent}
 nav.toc a:hover{color:var(--bl);border-bottom-color:var(--r)}
 
@@ -131,7 +133,8 @@ table td strong{color:var(--bl);font-weight:600}
 /* FOOTER */
 footer{background:var(--bl);color:#d8dff0;padding:70px 0 50px;text-align:center;position:relative}
 footer::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,var(--r),transparent)}
-footer .brand{font-family:'Playfair Display',serif;font-size:2rem;color:var(--w);font-weight:700;letter-spacing:5px;margin-bottom:8px}
+footer .brand{margin-bottom:18px;display:flex;justify-content:center}
+footer .brand img{height:56px;width:auto;filter:brightness(0) invert(1);opacity:.97}
 footer .tag{font-size:.72rem;letter-spacing:3.5px;color:#d8dff0;text-transform:uppercase;margin-bottom:32px}
 footer .meta{font-size:.82rem;color:#a5b1cc;opacity:.85;margin-top:28px;line-height:1.7}
 footer .meta strong{color:var(--w);font-weight:500}
@@ -175,7 +178,8 @@ footer .meta strong{color:var(--w);font-weight:500}
 <!-- HERO / PORTADA -->
 <header class="hero">
   <div class="container hero-inner">
-    <span class="eyebrow">Falhaus · Brochure Institucional 2026</span>
+    <img src="falhaus-logo.svg" alt="Falhaus · lo tuyo merece lugar" class="hero-logo">
+    <span class="eyebrow">Brochure Institucional 2026</span>
     <h1>Construcción modular para proyectos<br>habitacionales de escala</h1>
     <p class="sub">Presentación institucional y Memoria Descriptiva del sistema constructivo modular industrializado.</p>
     <div class="hero-meta">
@@ -202,7 +206,7 @@ footer .meta strong{color:var(--w);font-weight:500}
 <!-- NAV TOC -->
 <nav class="toc">
   <div class="container">
-    <div class="brand">FALHAUS</div>
+    <div class="brand"><img src="falhaus-logo.svg" alt="Falhaus"></div>
     <a href="#quienes">01 · Quiénes somos</a>
     <a href="#proposito">02 · Propósito</a>
     <a href="#valor">03 · Propuesta de valor</a>
@@ -232,8 +236,8 @@ footer .meta strong{color:var(--w);font-weight:500}
     <div class="grid g-3" style="margin-top:40px">
       <div class="card">
         <div class="num">01</div>
-        <h4>Razón comercial</h4>
-        <p>Falhaus</p>
+        <h4>Razón social</h4>
+        <p>Falhaus SRL</p>
       </div>
       <div class="card">
         <div class="num">02</div>
@@ -269,7 +273,7 @@ footer .meta strong{color:var(--w);font-weight:500}
       <div class="pilar">
         <span class="n">Misión</span>
         <h4>Ofrecer soluciones con respaldo</h4>
-        <p>Modulares, de armado rápido, accesibles, con calidad certificable y respaldo técnico integral para distintos contextos de uso.</p>
+        <p>Modulares, de armado rápido, accesibles, con calidad verificada y respaldo técnico integral para distintos contextos de uso.</p>
       </div>
     </div>
 
@@ -302,7 +306,7 @@ footer .meta strong{color:var(--w);font-weight:500}
       <div class="pilar">
         <span class="n">Pilar 03</span>
         <h4>Confianza</h4>
-        <p>Materiales industriales de calidad certificable, garantía de fábrica y respaldo técnico local a lo largo de toda la vida útil de la unidad. Cada decisión constructiva responde a un uso real y está respaldada por la ingeniería del sistema.</p>
+        <p>Materiales industriales de calidad verificada, garantía de fábrica y respaldo técnico local a lo largo de toda la vida útil de la unidad. Cada decisión constructiva responde a un uso real y está respaldada por la ingeniería del sistema.</p>
       </div>
     </div>
   </div>
@@ -314,11 +318,11 @@ footer .meta strong{color:var(--w);font-weight:500}
     <span class="eyebrow">04 · Respaldo y validación</span>
     <h2>Alianzas industriales verificadas en origen</h2>
     <p>Falhaus trabaja con socios industriales internacionales de primera línea, seleccionados por su capacidad productiva, el estándar de sus procesos y la consistencia de sus materiales. La incorporación de cada alianza industrial se realiza con <strong>auditoría directa en origen</strong>.</p>
-    <p>El equipo técnico de la empresa visitó personalmente las fábricas en China, verificó líneas productivas, controló estándares de ensamblado y seleccionó proveedores en función de criterios técnicos exigentes. Este proceso de validación directa permite que cada propuesta presentada en Argentina esté respaldada por una verificación previa de capacidad productiva y calidad de fabricación.</p>
+    <p>El equipo técnico de la empresa audita personalmente las fábricas de origen, verifica líneas productivas, controla estándares de ensamblado y selecciona proveedores en función de criterios técnicos exigentes. Los componentes se importan bajo este proceso de validación y <strong>las unidades se completan y nacionalizan en Argentina</strong>, integrando el ensamblaje final y el acondicionamiento técnico con equipos locales.</p>
 
     <div class="hlb r">
       <h4>Condición de ingreso al estándar Falhaus</h4>
-      <p>No se comercializan módulos cuyo origen y proceso no hayan sido revisados por el equipo de la empresa. La validación industrial en origen constituye uno de los pilares del estándar Falhaus.</p>
+      <p>No se comercializan módulos cuyo origen y proceso no hayan sido revisados por el equipo de la empresa. La validación industrial en origen —sumada a la nacionalización y el control local del producto final— constituye uno de los pilares del estándar Falhaus.</p>
     </div>
   </div>
 </section>
@@ -361,7 +365,7 @@ footer .meta strong{color:var(--w);font-weight:500}
       <p>Los muros están conformados por un <strong>panel sándwich de 75 mm</strong> de espesor compuesto por:</p>
       <ul>
         <li>Estructura metálica externa.</li>
-        <li>Material aislante térmico-acústico interior (EPS o lana de roca).</li>
+        <li>Material aislante térmico-acústico interior (EPS, lana de roca o PU).</li>
         <li>Revestimiento exterior en chapa de acero resistente a la intemperie.</li>
         <li>Revestimiento interior apto para uso habitacional.</li>
       </ul>
@@ -459,7 +463,7 @@ footer .meta strong{color:var(--w);font-weight:500}
 
     <div class="hlb">
       <h4>Documentación técnica complementaria</h4>
-      <p>La presente Memoria Descriptiva constituye la síntesis técnica del sistema. Falhaus dispone de la documentación complementaria (cálculos estructurales, certificaciones de componentes y planos técnicos) disponible para revisión por parte de los organismos técnicos correspondientes.</p>
+      <p>La presente Memoria Descriptiva constituye la síntesis técnica del sistema. Falhaus pone a disposición los planos técnicos del sistema para revisión por parte de los organismos técnicos que así lo requieran.</p>
     </div>
   </div>
 </section>
@@ -748,10 +752,10 @@ footer .meta strong{color:var(--w);font-weight:500}
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    <div class="brand">FALHAUS</div>
+    <div class="brand"><img src="falhaus-logo.svg" alt="Falhaus · lo tuyo merece lugar"></div>
     <div class="tag">Soluciones Constructivas Modulares Industrializadas</div>
     <div class="meta">
-      <strong>Brochure Institucional 2026</strong><br>
+      <strong>Falhaus SRL · Brochure Institucional 2026</strong><br>
       Hipólito Yrigoyen 261 · Martínez · Provincia de Buenos Aires · República Argentina<br>
       www.falhaus.com · +54 9 11 4446 0130
     </div>

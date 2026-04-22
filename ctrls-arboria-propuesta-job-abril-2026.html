@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arboria Mairena del Aljarafe — Metodología y hoja de ruta · Ctrl.S</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bd:#3b2314;--bm:#5c3a1e;--bl:#7a4f2b;--g:#c9a96e;--gl:#e8d5b0;
+  --t:#2d2d2d;--tl:#6b6b6b;--bg:#faf6f1;--w:#ffffff;--br:#e0d5c8;
+  --ok:#27ae60;--wrn:#e67e22;--err:#c0392b;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--t);background:var(--bg);line-height:1.7;font-size:16px}
+.container{max-width:1100px;margin:0 auto;padding:0 40px}
+
+.hero{background:linear-gradient(135deg,var(--bd),var(--bm) 55%,var(--bl));color:var(--w);padding:100px 0 120px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,transparent,var(--g),transparent)}
+.hero-inner{position:relative;z-index:2}
+.hero .badge{display:inline-block;padding:8px 20px;border:1px solid var(--g);border-radius:30px;font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--gl);margin-bottom:28px;font-weight:500}
+.hero h1{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:700;line-height:1.15;margin-bottom:22px;letter-spacing:-.5px}
+.hero h1 em{font-style:italic;color:var(--g)}
+.hero .subtitle{font-size:1.2rem;font-weight:300;color:var(--gl);max-width:800px;line-height:1.6}
+.hero .meta{margin-top:36px;display:flex;gap:40px;flex-wrap:wrap;font-size:.85rem;color:var(--gl)}
+.hero .meta span{border-left:2px solid var(--g);padding-left:14px}
+.hero .meta strong{color:var(--w);font-weight:600;display:block;margin-top:3px;font-size:.95rem}
+
+nav.toc{position:sticky;top:0;background:var(--w);border-bottom:1px solid var(--br);z-index:100;box-shadow:0 2px 12px rgba(59,35,20,.06)}
+nav.toc .container{display:flex;gap:30px;padding:18px 40px;overflow-x:auto}
+nav.toc a{color:var(--tl);text-decoration:none;font-size:.78rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;transition:color .2s;padding-bottom:3px;border-bottom:2px solid transparent}
+nav.toc a:hover{color:var(--bd);border-bottom-color:var(--g)}
+
+section{padding:90px 0;border-bottom:1px solid var(--br)}
+section:nth-child(odd){background:var(--w)}
+.section-label{display:inline-block;font-size:.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--g);font-weight:700;margin-bottom:14px}
+.section-title{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:var(--bd);line-height:1.2;margin-bottom:20px;letter-spacing:-.3px}
+.section-subtitle{font-size:1.08rem;color:var(--tl);max-width:880px;line-height:1.7;margin-bottom:40px}
+.section-body p{font-size:1.02rem;color:var(--t);line-height:1.8;margin-bottom:18px;max-width:880px}
+.section-body p strong{color:var(--bd);font-weight:600}
+
+.card{background:var(--w);border:1px solid var(--br);border-radius:14px;padding:28px;transition:all .3s}
+.card:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(59,35,20,.07)}
+.card h4{font-family:'Inter',sans-serif;font-size:.9rem;color:var(--bd);margin-bottom:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px}
+.card p{color:var(--tl);font-size:.96rem;line-height:1.7}
+.card ul{margin:10px 0 0 0;padding-left:20px;color:var(--tl);font-size:.94rem}
+.card ul li{margin-bottom:6px;line-height:1.6}
+
+.hlb{border-left:4px solid var(--g);background:linear-gradient(95deg,rgba(232,213,176,.4),rgba(232,213,176,.1));padding:26px 30px;border-radius:0 12px 12px 0;margin:28px 0}
+.hlb.soft{border-left-color:var(--bl);background:linear-gradient(95deg,rgba(122,79,43,.08),rgba(122,79,43,.02))}
+.hlb.warm{border-left-color:var(--ok);background:linear-gradient(95deg,rgba(39,174,96,.08),rgba(39,174,96,.02))}
+.hlb h4{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--bd);margin-bottom:10px}
+.hlb p{color:var(--t);font-size:1rem;line-height:1.75}
+.hlb p+p{margin-top:10px}
+
+.grid{display:grid;gap:20px}
+.g-2{grid-template-columns:repeat(2,1fr)}
+.g-3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:768px){.g-2,.g-3{grid-template-columns:1fr}}
+
+.nivel{background:var(--w);border:1px solid var(--br);border-radius:14px;padding:24px 28px;margin-bottom:14px;display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:center;transition:all .3s}
+.nivel:hover{border-color:var(--g);box-shadow:0 8px 22px rgba(59,35,20,.06)}
+.nivel .num{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--g);opacity:.5;line-height:1;font-weight:700;text-align:center}
+.nivel h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--bd);font-weight:700;margin-bottom:4px}
+.nivel p{color:var(--tl);font-size:.94rem;line-height:1.65}
+@media(max-width:768px){.nivel{grid-template-columns:1fr}.nivel .num{text-align:left}}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;margin:28px 0}
+.stat{background:var(--w);border:1px solid var(--br);border-radius:12px;padding:22px;text-align:center;position:relative;overflow:hidden}
+.stat::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--g),var(--gl))}
+.stat .num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--bd);line-height:1;margin-bottom:6px}
+.stat .lbl{font-size:.7rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--tl);font-weight:600}
+.stat .sub{font-size:.78rem;color:var(--g);margin-top:6px;font-weight:600}
+
+.tl{position:relative;padding-left:32px;margin:24px 0}
+.tl::before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:var(--g)}
+.tl-item{position:relative;margin-bottom:24px}
+.tl-item::before{content:"";position:absolute;left:-30px;top:4px;width:16px;height:16px;background:var(--w);border:3px solid var(--g);border-radius:50%}
+.tl-item h4{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--bd);margin-bottom:5px}
+.tl-item p{color:var(--tl);font-size:.93rem;line-height:1.65}
+.tl-item .lbl{font-size:.7rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--g);font-weight:700;margin-bottom:4px;display:block}
+
+.chk{list-style:none;padding:0;margin-top:12px}
+.chk li{padding:13px 0 13px 34px;position:relative;border-bottom:1px dashed var(--br);color:var(--t);font-size:.96rem;line-height:1.65}
+.chk li:last-child{border-bottom:none}
+.chk li::before{content:"";position:absolute;left:0;top:16px;width:18px;height:18px;border:2px solid var(--g);border-radius:50%;background:var(--w)}
+.chk li strong{color:var(--bd);font-weight:600}
+
+footer{background:var(--bd);color:var(--gl);padding:60px 0 50px;text-align:center}
+footer .brand{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--g);font-weight:700;letter-spacing:3px}
+footer .tag{font-size:.72rem;letter-spacing:3px;color:var(--gl);text-transform:uppercase;margin-top:10px}
+footer .meta{font-size:.8rem;color:var(--gl);opacity:.65;margin-top:28px}
+
+.animate-on-scroll{opacity:0;transform:translateY(30px);transition:all .6s ease}
+.animate-on-scroll.visible{opacity:1;transform:translateY(0)}
+
+@media print{
+  *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  nav.toc{display:none}
+  section{page-break-before:always;padding:30px 0}
+  .hlb,.nivel,.card,.stat,.tl-item{break-inside:avoid}
+  .animate-on-scroll{opacity:1!important;transform:none!important}
+}
+
+@media(max-width:768px){
+  .container{padding:0 24px}
+  .hero{padding:60px 0 80px}
+  .hero h1{font-size:2.1rem}
+  .section-title{font-size:1.7rem}
+  nav.toc .container{padding:14px 24px;gap:18px}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container hero-inner">
+    <div class="badge">Ctrl.S Arquitectura · Propuesta de acompañamiento</div>
+    <h1>Acompañar <em>Arboria</em><br>hasta la presentación</h1>
+    <p class="subtitle">Una propuesta para sostener el ritmo y la calidad del proyecto hasta la entrega, y los recursos que necesitamos para lograrlo.</p>
+    <div class="meta">
+      <span>Proyecto<strong>Arboria Mairena del Aljarafe</strong></span>
+      <span>Equipo Ctrl.S<strong>Santiago · Delfina</strong></span>
+      <span>Interlocutor<strong>Job</strong></span>
+      <span>Fecha<strong>21 de abril de 2026</strong></span>
+    </div>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <div class="container">
+    <a href="#contexto">1 · Punto de partida</a>
+    <a href="#niveles">2 · Cómo trabajamos</a>
+    <a href="#ruta">3 · Hoja de ruta</a>
+    <a href="#acompanamiento">4 · Acompañamiento económico</a>
+    <a href="#siguiente">5 · La siguiente etapa</a>
+    <a href="#pasos">6 · Próximos pasos</a>
+  </div>
+</nav>
+
+<!-- SECCION 1 -->
+<section id="contexto">
+  <div class="container animate-on-scroll">
+    <div class="section-label">01 · Punto de partida</div>
+    <h2 class="section-title">El momento en el que estamos</h2>
+    <div class="section-body">
+      <p>El proyecto fue evolucionando en diálogo permanente con ustedes. Cada iteración lo fue afinando, y hoy tenemos una versión consolidada, con un equipo trabajando a pleno sobre ella.</p>
+    </div>
+
+    <div class="hlb">
+      <h4>Lo que queremos repasar con vos</h4>
+      <p>Tres cosas: <strong>cómo estamos trabajando el cierre</strong> (metodología por producto inmobiliario), <strong>los tiempos</strong> hasta la presentación y <strong>el acompañamiento económico</strong> de esta etapa.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECCION 2 -->
+<section id="niveles">
+  <div class="container animate-on-scroll">
+    <div class="section-label">02 · Cómo trabajamos</div>
+    <h2 class="section-title">Metodología por producto inmobiliario</h2>
+    <p class="section-subtitle">Para ordenar el cierre del proyecto, en Ctrl.S trabajamos <strong>por producto inmobiliario</strong>, no por plantas. Se cierra tipología por tipología, empezando por la de mayor peso estratégico. Las decisiones del producto principal condicionan a los demás, y cerrar en este orden evita volver atrás más tarde.</p>
+
+    <div class="hlb soft">
+      <h4>Por qué esta secuencia</h4>
+      <p>Trabajar así nos permite dos cosas. Una, ordenar el esfuerzo del equipo en hitos internos claros, arrancando por lo que más valor aporta al proyecto. Y dos —más importante para ustedes— <strong>poder mostrarles certezas parciales progresivas</strong>, sin que tengan que esperar al final para ver el conjunto. Cada producto cerrado es una unidad coherente, con su documentación asociada.</p>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;color:var(--bd);font-size:1.4rem;margin:36px 0 18px">Los productos del recorrido</h3>
+
+    <div class="nivel">
+      <div class="num">01</div>
+      <div>
+        <h3>Vivienda residencial principal</h3>
+        <p>El grueso del programa. Primer producto a cerrar: asienta los criterios que se aplicarán, con ajustes específicos, al resto de las tipologías residenciales.</p>
+      </div>
+    </div>
+
+    <div class="nivel">
+      <div class="num">02</div>
+      <div>
+        <h3>Tipologías singulares</h3>
+        <p>Unidades de esquina. Siguen los mismos criterios del producto residencial principal, con resolución específica por su ubicación dentro del conjunto.</p>
+      </div>
+    </div>
+
+    <div class="nivel">
+      <div class="num">03</div>
+      <div>
+        <h3>Lofts</h3>
+        <p>Producto diferencial del programa. Se cierra sobre la base del criterio residencial ya asentado, con resolución específica por su configuración propia.</p>
+      </div>
+    </div>
+
+    <div class="nivel">
+      <div class="num">04</div>
+      <div>
+        <h3>Planta comercial y zonas comunes</h3>
+        <p>Cierre del conjunto. Se resuelven usos comerciales de planta baja y las zonas comunes, y se integra todo para dejar el proyecto en condiciones de presentación.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECCION 3 -->
+<section id="ruta">
+  <div class="container animate-on-scroll">
+    <div class="section-label">03 · Hoja de ruta</div>
+    <h2 class="section-title">Cómo vemos los tiempos</h2>
+    <div class="section-body">
+      <p>La lectura actual de Santi, para tener una referencia común que podamos afinar juntos. No es un compromiso cerrado.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">4</div><div class="lbl">Productos a cerrar</div><div class="sub">metodología interna</div></div>
+      <div class="stat"><div class="num">46+15</div><div class="lbl">Viviendas y lofts</div><div class="sub">del programa</div></div>
+      <div class="stat"><div class="num">7.095</div><div class="lbl">m² totales</div><div class="sub">de proyecto</div></div>
+    </div>
+
+    <div class="tl">
+      <div class="tl-item">
+        <span class="lbl">Etapa 1</span>
+        <h4>Arranque y vivienda residencial principal</h4>
+        <p>Activación formal del marco de trabajo, asignación de equipo dedicado y cierre de la <strong>vivienda residencial principal</strong> como primer producto. Primera reunión de validación con la promotora.</p>
+      </div>
+      <div class="tl-item">
+        <span class="lbl">Etapa 2</span>
+        <h4>Tipologías singulares y lofts</h4>
+        <p>Cierre sucesivo de las <strong>tipologías singulares</strong> y los <strong>lofts</strong>, con validación por producto y continuidad sin cuellos de botella entre uno y el siguiente.</p>
+      </div>
+      <div class="tl-item">
+        <span class="lbl">Etapa 3</span>
+        <h4>Planta comercial, zonas comunes y presentación</h4>
+        <p>Cierre de usos comerciales de planta baja y zonas comunes. Ensamble del dossier definitivo. Revisión integral y visto bueno previo a la entrada formal del proyecto.</p>
+      </div>
+    </div>
+
+    <div class="hlb soft">
+      <h4>Una nota sobre la ventana estimada</h4>
+      <p>Santi sitúa el cierre completo en el entorno de <strong>tres meses</strong> desde el arranque formal. Lo afinamos juntos según los tiempos de validación y la complejidad real de cada producto.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECCION 4 -->
+<section id="acompanamiento">
+  <div class="container animate-on-scroll">
+    <div class="section-label">04 · Acompañamiento económico</div>
+    <h2 class="section-title">Acompañamiento económico para esta etapa</h2>
+
+    <div class="hlb">
+      <h4>Lo que proponemos</h4>
+      <p>Coordinar <strong>un monto inicial de acompañamiento</strong> que permita sostener al equipo dedicado al proyecto con el ritmo y la calidad actuales, hasta la presentación. No es una revisión de lo acordado ni un cambio de alcance: es un <strong>puente</strong> para esta ventana concreta, que se integra naturalmente al marco general.</p>
+    </div>
+
+    <div class="section-body">
+      <p>Al arrancar el recorrido, estimábamos una etapa más expeditiva hasta la presentación. Las iteraciones que dieron forma al proyecto —y que celebramos, porque son la razón de que Arboria esté donde está hoy— han hecho que el equipo de Ctrl.S esté <strong>poniendo bastantes más horas de las dimensionadas al principio</strong>. Preferimos compartirlo ahora, con la confianza que tenemos con vos.</p>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;color:var(--bd);font-size:1.4rem;margin:36px 0 18px">Qué gana cada parte</h3>
+
+    <div class="grid g-2">
+      <div class="card">
+        <h4>Para la promotora</h4>
+        <ul>
+          <li><strong>Un proyecto a la altura:</strong> el equipo técnico se sostiene sin interrupciones hasta la presentación</li>
+          <li><strong>Continuidad del ritmo actual:</strong> sin necesidad de reabrir esta conversación cada pocas semanas</li>
+          <li><strong>Trazabilidad:</strong> el destino del monto queda documentado y se integra limpiamente al acuerdo</li>
+          <li><strong>Sin alterar el marco general:</strong> no hay revisión de alcance ni del valor global acordado</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Para Ctrl.S</h4>
+        <ul>
+          <li><strong>Sostenibilidad del equipo:</strong> poder mantener el foco en Arboria sin desviar recursos</li>
+          <li><strong>Ritmo sostenido:</strong> evitar el "acelerón final" que suele degradar la calidad</li>
+          <li><strong>Previsibilidad interna:</strong> planificar asignaciones con horizonte claro</li>
+          <li><strong>Atención concentrada:</strong> foco en el trabajo técnico, no en la coordinación económica recurrente</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hlb warm" style="margin-top:28px">
+      <h4>Cómo lo vemos</h4>
+      <p>Lo que se coordine en esta etapa <strong>se traduce directamente en horas de trabajo sobre Arboria</strong>: es combustible para el equipo que está empujando el proyecto, no un alivio de caja genérico. Una inversión en el producto que estamos construyendo juntos.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECCION 5 -->
+<section id="siguiente">
+  <div class="container animate-on-scroll">
+    <div class="section-label">05 · La siguiente etapa</div>
+    <h2 class="section-title">Calentar motores para la llegada al mercado</h2>
+    <div class="section-body">
+      <p>Mientras cerramos el proyecto, conviene ir pensando en paralelo <strong>cómo acercar a los futuros cooperativistas</strong>: piezas gráficas, narrativa del producto y canal de interesados. No hace falta decidir nada hoy — si surge interés, lo ordenamos con ustedes en una segunda conversación.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECCION 6 -->
+<section id="pasos">
+  <div class="container animate-on-scroll">
+    <div class="section-label">06 · Próximos pasos</div>
+    <h2 class="section-title">Qué nos gustaría que saliera de esta conversación</h2>
+    <div class="section-body">
+      <p>Puntos concretos para no salir con temas abiertos. No todos tienen que resolverse en la misma charla — algunos pueden quedar apuntados para un segundo tiempo.</p>
+    </div>
+
+    <ul class="chk">
+      <li><strong>Validación de la metodología por producto inmobiliario:</strong> que encaje con cómo se mueve la promotora en las revisiones.</li>
+      <li><strong>Interlocución clara:</strong> identificar quién valida qué en cada producto para evitar vueltas de aprobación.</li>
+      <li><strong>Conversación sobre el acompañamiento económico:</strong> primera lectura de Job y forma de trasladarlo a sus socios.</li>
+      <li><strong>Un número orientativo:</strong> si es posible, acordar una cifra inicial de acompañamiento para esta etapa.</li>
+      <li><strong>Arranque formal del primer tramo:</strong> dejar organizado el cierre de la <strong>vivienda residencial principal</strong> como primera entrega concreta.</li>
+      <li><strong>Segunda conversación sobre la siguiente etapa:</strong> dejar agendada (aunque sea tentativamente) la charla sobre captación de cooperativistas.</li>
+    </ul>
+
+    <div class="hlb warm" style="margin-top:32px">
+      <h4>Una última idea</h4>
+      <p>Arboria nos importa. Va a ser un proyecto del que todos los involucrados podremos sentirnos orgullosos, y esta conversación es parte de hacerlo bien. Gracias, Job.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="brand">CTRL.S</div>
+    <div class="tag">Arquitectura</div>
+    <div class="meta">Arboria Mairena del Aljarafe · Propuesta de acompañamiento para Job · 21 de abril de 2026</div>
+  </div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:0.1});
+document.querySelectorAll('.animate-on-scroll').forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>

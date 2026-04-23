@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embudo de Venta Automatizado · MACNA × Antuara · Abril 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bd:#3b2314;--bm:#5c3a1e;--bl:#7a4f2b;--g:#c9a96e;--gl:#e8d5b0;
+  --t:#2d2d2d;--tl:#6b6b6b;--bg:#faf6f1;--w:#ffffff;--br:#e0d5c8;
+  --ok:#27ae60;--wrn:#e67e22;--err:#c0392b;--info:#2980b9;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--t);background:var(--bg);line-height:1.65;font-size:15px}
+.container{max-width:960px;margin:0 auto;padding:0 40px}
+
+.hero{background:linear-gradient(135deg,var(--bd),var(--bm) 55%,var(--bl));color:var(--w);padding:60px 0 68px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--g),transparent)}
+.hero .badge{display:inline-block;padding:5px 14px;border:1px solid var(--g);border-radius:22px;font-size:.64rem;letter-spacing:2.3px;text-transform:uppercase;color:var(--gl);margin-bottom:20px;font-weight:500}
+.hero h1{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;line-height:1.15;margin-bottom:14px;letter-spacing:-.3px}
+.hero h1 em{font-style:italic;color:var(--g)}
+.hero .subtitle{font-size:1.02rem;font-weight:300;color:var(--gl);max-width:740px;line-height:1.55}
+.hero .meta{margin-top:22px;display:flex;gap:26px;flex-wrap:wrap;font-size:.72rem;color:var(--gl)}
+.hero .meta span{border-left:2px solid var(--g);padding-left:10px}
+.hero .meta strong{color:var(--w);font-weight:600;display:block;margin-top:2px;font-size:.82rem}
+
+section{padding:48px 0}
+section:nth-child(odd){background:var(--w)}
+section:not(:last-of-type){border-bottom:1px solid var(--br)}
+.section-label{display:inline-block;font-size:.62rem;letter-spacing:2.3px;text-transform:uppercase;color:var(--g);font-weight:700;margin-bottom:8px}
+.section-title{font-family:'Playfair Display',serif;font-size:1.65rem;font-weight:700;color:var(--bd);line-height:1.22;margin-bottom:14px;letter-spacing:-.2px}
+.section-title em{font-style:italic;color:var(--bl)}
+p{font-size:.94rem;color:var(--t);line-height:1.75;margin-bottom:12px;max-width:780px}
+p strong{color:var(--bd);font-weight:600}
+p.intro{color:var(--tl);margin-bottom:20px}
+
+.hlb{border-left:3px solid var(--g);background:linear-gradient(95deg,rgba(232,213,176,.35),rgba(232,213,176,.05));padding:16px 20px;border-radius:0 10px 10px 0;margin:16px 0;font-size:.92rem;line-height:1.7}
+.hlb.warm{border-left-color:var(--ok);background:linear-gradient(95deg,rgba(39,174,96,.07),rgba(39,174,96,.02))}
+.hlb.soft{border-left-color:var(--bl);background:linear-gradient(95deg,rgba(122,79,43,.07),rgba(122,79,43,.02))}
+.hlb.info{border-left-color:var(--info);background:linear-gradient(95deg,rgba(41,128,185,.07),rgba(41,128,185,.02))}
+.hlb strong{color:var(--bd);font-weight:600}
+
+/* Explicación TOFU / MOFU / BOFU */
+.tmb-explain{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:24px 0}
+@media(max-width:760px){.tmb-explain{grid-template-columns:1fr}}
+.tmb-card{background:var(--w);border:1px solid var(--br);border-radius:14px;padding:22px 24px;position:relative;overflow:hidden}
+.tmb-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px}
+.tmb-card.t::before{background:linear-gradient(90deg,#8b5a31,#a06b3a)}
+.tmb-card.m::before{background:linear-gradient(90deg,#5c3a1e,#7a4f2b)}
+.tmb-card.b::before{background:linear-gradient(90deg,#3b2314,#5c3a1e)}
+.tmb-card .code{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--g);font-weight:700;line-height:1;margin-bottom:6px}
+.tmb-card h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--bd);font-weight:700;margin-bottom:4px}
+.tmb-card .meaning{font-size:.7rem;letter-spacing:1.3px;text-transform:uppercase;color:var(--g);font-weight:700;margin-bottom:10px}
+.tmb-card p{font-size:.88rem;color:var(--t);line-height:1.65;margin-bottom:10px}
+.tmb-card .ejemplo{background:var(--bg);border-radius:8px;padding:10px 12px;font-size:.8rem;color:var(--tl);font-style:italic;line-height:1.55}
+.tmb-card .ejemplo strong{color:var(--bd);font-style:normal}
+
+/* Dibujo del embudo SVG */
+.funnel-diagram{display:block;margin:30px auto;max-width:760px;width:100%}
+
+/* 8 Stages */
+.stage-block{background:var(--w);border:1px solid var(--br);border-radius:14px;padding:22px 26px;margin-bottom:14px;display:grid;grid-template-columns:84px 1fr;gap:22px;align-items:start;position:relative;overflow:hidden}
+.stage-block::before{content:"";position:absolute;top:0;left:0;bottom:0;width:5px;background:linear-gradient(180deg,var(--g),var(--gl))}
+.stage-block.base::before{background:linear-gradient(180deg,var(--ok),#52c27c)}
+.stage-block.futuro::before{background:linear-gradient(180deg,var(--bl),var(--g));opacity:.5}
+.stage-block .num-box{text-align:center}
+.stage-block .num-box .lbl{font-size:.56rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--tl);font-weight:700;margin-bottom:4px}
+.stage-block .num-box .num{font-family:'Playfair Display',serif;font-size:2.6rem;color:var(--g);font-weight:700;line-height:.9}
+.stage-block.base .num-box .num{color:var(--ok)}
+.stage-block.futuro .num-box .num{color:var(--bl);opacity:.7}
+.stage-block .body h3{font-family:'Playfair Display',serif;font-size:1.12rem;color:var(--bd);font-weight:700;margin-bottom:4px}
+.stage-block .body .sub{font-size:.72rem;color:var(--g);font-weight:700;letter-spacing:1.3px;text-transform:uppercase;margin-bottom:10px}
+.stage-block .body p{font-size:.91rem;color:var(--t);line-height:1.7;margin:0;max-width:none}
+.stage-block .body p+p{margin-top:8px}
+.stage-block .body p strong{color:var(--bd)}
+.stage-block .body ul{margin:10px 0 0 18px;padding:0;font-size:.88rem;color:var(--tl);line-height:1.6}
+.stage-block .body ul li{margin-bottom:4px}
+.stage-block .body ul li strong{color:var(--bd)}
+.stage-block .body .tag{display:inline-block;font-size:.58rem;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;border-radius:10px;font-weight:700;margin-top:8px}
+.tag-done{background:rgba(39,174,96,.14);color:var(--ok)}
+.tag-now{background:rgba(201,169,110,.2);color:var(--bm)}
+.tag-future{background:rgba(122,79,43,.12);color:var(--bl)}
+@media(max-width:680px){.stage-block{grid-template-columns:1fr}.stage-block .num-box{text-align:left}}
+
+/* Red line divider */
+.red-line{margin:24px 0;padding:16px 22px;background:linear-gradient(95deg,rgba(192,57,43,.08),rgba(192,57,43,.02));border-left:3px solid var(--err);border-radius:0 10px 10px 0}
+.red-line h4{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--err);font-weight:700;margin-bottom:6px}
+.red-line p{font-size:.9rem;color:var(--t);line-height:1.65;margin:0}
+.red-line p strong{color:var(--bd)}
+
+/* VSL cycle */
+.vsl-cycle{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+@media(max-width:760px){.vsl-cycle{grid-template-columns:1fr}}
+.vsl-step{background:var(--w);border:1px solid var(--br);border-radius:10px;padding:14px 16px;position:relative}
+.vsl-step .n{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--g);font-weight:700;line-height:1;margin-bottom:4px}
+.vsl-step h4{font-family:'Inter',sans-serif;font-size:.8rem;color:var(--bd);font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px}
+.vsl-step p{font-size:.82rem;color:var(--tl);line-height:1.55;margin:0}
+
+/* Consciousness table */
+.cons{display:grid;grid-template-columns:140px 1fr 1fr;gap:10px;margin:16px 0}
+@media(max-width:760px){.cons{grid-template-columns:1fr}}
+.cons .head{background:var(--bd);color:var(--gl);padding:10px 14px;border-radius:8px;font-size:.68rem;letter-spacing:1.6px;text-transform:uppercase;font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center}
+.cons .cell{background:var(--w);border:1px solid var(--br);border-radius:10px;padding:14px 16px}
+.cons .cell h5{font-family:'Playfair Display',serif;font-size:.92rem;color:var(--bd);font-weight:700;margin-bottom:6px}
+.cons .cell p{font-size:.85rem;color:var(--tl);line-height:1.6;margin:0}
+.cons .cell.positive{border-top:3px solid var(--ok)}
+.cons .cell.negative{border-top:3px solid var(--err)}
+
+/* Stack */
+.stack{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+@media(max-width:760px){.stack{grid-template-columns:1fr}}
+.stack-item{background:var(--w);border:1px solid var(--br);border-radius:10px;padding:14px 16px;display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:center}
+.stack-item .ico{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--g);text-align:center;line-height:1}
+.stack-item h4{font-family:'Inter',sans-serif;font-size:.74rem;color:var(--bd);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
+.stack-item p{font-size:.82rem;color:var(--tl);line-height:1.5;margin:0}
+
+/* KPIs */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:16px 0}
+.stat{background:var(--w);border:1px solid var(--br);border-radius:10px;padding:16px;text-align:center;position:relative;overflow:hidden}
+.stat::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--g),var(--gl))}
+.stat .num{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:var(--bd);line-height:1;margin-bottom:4px}
+.stat .lbl{font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--tl);font-weight:600}
+.stat .sub{font-size:.72rem;color:var(--g);margin-top:4px;font-weight:600}
+
+.chk{list-style:none;padding:0;margin-top:10px}
+.chk li{padding:10px 0 10px 28px;position:relative;border-bottom:1px dashed var(--br);color:var(--t);font-size:.92rem;line-height:1.65}
+.chk li:last-child{border-bottom:none}
+.chk li::before{content:"";position:absolute;left:0;top:13px;width:12px;height:12px;border:2px solid var(--g);border-radius:50%;background:var(--w)}
+.chk li strong{color:var(--bd);font-weight:600}
+
+footer{background:var(--bd);color:var(--gl);padding:30px 0 24px;text-align:center}
+footer .brand{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--g);font-weight:700;letter-spacing:2px}
+footer .tag{font-size:.6rem;letter-spacing:2.3px;color:var(--gl);text-transform:uppercase;margin-top:4px}
+footer .meta{font-size:.7rem;color:var(--gl);opacity:.6;margin-top:14px}
+
+@media print{
+  *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  section{page-break-inside:avoid;padding:24px 0}
+  .hlb,.stage-block,.vsl-step,.stat,.cons .cell,.stack-item,.tmb-card{break-inside:avoid}
+}
+
+@media(max-width:700px){
+  .container{padding:0 22px}
+  .hero{padding:44px 0 50px}
+  .hero h1{font-size:1.6rem}
+  .section-title{font-size:1.3rem}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <div class="badge">MACNA × Antuara · Embudo Digital</div>
+    <h1>Embudo de <em>Venta Automatizado</em></h1>
+    <p class="subtitle">Aplicamos el embudo de crecimiento de Antuara · ocho stages, mecanismo de iteración y brújula del cliente · al caso Macna. El objetivo es vender sin depender de la agenda humana, con un sistema que se corrige solo cada mes.</p>
+    <div class="meta">
+      <span>Para<strong>Christian · Francisco</strong></span>
+      <span>De<strong>Gabriel Berutti · Antuara</strong></span>
+      <span>Fecha<strong>23 de abril de 2026</strong></span>
+    </div>
+  </div>
+</header>
+
+<!-- 1 · POR QUÉ -->
+<section>
+  <div class="container">
+    <div class="section-label">01 · Por qué</div>
+    <h2 class="section-title">El argumento de fondo</h2>
+
+    <p class="intro">Hoy la venta de Macna <strong>depende de la agenda humana</strong>: alguien consulta, Christian o Francisco responden, se agenda reunión, se muestra el estudio, se elabora la propuesta. Ese modelo tiene techo · cuando el equipo está saturado, los leads se enfrían. Y cuando los leads son fríos de entrada, las reuniones se vuelven ineficientes.</p>
+
+    <p>El embudo automatizado rompe esa dependencia con tres movimientos: <strong>(a)</strong> el lead se pre-califica solo antes de pedir reunión, <strong>(b)</strong> llega educado sobre la propuesta de valor premium, y <strong>(c)</strong> Macna solo atiende a quienes merece la pena atender. El resto compra en niveles inferiores sin interacción humana o queda en nurturing largo.</p>
+
+    <div class="hlb warm">
+      <strong>La promesa del sistema.</strong> De 100 personas que entran al embudo, ~5 pedirán reunión calificada (llegan sabiendo pricing, nivel y propuesta de valor), ~10 quedarán en nurturing para el próximo trimestre, y ~85 no progresan · que está perfectamente bien, porque no son el cliente ideal. Macna no invirtió ni un minuto humano en filtrarlos.
+    </div>
+  </div>
+</section>
+
+<!-- 2 · QUÉ ES UN EMBUDO -->
+<section>
+  <div class="container">
+    <div class="section-label">02 · Empecemos por lo básico</div>
+    <h2 class="section-title">¿Qué es un <em>embudo de venta</em>?</h2>
+
+    <p class="intro">Un embudo de venta es la forma de visualizar <strong>el recorrido que hace un cliente desde que te conoce hasta que te compra</strong>. Se dibuja como un triángulo invertido porque al principio mucha gente te ve, pero solo una parte termina comprando. Es perfectamente normal · de hecho, así funciona cualquier negocio sano.</p>
+
+    <p>El embudo se divide en <strong>tres tramos</strong>, y cada uno tiene un rol distinto. En inglés se los llama TOFU, MOFU y BOFU · que son las siglas de las tres partes (arriba, medio, abajo del embudo, en inglés). Acá abajo lo explicamos con ejemplos concretos para Macna:</p>
+
+    <div class="tmb-explain">
+      <div class="tmb-card t">
+        <div class="code">TOFU</div>
+        <div class="meaning">Top of the Funnel · la boca del embudo</div>
+        <h3>El que recién los descubre</h3>
+        <p>Toda persona que por primera vez escucha "Macna". Mucho volumen, poca intención de comprar todavía.</p>
+        <div class="ejemplo"><strong>Ejemplo:</strong> alguien que ve un post de Instagram de Macna, o llega al sitio desde Google buscando "reformar casa premium Buenos Aires".</div>
+      </div>
+      <div class="tmb-card m">
+        <div class="code">MOFU</div>
+        <div class="meaning">Middle of the Funnel · el medio del embudo</div>
+        <h3>El que se está interesando</h3>
+        <p>Ya descargó algo, dejó el mail, mira varios contenidos. Está evaluando. Todavía no compra, pero ya no es un desconocido.</p>
+        <div class="ejemplo"><strong>Ejemplo:</strong> alguien que descargó la "Guía del Propietario Premium" de Macna, recibió los 2 primeros mails y miró el caso de Gavilán.</div>
+      </div>
+      <div class="tmb-card b">
+        <div class="code">BOFU</div>
+        <div class="meaning">Bottom of the Funnel · el fondo del embudo</div>
+        <h3>El que está listo para comprar</h3>
+        <p>Pidió reunión, propuesta o compró directo. Es el tramo más angosto · menos personas pero son las que importan.</p>
+        <div class="ejemplo"><strong>Ejemplo:</strong> alguien que después de consumir los contenidos, agenda una reunión de diagnóstico con Christian o compra directo el Nivel 1.</div>
+      </div>
+    </div>
+
+    <!-- Dibujo del embudo SVG -->
+    <svg viewBox="0 0 760 460" class="funnel-diagram" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gTofu" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#8b5a31"/>
+          <stop offset="100%" stop-color="#a06b3a"/>
+        </linearGradient>
+        <linearGradient id="gMofu" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#5c3a1e"/>
+          <stop offset="100%" stop-color="#7a4f2b"/>
+        </linearGradient>
+        <linearGradient id="gBofu" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#3b2314"/>
+          <stop offset="100%" stop-color="#5c3a1e"/>
+        </linearGradient>
+        <filter id="shadow"><feGaussianBlur in="SourceAlpha" stdDeviation="3"/><feOffset dx="0" dy="4" result="off"/><feComponentTransfer><feFuncA type="linear" slope="0.15"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+
+      <!-- TOFU trapezoid -->
+      <polygon points="80,30 680,30 600,150 160,150" fill="url(#gTofu)" filter="url(#shadow)"/>
+      <text x="380" y="75" text-anchor="middle" fill="#e8d5b0" font-family="Inter" font-size="11" font-weight="700" letter-spacing="3">TOFU · ATRACCIÓN</text>
+      <text x="380" y="105" text-anchor="middle" fill="#fff" font-family="Playfair Display" font-size="22" font-weight="700">100 personas te descubren</text>
+      <text x="380" y="130" text-anchor="middle" fill="#e8d5b0" font-family="Inter" font-size="12">Instagram · pauta Meta · SEO · boca en boca</text>
+
+      <!-- MOFU trapezoid -->
+      <polygon points="160,160 600,160 520,290 240,290" fill="url(#gMofu)" filter="url(#shadow)"/>
+      <text x="380" y="205" text-anchor="middle" fill="#e8d5b0" font-family="Inter" font-size="11" font-weight="700" letter-spacing="3">MOFU · INTERÉS</text>
+      <text x="380" y="235" text-anchor="middle" fill="#fff" font-family="Playfair Display" font-size="20" font-weight="700">40 se interesan y dejan su mail</text>
+      <text x="380" y="260" text-anchor="middle" fill="#e8d5b0" font-family="Inter" font-size="12">Descargan la Guía · reciben la secuencia de 7 mails</text>
+
+      <!-- BOFU trapezoid -->
+      <polygon points="240,300 520,300 460,430 300,430" fill="url(#gBofu)" filter="url(#shadow)"/>
+      <text x="380" y="340" text-anchor="middle" fill="#e8d5b0" font-family="Inter" font-size="11" font-weight="700" letter-spacing="3">BOFU · DECISIÓN</text>
+      <text x="380" y="370" text-anchor="middle" fill="#fff" font-family="Playfair Display" font-size="20" font-weight="700">5 piden reunión o compran</text>
+      <text x="380" y="395" text-anchor="middle" fill="#e8d5b0" font-family="Inter" font-size="12">Scorecard · Calendly · propuesta</text>
+
+      <!-- Arrow down -->
+      <polygon points="360,435 400,435 380,455" fill="#c9a96e"/>
+
+      <!-- Side labels: Stages Antuara -->
+      <g font-family="Inter" font-size="10" font-weight="600" fill="#6b6b6b">
+        <text x="720" y="60" text-anchor="start">Stages</text>
+        <text x="720" y="75" text-anchor="start">3→7</text>
+
+        <text x="40" y="225" text-anchor="end">Stage</text>
+        <text x="40" y="240" text-anchor="end">2</text>
+
+        <text x="40" y="365" text-anchor="end">Stage</text>
+        <text x="40" y="380" text-anchor="end">1</text>
+      </g>
+
+      <!-- Connecting lines -->
+      <line x1="690" y1="85" x2="720" y2="85" stroke="#c9a96e" stroke-width="1.5"/>
+      <line x1="40" y1="225" x2="70" y2="225" stroke="#c9a96e" stroke-width="1.5"/>
+      <line x1="40" y1="365" x2="70" y2="365" stroke="#c9a96e" stroke-width="1.5"/>
+    </svg>
+
+    <div class="hlb info">
+      <strong>Lo importante del dibujo.</strong> De cada 100 personas que descubren Macna, solo 5 terminan comprando. <em>No es un problema · es el promedio sano de cualquier negocio premium</em>. Lo que el embudo resuelve es que las <strong>otras 95 no le roben tiempo a Christian ni Francisco</strong>. El sistema las atiende, las filtra y las educa. Los humanos solo aparecen para las últimas 5.
+    </div>
+  </div>
+</section>
+
+<!-- 3 · CÓMO LO ARMAMOS NOSOTROS -->
+<section>
+  <div class="container">
+    <div class="section-label">03 · La metodología</div>
+    <h2 class="section-title">Cómo armamos nosotros el embudo · <em>ocho stages</em></h2>
+
+    <p class="intro">En Antuara usamos una metodología de <strong>ocho etapas</strong> (del Stage 0 al Stage 7). No es una secuencia lineal de marketing: es una <em>arquitectura de construcción</em>. Cada etapa produce el insumo de la siguiente y la conversión real está en la base, no en la cima. La regla es simple: <strong>se construye de abajo hacia arriba</strong>, aunque el cliente lo recorra de arriba hacia abajo.</p>
+
+    <!-- SVG · Torre de 8 stages -->
+    <svg viewBox="0 0 860 540" class="funnel-diagram" xmlns="http://www.w3.org/2000/svg" style="margin:30px auto;display:block;max-width:860px;width:100%">
+      <defs>
+        <linearGradient id="gS7" x1="0" x2="1"><stop offset="0%" stop-color="#b89466"/><stop offset="100%" stop-color="#c9a96e"/></linearGradient>
+        <linearGradient id="gS6" x1="0" x2="1"><stop offset="0%" stop-color="#a6865b"/><stop offset="100%" stop-color="#b89466"/></linearGradient>
+        <linearGradient id="gS5" x1="0" x2="1"><stop offset="0%" stop-color="#947850"/><stop offset="100%" stop-color="#a6865b"/></linearGradient>
+        <linearGradient id="gS4" x1="0" x2="1"><stop offset="0%" stop-color="#7a4f2b"/><stop offset="100%" stop-color="#8b5a31"/></linearGradient>
+        <linearGradient id="gS3" x1="0" x2="1"><stop offset="0%" stop-color="#6c4524"/><stop offset="100%" stop-color="#7a4f2b"/></linearGradient>
+        <linearGradient id="gS2" x1="0" x2="1"><stop offset="0%" stop-color="#5c3a1e"/><stop offset="100%" stop-color="#6c4524"/></linearGradient>
+        <linearGradient id="gS1" x1="0" x2="1"><stop offset="0%" stop-color="#4a2d1a"/><stop offset="100%" stop-color="#5c3a1e"/></linearGradient>
+        <linearGradient id="gS0" x1="0" x2="1"><stop offset="0%" stop-color="#3b2314"/><stop offset="100%" stop-color="#4a2d1a"/></linearGradient>
+        <filter id="softShadow"><feGaussianBlur in="SourceAlpha" stdDeviation="2"/><feOffset dx="0" dy="2" result="off"/><feComponentTransfer><feFuncA type="linear" slope="0.2"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+
+      <!-- Flecha izquierda: orden de construcción -->
+      <g>
+        <text x="50" y="45" text-anchor="middle" fill="#6b6b6b" font-family="Inter" font-size="10" font-weight="700" letter-spacing="1.5">ORDEN DE</text>
+        <text x="50" y="58" text-anchor="middle" fill="#6b6b6b" font-family="Inter" font-size="10" font-weight="700" letter-spacing="1.5">CONSTRUCCIÓN</text>
+        <line x1="50" y1="80" x2="50" y2="490" stroke="#c9a96e" stroke-width="2" stroke-dasharray="4,4"/>
+        <polygon points="44,85 56,85 50,70" fill="#c9a96e"/>
+        <text x="50" y="510" text-anchor="middle" fill="#27ae60" font-family="Inter" font-size="9" font-weight="700" letter-spacing="1">BASE</text>
+      </g>
+
+      <!-- Flecha derecha: flujo del cliente -->
+      <g>
+        <text x="810" y="45" text-anchor="middle" fill="#6b6b6b" font-family="Inter" font-size="10" font-weight="700" letter-spacing="1.5">FLUJO DEL</text>
+        <text x="810" y="58" text-anchor="middle" fill="#6b6b6b" font-family="Inter" font-size="10" font-weight="700" letter-spacing="1.5">CLIENTE</text>
+        <line x1="810" y1="80" x2="810" y2="485" stroke="#2980b9" stroke-width="2" stroke-dasharray="4,4"/>
+        <polygon points="804,480 816,480 810,495" fill="#2980b9"/>
+        <text x="810" y="510" text-anchor="middle" fill="#2980b9" font-family="Inter" font-size="9" font-weight="700" letter-spacing="1">CIERRE</text>
+      </g>
+
+      <!-- STAGE 7 · TOP (más angosto) -->
+      <polygon points="310,70 550,70 540,110 320,110" fill="url(#gS7)" filter="url(#softShadow)" opacity="0.7"/>
+      <text x="430" y="87" text-anchor="middle" fill="#fff" font-family="Playfair Display" font-size="11" font-weight="700" letter-spacing="2">07 · VIRAL MARCA PERSONAL</text>
+      <text x="430" y="103" text-anchor="middle" fill="#e8d5b0" font-family="Inter" font-size="9">lecciones amplias · consolidación</text>
+
+      <!-- STAGE 6 -->
+      <polygon points="290,115 570,115 560,155 300,155" fill="url(#gS6)" filter="url(#softShadow)" opacity="0.75"/>
+      <text x="430" y="132" text-anchor="middle" fill="#fff" font-family="Playfair Display" font-size="11" font-weight="700" letter-spacing="2">06 · GIRA DE PODCASTS Y MEDIOS</text>
+      <text x="430" y="148" text-anchor="middle" fill="#e8d5b0" font-family="Inter" font-size="9">apalancarse en audiencias ajenas</text>
+
+      <!-- STAGE 5 -->
+      <polygon points="270,160 590,160 580,200 280,200" fill="url(#gS5)" filter="url(#softShadow)" opacity="0.82"/>
+      <text x="430" y="177" text-anchor="middle" fill="#fff" font-family="Playfair Display" font-size="11" font-weight="700" letter-spacing="2">05 · HITO HISTÓRICO</text>
+      <text x="430" y="193" text-anchor="middle" fill="#e8d5b0" font-family="Inter" font-size="9">logro propio diferencial · imposible de replicar</text>
+
+      <!-- STAGE 4 -->
+      <polygon points="250,205 610,205 600,245 260,245" fill="url(#gS4)" filter="url(#softShadow)"/>
+      <text x="430" y="222" text-anchor="middle" fill="#fff" font-family="Playfair Display" font-size="11" font-weight="700" letter-spacing="2">04 · TESTEO VIRAL</text>
+      <text x="430" y="238" text-anchor="middle" fill="#e8d5b0" font-family="Inter" font-size="9">experimentos · salir del nicho puro</text>
+
+      <!-- LÍNEA ROJA -->
+      <line x1="100" y1="252" x2="760" y2="252" stroke="#c0392b" stroke-width="3" stroke-dasharray="8,4"/>
+      <text x="100" y="264" fill="#c0392b" font-family="Inter" font-size="10" font-weight="700" letter-spacing="2">LÍNEA ROJA · territorio controlado abajo · territorio de alcance arriba</text>
+
+      <!-- STAGE 3 -->
+      <polygon points="220,272 640,272 630,312 230,312" fill="url(#gS3)" filter="url(#softShadow)"/>
+      <text x="430" y="289" text-anchor="middle" fill="#fff" font-family="Playfair Display" font-size="11" font-weight="700" letter-spacing="2">03 · SEO Y CONTENIDO ESTRATÉGICO</text>
+      <text x="430" y="305" text-anchor="middle" fill="#e8d5b0" font-family="Inter" font-size="9">lo que el avatar busca en Google</text>
+
+      <!-- STAGE 2 -->
+      <polygon points="190,317 670,317 660,357 200,357" fill="url(#gS2)" filter="url(#softShadow)"/>
+      <text x="430" y="334" text-anchor="middle" fill="#fff" font-family="Playfair Display" font-size="11" font-weight="700" letter-spacing="2">02 · VALIDACIÓN · 5 contenidos obligatorios</text>
+      <text x="430" y="350" text-anchor="middle" fill="#e8d5b0" font-family="Inter" font-size="9">historia · modelo · caso · método · estudios</text>
+
+      <!-- STAGE 1 -->
+      <polygon points="160,362 700,362 690,402 170,402" fill="url(#gS1)" filter="url(#softShadow)"/>
+      <text x="430" y="379" text-anchor="middle" fill="#c9a96e" font-family="Playfair Display" font-size="12" font-weight="700" letter-spacing="2">01 · CONVERSIÓN · el corazón del embudo</text>
+      <text x="430" y="395" text-anchor="middle" fill="#e8d5b0" font-family="Inter" font-size="9">Lead Magnet + secuencia automática · SIN intervención humana</text>
+
+      <!-- STAGE 0 · BASE (más ancho) -->
+      <polygon points="130,407 730,407 720,450 140,450" fill="url(#gS0)" filter="url(#softShadow)"/>
+      <text x="430" y="423" text-anchor="middle" fill="#27ae60" font-family="Playfair Display" font-size="12" font-weight="700" letter-spacing="2">00 · ONBOARDING Y ESTRATEGIA · ✓ YA HECHO</text>
+      <text x="430" y="440" text-anchor="middle" fill="#e8d5b0" font-family="Inter" font-size="9">los 6 frentes entregados · fundación sobre la que se construye todo</text>
+
+      <!-- TOFU/MOFU/BOFU markers a la derecha -->
+      <g font-family="Inter" font-size="9" font-weight="700" fill="#6b6b6b" letter-spacing="1.5">
+        <!-- TOFU -->
+        <line x1="700" y1="70" x2="720" y2="70" stroke="#8b5a31" stroke-width="1.5"/>
+        <line x1="720" y1="70" x2="720" y2="310" stroke="#8b5a31" stroke-width="1.5"/>
+        <line x1="700" y1="310" x2="720" y2="310" stroke="#8b5a31" stroke-width="1.5"/>
+        <text x="740" y="195" fill="#8b5a31">TOFU</text>
+
+        <!-- MOFU -->
+        <line x1="700" y1="317" x2="720" y2="317" stroke="#5c3a1e" stroke-width="1.5"/>
+        <line x1="720" y1="317" x2="720" y2="357" stroke="#5c3a1e" stroke-width="1.5"/>
+        <line x1="700" y1="357" x2="720" y2="357" stroke="#5c3a1e" stroke-width="1.5"/>
+        <text x="740" y="342" fill="#5c3a1e">MOFU</text>
+
+        <!-- BOFU -->
+        <line x1="700" y1="362" x2="720" y2="362" stroke="#3b2314" stroke-width="1.5"/>
+        <line x1="720" y1="362" x2="720" y2="402" stroke="#3b2314" stroke-width="1.5"/>
+        <line x1="700" y1="402" x2="720" y2="402" stroke="#3b2314" stroke-width="1.5"/>
+        <text x="740" y="387" fill="#3b2314">BOFU</text>
+      </g>
+    </svg>
+
+    <div class="hlb info">
+      <strong>Cómo leer el dibujo.</strong> La base ancha (Stage 0 y 1) es donde está la <em>conversión real</em>: la fundación estratégica y el sistema de captura. De ahí para arriba, cada nivel es más angosto pero más <em>amplio en alcance</em>: Stage 2-3 construyen autoridad, Stages 4-7 escalan a audiencias masivas. <strong>El cliente recorre de arriba hacia abajo; Macna construye de abajo hacia arriba</strong>. La línea roja separa lo que está bajo control de lo que persigue alcance.
+    </div>
+
+    <!-- STAGE 0 -->
+    <div class="stage-block base">
+      <div class="num-box"><div class="lbl">Stage</div><div class="num">00</div></div>
+      <div class="body">
+        <h3>Onboarding y Estrategia</h3>
+        <div class="sub">Mes 0 · YA HECHO</div>
+        <p>La fase de diseño estratégico. En Macna ya la tenemos cerrada: <strong>los 6 frentes entregados</strong> (Análisis, Auditoría IG, Estrategia Comunicación, Arquitectura Oferta, Pricing, Playbook Funnel), cápsulas de contenido definidas, stack inicial mapeado.</p>
+        <span class="tag tag-done">✓ Completado</span>
+      </div>
+    </div>
+
+    <!-- STAGE 1 -->
+    <div class="stage-block">
+      <div class="num-box"><div class="lbl">Stage</div><div class="num">01</div></div>
+      <div class="body">
+        <h3>Conversión · el corazón del embudo</h3>
+        <div class="sub">Mes 1 · Arranca YA</div>
+        <p>Objetivo: <strong>lograr una conversión autónoma sin intervención humana en el primer contacto</strong>. Es la base operativa. Sin esto consolidado, nada del resto escala.</p>
+        <p><strong>Pieza ancla para Macna:</strong> "Guía del Propietario Premium · 10 errores costosos al remodelar". PDF descargable editorial que demuestra la autoridad técnica sin vender directo. El prospecto entrega mail y WhatsApp a cambio, y automáticamente entra a la secuencia del Stage 2.</p>
+        <ul>
+          <li><strong>Alternativas a evaluar:</strong> autodiagnóstico interactivo · calculadora de presupuesto integral · mini-curso evergreen de 3 videos</li>
+          <li><strong>Criterio de calidad:</strong> tan bueno que piensen "si esto es gratis, lo pago debe ser excelente"</li>
+          <li><strong>Distribución:</strong> link en bio IG · pauta Meta al avatar · formulario en web · caja en cada reseña de Google</li>
+        </ul>
+        <span class="tag tag-now">● En diseño · Semana 1-2</span>
+      </div>
+    </div>
+
+    <!-- STAGE 2 -->
+    <div class="stage-block">
+      <div class="num-box"><div class="lbl">Stage</div><div class="num">02</div></div>
+      <div class="body">
+        <h3>Validación · los cinco contenidos obligatorios</h3>
+        <div class="sub">Mes 1-2 · Paralelo a Stage 1</div>
+        <p>Objetivo: <strong>validar que el sistema funciona con un núcleo de contenido que construye confianza</strong>. Es el MOFU del embudo. Si en Stage 2 el contenido no genera tracción medible, no se avanza a Stage 3: se ajusta y se itera.</p>
+        <p>Los cinco tipos <strong>no son negociables</strong> · cualquier embudo Antuara lleva estos cinco:</p>
+        <ul>
+          <li><strong>1. Mi historia</strong> · Christian y Francisco cuentan por qué arrancaron Macna, qué los diferencia, qué tipo de cliente buscan. Formato: video corto + post largo</li>
+          <li><strong>2. Fuente de ingresos</strong> · Explicación transparente del modelo L1/L2/L3. Qué incluye cada nivel, por qué cobra lo que cobra. Formato: carrusel + video explicativo</li>
+          <li><strong>3. Cómo logré X</strong> · Un resultado concreto con el proceso detrás. Caso Gavilán contado completo: inversión, plazo, decisiones críticas, resultado</li>
+          <li><strong>4. Mi método</strong> · Cómo trabaja Macna. La diferencia entre "arquitecto suelto" y "estudio con dirección integral". El framework que usan</li>
+          <li><strong>5. Casos de estudio</strong> · Mínimo 3 casos reales con datos verificables. No fotos bonitas · números, tiempos, decisiones, testimonios</li>
+        </ul>
+        <span class="tag tag-now">● Producción Semana 2-4</span>
+      </div>
+    </div>
+
+    <!-- STAGE 3 -->
+    <div class="stage-block">
+      <div class="num-box"><div class="lbl">Stage</div><div class="num">03</div></div>
+      <div class="body">
+        <h3>SEO y Contenido Estratégico</h3>
+        <div class="sub">Mes 3-4-5</div>
+        <p>Objetivo: escalar la producción de contenido enfocado en <strong>lo que el avatar busca activamente</strong>. Se cruza la Tabla de Consciencia de Macna (sección 05) con la demanda real de búsqueda en Google.</p>
+        <p><strong>Ejemplos concretos para Macna:</strong></p>
+        <ul>
+          <li>"Cuánto cuesta remodelar una casa premium en Buenos Aires"</li>
+          <li>"Cómo elegir un arquitecto de confianza para una obra grande"</li>
+          <li>"Qué incluye una dirección de obra profesional"</li>
+          <li>"Arquitecto con dirección integral · qué buscar"</li>
+          <li>"Errores de obra que salen caros y cómo evitarlos"</li>
+        </ul>
+        <p>Cápsulas hard (casos, educación, pensar distinto) con lenguaje SEO natural. Formatos: posts largos IG, carruseles, videos cortos, eventualmente YouTube.</p>
+        <span class="tag tag-future">● Mes 3 en adelante</span>
+      </div>
+    </div>
+
+    <!-- LÍNEA ROJA -->
+    <div class="red-line">
+      <h4>LÍNEA ROJA · entre Stage 3 y Stage 4</h4>
+      <p>Debajo de esta línea hay <strong>territorio controlado</strong>: alcance manejable, audiencia cualificada, feedback directo del avatar. Arriba hay <strong>territorio de alcance</strong>: volumen masivo, gente que no es el cliente ideal, riesgo de ruido. No se cruza sin tener stages 1-3 consolidados con métricas sostenidas durante 3 meses.</p>
+    </div>
+
+    <!-- STAGE 4 -->
+    <div class="stage-block futuro">
+      <div class="num-box"><div class="lbl">Stage</div><div class="num">04</div></div>
+      <div class="body">
+        <h3>Testeo Viral</h3>
+        <div class="sub">Mes 6-7 · Futuro</div>
+        <p>Objetivo: probar formatos de alcance masivo sin perder identidad. Primer momento donde se sale del nicho puro. <strong>Experimentos, retos, provocaciones controladas</strong>.</p>
+        <p><em>Para Macna:</em> "Le hice un análisis técnico a una casa en venta de [zona exclusiva]" · "Cuánto cuesta realmente una reforma integral en Buenos Aires 2026" · "Analicé los planos de un proyecto premium que me mostró un cliente".</p>
+        <span class="tag tag-future">Trimestre 3</span>
+      </div>
+    </div>
+
+    <!-- STAGE 5 -->
+    <div class="stage-block futuro">
+      <div class="num-box"><div class="lbl">Stage</div><div class="num">05</div></div>
+      <div class="body">
+        <h3>Hito Histórico</h3>
+        <div class="sub">Mes 8 · Futuro</div>
+        <p>Objetivo: generar un logro diferencial, difícil de replicar, que demuestre capacidad extrema. <strong>No es un caso de cliente · es algo que Macna mismo hizo</strong>.</p>
+        <p><em>Para Macna:</em> "Dirigimos 30 obras premium en 10 años, estos son los 12 patrones que encontramos" · "Documentamos el proyecto más complejo del estudio, minuto a minuto" · "Publicamos el manual de obra premium que todos los arquitectos deberían tener".</p>
+        <span class="tag tag-future">Trimestre 3-4</span>
+      </div>
+    </div>
+
+    <!-- STAGE 6 -->
+    <div class="stage-block futuro">
+      <div class="num-box"><div class="lbl">Stage</div><div class="num">06</div></div>
+      <div class="body">
+        <h3>Gira de Podcasts y Medios</h3>
+        <div class="sub">Mes 10-11 · Futuro</div>
+        <p>Objetivo: <strong>apalancarse en audiencias ajenas</strong>. No se crea contenido propio · se va a canales de otros con 3 narrativas ya validadas: la historia de Christian y Francisco, el modelo Macna, el hito histórico.</p>
+        <p><em>Para Macna:</em> podcasts de arquitectura y negocios, cámaras empresariales, medios sectoriales, universidades con carreras de arquitectura.</p>
+        <span class="tag tag-future">Año 2</span>
+      </div>
+    </div>
+
+    <!-- STAGE 7 -->
+    <div class="stage-block futuro">
+      <div class="num-box"><div class="lbl">Stage</div><div class="num">07</div></div>
+      <div class="body">
+        <h3>Viral · Marca Personal y del Estudio</h3>
+        <div class="sub">Mes ∞ · Futuro</div>
+        <p>Recién acá se tiene permiso para <strong>contenido amplio</strong> · lecciones de vida, reflexiones generales, tendencias. Sin los stages anteriores sería ruido. Con ellos, es consolidación.</p>
+        <p><em>Para Macna:</em> "10 lecciones de 15 años en obra" · "Si tuviera que empezar un estudio de arquitectura hoy" · "Los 5 cambios del mercado de arquitectura premium en una década".</p>
+        <span class="tag tag-future">Año 2+</span>
+      </div>
+    </div>
+
+    <div class="hlb soft">
+      <strong>Reglas del embudo (no negociables).</strong> (1) Cada stage produce el insumo del siguiente. (2) La conversión está en la base, no en la cima. (3) No se cruza la línea roja sin la base consolidada. (4) El producto evergreen (L1/L2/L3 + Lead Magnet) es el eje invisible de todo el embudo.
+    </div>
+  </div>
+</section>
+
+<!-- 4 · VSL OCULTO -->
+<section>
+  <div class="container">
+    <div class="section-label">04 · El motor del sistema</div>
+    <h2 class="section-title">El ciclo de mejora continua · <em>el sistema aprende solo</em></h2>
+    <p class="intro">El embudo no se queda quieto. Dentro del sistema hay un <strong>ciclo invisible de nueve pasos</strong> que toma cada reunión real que hacen Christian o Francisco y la convierte en mejor contenido para atraer al próximo. El principio: <em>odiamos que nos vendan, pero nos encanta comprar</em>. El cliente no siente que lo están vendiendo · siente que lo están ayudando. Y el sistema aprende de cada conversación real.</p>
+
+    <div class="vsl-cycle">
+      <div class="vsl-step"><div class="n">1</div><h4>Contenido con ángulo ganador</h4><p>Post, reel o video que educa y genera necesidad. Stages 2-3 del embudo.</p></div>
+      <div class="vsl-step"><div class="n">2</div><h4>Llamado a la acción sutil</h4><p>Formulario o Calendly para agendar charla estratégica. Nunca "comprá".</p></div>
+      <div class="vsl-step"><div class="n">3</div><h4>Llamada de ventas</h4><p>Google Meet con Christian. Escucha primero, propone después.</p></div>
+      <div class="vsl-step"><div class="n">4</div><h4>Grabación automática</h4><p>Todo se graba y se transcribe automáticamente con Fathom.</p></div>
+      <div class="vsl-step"><div class="n">5</div><h4>Charla con cliente cerrado</h4><p>Después de firmar, otra conversación grabada para entender la decisión.</p></div>
+      <div class="vsl-step"><div class="n">6</div><h4>Base de transcripciones</h4><p>Todas las llamadas cerradas se centralizan en un Drive ordenado.</p></div>
+      <div class="vsl-step"><div class="n">7</div><h4>Análisis con IA</h4><p>Claude procesa las transcripciones: objeciones comunes, lenguaje real, palabras gatillo.</p></div>
+      <div class="vsl-step"><div class="n">8</div><h4>Actualiza la brújula</h4><p>Se afinan los 4 cuadrantes de la Tabla de Consciencia con datos reales.</p></div>
+      <div class="vsl-step"><div class="n">9</div><h4>Itera el contenido</h4><p>Vuelve al paso 1 con versión mejorada. El ciclo nunca termina.</p></div>
+    </div>
+
+    <div class="hlb warm">
+      <strong>La magia del ciclo.</strong> Cada reunión · ganada o perdida · genera data que mejora el contenido que atrae a la próxima. <strong>El embudo aprende solo</strong>. Al tercer mes, el contenido ya usa el lenguaje exacto que los prospectos usaron en sus reuniones. Al sexto, responde objeciones antes de que se formulen.
+    </div>
+  </div>
+</section>
+
+<!-- 5 · TABLA DE CONSCIENCIA -->
+<section>
+  <div class="container">
+    <div class="section-label">05 · La brújula</div>
+    <h2 class="section-title">Tabla de Consciencia del avatar Macna</h2>
+    <p class="intro">La brújula del contenido. <strong>Todo lo que publique el embudo debe tocar al menos uno de los cuatro cuadrantes</strong>. Si una pieza no se ancla en deseo, aspiración, frustración o miedo del propietario premium, no pertenece al embudo · sobra.</p>
+
+    <div class="cons">
+      <div class="head"></div>
+      <div class="head">Inmediato · 30-60-90 días</div>
+      <div class="head">Imaginario · 12-24-36 meses</div>
+
+      <div class="head">Positivo</div>
+      <div class="cell positive">
+        <h5>Deseos</h5>
+        <p>Que me respondan rápido sin que me vendan. Entender el alcance del proyecto antes de reunirme. Saber cuánto va a costar sin tener que adivinar. Encontrar un estudio que me inspire confianza desde la primera pieza de contenido.</p>
+      </div>
+      <div class="cell positive">
+        <h5>Aspiraciones</h5>
+        <p>Vivir en la casa que soñé, construida con criterio y sin sobresaltos. Ser el anfitrión que recibe orgulloso. Contar la historia del proyecto como una buena decisión. Dejar un proyecto bien hecho para los próximos veinte años.</p>
+      </div>
+
+      <div class="head">Negativo</div>
+      <div class="cell negative">
+        <h5>Frustraciones</h5>
+        <p>Presupuestos que cambian en el camino. Arquitectos que diseñan pero no dirigen. Obras que se eternizan. Decisiones técnicas que me piden sin contexto. Sentir que estoy pagando por algo que no entiendo bien.</p>
+      </div>
+      <div class="cell negative">
+        <h5>Miedos</h5>
+        <p>Que la obra termine costando el doble. Que el resultado no se parezca a lo prometido. Que aparezcan problemas estructurales dos años después. Que mi inversión quede atada a un estudio que no me acompañe. Quedar expuesto frente a mi pareja o familia por una mala decisión.</p>
+      </div>
+    </div>
+
+    <div class="hlb info">
+      <strong>Conexión con la metodología.</strong> Las frustraciones son los <em>problemas hoy</em>, los miedos son los <em>problemas que pueden venir</em>, los deseos son <em>lo que quieren lograr pronto</em> y las aspiraciones son <em>lo que sueñan a largo plazo</em>. El embudo no es un dispositivo de marketing · es la aplicación comercial de los mismos principios del plan estratégico.
+    </div>
+  </div>
+</section>
+
+<!-- 6 · STACK TÉCNICO -->
+<section>
+  <div class="container">
+    <div class="section-label">06 · Infraestructura técnica</div>
+    <h2 class="section-title">Stack para montar el embudo</h2>
+    <p class="intro">Nada exótico. Todo se construye con herramientas estándar que Macna puede auditar mes a mes. Setup bajo, mantenimiento mínimo.</p>
+
+    <div class="stack">
+      <div class="stack-item"><div class="ico">✦</div><div><h4>Landing + Lead Magnet</h4><p>Página simple de captura (Carrd, Framer o WordPress) + envío automático del PDF</p></div></div>
+      <div class="stack-item"><div class="ico">✉</div><div><h4>Email automation</h4><p>Brevo, Mailchimp o ActiveCampaign. Secuencia programada una sola vez, corre sola</p></div></div>
+      <div class="stack-item"><div class="ico">▣</div><div><h4>WhatsApp API</h4><p>Twilio o Business API para contactos automáticos en momentos clave del recorrido</p></div></div>
+      <div class="stack-item"><div class="ico">◈</div><div><h4>Scorecard + Calendly</h4><p>Formulario auto-calificador que solo muestra horario si el puntaje supera 3.0</p></div></div>
+      <div class="stack-item"><div class="ico">◇</div><div><h4>CRM</h4><p>Notion o HubSpot Free · cada prospecto con scoring, origen, etapa y estado</p></div></div>
+      <div class="stack-item"><div class="ico">△</div><div><h4>Fathom + IA</h4><p>Grabación y transcripción de reuniones + procesamiento con Claude · alimenta el ciclo de mejora</p></div></div>
+    </div>
+
+    <div class="hlb soft">
+      <strong>Inversión.</strong> Setup completo ~USD 500-800 (herramientas + diseño Lead Magnet + redacción secuencia). Mantenimiento mensual ~USD 50-80. Pauta Meta desde USD 300/mes según ambición de escala. Cero contrato externo · todo corre en casa.
+    </div>
+  </div>
+</section>
+
+<!-- 7 · ROADMAP + KPIs + DECISIONES -->
+<section>
+  <div class="container">
+    <div class="section-label">07 · Roadmap y decisiones</div>
+    <h2 class="section-title">Cuatro semanas al Stage 1 en vivo</h2>
+    <p class="intro">Foco absoluto en consolidar Stage 0 + Stage 1 en las próximas cuatro semanas. Stage 2 arranca en paralelo al final del mes. Stages 3+ son trimestre siguiente.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="num">≥ 200</div><div class="lbl">Leads/mes</div><div class="sub">meta mes 3</div></div>
+      <div class="stat"><div class="num">≥ 40%</div><div class="lbl">Open rate secuencia</div><div class="sub">industria ~25%</div></div>
+      <div class="stat"><div class="num">5-8%</div><div class="lbl">Pedidos diagnóstico</div><div class="sub">sobre total leads</div></div>
+      <div class="stat"><div class="num">30-40%</div><div class="lbl">Conversión reunión</div><div class="sub">de los calificados</div></div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;color:var(--bd);font-size:1.15rem;margin:24px 0 10px;font-weight:700">Decisiones que necesitamos tomar hoy</h3>
+
+    <ul class="chk">
+      <li><strong>Validación del enfoque</strong> ·¿aprueban el Embudo de Crecimiento Antuara como arquitectura oficial para las próximas 4 semanas? Sin un "sí" claro, no arrancamos.</li>
+      <li><strong>Lead Magnet</strong> ·¿vamos con "Guía del Propietario Premium · 10 errores costosos" o prefieren explorar una alternativa (autodiagnóstico · calculadora)?</li>
+      <li><strong>Caso emblema del Stage 2</strong> ·¿Gavilán ocupa ese lugar? Si no, ¿cuál?</li>
+      <li><strong>Tono del contenido</strong> · firma del contenido: "Macna Arquitectura" como institución, o Christian y Francisco con caras. Sugerencia de Antuara: con caras (alto ticket = confianza personal).</li>
+      <li><strong>Presupuesto inicial</strong> · setup + primer mes de pauta: ~USD 800-1.100. ¿Se aprueba esta semana para arrancar roadmap?</li>
+      <li><strong>Dueño operativo</strong> · el embudo lo arma Antuara. Una vez en vivo, ¿quién de Macna lleva el pulso semanal? Propuesta: Francisco monitorea, Christian atiende las reuniones calificadas.</li>
+      <li><strong>Fecha de lanzamiento</strong> · si hoy se aprueba, Stage 1 en vivo al 21 de mayo. Si la decisión se posterga, se corre al 28.</li>
+    </ul>
+
+    <div class="hlb warm">
+      <strong>El cierre que resume todo.</strong> Macna hoy vende proyectos premium con tiempo humano de directores. Este embudo · los ocho stages del sistema Antuara + el ciclo de mejora continua como motor · hace que Macna venda el mismo producto premium <em>mientras los directores duermen</em>. No es marketing: es <strong>un cambio de modelo de negocio</strong>. Por eso las próximas cuatro semanas valen la pena.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="brand">antuara</div>
+    <div class="tag">Consultoría Estratégica</div>
+    <div class="meta">Embudo de Venta Automatizado · MACNA × Antuara · 23 de abril de 2026</div>
+  </div>
+</footer>
+
+</body>
+</html>

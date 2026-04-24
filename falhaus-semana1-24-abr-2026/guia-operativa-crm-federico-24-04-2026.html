@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía Operativa CRM — Falhaus | 24 Abril 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bd:#3b2314;--bm:#5c3a1e;--bl:#7a4f2b;--g:#c9a96e;--gl:#e8d5b0;--t:#2d2d2d;--tl:#6b6b6b;--bg:#faf6f1;--w:#ffffff;--br:#e0d5c8;--cream:#faf3ea;--ok:#27ae60;--wrn:#e67e22;--err:#c0392b;--info:#2980b9}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t);line-height:1.6}
+.container{max-width:1040px;margin:0 auto;padding:0 40px}
+
+.hero{background:linear-gradient(135deg,#3b2314,#5c3a1e,#7a4f2b);color:white;padding:64px 40px 50px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--g),var(--gl),var(--g))}
+.hero-inner{max-width:1040px;margin:0 auto;position:relative;z-index:2}
+.hero-badge{display:inline-block;padding:6px 16px;background:rgba(201,169,110,.18);border:1px solid var(--g);color:var(--gl);font-size:.68rem;font-weight:700;letter-spacing:3px;border-radius:30px;margin-bottom:20px}
+.hero h1{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:800;line-height:1.08;margin-bottom:14px}
+.hero h1 em{color:var(--g);font-style:normal}
+.hero-sub{font-size:1.1rem;color:var(--gl);font-weight:300;max-width:820px;line-height:1.6;margin-bottom:20px}
+.hero-meta{font-size:.8rem;color:rgba(255,255,255,.55);letter-spacing:2px;text-transform:uppercase}
+
+nav.toc{position:sticky;top:0;background:rgba(250,246,241,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--br);padding:14px 0;z-index:50}
+.toc-inner{max-width:1040px;margin:0 auto;padding:0 40px;display:flex;gap:18px;overflow-x:auto;scrollbar-width:none}
+.toc-inner::-webkit-scrollbar{display:none}
+.toc a{text-decoration:none;color:var(--tl);font-size:.82rem;font-weight:600;letter-spacing:.4px;white-space:nowrap;padding:4px 2px;border-bottom:2px solid transparent;transition:all .2s}
+.toc a:hover{color:var(--bd);border-bottom-color:var(--g)}
+
+.section{padding:56px 0;border-bottom:1px solid var(--br)}
+.section:last-of-type{border-bottom:none}
+.section-label{font-size:.64rem;font-weight:700;letter-spacing:3px;color:var(--g);text-transform:uppercase;margin-bottom:10px}
+.section h2{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:700;color:var(--bd);line-height:1.1;margin-bottom:14px}
+.section-intro{font-size:.98rem;color:var(--tl);max-width:800px;margin-bottom:30px;line-height:1.6}
+
+.step-card{background:var(--w);border-radius:16px;padding:28px 32px;border:1px solid var(--br);margin:18px 0;position:relative;overflow:hidden}
+.step-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--g),var(--gl))}
+.step-header{display:flex;align-items:center;gap:16px;margin-bottom:12px}
+.step-num{width:44px;height:44px;background:var(--g);color:var(--bd);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:800;font-size:1.25rem;flex-shrink:0}
+.step-card h3{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--bd);line-height:1.2}
+.step-time{display:inline-block;padding:3px 10px;background:var(--cream);border:1px solid var(--g);border-radius:20px;font-size:.7rem;font-weight:700;color:var(--bd);margin-left:auto}
+.step-card p{font-size:.92rem;color:var(--t);line-height:1.65;margin-bottom:10px}
+.step-detail{background:var(--cream);border-radius:10px;padding:16px 20px;margin:12px 0;font-size:.88rem;color:var(--t);line-height:1.6}
+.step-detail strong{color:var(--bd)}
+.step-detail ul{margin:8px 0 0 20px;padding:0}
+.step-detail li{padding:3px 0;font-size:.87rem}
+
+.highlight-box{border-left:4px solid var(--g);background:linear-gradient(135deg,rgba(201,169,110,.08),rgba(201,169,110,.03));padding:20px 24px;border-radius:0 12px 12px 0;margin:20px 0;line-height:1.6;font-size:.92rem}
+.highlight-box.danger{border-left-color:var(--err);background:linear-gradient(135deg,rgba(192,57,43,.06),rgba(192,57,43,.02))}
+.highlight-box.success{border-left-color:var(--ok);background:linear-gradient(135deg,rgba(39,174,96,.06),rgba(39,174,96,.02))}
+.highlight-box.info{border-left-color:var(--info);background:linear-gradient(135deg,rgba(41,128,185,.06),rgba(41,128,185,.02))}
+.highlight-box strong{color:var(--bd)}
+
+.field-table{background:var(--w);border-radius:14px;overflow:hidden;border:1px solid var(--br);margin:18px 0}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+thead th{background:var(--bd);color:white;padding:12px 16px;text-align:left;font-size:.72rem;letter-spacing:1px;text-transform:uppercase;font-weight:700}
+tbody td{padding:12px 16px;border-bottom:1px solid var(--br);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:var(--cream)}
+td strong{color:var(--bd)}
+
+.choice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.choice-btn{background:var(--w);border:2px solid var(--br);border-radius:12px;padding:14px 16px;text-align:center;font-size:.88rem;transition:all .2s}
+.choice-btn.green{border-color:var(--ok)}
+.choice-btn.yellow{border-color:var(--wrn)}
+.choice-btn.red{border-color:var(--err)}
+.choice-btn strong{display:block;color:var(--bd);margin-bottom:4px;font-size:.95rem}
+.choice-btn span{display:block;font-size:.78rem;color:var(--tl);line-height:1.4}
+
+.example-box{background:var(--bd);color:white;border-radius:14px;padding:24px 28px;margin:20px 0;position:relative}
+.example-box::before{content:'EJEMPLO';position:absolute;top:-10px;left:24px;background:var(--g);color:var(--bd);padding:4px 12px;border-radius:10px;font-size:.66rem;font-weight:800;letter-spacing:2px}
+.example-box h4{font-family:'Playfair Display',serif;color:var(--gl);font-size:1.1rem;margin:8px 0 12px}
+.example-box p{color:rgba(255,255,255,.85);font-size:.9rem;line-height:1.65;margin-bottom:8px}
+.example-box ul{margin:10px 0 0 20px}
+.example-box li{color:var(--gl);font-size:.88rem;line-height:1.6;padding:3px 0}
+.example-box strong{color:white}
+
+.dont-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.dont-card{background:var(--w);border-radius:12px;padding:18px 22px;border:1px solid var(--br)}
+.dont-card.no{border-left:4px solid var(--err)}
+.dont-card.yes{border-left:4px solid var(--ok)}
+.dont-card h4{font-family:'Playfair Display',serif;font-size:1rem;color:var(--bd);margin-bottom:6px}
+.dont-card p{font-size:.85rem;color:var(--tl);line-height:1.5}
+
+.faq-item{background:var(--w);border-radius:12px;padding:20px 24px;border:1px solid var(--br);margin:10px 0}
+.faq-item h4{font-family:'Playfair Display',serif;color:var(--bd);font-size:1rem;margin-bottom:8px}
+.faq-item p{font-size:.88rem;color:var(--t);line-height:1.6}
+
+footer{background:var(--bd);color:var(--gl);padding:40px 0;margin-top:40px;text-align:center}
+footer .brand{font-family:'Playfair Display',serif;font-size:1.1rem;letter-spacing:4px;color:var(--g);font-weight:700;margin-bottom:8px}
+footer p{font-size:.85rem;line-height:1.6}
+
+.animate-on-scroll{opacity:0;transform:translateY(30px);transition:all .6s ease}
+.animate-on-scroll.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){.container{padding:0 20px}.hero{padding:48px 20px 40px}.hero h1{font-size:1.9rem}.section h2{font-size:1.6rem}.choice-grid,.dont-list{grid-template-columns:1fr}.toc-inner{padding:0 20px}}
+@media print{*{print-color-adjust:exact;-webkit-print-color-adjust:exact}.section{page-break-inside:avoid}nav.toc{display:none}.animate-on-scroll{opacity:1!important;transform:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">GUÍA OPERATIVA · CRM FALHAUS</div>
+    <h1>Cómo actualizar un lead<br>en <em>5 clics</em></h1>
+    <p class="hero-sub">Esta guía es para vos, Federico. Post-reunión, 90 segundos en Prometeo. Si seguís estos 5 pasos siempre, el CRM hace el resto: te ordena la agenda, calcula el score, te avisa cuándo volver a contactar.</p>
+    <div class="hero-meta">Actualizado · 24 de abril de 2026</div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#paso1">1. Abrir ficha</a>
+    <a href="#paso2">2. Marcar resultado</a>
+    <a href="#paso3">3. Los 4 datos</a>
+    <a href="#paso4">4. Próximo contacto</a>
+    <a href="#paso5">5. Nota libre</a>
+    <a href="#ejemplo">Ejemplo real</a>
+    <a href="#faq">Preguntas frecuentes</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- PASO 1 -->
+  <section class="section" id="paso1">
+    <div class="animate-on-scroll">
+      <div class="section-label">Paso 01 · 5 segundos</div>
+      <h2>Abrir la ficha del lead</h2>
+      <p class="section-intro">Cada mañana Prometeo te muestra una vista llamada "Reuniones de hoy". De ahí salís. Un click y ya estás adentro del lead.</p>
+
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">1</div>
+          <h3>Entrá a la vista "Reuniones de hoy"</h3>
+          <span class="step-time">5 seg</span>
+        </div>
+        <p>Está en el menú lateral izquierdo, bajo <strong>Pipeline → Mis reuniones</strong>. Te lista todas las reuniones del día ordenadas por hora. Al lado del nombre del lead vas a ver su score actual (por ejemplo: <em>Juan Pérez · 67</em>).</p>
+        <div class="step-detail">
+          <strong>Tip operativo:</strong> antes de la reunión, abrí la ficha para leer el historial (duró menos de 30 segundos). Así entrás a la reunión sabiendo qué se habló antes y qué datos ya tenés.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PASO 2 -->
+  <section class="section" id="paso2">
+    <div class="animate-on-scroll">
+      <div class="section-label">Paso 02 · 10 segundos</div>
+      <h2>Marcar el resultado de la reunión</h2>
+      <p class="section-intro">Apenas termina la reunión, 3 botones. Uno solo. El que mejor describa qué pasó.</p>
+
+      <div class="choice-grid">
+        <div class="choice-btn green">
+          <strong>Avanzó</strong>
+          <span>La reunión salió bien. Va a visitar el showroom, pidió propuesta, o queda agendada la próxima.</span>
+        </div>
+        <div class="choice-btn yellow">
+          <strong>Quedó pendiente</strong>
+          <span>Hubo interés pero necesita pensar, hablar con la pareja, esperar plata. No está frío pero tampoco listo.</span>
+        </div>
+        <div class="choice-btn red">
+          <strong>Descartado</strong>
+          <span>Sin terreno, sin presupuesto, sin intención real, o cambió de plan. Terminal.</span>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">2</div>
+          <h3>Apretá el botón correcto</h3>
+          <span class="step-time">10 seg</span>
+        </div>
+        <p>El sistema automáticamente:</p>
+        <div class="step-detail">
+          <ul>
+            <li>Si <strong>Avanzó</strong> → lo mueve a la siguiente etapa del pipeline</li>
+            <li>Si <strong>Quedó pendiente</strong> → queda en la misma etapa, pero con recordatorio en 7 días</li>
+            <li>Si <strong>Descartado</strong> → lo manda a "Cerrado - Perdido" y te pide el motivo</li>
+          </ul>
+        </div>
+        <div class="highlight-box info">
+          <p><strong>¿Y si no sabés cuál elegir?</strong> Marcá "Quedó pendiente". Nunca te equivoca. El peor error es dejar el lead sin marcar — ahí se pierde.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PASO 3 -->
+  <section class="section" id="paso3">
+    <div class="animate-on-scroll">
+      <div class="section-label">Paso 03 · 30 segundos</div>
+      <h2>Completar los 4 datos clave</h2>
+      <p class="section-intro">Todos son dropdowns. Nada de escribir. Si un dato todavía no lo sabés, marcás "Pendiente" y el lead queda incompleto (eso es información útil por sí mismo).</p>
+
+      <div class="field-table">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:22%">Campo</th>
+              <th style="width:35%">Opciones (dropdown)</th>
+              <th>Cómo preguntarlo en la reunión</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Terreno</strong></td>
+              <td>Sí, ya tiene · En proceso de compra · No tiene · Pendiente</td>
+              <td>"¿Tienen el terreno definido o están en búsqueda todavía?"</td>
+            </tr>
+            <tr>
+              <td><strong>2. Presupuesto</strong></td>
+              <td>Alto ($$$) · Medio ($$) · Bajo ($) · Pendiente</td>
+              <td>"¿Tenés una idea de rango de inversión? Te cuento nuestros valores..."</td>
+            </tr>
+            <tr>
+              <td><strong>3. Plazo de decisión</strong></td>
+              <td>≤3 meses · 3-6 meses · 6-12 meses · +12 meses · Sin plazo</td>
+              <td>"¿Cuándo te gustaría estar viviendo ahí / tenerla lista?"</td>
+            </tr>
+            <tr>
+              <td><strong>4. Tipo de proyecto</strong></td>
+              <td>Vivienda principal · Segunda residencia · Inversión / alquiler · Mixto · Pendiente</td>
+              <td>"¿Es para ustedes? ¿Para invertir? ¿Una segunda casa de fin de semana?"</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">3</div>
+          <h3>Click en cada dropdown, elegí la opción</h3>
+          <span class="step-time">30 seg</span>
+        </div>
+        <p>Apenas los completás, el sistema <strong>recalcula automáticamente el score del lead</strong> y lo ubica en la columna correcta del pipeline. Vas a ver que el número cambia en la parte superior de la ficha.</p>
+        <div class="highlight-box success">
+          <p><strong>Lo que se evita:</strong> el "ya le mandé una cotización pero no me acuerdo si me dijo si tenía terreno". Los 4 datos quedan grabados para siempre. La próxima vez que abrís la ficha, están ahí.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PASO 4 -->
+  <section class="section" id="paso4">
+    <div class="animate-on-scroll">
+      <div class="section-label">Paso 04 · 10 segundos</div>
+      <h2>Fecha del próximo contacto</h2>
+      <p class="section-intro">Este es el paso que más impacto tiene. El día que pongas acá, el sistema te recuerda que ese lead espera una respuesta tuya. Nunca más se pierde nadie.</p>
+
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">4</div>
+          <h3>Elegí la fecha en el calendario</h3>
+          <span class="step-time">10 seg</span>
+        </div>
+        <p>Hay 3 maneras de pensarlo:</p>
+        <div class="step-detail">
+          <ul>
+            <li><strong>Si acordaron algo puntual:</strong> "te llamo el martes a las 10" → ponés martes 10 AM. Listo.</li>
+            <li><strong>Si quedó abierto pero caliente:</strong> próximo contacto en 3-5 días.</li>
+            <li><strong>Si quedó tibio / necesita pensar:</strong> próximo contacto en 10-15 días.</li>
+            <li><strong>Si está frío pero no descartado:</strong> próximo contacto en 30-45 días.</li>
+          </ul>
+        </div>
+        <div class="highlight-box success">
+          <p><strong>Cómo te llega el recordatorio:</strong> el día que lo pusiste, a las 9 AM, Prometeo te muestra ese lead en la vista "Para hoy" con un ícono dorado. Tu agenda se arma sola.</p>
+        </div>
+        <div class="highlight-box danger">
+          <p><strong>Regla de oro:</strong> nunca dejes un lead sin fecha de próximo contacto. Aunque sea dentro de 60 días. Un lead sin fecha es un lead perdido.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PASO 5 -->
+  <section class="section" id="paso5">
+    <div class="animate-on-scroll">
+      <div class="section-label">Paso 05 · 20 segundos</div>
+      <h2>Nota libre (opcional)</h2>
+      <p class="section-intro">Es opcional pero potente. Si pasó algo que no cabe en los dropdowns, escribilo. Tu yo de dentro de 30 días te va a agradecer.</p>
+
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">5</div>
+          <h3>Campo de texto libre</h3>
+          <span class="step-time">20 seg (o saltear)</span>
+        </div>
+        <p>Qué poner acá:</p>
+        <div class="step-detail">
+          <ul>
+            <li><strong>Nombre de la pareja, el arquitecto, el cuñado que opina:</strong> gente que interviene en la decisión</li>
+            <li><strong>Objeción puntual:</strong> "le preocupa el aislamiento térmico en invierno"</li>
+            <li><strong>Competencia mencionada:</strong> "está viendo también Tecno Home y Estilo Casas"</li>
+            <li><strong>Fecha o evento externo que lo condiciona:</strong> "tiene plazo para decidir antes del 10 de junio (vencimiento de seña del terreno)"</li>
+            <li><strong>Dato emocional relevante:</strong> "se emocionó viendo el video del proyecto de Pilar"</li>
+          </ul>
+        </div>
+        <div class="dont-list">
+          <div class="dont-card yes">
+            <h4>✓ Esto sí va</h4>
+            <p>"Lucas insiste en que su señora tiene que ver el showroom antes de decidir nada. Ella es arquitecta."</p>
+          </div>
+          <div class="dont-card no">
+            <h4>✗ Esto no va</h4>
+            <p>"Reunión buena." (No aporta nada. Tu yo del futuro ya sabe que fue buena porque marcaste "Avanzó".)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EJEMPLO -->
+  <section class="section" id="ejemplo">
+    <div class="animate-on-scroll">
+      <div class="section-label">Ejemplo completo</div>
+      <h2>Cómo se ve un lead bien cargado</h2>
+      <p class="section-intro">Caso real (nombre cambiado). Cómo se carga esta ficha en 85 segundos después de una reunión.</p>
+
+      <div class="example-box">
+        <h4>Juan Pérez — reunión virtual del 24/04 · 10 AM</h4>
+        <p><strong>Contexto:</strong> Llegó por Instagram hace 3 semanas. Ya hablaste por WhatsApp. Hoy hicieron la primera llamada de 30 minutos.</p>
+        <p><strong>Cómo queda después de los 5 clics:</strong></p>
+        <ul>
+          <li><strong>Resultado:</strong> Avanzó</li>
+          <li><strong>Etapa:</strong> Calificación → Visita / Reunión</li>
+          <li><strong>Terreno:</strong> Sí, ya tiene (en Pilar, 800 m²)</li>
+          <li><strong>Presupuesto:</strong> Medio ($$)</li>
+          <li><strong>Plazo:</strong> 6-12 meses</li>
+          <li><strong>Tipo:</strong> Vivienda principal</li>
+          <li><strong>Score calculado automáticamente:</strong> 72 (caliente)</li>
+          <li><strong>Próximo contacto:</strong> lunes 28/04 — visita al showroom confirmada</li>
+          <li><strong>Nota:</strong> "Va con su señora el lunes. Ella es quien toma la decisión final. Importante mostrarle el módulo de cocina."</li>
+        </ul>
+      </div>
+
+      <div class="highlight-box">
+        <p><strong>Qué hace el sistema con eso:</strong> el lunes a las 9 AM, Juan Pérez te aparece arriba de todo en "Para hoy". Cuando lo abrís, vas a leer la nota de su señora arquitecta y sabés cómo recibirlo. El score de 72 te confirma que vale tu tiempo personal.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="animate-on-scroll">
+      <div class="section-label">Dudas habituales</div>
+      <h2>Preguntas frecuentes</h2>
+      <p class="section-intro">Las dudas que me anticipás ahora para que no te bloquees en la primera semana.</p>
+
+      <div class="faq-item">
+        <h4>¿Qué pasa si me olvido de cargar un lead?</h4>
+        <p>A las 48 horas de una reunión sin carga, Prometeo te manda un recordatorio. Si pasan 72 horas, me notifica también a mí para ayudarte. El sistema está armado para que no haya huecos.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>¿Y si el lead me pide cosas antes de que yo cargue la ficha?</h4>
+        <p>Primero respondéle al lead (el cliente no espera). Después cargás la ficha. La carga puede ser al final del día, no tiene que ser inmediata. Lo importante es que no quede para mañana.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>¿Cambio el score a mano si no estoy de acuerdo?</h4>
+        <p>No. El score se calcula automáticamente con los 4 datos clave. Si sentís que un lead "vale más" que lo que dice el score, lo más probable es que haya un criterio que aún no cargamos. Preguntame y lo revisamos juntos.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>¿Qué hago con los 366 leads viejos que ya clasifiqué yo?</h4>
+        <p>No tenés que tocarlos. Ya están en el sistema con los 4 datos que pude inferir + un score estimativo. Lo que tenés que hacer: cuando uno de esos leads responda (porque le vamos a enviar contenido), se activa y pasás a manejarlo con los 5 clics. De a poco todo el universo va quedando actualizado.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>¿Cuándo sé que un lead puedo dejarlo ir?</h4>
+        <p>Si pasaron 12 meses sin respuesta a 3 intentos de contacto, el sistema lo pasa solo a "Cerrado - Perdido" con motivo "Sin respuesta". Vos no tenés que decidir nada. Si un lead te dice explícitamente "no me interesa", ahí sí lo descartás a mano.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>¿Y si quiero llamar a un lead que no tiene reunión agendada?</h4>
+        <p>Podés hacerlo desde la vista "Pipeline" filtrando por score o por "última comunicación". El sistema no te restringe — te ordena. Siempre podés salirte del sistema si tu instinto comercial te dice que hay algo ahí.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CIERRE -->
+  <section class="section">
+    <div class="animate-on-scroll">
+      <div class="section-label">Filosofía</div>
+      <h2>Para terminar</h2>
+      <div class="highlight-box success">
+        <p style="font-size:1rem;line-height:1.7"><strong>El sistema no te reemplaza.</strong> No es para eso. Es para que la parte de tu trabajo que no disfrutás (el seguimiento) se haga sola, y vos puedas enfocarte en lo que hacés mejor que nadie: convencer, crear, transmitir entusiasmo. Cuanto más uses el sistema, más tiempo tenés para lo que realmente mueve la aguja.</p>
+      </div>
+      <div class="highlight-box info">
+        <p><strong>Cualquier duda.</strong> Me escribís por WhatsApp y lo resolvemos en el momento. No hace falta que esperes al próximo review. Si algo es lento o friccionado, quiero saberlo el mismo día para ajustar.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="brand">ANTUARA</div>
+  <p>Guía Operativa CRM — Falhaus · Actualizada al 24 de abril de 2026<br>Versión 1.0 — Iterable semana a semana según uso real</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

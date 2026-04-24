@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entregables Semana 1 · Falhaus × Antuara · 24 Abril 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bd:#3b2314;--bm:#5c3a1e;--bl:#7a4f2b;--g:#c9a96e;--gl:#e8d5b0;--t:#2d2d2d;--tl:#6b6b6b;--bg:#faf6f1;--w:#ffffff;--br:#e0d5c8;--cream:#faf3ea;--ok:#27ae60;--wrn:#e67e22;--err:#c0392b;--info:#2980b9}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t);line-height:1.65}
+.container{max-width:1160px;margin:0 auto;padding:0 40px}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#3b2314,#5c3a1e,#7a4f2b);color:white;padding:80px 40px 70px;position:relative;overflow:hidden;text-align:center}
+.hero::before{content:'';position:absolute;top:-40%;right:-15%;width:800px;height:800px;background:radial-gradient(circle,rgba(201,169,110,.15),transparent 70%);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--g),var(--gl),var(--g))}
+.hero-inner{max-width:1080px;margin:0 auto;position:relative;z-index:2}
+.hero-stamp{display:inline-flex;align-items:center;gap:10px;padding:10px 24px;background:rgba(39,174,96,.18);border:1.5px solid var(--ok);color:#7fd99a;font-size:.72rem;font-weight:800;letter-spacing:3px;border-radius:40px;margin-bottom:28px;text-transform:uppercase}
+.hero-stamp::before{content:'✓';width:22px;height:22px;background:var(--ok);color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:800}
+.hero h1{font-family:'Playfair Display',serif;font-size:3.6rem;font-weight:800;line-height:1.06;margin-bottom:20px}
+.hero h1 em{color:var(--g);font-style:normal}
+.hero-divider{width:80px;height:3px;background:var(--g);margin:0 auto 24px}
+.hero-sub{font-size:1.15rem;color:var(--gl);font-weight:300;max-width:780px;margin:0 auto 28px;line-height:1.65}
+.hero-meta{font-size:.8rem;color:rgba(255,255,255,.55);letter-spacing:2px;text-transform:uppercase}
+
+/* SCOREBOARD */
+.scoreboard{background:var(--w);border-radius:20px;padding:28px 36px;margin:-34px auto 44px;max-width:980px;position:relative;z-index:3;border:1px solid var(--br);box-shadow:0 24px 60px rgba(59,35,20,.1);display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.score-cell{text-align:center;padding:10px 8px;position:relative}
+.score-cell:not(:last-child)::after{content:'';position:absolute;right:-7px;top:15%;bottom:15%;width:1px;background:var(--br)}
+.score-val{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:800;color:var(--bd);line-height:1;margin-bottom:6px}
+.score-val.ok{color:var(--ok)}
+.score-val.info{color:var(--info)}
+.score-lbl{font-size:.74rem;color:var(--tl);letter-spacing:1px;text-transform:uppercase;font-weight:700;line-height:1.3}
+
+/* SECTIONS */
+.section{padding:48px 0;border-bottom:1px solid var(--br)}
+.section:last-of-type{border-bottom:none}
+.section-label{font-size:.64rem;font-weight:700;letter-spacing:3px;color:var(--g);text-transform:uppercase;margin-bottom:10px}
+.section h2{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:700;color:var(--bd);line-height:1.1;margin-bottom:12px}
+.section-intro{font-size:1rem;color:var(--tl);max-width:860px;margin-bottom:28px;line-height:1.65}
+
+/* COMPROMISO + ENTREGABLES */
+.commit-group{background:var(--w);border-radius:18px;padding:30px 36px;margin-bottom:22px;border:1px solid var(--br);position:relative;overflow:hidden}
+.commit-group::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--ok);border-radius:18px 18px 0 0}
+.commit-head{display:flex;align-items:center;gap:18px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--br)}
+.commit-check{width:48px;height:48px;background:var(--ok);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;flex-shrink:0;box-shadow:0 6px 18px rgba(39,174,96,.25)}
+.commit-title{flex:1}
+.commit-title .commit-tag{font-size:.66rem;color:var(--ok);font-weight:800;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:3px}
+.commit-title h3{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--bd);line-height:1.2}
+
+.commit-body{font-size:.94rem;color:var(--t);line-height:1.7;margin-bottom:18px}
+.commit-body strong{color:var(--bd)}
+
+.deliv-list{display:grid;grid-template-columns:1fr;gap:10px}
+.deliv-row{background:var(--cream);border-radius:12px;padding:14px 18px;border:1px solid var(--br);display:flex;gap:14px;align-items:center;text-decoration:none;color:inherit;transition:all .2s}
+.deliv-row:hover{background:var(--w);transform:translateX(4px);border-color:var(--g)}
+.deliv-icon{width:40px;height:40px;background:var(--bd);color:var(--g);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.86rem;font-weight:800;font-family:'Playfair Display',serif;flex-shrink:0}
+.deliv-icon.xlsx{background:rgba(39,174,96,.18);color:var(--ok)}
+.deliv-icon.csv{background:rgba(41,128,185,.18);color:var(--info)}
+.deliv-icon.pdf{background:rgba(192,57,43,.18);color:var(--err)}
+.deliv-body{flex:1;min-width:0}
+.deliv-name{font-weight:700;color:var(--bd);font-size:.94rem;margin-bottom:2px}
+.deliv-desc{font-size:.82rem;color:var(--tl);line-height:1.45}
+.deliv-arrow{color:var(--g);font-size:1.2rem;font-weight:800}
+
+/* DATA HIGHLIGHTS */
+.findings-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+.finding{background:var(--w);border-radius:14px;padding:20px 22px;border:1px solid var(--br);position:relative;overflow:hidden}
+.finding::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--g)}
+.finding.gold::before{background:var(--g)}
+.finding.ok::before{background:var(--ok)}
+.finding.info::before{background:var(--info)}
+.finding-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:800;color:var(--bd);line-height:1;margin-bottom:4px}
+.finding.ok .finding-num{color:var(--ok)}
+.finding.info .finding-num{color:var(--info)}
+.finding.gold .finding-num{color:var(--g)}
+.finding h4{font-family:'Playfair Display',serif;font-size:1rem;color:var(--bd);margin-bottom:6px}
+.finding p{font-size:.82rem;color:var(--tl);line-height:1.5}
+
+/* ALL DELIVERABLES */
+.all-deliv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:18px 0}
+.all-deliv{background:var(--w);border-radius:12px;padding:16px 20px;border:1px solid var(--br);display:flex;gap:14px;align-items:flex-start;text-decoration:none;color:inherit;transition:all .2s}
+.all-deliv:hover{border-color:var(--g);box-shadow:0 6px 18px rgba(59,35,20,.06)}
+.all-deliv .num{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--g);font-weight:800;line-height:1;min-width:30px}
+.all-deliv .body h4{font-family:'Playfair Display',serif;font-size:.98rem;color:var(--bd);margin-bottom:3px;line-height:1.2}
+.all-deliv .body p{font-size:.78rem;color:var(--tl);line-height:1.4}
+
+/* NEXT */
+.next-block{background:linear-gradient(135deg,#3b2314,#5c3a1e,#7a4f2b);color:white;padding:40px 46px;border-radius:18px;margin:22px 0;position:relative;overflow:hidden}
+.next-block::after{content:'→';position:absolute;top:50%;right:40px;transform:translateY(-50%);font-size:10rem;color:rgba(201,169,110,.08);font-weight:800}
+.next-block h3{font-family:'Playfair Display',serif;font-size:1.6rem;color:white;margin-bottom:12px;position:relative}
+.next-block p{font-size:.96rem;color:var(--gl);line-height:1.65;max-width:780px;position:relative;margin-bottom:10px}
+.next-block strong{color:white}
+
+.highlight-box{border-left:4px solid var(--g);background:linear-gradient(135deg,rgba(201,169,110,.07),rgba(201,169,110,.02));padding:20px 24px;border-radius:0 12px 12px 0;margin:18px 0;line-height:1.65;font-size:.93rem}
+.highlight-box strong{color:var(--bd)}
+
+/* FOOTER */
+footer{background:var(--bd);color:var(--gl);padding:44px 0;margin-top:40px;text-align:center}
+footer .brand{font-family:'Playfair Display',serif;font-size:1.1rem;letter-spacing:4px;color:var(--g);font-weight:700;margin-bottom:8px}
+footer p{font-size:.85rem;line-height:1.7}
+
+.animate-on-scroll{opacity:0;transform:translateY(30px);transition:all .6s ease}
+.animate-on-scroll.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){.container{padding:0 24px}.hero{padding:56px 24px 56px}.hero h1{font-size:2.3rem}.section h2{font-size:1.7rem}.scoreboard{grid-template-columns:1fr 1fr;padding:20px 22px;margin:-24px auto 32px}.score-cell:not(:last-child)::after{display:none}.findings-row{grid-template-columns:1fr}.all-deliv-grid{grid-template-columns:1fr}.commit-group{padding:24px 26px}.commit-head{flex-direction:row;align-items:flex-start}.next-block{padding:32px 28px}.next-block::after{display:none}}
+@media print{*{print-color-adjust:exact;-webkit-print-color-adjust:exact}.section,.commit-group,.finding,.all-deliv{page-break-inside:avoid}.animate-on-scroll{opacity:1!important;transform:none!important}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-stamp">Semana 1 · Ejecutada</div>
+    <h1>Fede, todo lo comprometido<br><em>está entregado</em></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">Cuatro compromisos asumidos el 17 de abril. Todo ejecutado entre el 21 y el 24 — no planes, sino entregables operativos listos para que arranques a usarlos desde el lunes.</p>
+    <div class="hero-meta">Falhaus × Antuara · 24 de abril de 2026</div>
+  </div>
+</header>
+
+<!-- SCOREBOARD -->
+<div class="container">
+  <div class="scoreboard animate-on-scroll">
+    <div class="score-cell">
+      <div class="score-val ok">395</div>
+      <div class="score-lbl">Leads<br>clasificados</div>
+    </div>
+    <div class="score-cell">
+      <div class="score-val info">21</div>
+      <div class="score-lbl">Revendedores<br>identificados</div>
+    </div>
+    <div class="score-cell">
+      <div class="score-val">20</div>
+      <div class="score-lbl">Leads en<br>Propuesta</div>
+    </div>
+    <div class="score-cell">
+      <div class="score-val">10</div>
+      <div class="score-lbl">Entregables<br>producidos</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- COMPROMISO 1 -->
+  <section class="section" id="c1">
+    <div class="animate-on-scroll">
+      <div class="section-label">Compromiso 01 · del 17/04</div>
+      <h2>Implementar clasificación de leads en Prometeo + guía instructiva</h2>
+
+      <div class="commit-group">
+        <div class="commit-head">
+          <div class="commit-check">✓</div>
+          <div class="commit-title">
+            <span class="commit-tag">Ejecutado · entregado</span>
+            <h3>395 leads clasificados con datos reales</h3>
+          </div>
+        </div>
+
+        <div class="commit-body">
+          <p>Procesé la base completa que me pasaste (<em>BASE DE DATOS FALHAUS</em>). Cada lead recibió: <strong>score 0-100 automático</strong>, <strong>etapa del pipeline asignada</strong> (01 Descubrimiento a 06 Cerrado), <strong>cuatro campos clave</strong> inferidos de las observaciones (terreno, presupuesto, plazo, tipo de proyecto), <strong>próximo contacto sugerido</strong> y <strong>marcador de interés en reventa</strong>. Todo exportado a xlsx con formato y a CSV para importar a Prometeo.</p>
+        </div>
+
+        <div class="findings-row">
+          <div class="finding info">
+            <div class="finding-num">21</div>
+            <h4>Revendedores identificados</h4>
+            <p>Gente que dejó anotado que quiere representar Falhaus. Hasta hoy estaban mezclados con todo lo demás. Son el piloto del Programa Socios.</p>
+          </div>
+          <div class="finding ok">
+            <div class="finding-num">20</div>
+            <h4>Leads en Propuesta</h4>
+            <p>Cotización mencionada sin seguimiento formal. Acción inmediata esta semana — es donde más rápido se monetiza el trabajo ya hecho.</p>
+          </div>
+          <div class="finding gold">
+            <div class="finding-num">10</div>
+            <h4>Tibios priorizables</h4>
+            <p>Score 40-59 con los datos actuales. Con un contacto más y los 4 dropdowns del CRM, saltan a caliente.</p>
+          </div>
+        </div>
+
+        <div class="deliv-list">
+          <a class="deliv-row" href="base-leads-clasificada/dashboard-leads-clasificados.html">
+            <div class="deliv-icon">🌐</div>
+            <div class="deliv-body">
+              <div class="deliv-name">Dashboard visual de leads clasificados</div>
+              <div class="deliv-desc">Top propuestas + tibios + revendedores + evolución mensual. La vista para revisar con Federico.</div>
+            </div>
+            <div class="deliv-arrow">→</div>
+          </a>
+          <a class="deliv-row" href="base-leads-clasificada/falhaus-leads-clasificados.xlsx" download>
+            <div class="deliv-icon xlsx">XLS</div>
+            <div class="deliv-body">
+              <div class="deliv-name">falhaus-leads-clasificados.xlsx</div>
+              <div class="deliv-desc">Planilla con formato: colores por umbral, auto-filter, 395 filas × 15 columnas. Para revisión offline.</div>
+            </div>
+            <div class="deliv-arrow">⬇</div>
+          </a>
+          <a class="deliv-row" href="base-leads-clasificada/falhaus-leads-clasificados.csv" download>
+            <div class="deliv-icon csv">CSV</div>
+            <div class="deliv-body">
+              <div class="deliv-name">falhaus-leads-clasificados.csv</div>
+              <div class="deliv-desc">Mismo dataset plano. Para importar directo a Prometeo o cualquier otro CRM.</div>
+            </div>
+            <div class="deliv-arrow">⬇</div>
+          </a>
+          <a class="deliv-row" href="guia-operativa-crm-federico-24-04-2026.html">
+            <div class="deliv-icon">📖</div>
+            <div class="deliv-body">
+              <div class="deliv-name">Guía operativa CRM · 5 clics</div>
+              <div class="deliv-desc">Manual paso a paso para que Federico actualice un lead en 90 segundos post-reunión.</div>
+            </div>
+            <div class="deliv-arrow">→</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPROMISO 2 -->
+  <section class="section" id="c2">
+    <div class="animate-on-scroll">
+      <div class="section-label">Compromiso 02 · del 17/04</div>
+      <h2>Crear sistema de engagement pre-reunión (MVP activable)</h2>
+
+      <div class="commit-group">
+        <div class="commit-head">
+          <div class="commit-check">✓</div>
+          <div class="commit-title">
+            <span class="commit-tag">Ejecutado · activable el lunes 28</span>
+            <h3>Kit operativo completo de 3 mensajes + tracking + carpeta</h3>
+          </div>
+        </div>
+
+        <div class="commit-body">
+          <p>No es un documento que explica la secuencia: es el <strong>kit que dispara la secuencia</strong>. Los 3 mensajes finales en texto crudo con botón de copiar, la planilla de tracking (CSV descargable + vista HTML), el manifiesto de la carpeta Drive con árbol completo y estado de carga inicial. Todo listo para activar el lunes 28 con cero fricción.</p>
+        </div>
+
+        <div class="deliv-list">
+          <a class="deliv-row" href="pre-reunion-kit-operativo/mensajes-finales-copiables.html">
+            <div class="deliv-icon">💬</div>
+            <div class="deliv-body">
+              <div class="deliv-name">Mensajes finales copiables</div>
+              <div class="deliv-desc">Los 3 mensajes (T-48h / T-24h / T-2h) + variante de reagenda, con botón copiar al portapapeles. Variables listadas y activos requeridos por mensaje.</div>
+            </div>
+            <div class="deliv-arrow">→</div>
+          </a>
+          <a class="deliv-row" href="pre-reunion-kit-operativo/planilla-tracking-secuencias.html">
+            <div class="deliv-icon">📊</div>
+            <div class="deliv-body">
+              <div class="deliv-name">Planilla de tracking de secuencias</div>
+              <div class="deliv-desc">Vista HTML con ejemplos + leyenda + convenciones. Planilla CSV descargable para abrir en Excel/Sheets.</div>
+            </div>
+            <div class="deliv-arrow">→</div>
+          </a>
+          <a class="deliv-row" href="pre-reunion-kit-operativo/tracking-secuencias-pre-reunion.csv" download>
+            <div class="deliv-icon csv">CSV</div>
+            <div class="deliv-body">
+              <div class="deliv-name">tracking-secuencias-pre-reunion.csv</div>
+              <div class="deliv-desc">Plantilla operativa con 17 columnas y 3 filas-ejemplo. Lista para completar desde la primera reunión.</div>
+            </div>
+            <div class="deliv-arrow">⬇</div>
+          </a>
+          <a class="deliv-row" href="pre-reunion-kit-operativo/manifiesto-carpeta-drive.html">
+            <div class="deliv-icon">📁</div>
+            <div class="deliv-body">
+              <div class="deliv-name">Manifiesto de carpeta Drive</div>
+              <div class="deliv-desc">Árbol completo de carpetas, convención de nombres, permisos de compartir, estado de carga inicial con prioridades.</div>
+            </div>
+            <div class="deliv-arrow">→</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPROMISO 3 -->
+  <section class="section" id="c3">
+    <div class="animate-on-scroll">
+      <div class="section-label">Compromiso 03 · del 17/04</div>
+      <h2>Desarrollar estrategia de revendedores (Programa Socios)</h2>
+
+      <div class="commit-group">
+        <div class="commit-head">
+          <div class="commit-check">✓</div>
+          <div class="commit-title">
+            <span class="commit-tag">Ejecutado · documentos para firmar</span>
+            <h3>Programa Socios Falhaus con acuerdo marco y kit comercial redactados</h3>
+          </div>
+        </div>
+
+        <div class="commit-body">
+          <p>No es un marco de decisión — es el <strong>programa listo para que firmes con el primer socio</strong>. El acuerdo marco tiene 13 cláusulas en lenguaje legal argentino con Anexos A-E definidos. El kit comercial tiene 11 secciones con comisiones concretas (12%, 15%, 17%, 18-20%), criterios de admisión (quién entra y quién no), onboarding de 1 día con agenda completa y 8 preguntas frecuentes resueltas.</p>
+        </div>
+
+        <div class="highlight-box">
+          <p><strong>Los 21 revendedores identificados en la base</strong> (ver Compromiso 01) son tus candidatos naturales al piloto. En cuanto valides el acuerdo marco con tu estudio jurídico y calibres las comisiones con Sabrina, les escribís en orden de score y arrancamos con 2-3 el mes que viene.</p>
+        </div>
+
+        <div class="deliv-list">
+          <a class="deliv-row" href="programa-socios/acuerdo-marco-socios-falhaus-v1.html">
+            <div class="deliv-icon pdf">📜</div>
+            <div class="deliv-body">
+              <div class="deliv-name">Acuerdo Marco de Socios Falhaus · v1</div>
+              <div class="deliv-desc">13 cláusulas redactadas + Anexos A-E definidos + bloque de firmas. Listo para revisión legal y posterior firma con primer socio.</div>
+            </div>
+            <div class="deliv-arrow">→</div>
+          </a>
+          <a class="deliv-row" href="programa-socios/kit-comercial-revendedor-falhaus-v1.html">
+            <div class="deliv-icon">📘</div>
+            <div class="deliv-body">
+              <div class="deliv-name">Kit Comercial Revendedor · v1</div>
+              <div class="deliv-desc">Bienvenida + 3 categorías + comisiones + qué incluye + admisión + proceso + onboarding 1 día + política marca + 8 FAQ.</div>
+            </div>
+            <div class="deliv-arrow">→</div>
+          </a>
+          <a class="deliv-row" href="estrategia-b2b2c-revendedores-24-04-2026.html">
+            <div class="deliv-icon">🗺️</div>
+            <div class="deliv-body">
+              <div class="deliv-name">Estrategia B2B2C · marco completo</div>
+              <div class="deliv-desc">Las 3 rutas (individual / regional / institucional), recomendación en 4 fases, economía de la venta con comisión, plan 6 meses + Expo Real Estate.</div>
+            </div>
+            <div class="deliv-arrow">→</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPROMISO 4 -->
+  <section class="section" id="c4">
+    <div class="animate-on-scroll">
+      <div class="section-label">Compromiso 04 · del 17/04</div>
+      <h2>Preparar material para la reunión de review (esta reunión)</h2>
+
+      <div class="commit-group">
+        <div class="commit-head">
+          <div class="commit-check">✓</div>
+          <div class="commit-title">
+            <span class="commit-tag">Ejecutado · listo para conducir</span>
+            <h3>Presentación integral de 16 slides para la reunión de hoy 14:00</h3>
+          </div>
+        </div>
+
+        <div class="commit-body">
+          <p>Slide deck interactivo (navegable con teclado) que cubre la agenda completa: foto del 17/04, pipeline 6 etapas, scoring, guía 5 clics, MVP pre-reunión, estrategia B2B2C y compromisos de salida para los próximos 15 días.</p>
+        </div>
+
+        <div class="deliv-list">
+          <a class="deliv-row" href="presentacion-review-crm-24-04-2026.html">
+            <div class="deliv-icon">🎞️</div>
+            <div class="deliv-body">
+              <div class="deliv-name">Presentación Review CRM · 24 de abril</div>
+              <div class="deliv-desc">16 slides con navegación y barra de progreso. Para proyectar durante la reunión.</div>
+            </div>
+            <div class="deliv-arrow">→</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÍNDICE COMPLETO -->
+  <section class="section" id="todos">
+    <div class="animate-on-scroll">
+      <div class="section-label">Todo lo producido esta semana</div>
+      <h2>Índice completo de entregables</h2>
+      <p class="section-intro">11 entregables ejecutados entre el 21 y el 24 de abril. Todos disponibles en el repositorio público de Antuara para acceso permanente.</p>
+
+      <div class="all-deliv-grid">
+        <a class="all-deliv" href="presentacion-review-crm-24-04-2026.html">
+          <div class="num">01</div>
+          <div class="body">
+            <h4>Presentación Review CRM</h4>
+            <p>Slide deck 16 slides · reunión 24/04 14:00</p>
+          </div>
+        </a>
+        <a class="all-deliv" href="guia-operativa-crm-federico-24-04-2026.html">
+          <div class="num">02</div>
+          <div class="body">
+            <h4>Guía Operativa CRM · 5 clics</h4>
+            <p>Manual de 90 segundos post-reunión</p>
+          </div>
+        </a>
+        <a class="all-deliv" href="mvp-engagement-pre-reunion-24-04-2026.html">
+          <div class="num">03</div>
+          <div class="body">
+            <h4>MVP Engagement Pre-Reunión · marco</h4>
+            <p>Secuencia + KPIs + roadmap v0→v2</p>
+          </div>
+        </a>
+        <a class="all-deliv" href="estrategia-b2b2c-revendedores-24-04-2026.html">
+          <div class="num">04</div>
+          <div class="body">
+            <h4>Estrategia B2B2C Revendedores · marco</h4>
+            <p>3 rutas + plan 6 meses + Expo Real Estate</p>
+          </div>
+        </a>
+        <a class="all-deliv" href="pre-reunion-kit-operativo/mensajes-finales-copiables.html">
+          <div class="num">05</div>
+          <div class="body">
+            <h4>Mensajes finales copiables</h4>
+            <p>3 mensajes + variante reagenda · listos para WhatsApp</p>
+          </div>
+        </a>
+        <a class="all-deliv" href="pre-reunion-kit-operativo/planilla-tracking-secuencias.html">
+          <div class="num">06</div>
+          <div class="body">
+            <h4>Planilla Tracking Secuencias</h4>
+            <p>HTML + CSV descargable</p>
+          </div>
+        </a>
+        <a class="all-deliv" href="pre-reunion-kit-operativo/manifiesto-carpeta-drive.html">
+          <div class="num">07</div>
+          <div class="body">
+            <h4>Manifiesto Carpeta Drive</h4>
+            <p>Árbol + naming + estado inicial de carga</p>
+          </div>
+        </a>
+        <a class="all-deliv" href="base-leads-clasificada/dashboard-leads-clasificados.html">
+          <div class="num">08</div>
+          <div class="body">
+            <h4>Dashboard Leads Clasificados</h4>
+            <p>395 leads · hallazgos · listas accionables</p>
+          </div>
+        </a>
+        <a class="all-deliv" href="base-leads-clasificada/falhaus-leads-clasificados.xlsx" download>
+          <div class="num">09</div>
+          <div class="body">
+            <h4>Planilla XLSX completa</h4>
+            <p>395 leads × 15 columnas · con formato</p>
+          </div>
+        </a>
+        <a class="all-deliv" href="programa-socios/acuerdo-marco-socios-falhaus-v1.html">
+          <div class="num">10</div>
+          <div class="body">
+            <h4>Acuerdo Marco de Socios · v1</h4>
+            <p>13 cláusulas + Anexos A-E + firmas</p>
+          </div>
+        </a>
+        <a class="all-deliv" href="programa-socios/kit-comercial-revendedor-falhaus-v1.html">
+          <div class="num">11</div>
+          <div class="body">
+            <h4>Kit Comercial Revendedor · v1</h4>
+            <p>11 secciones · listo para socios</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT -->
+  <section class="section" id="next">
+    <div class="animate-on-scroll">
+      <div class="section-label">Lo único que falta</div>
+      <h2>Desde el lunes 28, el sistema rueda</h2>
+
+      <div class="next-block">
+        <h3>Tu tarea esta semana</h3>
+        <p>Actualizar con los 5 clics cada lead post-reunión. 90 segundos por lead. Nada más. El sistema se encarga del resto: te arma la agenda, calcula scores, te recuerda cuándo volver a contactar, dispara los mensajes pre-reunión.</p>
+        <p>Paralelo: revisás los <strong>20 leads en Propuesta</strong> que el dashboard prioriza. Esos son la acción de esta semana. El CRM ya te los puso primeros.</p>
+        <p>Mientras tanto, coordinamos con tu estudio jurídico la revisión del Acuerdo Marco y empezamos a cerrar los Anexos A-E. Objetivo: <strong>primer socio firmando en mayo</strong>.</p>
+      </div>
+
+      <div class="highlight-box">
+        <p><strong>Próxima reunión:</strong> viernes 2 de mayo · 14:00 hs. Revisión de los primeros números reales de operación (show-up rate, tasa de respuesta a mensajes, score enriquecido de los leads más activos) y firma del Acuerdo Marco si la validación legal salió OK.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="brand">ANTUARA</div>
+  <p>Índice de Entregables · Semana 1 · Falhaus × Antuara<br>24 de abril de 2026 · Próximo review: viernes 2 de mayo 14:00 hs</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

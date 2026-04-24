@@ -1,0 +1,4 @@
+ID,Fecha_agenda_reunion,Nombre_lead,WhatsApp,Tipo_reunion,Fecha_reunion,Hora_reunion,M1_T48_enviado,M1_respuesta,M2_T24_enviado,M2_respuesta,M3_T2h_enviado,Show_up,Resultado_reunion,Score_calculado,Proximo_contacto,Notas
+EJEMPLO-001,2026-04-24,Juan Perez,+54 9 11 5555 1234,Virtual,2026-04-28,10:00,SI,LEIDO,SI,LEIDO+EMOJI,SI,SI,Avanzo,72,2026-05-05,Va con la mujer al showroom el lunes
+EJEMPLO-002,2026-04-24,Maria Lopez,+54 9 221 555 8888,Showroom,2026-04-30,16:30,SI,SIN_LEER,SI,LEIDO,SI,SI,Pendiente,45,2026-05-07,Le preocupa aislamiento termico invierno
+EJEMPLO-003,2026-04-25,Ignacio Torres,+54 9 11 4444 2222,Virtual,2026-05-02,11:00,SI,LEIDO,NO,,NO,NO,No-show,0,2026-05-09,Enviar variante 04 para reagendar

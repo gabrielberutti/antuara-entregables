@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mensajes Pre-Reunión · Copiables · Falhaus</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bd:#3b2314;--bm:#5c3a1e;--g:#c9a96e;--gl:#e8d5b0;--t:#2d2d2d;--tl:#6b6b6b;--bg:#faf6f1;--w:#ffffff;--br:#e0d5c8;--cream:#faf3ea;--ok:#27ae60;--wa:#25D366}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t);line-height:1.6}
+.container{max-width:900px;margin:0 auto;padding:40px}
+
+header{text-align:center;margin-bottom:30px;padding-bottom:24px;border-bottom:2px solid var(--g)}
+.badge{display:inline-block;padding:5px 14px;background:var(--cream);border:1px solid var(--g);color:var(--bd);font-size:.7rem;font-weight:700;letter-spacing:2px;border-radius:20px;margin-bottom:16px;text-transform:uppercase}
+header h1{font-family:'Playfair Display',serif;font-size:2.3rem;color:var(--bd);line-height:1.15;margin-bottom:10px}
+header h1 em{color:var(--g);font-style:normal}
+header p{font-size:.98rem;color:var(--tl);max-width:700px;margin:0 auto;line-height:1.6}
+
+.instrucciones{background:var(--w);border:1px solid var(--br);border-radius:14px;padding:22px 26px;margin-bottom:30px;border-left:4px solid var(--g)}
+.instrucciones h2{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--bd);margin-bottom:8px}
+.instrucciones p{font-size:.9rem;color:var(--t);line-height:1.65;margin-bottom:8px}
+.instrucciones strong{color:var(--bd)}
+.instrucciones ol{margin:8px 0 0 20px;font-size:.88rem;color:var(--t);line-height:1.65}
+
+.msg-block{background:var(--w);border-radius:16px;margin-bottom:24px;border:1px solid var(--br);overflow:hidden}
+.msg-head{background:var(--bd);color:white;padding:18px 26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.msg-head .title{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--gl)}
+.msg-head .title strong{color:white;display:block;font-size:.72rem;letter-spacing:2px;margin-bottom:4px;font-family:'Inter',sans-serif;text-transform:uppercase;font-weight:700}
+.msg-head .time-chip{padding:5px 14px;background:var(--g);color:var(--bd);border-radius:20px;font-size:.75rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}
+.msg-body{padding:22px 26px}
+.msg-desc{font-size:.88rem;color:var(--tl);line-height:1.6;margin-bottom:16px}
+.msg-desc strong{color:var(--bd)}
+
+.msg-text{background:#DCF8C6;border-radius:12px;padding:20px 22px;font-size:.95rem;color:#1a1a1a;line-height:1.65;margin:10px 0;position:relative;white-space:pre-line;font-family:'Inter',sans-serif}
+.msg-text::before{content:'WhatsApp';position:absolute;top:-10px;right:18px;background:var(--wa);color:white;padding:4px 12px;border-radius:12px;font-size:.6rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+.msg-text strong{color:#1a1a1a;font-weight:700}
+
+.copy-btn{display:inline-block;margin-top:12px;padding:9px 18px;background:var(--bd);color:white;border:none;border-radius:10px;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;letter-spacing:.5px;font-family:'Inter',sans-serif}
+.copy-btn:hover{background:var(--g);color:var(--bd)}
+.copy-btn.copied{background:var(--ok)}
+.copy-btn::before{content:'⎘ ';margin-right:4px}
+.copy-btn.copied::before{content:'✓ '}
+
+.variables{background:var(--cream);border-radius:10px;padding:14px 18px;margin-top:12px;font-size:.83rem;color:var(--t);line-height:1.7}
+.variables strong{color:var(--bd);display:block;margin-bottom:6px;font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase}
+.variables code{background:var(--w);padding:2px 8px;border-radius:6px;font-family:'Inter',sans-serif;color:var(--bm);font-weight:600;border:1px solid var(--br);font-size:.82rem}
+
+.asset-req{background:#fff4e6;border:1px solid #f5c89a;border-radius:10px;padding:14px 18px;margin-top:12px;font-size:.85rem;color:var(--t);line-height:1.65}
+.asset-req strong{color:var(--bm);display:block;margin-bottom:4px;font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase}
+
+.footer-note{background:var(--bd);color:var(--gl);border-radius:14px;padding:24px 28px;margin-top:32px;text-align:center}
+.footer-note h3{font-family:'Playfair Display',serif;color:white;font-size:1.15rem;margin-bottom:6px}
+.footer-note p{font-size:.86rem;line-height:1.6}
+
+@media(max-width:768px){.container{padding:20px}.msg-head{flex-direction:column;align-items:flex-start}header h1{font-size:1.8rem}}
+@media print{*{print-color-adjust:exact;-webkit-print-color-adjust:exact}.copy-btn{display:none}.msg-block{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="badge">Kit operativo · Pre-reunión</div>
+    <h1>Los tres mensajes<br><em>listos para copiar y pegar</em></h1>
+    <p>Texto final. Apretás el botón copiar, pegás en WhatsApp, reemplazás las variables entre corchetes, enviás. 90 segundos por lead.</p>
+  </header>
+
+  <div class="instrucciones">
+    <h2>Cómo operarlos</h2>
+    <ol>
+      <li><strong>Apenas confirmás una reunión</strong> → programás mensaje 1 para disparar 48 horas antes.</li>
+      <li><strong>24 horas antes</strong> → mensaje 2 con el caso de éxito que mejor matche al perfil del prospecto.</li>
+      <li><strong>2 horas antes</strong> → mensaje 3 con el link de Meet ya generado.</li>
+      <li>Si usás WhatsApp Business, guardá cada mensaje como <strong>respuesta rápida</strong> (Ajustes → Herramientas → Respuestas rápidas). Tecleás /48, /24, /2h y aparecen.</li>
+      <li>Registrás el envío en la planilla de tracking (archivo aparte) para medir qué pasa después.</li>
+    </ol>
+  </div>
+
+  <!-- MENSAJE 1 -->
+  <div class="msg-block">
+    <div class="msg-head">
+      <div class="title"><strong>Mensaje 01</strong>Confirmación + bienvenida</div>
+      <div class="time-chip">T-48 horas</div>
+    </div>
+    <div class="msg-body">
+      <p class="msg-desc"><strong>Objetivo:</strong> confirmar que la reunión existe, bajarle la ansiedad del "¿con quién voy a hablar?" y dejar la primera pieza de contenido que muestra qué hace Falhaus.</p>
+
+      <div class="msg-text" id="msg1">¡Hola [Nombre]! 👋
+
+Quedó agendada nuestra llamada para el [día] a las [hora]. Me gustó lo que me contaste de tu proyecto en [localidad/contexto].
+
+Para que aproveches mejor nuestro rato, te dejo un video corto (2 min) de una casa que entregamos hace poco. Así ves cómo trabajamos antes de la llamada:
+
+🎥 [link al video]
+
+Cualquier duda previa me escribís por acá. Nos vemos el [día abreviado].</div>
+      <button class="copy-btn" onclick="copyMsg('msg1', this)">Copiar mensaje</button>
+
+      <div class="variables">
+        <strong>Variables a reemplazar</strong>
+        <code>[Nombre]</code> · <code>[día]</code> · <code>[hora]</code> · <code>[localidad/contexto]</code> · <code>[link al video]</code> · <code>[día abreviado]</code>
+      </div>
+
+      <div class="asset-req">
+        <strong>Activo requerido</strong>
+        Video de 1-2 min del proceso constructivo. Link corto (bit.ly, rebrandly o Drive público). Archivo origen en la carpeta <code>/Videos/proceso/</code>.
+      </div>
+    </div>
+  </div>
+
+  <!-- MENSAJE 2 -->
+  <div class="msg-block">
+    <div class="msg-head">
+      <div class="title"><strong>Mensaje 02</strong>Caso de éxito + prueba social</div>
+      <div class="time-chip">T-24 horas</div>
+    </div>
+    <div class="msg-body">
+      <p class="msg-desc"><strong>Objetivo:</strong> construir autoridad antes de que el prospecto chequee a la competencia. Mostrar que hay gente como él que ya eligió Falhaus.</p>
+
+      <div class="msg-text" id="msg2">Mañana nos vemos, [Nombre].
+
+Te dejo este caso real que te puede servir de referencia: [Cliente X] terminó su casa de [m²] m² en [tiempo] con nosotros. El antes/después y un video corto de la obra:
+
+📂 [link a carpeta del caso]
+
+Preparate cualquier pregunta que quieras hacernos mañana. Nos sirve más una charla con preguntas concretas que una explicación genérica.
+
+Ahí nos vemos.</div>
+      <button class="copy-btn" onclick="copyMsg('msg2', this)">Copiar mensaje</button>
+
+      <div class="variables">
+        <strong>Variables a reemplazar</strong>
+        <code>[Nombre]</code> · <code>[Cliente X]</code> · <code>[m²]</code> · <code>[tiempo]</code> · <code>[link a carpeta del caso]</code>
+      </div>
+
+      <div class="asset-req">
+        <strong>Activos requeridos</strong>
+        Mínimo 2 casos listos en carpetas separadas: <code>/Casos/caso-familiar/</code> y <code>/Casos/caso-inversor/</code>. Cada uno con fotos antes/después + video corto + dato de ticket y tiempo.
+      </div>
+    </div>
+  </div>
+
+  <!-- MENSAJE 3 -->
+  <div class="msg-block">
+    <div class="msg-head">
+      <div class="title"><strong>Mensaje 03</strong>Recordatorio + link</div>
+      <div class="time-chip">T-2 horas</div>
+    </div>
+    <div class="msg-body">
+      <p class="msg-desc"><strong>Objetivo:</strong> bajar cancelación silenciosa a cero. Que el prospecto sepa que hay alguien concreto esperándolo.</p>
+
+      <div class="msg-text" id="msg3">[Nombre], en 2 horas nos conectamos.
+
+Acá va el link de Meet:
+🔗 [link reunión]
+
+Si surge algo y necesitás mover la hora, avisame por acá y lo resolvemos. Te espero.</div>
+      <button class="copy-btn" onclick="copyMsg('msg3', this)">Copiar mensaje</button>
+
+      <div class="variables">
+        <strong>Variables a reemplazar</strong>
+        <code>[Nombre]</code> · <code>[link reunión]</code>
+      </div>
+
+      <div class="asset-req">
+        <strong>Activo requerido</strong>
+        Link de Meet generado al agendar. Si usás Calendly + Google Meet, el link ya llega en el mail de confirmación — copiás de ahí.
+      </div>
+    </div>
+  </div>
+
+  <!-- VERSIÓN ALTERNATIVA PARA LEADS FRÍOS -->
+  <div class="msg-block" style="border-left:4px solid var(--bm)">
+    <div class="msg-head" style="background:var(--bm)">
+      <div class="title"><strong>Variante 04</strong>Para reagendar sin presión (si no respondió M-3)</div>
+      <div class="time-chip">T+0 / No show</div>
+    </div>
+    <div class="msg-body">
+      <p class="msg-desc"><strong>Objetivo:</strong> no perder el lead por una cancelación silenciosa. Reactivar con tono cordial, sin presión.</p>
+
+      <div class="msg-text" id="msg4">[Nombre], no nos encontramos hoy — puede haber pasado cualquier cosa.
+
+Cuando puedas, pasame dos o tres horarios que te sirvan esta semana o la que viene y reagendamos sin problema. No tenemos apuro.
+
+Quedo atento.</div>
+      <button class="copy-btn" onclick="copyMsg('msg4', this)">Copiar mensaje</button>
+
+      <div class="variables">
+        <strong>Variables a reemplazar</strong>
+        <code>[Nombre]</code>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    <h3>Para activar el lunes</h3>
+    <p>Guardá estos 4 mensajes como respuestas rápidas en WhatsApp Business. Asigná los atajos: /48, /24, /2h, /reagendo. Desde ese momento, disparar la secuencia toma 30 segundos por lead.</p>
+  </div>
+
+</div>
+
+<script>
+function copyMsg(id, btn){
+  const el = document.getElementById(id);
+  const text = el.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.textContent;
+    btn.classList.add('copied');
+    btn.textContent = 'Copiado';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.textContent = orig;
+    }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>

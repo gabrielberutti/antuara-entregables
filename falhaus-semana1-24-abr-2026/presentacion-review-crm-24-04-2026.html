@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Review Integral CRM — Falhaus × Antuara | 24 Abril 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bd:#3b2314;--bm:#5c3a1e;--bl:#7a4f2b;--g:#c9a96e;--gl:#e8d5b0;--t:#2d2d2d;--tl:#6b6b6b;--bg:#faf6f1;--w:#ffffff;--br:#e0d5c8;--cream:#faf3ea;--ok:#27ae60;--wrn:#e67e22;--err:#c0392b;--info:#2980b9}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;font-family:'Inter',sans-serif;background:#1a0f08;color:var(--t)}
+
+.presentation{width:100vw;height:100vh;position:relative;overflow:hidden}
+.slide{position:absolute;top:0;left:0;width:100%;height:100%;padding:56px 72px;display:flex;flex-direction:column;justify-content:center;background:var(--bg);opacity:0;visibility:hidden;transform:translateX(60px);transition:all .5s cubic-bezier(.4,0,.2,1);overflow-y:auto}
+.slide.active{opacity:1;visibility:visible;transform:translateX(0)}
+.slide.prev{transform:translateX(-60px)}
+.slide-inner{max-width:1200px;margin:0 auto;width:100%}
+
+.slide-label{display:inline-block;padding:6px 16px;background:rgba(201,169,110,.15);border:1px solid var(--g);color:var(--bd);font-size:.7rem;font-weight:700;letter-spacing:2px;border-radius:30px;margin-bottom:16px;text-transform:uppercase}
+.slide-title{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--bd);line-height:1.1;margin-bottom:14px}
+.slide-subtitle{font-size:1.05rem;color:var(--tl);margin-bottom:30px;max-width:900px;line-height:1.5}
+
+/* COVER */
+.slide-cover{background:linear-gradient(135deg,#3b2314,#5c3a1e,#7a4f2b)!important;color:white;padding:0!important;justify-content:center;align-items:center;text-align:center;position:relative}
+.slide-cover::before{content:'';position:absolute;top:-30%;right:-20%;width:800px;height:800px;background:radial-gradient(circle,rgba(201,169,110,.15),transparent 70%);border-radius:50%}
+.slide-cover::after{content:'';position:absolute;bottom:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--g),var(--gl),var(--g))}
+.cover-content{position:relative;z-index:2;max-width:1100px;padding:0 40px}
+.cover-badge{display:inline-block;padding:10px 24px;background:rgba(201,169,110,.2);border:1px solid var(--g);color:var(--gl);font-size:.75rem;font-weight:700;letter-spacing:3px;border-radius:40px;margin-bottom:30px}
+.cover-title{font-family:'Playfair Display',serif;font-size:4rem;font-weight:800;line-height:1.05;margin-bottom:20px}
+.cover-title em{color:var(--g);font-style:normal}
+.cover-sub{font-size:1.2rem;color:var(--gl);font-weight:300;margin-bottom:36px;max-width:850px;margin-left:auto;margin-right:auto;line-height:1.5}
+.cover-divider{width:80px;height:3px;background:var(--g);margin:0 auto 28px}
+.cover-meta{font-size:.88rem;color:rgba(255,255,255,.55);letter-spacing:2px;text-transform:uppercase}
+
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:22px 0}
+.stats-row.three{grid-template-columns:repeat(3,1fr)}
+.stat-box{background:var(--w);padding:26px 20px;border-radius:16px;border:1px solid var(--br);text-align:center;position:relative;overflow:hidden}
+.stat-box::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--g),var(--gl))}
+.stat-box.danger::before{background:var(--err)}
+.stat-box.warning::before{background:var(--wrn)}
+.stat-box.success::before{background:var(--ok)}
+.stat-value{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:800;color:var(--bd);line-height:1;margin-bottom:6px}
+.stat-box.danger .stat-value{color:var(--err)}
+.stat-box.success .stat-value{color:var(--ok)}
+.stat-label{font-size:.78rem;color:var(--tl);line-height:1.3}
+
+/* TABLES */
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.87rem}
+thead th{background:var(--bd);color:white;padding:11px 14px;text-align:left;font-size:.72rem;letter-spacing:1px;text-transform:uppercase;font-weight:700}
+tbody td{padding:10px 14px;border-bottom:1px solid var(--br);vertical-align:top}
+tbody tr:nth-child(even){background:var(--cream)}
+td strong{color:var(--bd)}
+.tag-status{display:inline-block;padding:3px 10px;border-radius:12px;font-size:.7rem;font-weight:700}
+.tag-green{background:rgba(39,174,96,.12);color:var(--ok)}
+.tag-red{background:rgba(192,57,43,.12);color:var(--err)}
+.tag-yellow{background:rgba(230,126,34,.12);color:var(--wrn)}
+.tag-blue{background:rgba(41,128,185,.12);color:var(--info)}
+.tag-gold{background:rgba(201,169,110,.2);color:var(--bm)}
+
+/* HIGHLIGHT */
+.highlight-box{border-left:4px solid var(--g);background:linear-gradient(135deg,rgba(201,169,110,.08),rgba(201,169,110,.03));padding:20px 24px;border-radius:0 14px 14px 0;margin:18px 0;line-height:1.6;font-size:.92rem}
+.highlight-box.danger{border-left-color:var(--err);background:linear-gradient(135deg,rgba(192,57,43,.06),rgba(192,57,43,.02))}
+.highlight-box.success{border-left-color:var(--ok);background:linear-gradient(135deg,rgba(39,174,96,.06),rgba(39,174,96,.02))}
+.highlight-box strong{color:var(--bd)}
+
+/* PIPELINE VISUAL */
+.pipeline-flow{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:22px 0}
+.pipe-stage{background:var(--w);border-radius:14px;padding:16px 10px;border:1px solid var(--br);text-align:center;position:relative}
+.pipe-stage::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:14px 14px 0 0}
+.pipe-stage:nth-child(1)::before{background:#7a4f2b}
+.pipe-stage:nth-child(2)::before{background:#8b5e3a}
+.pipe-stage:nth-child(3)::before{background:#9d6e48}
+.pipe-stage:nth-child(4)::before{background:#b07d47}
+.pipe-stage:nth-child(5)::before{background:var(--g)}
+.pipe-stage:nth-child(6)::before{background:var(--ok)}
+.pipe-num{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:800;color:var(--g);line-height:1;margin-bottom:4px}
+.pipe-name{font-size:.78rem;font-weight:700;color:var(--bd);margin-bottom:4px;line-height:1.2}
+.pipe-prob{font-size:.68rem;color:var(--tl);line-height:1.3}
+.pipe-time{font-size:.66rem;color:var(--g);font-weight:600;margin-top:4px}
+
+/* AGENDA */
+.agenda-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:18px 0}
+.agenda-item{background:var(--w);border-radius:14px;padding:22px 24px;border:1px solid var(--br);position:relative}
+.agenda-item::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--g),var(--gl));border-radius:14px 14px 0 0}
+.agenda-item h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--bd);margin-bottom:6px}
+.agenda-time{display:inline-block;padding:3px 10px;background:var(--cream);border:1px solid var(--g);border-radius:20px;font-size:.68rem;font-weight:700;color:var(--bd);margin-bottom:10px;letter-spacing:.5px}
+.agenda-item p{font-size:.86rem;color:var(--tl);line-height:1.5}
+
+/* FIELD GRID */
+.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.field-card{background:var(--w);border-radius:14px;padding:20px;border:1px solid var(--br)}
+.field-card h4{font-size:.9rem;color:var(--bd);font-weight:700;margin-bottom:10px}
+.field-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed var(--br);font-size:.82rem}
+.field-row:last-child{border-bottom:none}
+.field-name{color:var(--t);font-weight:500}
+.field-type{color:var(--tl);font-size:.78rem}
+
+/* SCORING */
+.score-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+.score-card{background:var(--w);border-radius:14px;padding:22px;border:1px solid var(--br);text-align:center}
+.score-card.cold{border-top:5px solid var(--err)}
+.score-card.warm{border-top:5px solid var(--wrn)}
+.score-card.hot{border-top:5px solid var(--ok)}
+.score-card h4{font-size:1rem;color:var(--bd);margin-bottom:6px}
+.score-card .score-range{font-family:'Playfair Display',serif;font-size:2rem;font-weight:800;color:var(--g);margin-bottom:6px}
+.score-card p{font-size:.82rem;color:var(--tl);line-height:1.4;margin-bottom:8px}
+.score-card .action{font-size:.76rem;color:var(--bd);font-weight:600}
+
+/* CRITERIA */
+.criteria-list{display:flex;flex-direction:column;gap:10px;margin:18px 0}
+.criteria-row{background:var(--w);border-radius:12px;padding:14px 20px;border:1px solid var(--br);display:grid;grid-template-columns:1fr 120px 100px;align-items:center;gap:16px}
+.criteria-label{font-size:.9rem;color:var(--t)}
+.criteria-label strong{color:var(--bd);display:block;margin-bottom:2px;font-size:.95rem}
+.criteria-label span{font-size:.78rem;color:var(--tl)}
+.weight-tag{display:inline-block;padding:3px 12px;border-radius:12px;font-size:.72rem;font-weight:700;text-align:center}
+.weight-tag.critical{background:rgba(192,57,43,.12);color:var(--err)}
+.weight-tag.high{background:rgba(230,126,34,.12);color:var(--wrn)}
+.weight-tag.medium{background:rgba(39,174,96,.12);color:var(--ok)}
+.pts-tag{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:800;color:var(--bd);text-align:right}
+
+/* CLICKS */
+.clicks-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:20px 0}
+.click-card{background:var(--w);border-radius:14px;padding:20px 14px;border:1px solid var(--br);text-align:center;position:relative}
+.click-card .click-num{width:38px;height:38px;background:var(--g);color:var(--bd);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:800;font-size:1.1rem;margin:0 auto 10px}
+.click-card h4{font-size:.85rem;color:var(--bd);margin-bottom:6px;line-height:1.2}
+.click-card p{font-size:.72rem;color:var(--tl);line-height:1.4}
+
+/* SEQUENCE */
+.seq-timeline{margin:18px 0;position:relative;padding-left:30px}
+.seq-timeline::before{content:'';position:absolute;left:12px;top:10px;bottom:10px;width:2px;background:var(--g)}
+.seq-item{position:relative;margin-bottom:18px;padding-left:24px}
+.seq-item::before{content:'';position:absolute;left:-23px;top:6px;width:14px;height:14px;background:var(--g);border-radius:50%;border:3px solid var(--bg)}
+.seq-item h4{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--bd);margin-bottom:4px}
+.seq-time{font-size:.72rem;color:var(--g);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;display:block}
+.seq-item p{font-size:.85rem;color:var(--tl);line-height:1.5;margin-bottom:4px}
+.seq-item .msg{background:var(--cream);border-left:3px solid var(--g);padding:10px 14px;border-radius:0 8px 8px 0;font-size:.82rem;margin-top:8px;color:var(--t);font-style:italic;line-height:1.5}
+
+/* B2B */
+.b2b-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+.b2b-card{background:var(--w);border-radius:16px;padding:24px;border:1px solid var(--br);position:relative;overflow:hidden}
+.b2b-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--g)}
+.b2b-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:800;color:var(--g);opacity:.35;line-height:1;margin-bottom:6px}
+.b2b-card h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--bd);margin-bottom:8px;line-height:1.2}
+.b2b-card p{font-size:.85rem;color:var(--tl);line-height:1.5}
+.b2b-card strong{color:var(--bd)}
+
+/* COMMITS */
+.next-block{background:linear-gradient(135deg,#3b2314,#5c3a1e,#7a4f2b);color:white;padding:40px 46px;border-radius:20px;margin:22px 0;position:relative;overflow:hidden}
+.next-block::after{content:'→';position:absolute;top:50%;right:44px;transform:translateY(-50%);font-size:10rem;color:rgba(201,169,110,.08);font-weight:800}
+.next-block h3{font-family:'Playfair Display',serif;font-size:1.7rem;margin-bottom:20px;position:relative;color:white}
+.commit-list{list-style:none;counter-reset:commit;position:relative}
+.commit-list li{padding:11px 0 11px 46px;position:relative;font-size:.94rem;color:var(--gl);border-bottom:1px solid rgba(201,169,110,.15);line-height:1.5}
+.commit-list li:last-child{border-bottom:none}
+.commit-list li::before{content:counter(commit);counter-increment:commit;position:absolute;left:0;top:11px;width:28px;height:28px;background:var(--g);color:var(--bd);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-family:'Playfair Display',serif;font-size:.8rem}
+.commit-list li strong{color:white}
+.commit-list li .due{display:inline-block;margin-left:8px;padding:2px 8px;background:rgba(201,169,110,.2);border-radius:10px;font-size:.72rem;font-weight:700;color:var(--gl)}
+
+/* RESULTS GRID */
+.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+.result-card{background:var(--w);border-radius:14px;padding:20px;border:1px solid var(--br);text-align:center}
+.result-card h4{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--bd);margin-bottom:10px}
+.result-card .result-value{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:800;color:var(--g);line-height:1;margin-bottom:4px}
+.result-card p{font-size:.78rem;color:var(--tl);line-height:1.4}
+
+/* CHECKLIST */
+.check-list{list-style:none;padding:0}
+.check-list li{padding:12px 0 12px 32px;position:relative;border-bottom:1px solid var(--br);font-size:.92rem;color:var(--t);line-height:1.5}
+.check-list li:last-child{border-bottom:none}
+.check-list li::before{content:'✓';position:absolute;left:0;top:12px;width:18px;height:18px;background:var(--ok);color:white;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800}
+.check-list li strong{color:var(--bd)}
+
+/* NAV */
+.nav-bar{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;background:rgba(59,35,20,.92);padding:9px 18px;border-radius:50px;backdrop-filter:blur(8px);box-shadow:0 10px 40px rgba(0,0,0,.25);z-index:100}
+.nav-btn{background:transparent;border:1px solid var(--g);color:var(--gl);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1.05rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.nav-btn:hover{background:var(--g);color:var(--bd);transform:scale(1.05)}
+.nav-btn:disabled{opacity:.3;cursor:not-allowed}
+.slide-counter{color:var(--gl);font-size:.88rem;font-weight:600;min-width:56px;text-align:center;font-variant-numeric:tabular-nums}
+.progress-bar{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--g),var(--gl));z-index:99;transition:width .4s ease}
+.brand-mark{position:fixed;top:22px;right:40px;font-family:'Playfair Display',serif;font-size:.78rem;letter-spacing:4px;color:var(--bm);font-weight:700;z-index:50}
+
+@media(max-width:1200px){.slide{padding:36px 44px}.slide-title{font-size:2rem}.cover-title{font-size:2.8rem}.stats-row,.pipeline-flow,.clicks-row,.b2b-grid,.results-grid,.score-grid{grid-template-columns:repeat(2,1fr)}.agenda-grid,.field-grid{grid-template-columns:1fr}}
+@media print{html,body{overflow:visible;height:auto;background:white}.presentation{width:100%;height:auto}.slide{position:relative;opacity:1!important;visibility:visible!important;transform:none!important;page-break-after:always;min-height:100vh;height:auto}.nav-bar,.progress-bar,.brand-mark{display:none}*{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<div class="brand-mark">ANTUARA</div>
+
+<div class="presentation">
+
+  <!-- SLIDE 1: PORTADA -->
+  <section class="slide slide-cover active">
+    <div class="cover-content">
+      <div class="cover-badge">REVIEW INTEGRAL · SEMANA 1</div>
+      <h1 class="cover-title">El sistema<br><em>ya está andando</em></h1>
+      <div class="cover-divider"></div>
+      <p class="cover-sub">Hoy revisamos todo lo construido esta semana: CRM clasificado, lead scoring operativo, engagement pre-reunión listo para arrancar y primera mirada a la oportunidad B2B2C.</p>
+      <div class="cover-meta">Falhaus · 24 de abril 2026 · 14:00 hs</div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: AGENDA -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-label">00 · Por dónde vamos hoy</div>
+      <h2 class="slide-title">Agenda de la reunión</h2>
+      <p class="slide-subtitle">60 minutos. Revisamos lo implementado, lo validás en vivo, acordamos ajustes y definimos los próximos 15 días.</p>
+
+      <div class="agenda-grid">
+        <div class="agenda-item">
+          <h3>1. Dónde estábamos vs. dónde estamos</h3>
+          <span class="agenda-time">10 min · 14:00-14:10</span>
+          <p>Punto de partida (17/04): 386 leads, 5% con estado. Estado actual: CRM ordenado, pipeline configurado, scoring corriendo.</p>
+        </div>
+        <div class="agenda-item">
+          <h3>2. Pipeline de 6 etapas + Lead Scoring</h3>
+          <span class="agenda-time">15 min · 14:10-14:25</span>
+          <p>Paseo por las 6 etapas del pipeline, criterios de scoring, cómo se ven los leads ya clasificados en Prometeo.</p>
+        </div>
+        <div class="agenda-item">
+          <h3>3. Guía operativa 4-5 clics</h3>
+          <span class="agenda-time">10 min · 14:25-14:35</span>
+          <p>Cómo vas a actualizar un lead post-reunión sin fricción. Lo probamos en vivo con un caso real.</p>
+        </div>
+        <div class="agenda-item">
+          <h3>4. MVP Engagement pre-reunión</h3>
+          <span class="agenda-time">12 min · 14:35-14:47</span>
+          <p>Secuencia de 3 mensajes para calentar prospectos antes de la llamada. Listo para activar el lunes.</p>
+        </div>
+        <div class="agenda-item">
+          <h3>5. Estrategia B2B2C</h3>
+          <span class="agenda-time">10 min · 14:47-14:57</span>
+          <p>Marco para decidir qué tipo de revendedor querés, qué le ofrecés y cómo se activa Expo Real Estate.</p>
+        </div>
+        <div class="agenda-item">
+          <h3>6. Compromisos y cierre</h3>
+          <span class="agenda-time">3 min · 14:57-15:00</span>
+          <p>Qué hacés vos, qué hago yo, cuándo nos volvemos a ver.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: DE DÓNDE VENIMOS -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-label">01 · Dónde estábamos</div>
+      <h2 class="slide-title">La foto del 17 de abril</h2>
+      <p class="slide-subtitle">Hace una semana tenías volumen pero no visibilidad. Mucho esfuerzo comercial sin forma de saber qué estaba pasando adentro del embudo.</p>
+
+      <div class="stats-row">
+        <div class="stat-box danger">
+          <div class="stat-value">386</div>
+          <div class="stat-label">Leads registrados sin clasificar</div>
+        </div>
+        <div class="stat-box danger">
+          <div class="stat-value">5%</div>
+          <div class="stat-label">Leads con estado correcto</div>
+        </div>
+        <div class="stat-box warning">
+          <div class="stat-value">80-90%</div>
+          <div class="stat-label">Cotizaciones sin seguimiento formal</div>
+        </div>
+        <div class="stat-box warning">
+          <div class="stat-value">0</div>
+          <div class="stat-label">Contenido previo a cada reunión</div>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <p><strong>Tu frase textual:</strong> "Calentar la pava para que otros tomen el mate". Ese era el riesgo concreto: hacías el trabajo de convencer, pero sin seguimiento sistemático, los competidores podían cerrar la venta que vos abriste.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: QUÉ CONSTRUIMOS ESTA SEMANA -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-label">02 · Qué se construyó esta semana</div>
+      <h2 class="slide-title">Lo entregado entre lunes y hoy</h2>
+      <p class="slide-subtitle">Cuatro entregables operativos. Todos compatibles con Prometeo — no hay que cambiar de herramienta. Todo está pensado para que vos hagas lo menos posible y el sistema haga el resto.</p>
+
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-value">6</div>
+          <h4>Etapas de pipeline</h4>
+          <p>Estandarizadas en Prometeo con probabilidades de cierre y plazos esperados.</p>
+        </div>
+        <div class="result-card">
+          <div class="result-value">100</div>
+          <h4>Puntos de scoring</h4>
+          <p>Sistema 0-100 con 4 criterios ponderados. Prioriza automáticamente tu agenda.</p>
+        </div>
+        <div class="result-card">
+          <div class="result-value">3</div>
+          <h4>Mensajes pre-reunión</h4>
+          <p>Secuencia lista para enviar desde WhatsApp. Sube show-up rate y reduce cancelaciones.</p>
+        </div>
+        <div class="result-card">
+          <div class="result-value">4-5</div>
+          <h4>Clics post-reunión</h4>
+          <p>Lo único que tenés que hacer vos. El resto lo calcula el CRM.</p>
+        </div>
+        <div class="result-card">
+          <div class="result-value">3</div>
+          <h4>Rutas B2B2C</h4>
+          <p>Revendedor individual, representación regional, alianza institucional.</p>
+        </div>
+        <div class="result-card">
+          <div class="result-value">1</div>
+          <h4>Guía operativa</h4>
+          <p>Documento único para que vos consultes sin preguntarme cada vez.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: PIPELINE 6 ETAPAS -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-label">03 · Pipeline</div>
+      <h2 class="slide-title">Las 6 etapas del pipeline Falhaus</h2>
+      <p class="slide-subtitle">Cada lead pasa por estas etapas, en este orden. En Prometeo cada etapa tiene su columna. Un lead nunca "salta" etapas — si lo hace, es señal de que algo hay que revisar.</p>
+
+      <div class="pipeline-flow">
+        <div class="pipe-stage">
+          <div class="pipe-num">01</div>
+          <div class="pipe-name">Descubrimiento</div>
+          <div class="pipe-prob">5% de cierre</div>
+          <div class="pipe-time">0-7 días</div>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-num">02</div>
+          <div class="pipe-name">Calificación</div>
+          <div class="pipe-prob">15% de cierre</div>
+          <div class="pipe-time">3-14 días</div>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-num">03</div>
+          <div class="pipe-name">Visita / Reunión</div>
+          <div class="pipe-prob">35% de cierre</div>
+          <div class="pipe-time">7-30 días</div>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-num">04</div>
+          <div class="pipe-name">Propuesta</div>
+          <div class="pipe-prob">55% de cierre</div>
+          <div class="pipe-time">15-60 días</div>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-num">05</div>
+          <div class="pipe-name">Negociación</div>
+          <div class="pipe-prob">75% de cierre</div>
+          <div class="pipe-time">30-90 días</div>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-num">06</div>
+          <div class="pipe-name">Cerrado</div>
+          <div class="pipe-prob">100% / 0%</div>
+          <div class="pipe-time">Ganado o perdido</div>
+        </div>
+      </div>
+
+      <div class="highlight-box success">
+        <p><strong>¿Por qué 6 etapas y no 4?</strong> En Falhaus el paso más crítico es la visita al showroom. Tiene que estar separada de la reunión virtual porque duplica probabilidad de cierre. Separar también "propuesta" de "negociación" te permite ver dónde se quedan dormidos los leads.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: DEFINICIONES DE CADA ETAPA -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-label">04 · Qué define cada etapa</div>
+      <h2 class="slide-title">Criterios para moverlo de columna</h2>
+      <p class="slide-subtitle">Un lead está en cada etapa hasta que se cumple la condición de salida. Vos movés manualmente — el sistema no adivina.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Etapa</th>
+            <th>Cuándo un lead entra acá</th>
+            <th>Condición para avanzar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Descubrimiento</strong></td>
+            <td>Dejó sus datos (web, Instagram, referido) pero todavía no hablamos</td>
+            <td>Primer contacto efectivo (WhatsApp/llamada respondida)</td>
+          </tr>
+          <tr>
+            <td><strong>2. Calificación</strong></td>
+            <td>Hablamos, está interesado pero no sabemos aún si tiene terreno / presupuesto / plazo</td>
+            <td>Tenemos los 4 datos clave (scoring ≥ 40)</td>
+          </tr>
+          <tr>
+            <td><strong>3. Visita / Reunión</strong></td>
+            <td>Lead calificado, agendó llamada virtual o visita al showroom</td>
+            <td>Hizo la reunión, pidió cotización o showroom</td>
+          </tr>
+          <tr>
+            <td><strong>4. Propuesta</strong></td>
+            <td>Le enviaste cotización formal</td>
+            <td>Vuelve con dudas, pide ajustes o confirma interés</td>
+          </tr>
+          <tr>
+            <td><strong>5. Negociación</strong></td>
+            <td>Está negociando plazos, forma de pago, variantes del producto</td>
+            <td>Acepta o rechaza la oferta final</td>
+          </tr>
+          <tr>
+            <td><strong>6. Cerrado</strong></td>
+            <td>Firmó (ganado) o dijo que no / desapareció (perdido)</td>
+            <td>Terminal. Si "perdido", anotar motivo.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SLIDE 7: LEAD SCORING - CRITERIOS -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-label">05 · Lead Scoring</div>
+      <h2 class="slide-title">Cómo calculamos los 100 puntos</h2>
+      <p class="slide-subtitle">4 criterios. Cada uno aporta un máximo de puntos según su peso. El lead se auto-califica y te indica a quién atender primero.</p>
+
+      <div class="criteria-list">
+        <div class="criteria-row">
+          <div class="criteria-label">
+            <strong>1. Tiene terreno comprado</strong>
+            <span>Variable binaria. Sin terreno el proyecto no arranca.</span>
+          </div>
+          <div class="weight-tag critical">CRÍTICO</div>
+          <div class="pts-tag">30 pts</div>
+        </div>
+        <div class="criteria-row">
+          <div class="criteria-label">
+            <strong>2. Presupuesto compatible</strong>
+            <span>Rango declarado por el cliente o inferido (alto/medio/bajo).</span>
+          </div>
+          <div class="weight-tag critical">CRÍTICO</div>
+          <div class="pts-tag">30 pts</div>
+        </div>
+        <div class="criteria-row">
+          <div class="criteria-label">
+            <strong>3. Plazo de decisión</strong>
+            <span>Cuánto tiempo tiene antes de decidir (≤3 meses / 3-6 / 6-12 / +12).</span>
+          </div>
+          <div class="weight-tag high">ALTO</div>
+          <div class="pts-tag">20 pts</div>
+        </div>
+        <div class="criteria-row">
+          <div class="criteria-label">
+            <strong>4. Alineación con oferta Falhaus</strong>
+            <span>¿Busca lo que hacemos o está comparando contra construcción tradicional?</span>
+          </div>
+          <div class="weight-tag medium">MEDIO</div>
+          <div class="pts-tag">20 pts</div>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <p><strong>La lógica:</strong> Sin terreno ni presupuesto compatible, ni el mejor vendedor del mundo cierra. Por eso esos dos criterios concentran 60 puntos. Plazo y alineación son moduladores que te ayudan a priorizar entre leads que ya pasaron el filtro base.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 8: UMBRALES -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-label">06 · Umbrales</div>
+      <h2 class="slide-title">Cómo leer el score</h2>
+      <p class="slide-subtitle">Tres niveles. Cada uno tiene una acción asociada. Así sabés en qué carpeta mental meter a cada lead.</p>
+
+      <div class="score-grid">
+        <div class="score-card cold">
+          <h4>Lead frío</h4>
+          <div class="score-range">0 – 39</div>
+          <p>Todavía no está maduro. Falta terreno, presupuesto o plazo claro.</p>
+          <div class="action">ACCIÓN: Nurturing automático (contenido mensual)</div>
+        </div>
+        <div class="score-card warm">
+          <h4>Lead tibio</h4>
+          <div class="score-range">40 – 59</div>
+          <p>Está en carrera pero necesita más contacto antes de que valga la pena tu tiempo.</p>
+          <div class="action">ACCIÓN: Seguimiento quincenal (templates)</div>
+        </div>
+        <div class="score-card hot">
+          <h4>Lead caliente</h4>
+          <div class="score-range">60 – 100</div>
+          <p>Listo para avanzar. Tiene los datos clave y está dentro del rango Falhaus.</p>
+          <div class="action">ACCIÓN: Atención personal de Federico</div>
+        </div>
+      </div>
+
+      <div class="highlight-box success">
+        <p><strong>Lo que esto te devuelve:</strong> Todos los días vas a ver un dashboard de leads ordenados por score descendente. Arriba los calientes (los que toca llamar vos). Abajo los fríos (los que el sistema cuida solo con contenido). Tu agenda se ordena sola.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 9: GUÍA 4-5 CLICS -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-label">07 · Operación</div>
+      <h2 class="slide-title">Lo único que tenés que hacer vos</h2>
+      <p class="slide-subtitle">Post-reunión, 90 segundos en Prometeo. 5 clics. El scoring, el cambio de etapa, los recordatorios y los mensajes los dispara el sistema.</p>
+
+      <div class="clicks-row">
+        <div class="click-card">
+          <div class="click-num">1</div>
+          <h4>Abrir ficha del lead</h4>
+          <p>Click desde la vista de "reuniones de hoy".</p>
+        </div>
+        <div class="click-card">
+          <div class="click-num">2</div>
+          <h4>Marcar resultado</h4>
+          <p>Avanzó / quedó pendiente / descartado. 3 botones.</p>
+        </div>
+        <div class="click-card">
+          <div class="click-num">3</div>
+          <h4>Completar 4 datos clave</h4>
+          <p>Terreno, presupuesto, plazo, proyecto. Dropdowns.</p>
+        </div>
+        <div class="click-card">
+          <div class="click-num">4</div>
+          <h4>Fecha próximo contacto</h4>
+          <p>Calendar picker. El CRM te recuerda ese día.</p>
+        </div>
+        <div class="click-card">
+          <div class="click-num">5</div>
+          <h4>Nota libre (opcional)</h4>
+          <p>Si pasó algo raro / relevante. Si no, saltear.</p>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <p><strong>Lo importante:</strong> El sistema no te pide que te acuerdes de hacer seguimiento. Cuando pongas "próximo contacto = 2 de mayo", el 2 de mayo a las 9 AM te aparece el lead en tu "para hoy". No hay forma de que se te escape.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 10: ENGAGEMENT PRE-REUNIÓN -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-label">08 · MVP Pre-Reunión</div>
+      <h2 class="slide-title">La secuencia de calentamiento</h2>
+      <p class="slide-subtitle">3 puntos de contacto entre la confirmación y la reunión. Cero automatización compleja — WhatsApp + Google Drive. Lo podés activar el lunes.</p>
+
+      <div class="seq-timeline">
+        <div class="seq-item">
+          <h4>T-48 horas · Confirmación + propuesta de valor</h4>
+          <span class="seq-time">Al momento de agendar</span>
+          <p>Se envía automáticamente al confirmar la cita en el calendario.</p>
+          <div class="msg">"¡Hola [Nombre]! Quedó agendada la llamada para el [día] a las [hora]. Para que aproveches mejor el tiempo, acá va un video de 3 minutos donde mostramos cómo se construyó la última casa que entregamos en [localidad]. Cualquier duda previa, escribime."</div>
+        </div>
+        <div class="seq-item">
+          <h4>T-24 horas · Contenido de autoridad</h4>
+          <span class="seq-time">Día previo a la reunión</span>
+          <p>Mostrás el diferencial sin vender. Lo que estás transmitiendo: "ya tengo clientes como vos".</p>
+          <div class="msg">"Mañana nos vemos, [Nombre]. Te dejo este caso: [cliente reciente] terminó su casa de 120m² en 8 meses con nosotros. Acá tenés el antes/después + un video corto de la instalación: [link Drive]. Nos vemos mañana."</div>
+        </div>
+        <div class="seq-item">
+          <h4>T-2 horas · Recordatorio + enlace</h4>
+          <span class="seq-time">Mismo día de la reunión</span>
+          <p>Reduce cancelaciones silenciosas. Que sepa que del otro lado hay alguien esperándolo.</p>
+          <div class="msg">"[Nombre], en 2 horas nos vemos. Acá va el link de Meet: [link]. Si surge algo y necesitás mover la hora, avisame por acá."</div>
+        </div>
+      </div>
+
+      <div class="highlight-box success">
+        <p><strong>Por qué este orden:</strong> T-48h genera expectativa. T-24h construye autoridad antes de que el cliente "chequee a la competencia". T-2h baja el costo de ausentarse a cero. Es el mismo esquema que usan los mejores estudios arquitectónicos premium — adaptado a tu realidad.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 11: BANCO DE CONTENIDO -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-label">09 · Lo que necesitamos de vos</div>
+      <h2 class="slide-title">Banco de contenido para el MVP</h2>
+      <p class="slide-subtitle">Para que la secuencia funcione necesitamos 3 piezas de contenido listas. La buena noticia: las tenés, solo hay que organizarlas en una carpeta.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Pieza</th>
+            <th>Qué es</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Video proceso constructivo</strong></td>
+            <td>1-3 minutos mostrando cómo se construye una Falhaus. Puede ser timelapse de una instalación reciente.</td>
+            <td><span class="tag-status tag-yellow">A grabar en Entre Ríos</span></td>
+          </tr>
+          <tr>
+            <td><strong>Caso de éxito cliente</strong></td>
+            <td>Testimonio + fotos antes/después + dato clave (tiempo, m², costo si lo autorizó).</td>
+            <td><span class="tag-status tag-green">Tenemos 3 candidatos</span></td>
+          </tr>
+          <tr>
+            <td><strong>Brochure rápido</strong></td>
+            <td>PDF ya producido. Lo adjuntamos en T-24h para los que piden "algo más formal".</td>
+            <td><span class="tag-status tag-green">Listo (entregado 22/04)</span></td>
+          </tr>
+          <tr>
+            <td><strong>Plantilla 3 mensajes</strong></td>
+            <td>Textos copiables. Solo cambiás nombre, localidad y caso mencionado.</td>
+            <td><span class="tag-status tag-green">Lista y entregada hoy</span></td>
+          </tr>
+          <tr>
+            <td><strong>Carpeta Drive organizada</strong></td>
+            <td>Estructura por tipo de contenido, siempre con un link corto para compartir.</td>
+            <td><span class="tag-status tag-yellow">Arranca hoy, completa lunes</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p><strong>Aprovechando Entre Ríos:</strong> En el viaje del miércoles grabaste contenido nuevo. Con editar 1 video corto (1-2 min) ya tenemos material fresco para reemplazar el genérico. La instalación reciente sube un escalón la percepción del prospecto.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 12: B2B2C PANORAMA -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-label">10 · Escala</div>
+      <h2 class="slide-title">La oportunidad B2B2C</h2>
+      <p class="slide-subtitle">Tres rutas posibles para pasar de "Falhaus vende cada casa" a "Falhaus tiene una red que vende Falhaus". Cada una tiene su costo, su retorno y su timing.</p>
+
+      <div class="b2b-grid">
+        <div class="b2b-card">
+          <div class="b2b-num">01</div>
+          <h3>Revendedor individual</h3>
+          <p>Personas ya interesadas que quieren representar Falhaus en su zona. <strong>Barrera baja, ticket bajo-medio.</strong> Acuerdo simple + comisión por venta cerrada.</p>
+        </div>
+        <div class="b2b-card">
+          <div class="b2b-num">02</div>
+          <h3>Representación regional</h3>
+          <p>Un socio estratégico por provincia/región con objetivo anual y showroom propio. <strong>Barrera media, ticket alto.</strong> Requiere contrato + capacitación + material de marca.</p>
+        </div>
+        <div class="b2b-card">
+          <div class="b2b-num">03</div>
+          <h3>Alianza institucional</h3>
+          <p>Inmobiliarias + desarrolladores de barrios privados con volumen. <strong>Barrera alta, ticket muy alto.</strong> Expo Real Estate es la puerta de entrada.</p>
+        </div>
+      </div>
+
+      <div class="highlight-box success">
+        <p><strong>Mi recomendación:</strong> Empezar por el carril 1 (ya tenés interesados espontáneos) mientras diseñamos el carril 2 con más rigor. Carril 3 lo preparamos para Expo Real Estate como lanzamiento de una nueva línea de negocio, no como improvisación.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 13: DECISIONES B2B -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-label">11 · Decisiones previas</div>
+      <h2 class="slide-title">Lo que necesitamos definir antes de abrir</h2>
+      <p class="slide-subtitle">Antes de decirle "sí" al primer revendedor, estos 4 puntos tienen que estar resueltos. Si no, cada acuerdo será distinto y no vamos a poder escalar.</p>
+
+      <ul class="check-list">
+        <li><strong>Margen disponible para ceder</strong> — cuánto podés dar de comisión sin romper tu rentabilidad. Proponemos un piso de <strong>12-18% según volumen</strong>.</li>
+        <li><strong>Territorio exclusivo sí/no</strong> — ¿un solo revendedor por provincia o convivencia? Sin exclusividad más cobertura, con exclusividad más compromiso.</li>
+        <li><strong>Entregables mínimos de soporte</strong> — brochure co-brandeable, plantillas de propuesta, catálogo de productos, 1 día de capacitación presencial por trimestre.</li>
+        <li><strong>Criterios de ingreso del revendedor</strong> — umbral mínimo de experiencia comercial, capacidad financiera para adelantar seña, compromiso con pipeline (reportes mensuales).</li>
+        <li><strong>Proceso de offboarding</strong> — qué pasa si un revendedor no performa. Evaluación a los 6 meses, tarjeta amarilla a los 9, salida a los 12 sin penalidad pero sin exclusividad.</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p><strong>Cómo trabajamos esto:</strong> Te armo la próxima semana un marco formal de "Programa Socios Falhaus" con los 5 puntos resueltos como propuesta base. Vos lo revisás, ajustamos, y el viernes siguiente ya tenemos un documento que podés mostrar a los interesados.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 14: EXPO REAL ESTATE -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-label">12 · Evento ancla</div>
+      <h2 class="slide-title">Expo Real Estate como lanzamiento</h2>
+      <p class="slide-subtitle">La Expo Real Estate se hace en Buenos Aires en junio. Es el evento donde están los desarrolladores, inmobiliarias de alto volumen y compradores institucionales. Es el escenario natural para presentar la línea B2B.</p>
+
+      <div class="agenda-grid">
+        <div class="agenda-item">
+          <h3>Stand o participación estratégica</h3>
+          <span class="agenda-time">Costo aproximado $$$$</span>
+          <p>Si presupuesto permite, stand compartido con 1 aliado. Si no, participación como visitante con agenda previa de 20-30 reuniones programadas.</p>
+        </div>
+        <div class="agenda-item">
+          <h3>Mensaje único de la Expo</h3>
+          <span class="agenda-time">Positioning</span>
+          <p>"Falhaus — la primera vivienda industrializada con programa de representación para el sector inmobiliario". Un solo mensaje, repetido.</p>
+        </div>
+        <div class="agenda-item">
+          <h3>Material de Expo (entregable)</h3>
+          <span class="agenda-time">A producir en mayo</span>
+          <p>Brochure B2B específico (el institucional ya lo tenemos), carpeta de "Programa Socios", catálogo de casos construidos.</p>
+        </div>
+        <div class="agenda-item">
+          <h3>Objetivo concreto</h3>
+          <span class="agenda-time">KPI del evento</span>
+          <p>30 leads B2B calificados, 10 reuniones de seguimiento agendadas post-evento, 3 acuerdos firmados en los 60 días posteriores.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 15: COMPROMISOS -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-label">13 · Próximos 15 días</div>
+      <h2 class="slide-title">Qué hace cada uno</h2>
+      <p class="slide-subtitle">El sistema está montado. Ahora lo hacemos rodar. Estos son los compromisos hasta el próximo review.</p>
+
+      <div class="next-block">
+        <h3>Compromisos de salida</h3>
+        <ol class="commit-list">
+          <li><strong>Federico:</strong> operar el CRM con los 4-5 clics post-reunión en todos los leads de esta semana. <span class="due">DESDE HOY</span></li>
+          <li><strong>Federico:</strong> grabar 1 video corto (1-2 min) de la instalación de Entre Ríos para usar en el T-48h. <span class="due">LUNES 28/04</span></li>
+          <li><strong>Gabriel:</strong> armar el Drive organizado de contenido pre-reunión con etiquetas y links cortos. <span class="due">LUNES 28/04</span></li>
+          <li><strong>Gabriel:</strong> producir el "Programa Socios Falhaus" con los 5 puntos clave resueltos. <span class="due">VIERNES 02/05</span></li>
+          <li><strong>Gabriel:</strong> brief de participación en Expo Real Estate con costos y plan de presencia. <span class="due">VIERNES 02/05</span></li>
+          <li><strong>Federico:</strong> recibir a los 2 interesados en revender como prueba piloto bajo las nuevas reglas. <span class="due">MAYO</span></li>
+          <li><strong>Juntos:</strong> próxima reunión de review — <span class="due">VIERNES 02/05 · 14:00</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 16: CIERRE -->
+  <section class="slide slide-cover">
+    <div class="cover-content">
+      <div class="cover-badge">EL PRÓXIMO PASO</div>
+      <h1 class="cover-title">Ahora el <em>sistema</em><br>trabaja para vos</h1>
+      <div class="cover-divider"></div>
+      <p class="cover-sub">Tu fortaleza es convencer. Nuestra fortaleza es que ningún lead se pierda mientras vos hacés eso. Los próximos 15 días lo probamos en la cancha.</p>
+      <div class="cover-meta">Próxima reunión · Viernes 2 de Mayo · 14:00 hs</div>
+    </div>
+  </section>
+
+</div>
+
+<!-- NAV -->
+<div class="nav-bar">
+  <button class="nav-btn" id="prevBtn" title="Anterior">&larr;</button>
+  <div class="slide-counter" id="counter">1 / 16</div>
+  <button class="nav-btn" id="nextBtn" title="Siguiente">&rarr;</button>
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const counter = document.getElementById('counter');
+const progressBar = document.getElementById('progressBar');
+let current = 0;
+
+function show(i){
+  slides.forEach((s,idx)=>{
+    s.classList.remove('active','prev');
+    if(idx===i){s.classList.add('active')}
+    else if(idx<i){s.classList.add('prev')}
+  });
+  counter.textContent = (i+1) + ' / ' + slides.length;
+  progressBar.style.width = ((i+1)/slides.length*100) + '%';
+  prevBtn.disabled = i===0;
+  nextBtn.disabled = i===slides.length-1;
+}
+
+prevBtn.addEventListener('click',()=>{if(current>0){current--;show(current)}});
+nextBtn.addEventListener('click',()=>{if(current<slides.length-1){current++;show(current)}});
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){if(current<slides.length-1){current++;show(current)}}
+  if(e.key==='ArrowLeft'||e.key==='PageUp'){if(current>0){current--;show(current)}}
+  if(e.key==='Home'){current=0;show(current)}
+  if(e.key==='End'){current=slides.length-1;show(current)}
+});
+
+show(0);
+</script>
+
+</body>
+</html>

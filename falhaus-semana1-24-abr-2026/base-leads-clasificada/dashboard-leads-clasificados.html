@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<!-- Dashboard Falhaus · 24 abril 2026 · 395 leads clasificados -->
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Leads Clasificados · Falhaus · 24 Abril 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bd:#3b2314;--bm:#5c3a1e;--bl:#7a4f2b;--g:#c9a96e;--gl:#e8d5b0;--t:#2d2d2d;--tl:#6b6b6b;--bg:#faf6f1;--w:#ffffff;--br:#e0d5c8;--cream:#faf3ea;--ok:#27ae60;--wrn:#e67e22;--err:#c0392b;--info:#2980b9}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t);line-height:1.6}
+.container{max-width:1180px;margin:0 auto;padding:0 40px}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#3b2314,#5c3a1e,#7a4f2b);color:white;padding:56px 40px 46px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40%;right:-15%;width:700px;height:700px;background:radial-gradient(circle,rgba(201,169,110,.14),transparent 70%);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--g),var(--gl),var(--g))}
+.hero-inner{max-width:1180px;margin:0 auto;position:relative;z-index:2}
+.hero-badge{display:inline-block;padding:6px 16px;background:rgba(39,174,96,.18);border:1.5px solid var(--ok);color:#7fd99a;font-size:.7rem;font-weight:800;letter-spacing:3px;border-radius:30px;margin-bottom:18px;text-transform:uppercase}
+.hero h1{font-family:'Playfair Display',serif;font-size:2.7rem;font-weight:800;line-height:1.08;margin-bottom:14px;max-width:920px}
+.hero h1 em{color:var(--g);font-style:normal}
+.hero-sub{font-size:1.05rem;color:var(--gl);font-weight:300;max-width:850px;line-height:1.6;margin-bottom:20px}
+.hero-meta{font-size:.78rem;color:rgba(255,255,255,.55);letter-spacing:2px;text-transform:uppercase}
+
+nav.toc{position:sticky;top:0;background:rgba(250,246,241,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--br);padding:12px 0;z-index:50}
+.toc-inner{max-width:1180px;margin:0 auto;padding:0 40px;display:flex;gap:16px;overflow-x:auto;scrollbar-width:none;align-items:center}
+.toc-inner::-webkit-scrollbar{display:none}
+.toc-label{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g);margin-right:6px;white-space:nowrap}
+.toc a{text-decoration:none;color:var(--tl);font-size:.8rem;font-weight:600;white-space:nowrap;padding:4px 2px;border-bottom:2px solid transparent;transition:all .2s}
+.toc a:hover{color:var(--bd);border-bottom-color:var(--g)}
+
+/* SCOREBOARD */
+.scoreboard{background:var(--w);border-radius:18px;padding:22px 26px;margin:-26px auto 30px;max-width:1080px;border:1px solid var(--br);box-shadow:0 16px 40px rgba(59,35,20,.08);display:grid;grid-template-columns:repeat(6,1fr);gap:12px;position:relative;z-index:3}
+.score-cell{text-align:center;padding:10px 6px;position:relative}
+.score-cell:not(:last-child)::after{content:'';position:absolute;right:-6px;top:20%;bottom:20%;width:1px;background:var(--br)}
+.score-val{font-family:'Playfair Display',serif;font-size:2rem;font-weight:800;color:var(--bd);line-height:1;margin-bottom:4px}
+.score-val.ok{color:var(--ok)}
+.score-val.err{color:var(--err)}
+.score-val.wrn{color:var(--wrn)}
+.score-val.info{color:var(--info)}
+.score-lbl{font-size:.65rem;color:var(--tl);letter-spacing:.8px;text-transform:uppercase;font-weight:700;line-height:1.3}
+
+/* SECTIONS */
+.section{padding:46px 0;border-bottom:1px solid var(--br)}
+.section:last-of-type{border-bottom:none}
+.section-label{font-size:.64rem;font-weight:700;letter-spacing:3px;color:var(--g);text-transform:uppercase;margin-bottom:10px}
+.section h2{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--bd);line-height:1.1;margin-bottom:12px}
+.section-intro{font-size:.96rem;color:var(--tl);max-width:880px;margin-bottom:26px;line-height:1.6}
+
+/* HIGHLIGHT */
+.highlight-box{border-left:4px solid var(--g);background:linear-gradient(135deg,rgba(201,169,110,.08),rgba(201,169,110,.03));padding:18px 24px;border-radius:0 12px 12px 0;margin:18px 0;line-height:1.6;font-size:.9rem}
+.highlight-box.danger{border-left-color:var(--err);background:linear-gradient(135deg,rgba(192,57,43,.06),rgba(192,57,43,.02))}
+.highlight-box.success{border-left-color:var(--ok);background:linear-gradient(135deg,rgba(39,174,96,.06),rgba(39,174,96,.02))}
+.highlight-box.info{border-left-color:var(--info);background:linear-gradient(135deg,rgba(41,128,185,.06),rgba(41,128,185,.02))}
+.highlight-box strong{color:var(--bd)}
+
+/* HALLAZGOS */
+.findings{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0}
+.finding{background:var(--w);border-radius:14px;padding:20px 22px;border:1px solid var(--br);position:relative;overflow:hidden}
+.finding::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--g);border-radius:14px 14px 0 0}
+.finding.gold::before{background:var(--g)}
+.finding.ok::before{background:var(--ok)}
+.finding.wrn::before{background:var(--wrn)}
+.finding.err::before{background:var(--err)}
+.finding-num{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:800;color:var(--bd);line-height:1;margin-bottom:4px}
+.finding h4{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--bd);margin-bottom:6px}
+.finding p{font-size:.84rem;color:var(--tl);line-height:1.5}
+
+/* BAR CHART */
+.bar-chart{background:var(--w);border-radius:14px;padding:22px 26px;border:1px solid var(--br);margin:18px 0}
+.bar-chart h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--bd);margin-bottom:16px}
+.bar-row{display:grid;grid-template-columns:150px 1fr 100px;gap:14px;align-items:center;margin-bottom:8px;font-size:.85rem}
+.bar-label{color:var(--t);font-weight:600}
+.bar-track{height:22px;background:var(--cream);border-radius:11px;overflow:hidden;border:1px solid var(--br)}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--bl),var(--g));border-radius:11px 0 0 11px;transition:width 1s ease}
+.bar-fill.alt{background:linear-gradient(90deg,var(--bm),var(--bl))}
+.bar-value{font-weight:700;color:var(--bd);font-family:'Playfair Display',serif}
+.bar-value span{font-family:'Inter',sans-serif;font-size:.72rem;color:var(--tl);font-weight:500;margin-left:4px}
+
+/* MONTH CHART */
+.month-chart{background:var(--w);border-radius:14px;padding:22px 26px;border:1px solid var(--br);margin:18px 0}
+.month-chart h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--bd);margin-bottom:18px}
+.mb-wrap{display:flex;justify-content:space-around;align-items:flex-end;height:180px;gap:10px;padding:0 6px}
+.mb-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.mb-value{font-family:'Playfair Display',serif;font-size:1rem;font-weight:800;color:var(--bd);margin-bottom:4px}
+.mb-bar{width:100%;background:linear-gradient(180deg,var(--g),var(--bl));border-radius:6px 6px 0 0;min-height:4px}
+.mb-label{font-size:.68rem;color:var(--tl);font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-top:6px}
+
+/* THERMOMETER */
+.therm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+.therm-card{background:var(--w);border-radius:14px;padding:22px 24px;border:1px solid var(--br);text-align:center}
+.therm-card.cold{border-top:5px solid var(--err)}
+.therm-card.warm{border-top:5px solid var(--wrn)}
+.therm-card.hot{border-top:5px solid var(--ok)}
+.therm-card h4{font-size:.95rem;color:var(--bd);margin-bottom:6px;font-weight:700}
+.therm-card .range{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--bd);margin-bottom:8px}
+.therm-card .count{font-family:'Playfair Display',serif;font-size:3rem;font-weight:800;line-height:1;margin-bottom:6px}
+.therm-card.cold .count{color:var(--err)}
+.therm-card.warm .count{color:var(--wrn)}
+.therm-card.hot .count{color:var(--ok)}
+.therm-card p{font-size:.76rem;color:var(--tl);line-height:1.4}
+
+/* LEAD LIST */
+.lead-list{background:var(--w);border-radius:14px;border:1px solid var(--br);overflow:hidden;margin:18px 0}
+.lead-row{display:grid;grid-template-columns:70px 1fr;gap:0;border-bottom:1px solid var(--br);padding:0}
+.lead-row:last-child{border-bottom:none}
+.lead-score{background:var(--cream);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:800;color:var(--bd);border-right:1px solid var(--br)}
+.lead-score.rev{background:#f4ead9;color:var(--bm)}
+.lead-body{padding:14px 18px}
+.lead-head{display:flex;gap:14px;align-items:center;margin-bottom:6px;flex-wrap:wrap}
+.lead-name{font-family:'Playfair Display',serif;font-size:1.02rem;font-weight:700;color:var(--bd);flex:1;min-width:200px}
+.lead-tel{font-size:.8rem;color:var(--bm);font-weight:600;font-family:'Inter',sans-serif}
+.lead-date{font-size:.72rem;color:var(--tl);letter-spacing:.5px}
+.lead-meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.chip{display:inline-block;padding:2px 10px;background:var(--cream);border:1px solid var(--br);border-radius:12px;font-size:.7rem;color:var(--t);font-weight:600}
+.chip.gold{background:rgba(201,169,110,.18);border-color:var(--g);color:var(--bd)}
+.lead-obs{font-size:.83rem;color:var(--tl);line-height:1.5;font-style:italic;margin-top:4px}
+
+/* DOWNLOADS */
+.downloads{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
+.dl-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;background:var(--bd);color:white;text-decoration:none;border-radius:10px;font-size:.85rem;font-weight:700;letter-spacing:.3px;transition:all .2s}
+.dl-btn:hover{background:var(--g);color:var(--bd)}
+.dl-btn.g{background:var(--g);color:var(--bd)}
+.dl-btn.g:hover{background:var(--bd);color:white}
+.dl-btn::before{content:'⬇'}
+
+/* FOOTER */
+footer{background:var(--bd);color:var(--gl);padding:40px 0;margin-top:36px;text-align:center}
+footer .brand{font-family:'Playfair Display',serif;font-size:1.05rem;letter-spacing:4px;color:var(--g);font-weight:700;margin-bottom:8px}
+footer p{font-size:.82rem;line-height:1.6}
+
+@media(max-width:900px){.container{padding:0 24px}.toc-inner{padding:0 24px}.scoreboard{grid-template-columns:repeat(2,1fr);padding:18px 18px;margin:-18px auto 26px}.score-cell:not(:last-child)::after{display:none}.findings{grid-template-columns:1fr}.therm-grid{grid-template-columns:1fr}.bar-row{grid-template-columns:110px 1fr 80px;font-size:.78rem}.hero h1{font-size:2rem}.mb-wrap{height:130px;gap:4px}.mb-label{font-size:.58rem}.lead-head{flex-direction:column;align-items:flex-start;gap:4px}}
+@media print{*{print-color-adjust:exact;-webkit-print-color-adjust:exact}.section,.lead-row,.finding,.therm-card{page-break-inside:avoid}nav.toc{display:none}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Base clasificada · Datos reales</div>
+    <h1>395 leads de Falhaus<br>clasificados en el <em>nuevo pipeline</em></h1>
+    <p class="hero-sub">Scoring 0-100 aplicado, etapa de pipeline asignada, revendedores identificados, leads en propuesta sin seguimiento detectados. Todo lo que antes estaba enterrado en la planilla, hoy está visible y ordenado.</p>
+    <div class="hero-meta">Falhaus × Antuara · 24 de abril de 2026</div>
+  </div>
+</header>
+
+<!-- SCOREBOARD -->
+<div class="container">
+  <div class="scoreboard">
+    <div class="score-cell"><div class="score-val">395</div><div class="score-lbl">Leads<br>clasificados</div></div>
+    <div class="score-cell"><div class="score-val ok">20</div><div class="score-lbl">En Propuesta<br>(acción ya)</div></div>
+    <div class="score-cell"><div class="score-val wrn">282</div><div class="score-lbl">En Visita/<br>Reunión</div></div>
+    <div class="score-cell"><div class="score-val info">21</div><div class="score-lbl">Interesados<br>en revender</div></div>
+    <div class="score-cell"><div class="score-val">10</div><div class="score-lbl">Tibios<br>(score 40-59)</div></div>
+    <div class="score-cell"><div class="score-val">5.5</div><div class="score-lbl">Score promedio<br>del dataset</div></div>
+  </div>
+</div>
+
+<nav class="toc">
+  <div class="toc-inner">
+    <span class="toc-label">Secciones →</span>
+    <a href="#hallazgos">Hallazgos clave</a>
+    <a href="#pipeline">Pipeline</a>
+    <a href="#thermometer">Termómetro</a>
+    <a href="#propuestas">Propuestas sin seguir</a>
+    <a href="#tibios">Tibios priorizables</a>
+    <a href="#revendedores">Revendedores</a>
+    <a href="#evolucion">Evolución</a>
+    <a href="#pendiente">Pendiente de carga</a>
+    <a href="#descargas">Descargas</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- HALLAZGOS -->
+  <section class="section" id="hallazgos">
+    <div class="section-label">Hallazgos críticos</div>
+    <h2>Lo que aparece cuando ordenás la base</h2>
+    <p class="section-intro">Tres hechos que hasta ayer estaban tapados. Son acciones, no curiosidades.</p>
+
+    <div class="findings">
+      <div class="finding gold">
+        <div class="finding-num">21</div>
+        <h4>Interesados en ser revendedores</h4>
+        <p>Gente que dejó anotado explícitamente que quiere representar Falhaus. Hasta hoy, mezclados con todo lo demás. Son el piloto del programa B2B2C.</p>
+      </div>
+      <div class="finding ok">
+        <div class="finding-num">20</div>
+        <h4>Leads en etapa Propuesta</h4>
+        <p>Cotización enviada o mencionada, pero sin flujo formal de seguimiento. Acá es donde más fuga hay y donde más impacto tiene reagarrarlos esta semana.</p>
+      </div>
+      <div class="finding wrn">
+        <div class="finding-num">5.5</div>
+        <h4>Score promedio del dataset</h4>
+        <p>Bajísimo — no porque los leads sean malos, sino porque las observaciones no tienen terreno/presupuesto/plazo explícitos. La carga de datos es la limitante, no la calidad del lead.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box danger">
+      <p><strong>Lectura directa para Fede:</strong> la base no está perdiendo prospectos por falta de demanda. Está perdiendo prospectos por falta de organización. Organizada como la ves acá, ya se ven oportunidades concretas: 21 revendedores, 20 propuestas activas, decenas de leads en Visita/Reunión esperando seguimiento.</p>
+    </div>
+  </section>
+
+  <!-- PIPELINE -->
+  <section class="section" id="pipeline">
+    <div class="section-label">Pipeline · distribución real</div>
+    <h2>En qué etapa quedó cada lead</h2>
+    <p class="section-intro">Asignación automática según estado original + tipo de contacto registrado + palabras clave en observaciones.</p>
+
+    <div class="bar-chart">
+      <h3>Distribución por etapa</h3>
+      
+    <div class="bar-row">
+      <div class="bar-label">Descubrimiento</div>
+      <div class="bar-track"><div class="bar-fill" style="width:22.5%"></div></div>
+      <div class="bar-value">89 <span>(23%)</span></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Calificación</div>
+      <div class="bar-track"><div class="bar-fill" style="width:1.0%"></div></div>
+      <div class="bar-value">4 <span>(1%)</span></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Visita/Reunión</div>
+      <div class="bar-track"><div class="bar-fill" style="width:71.4%"></div></div>
+      <div class="bar-value">282 <span>(71%)</span></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Propuesta</div>
+      <div class="bar-track"><div class="bar-fill" style="width:5.1%"></div></div>
+      <div class="bar-value">20 <span>(5%)</span></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Negociación</div>
+      <div class="bar-track"><div class="bar-fill" style="width:0.0%"></div></div>
+      <div class="bar-value">0 <span>(0%)</span></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Cerrado-Ganado</div>
+      <div class="bar-track"><div class="bar-fill" style="width:0.0%"></div></div>
+      <div class="bar-value">0 <span>(0%)</span></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Cerrado-Perdido</div>
+      <div class="bar-track"><div class="bar-fill" style="width:0.0%"></div></div>
+      <div class="bar-value">0 <span>(0%)</span></div>
+    </div>
+    </div>
+
+    <div class="bar-chart">
+      <h3>Distribución por tipo de proyecto</h3>
+      
+    <div class="bar-row">
+      <div class="bar-label">Pendiente</div>
+      <div class="bar-track"><div class="bar-fill alt" style="width:86.3%"></div></div>
+      <div class="bar-value">341 <span>(86%)</span></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">B2B - Revendedor</div>
+      <div class="bar-track"><div class="bar-fill alt" style="width:5.6%"></div></div>
+      <div class="bar-value">22 <span>(6%)</span></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Vivienda principal</div>
+      <div class="bar-track"><div class="bar-fill alt" style="width:4.1%"></div></div>
+      <div class="bar-value">16 <span>(4%)</span></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Comercial</div>
+      <div class="bar-track"><div class="bar-fill alt" style="width:2.8%"></div></div>
+      <div class="bar-value">11 <span>(3%)</span></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Segunda residencia</div>
+      <div class="bar-track"><div class="bar-fill alt" style="width:1.0%"></div></div>
+      <div class="bar-value">4 <span>(1%)</span></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Inversión / alquiler</div>
+      <div class="bar-track"><div class="bar-fill alt" style="width:0.3%"></div></div>
+      <div class="bar-value">1 <span>(0%)</span></div>
+    </div>
+    </div>
+
+    <div class="highlight-box info">
+      <p><strong>Lo que muestra este corte:</strong> 282 leads en etapa Visita/Reunión significa que tenés un pool enorme de gente que ya tuvo contacto directo con vos o el equipo. Ese pool es la materia prima de las ventas del próximo trimestre.</p>
+    </div>
+  </section>
+
+  <!-- THERMOMETER -->
+  <section class="section" id="thermometer">
+    <div class="section-label">Termómetro de leads</div>
+    <h2>Scoring aplicado · cómo quedó el dataset</h2>
+    <p class="section-intro">Cada lead recibió un puntaje 0-100 según los 4 criterios: terreno, presupuesto, plazo, alineación con oferta.</p>
+
+    <div class="therm-grid">
+      <div class="therm-card cold">
+        <h4>Fríos</h4>
+        <div class="range">0 – 39</div>
+        <div class="count">385</div>
+        <p>Nurturing con contenido mensual. El grueso de la base — requiere enriquecimiento de datos para recalificar.</p>
+      </div>
+      <div class="therm-card warm">
+        <h4>Tibios</h4>
+        <div class="range">40 – 59</div>
+        <div class="count">10</div>
+        <p>Seguimiento quincenal. Con un dato más, saltan a caliente. Los listamos abajo para revisión con Fede.</p>
+      </div>
+      <div class="therm-card hot">
+        <h4>Calientes</h4>
+        <div class="range">60 – 100</div>
+        <div class="count">0</div>
+        <p>Ninguno automáticamente todavía — los datos no alcanzan. Al revisar los tibios con tu criterio humano, varios van a subir.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <p><strong>Por qué hay 0 calientes automáticos:</strong> el algoritmo pide los 4 datos completos para llegar a 60. La mayoría de tus leads tienen anotaciones parciales (por ejemplo "quiere una nómada de 72m²" pero no dice si tiene terreno ni cuándo compra). Cuando vos, en 5 minutos por lead, completás los 4 dropdowns del CRM, el score salta automáticamente.</p>
+    </div>
+  </section>
+
+  <!-- PROPUESTAS -->
+  <section class="section" id="propuestas">
+    <div class="section-label">Prioridad 01 · esta semana</div>
+    <h2>Los 20 leads en etapa Propuesta</h2>
+    <p class="section-intro">Cotización ya enviada o mencionada, sin seguimiento formal. Acá es donde más rápido se monetiza el trabajo hecho.</p>
+
+    <div class="lead-list">
+      
+<div class="lead-row">
+  <div class="lead-score">42</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">GUILLERMO LINARES</div>
+      <div class="lead-tel">‪3512 41‑0127‬</div>
+      <div class="lead-date">2026-04-07</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Propuesta</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Alto</span>
+      <span class="chip">Plazo: Sin plazo</span>
+      <span class="chip gold">Próx: En 10-15 días</span>
+    </div>
+    <div class="lead-obs">DEPOSITO FISCAL DE LA CAMARA DE COMERCIO EXTERIOR....OFICINA CON ESPACIO PARA 8 COLABORADORES... SIN COCINA NI BAÑO...... MODULO OPEN SPACE  .... 4 DE 20 PIES...... ZONA INDUSTRIAL SUR A 1 KM DE LA CI…</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">30</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">ANA</div>
+      <div class="lead-tel">‪2945 68‑0359‬</div>
+      <div class="lead-date">2026-01-29</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Propuesta</span>
+      <span class="chip">Terreno: Probable</span>
+      <span class="chip">Presup: Pendiente</span>
+      <span class="chip">Plazo: Sin plazo</span>
+      <span class="chip gold">Próx: En 30-45 días (nurturing)</span>
+    </div>
+    <div class="lead-obs">TIENE UNA AMIGA ARQUITECTA. ELLA QUIERE UNA NOMADA PARA UN TERRENO QUE TIENE Y ADEMAS COTIZAR UNOS LOCALES COMERCIALES DE 200 M2</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">26</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Q2</div>
+      <div class="lead-tel">2215 59-2017</div>
+      <div class="lead-date">2026-04-20</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Propuesta</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Bajo</span>
+      <span class="chip">Plazo: 3-6 meses</span>
+      <span class="chip gold">Próx: En 30-45 días (nurturing)</span>
+    </div>
+    <div class="lead-obs">VINO CON ALEJANDRA, ES ABOGADO QUE TIENE RETIRO POR INVALIDEZ, QUIERE UNA NOMADA PARA TRASLASIERRA CORDOBA AL LIMITE CON SAN LUIS. DICE QUE EN AGOSTO VA A TENER EL DINERO, COTIZARLE CON ANAFE Y CALEFO…</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">22</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">ERNESTO KLAPPENBACH</div>
+      <div class="lead-tel">11 4538-8065</div>
+      <div class="lead-date">2026-02-12</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Propuesta</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Medio</span>
+      <span class="chip">Plazo: Sin plazo</span>
+      <span class="chip gold">Próx: En 30-45 días (nurturing)</span>
+    </div>
+    <div class="lead-obs">SE LE COTIZO POR 9800 USS UN MODULO DE 6X3 CON BAÑO ARMADO EN BECCAR</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">22</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">PABLO Y DIEGO AGUIRRE</div>
+      <div class="lead-tel">—</div>
+      <div class="lead-date">2026-03-28</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Propuesta</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Medio</span>
+      <span class="chip">Plazo: Sin plazo</span>
+      <span class="chip gold">Próx: En 30-45 días (nurturing)</span>
+    </div>
+    <div class="lead-obs">VINIERON JUNTO CON PATRICIA LA ESPOSA DE PABLO..... SE COTIZO LO SIGUIENTE POR LA COMPRA DE DOS CASAS..... Con revestimiento exterior techo y galería 
+
+Se restó anafe termotanque 
+
+Uss 22920</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">22</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Noelia Zarria</div>
+      <div class="lead-tel">11 5655 1920</div>
+      <div class="lead-date">2026-04-16</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Propuesta</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Medio</span>
+      <span class="chip">Plazo: Sin plazo</span>
+      <span class="chip gold">Próx: En 30-45 días (nurturing)</span>
+    </div>
+    <div class="lead-obs">quiere 6 mobilenios premium uss 9800 mas iva cotizados cada uno.... pendiente cotizar envíos....</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">10</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Agustín Stockli Gualeguaychú E.R  - Falhaus - Aislate Poliuretano</div>
+      <div class="lead-tel">3446 36-5315</div>
+      <div class="lead-date">2026-01-30</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Propuesta</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Bajo</span>
+      <span class="chip">Plazo: Sin plazo</span>
+      <span class="chip gold">Próx: En 30-45 días (nurturing)</span>
+    </div>
+    <div class="lead-obs">VINO CON SU ESPOSA LUCIA Y SU HIJA DE 2 AÑOS..... ..... LE COTIZAMOS USS 3200 sin baño y 3800 con baño MODULO DESARMADO DE 6X3</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">10</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Juany Spinella Falhaus</div>
+      <div class="lead-tel">2284 30-4433</div>
+      <div class="lead-date">2026-02-02</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Propuesta</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Bajo</span>
+      <span class="chip">Plazo: Sin plazo</span>
+      <span class="chip gold">Próx: En 30-45 días (nurturing)</span>
+    </div>
+    <div class="lead-obs">QUIERE UNA NOMADA 72 M2. LE VAMOS A COTIZAR CON GANANCIA DE 4000 USS</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">0</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">JUAMPI YOFRE</div>
+      <div class="lead-tel">11 3388‑5094</div>
+      <div class="lead-date">2025-12-19</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Propuesta</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Pendiente</span>
+      <span class="chip">Plazo: Sin plazo</span>
+      <span class="chip gold">Próx: En 30-45 días (nurturing)</span>
+    </div>
+    <div class="lead-obs">POR UN REFUGIO PARA MONTURERO PARA ZARATE..... SE MANDO A COTIZAR ENVIO ...... Necesito cotizar envío a 
+
+https://share.google/Qhr5sDcZ3IPCWzxed</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">0</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">TOTI</div>
+      <div class="lead-tel">—</div>
+      <div class="lead-date">2025-12-30</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Propuesta</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Pendiente</span>
+      <span class="chip">Plazo: Sin plazo</span>
+      <span class="chip gold">Próx: En 30-45 días (nurturing)</span>
+    </div>
+    <div class="lead-obs">HAY QUE COTIZARLE 8 MODULOS DE 6X3</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">0</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Fernando, Rosario de la Frontera -Salta</div>
+      <div class="lead-tel">1 (305) 984-5194</div>
+      <div class="lead-date">2026-01-26</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Propuesta</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Pendiente</span>
+      <span class="chip">Plazo: Sin plazo</span>
+      <span class="chip gold">Próx: En 30-45 días (nurturing)</span>
+    </div>
+    <div class="lead-obs">COTIZARLE 2 MODULOS DE 6X3 CON COCINA Y BAÑO CON TECHO O ALGO MEJORADO EL DISEÑO.</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">0</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Silvia Emiliozzi</div>
+      <div class="lead-tel">11 4023-9913</div>
+      <div class="lead-date">2026-01-27</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Propuesta</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Pendiente</span>
+      <span class="chip">Plazo: Sin plazo</span>
+      <span class="chip gold">Próx: En 30-45 días (nurturing)</span>
+    </div>
+    <div class="lead-obs">ES PARA QUEQUEN .... ARENAS VERDES.... COTIZAR...</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">0</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">HERNAN REYES</div>
+      <div class="lead-tel">2975154800.0</div>
+      <div class="lead-date">2026-02-04</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Propuesta</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Pendiente</span>
+      <span class="chip">Plazo: Sin plazo</span>
+      <span class="chip gold">Próx: En 30-45 días (nurturing)</span>
+    </div>
+    <div class="lead-obs">QUIERE COTIZAR 4 módulos 
+
+2,4 x 6 m
+
+Sobre un lateral dos ventanas y una puerta - Ventanas corredizas con reja. 
+Instalación eléctrica para AA 
+Luz en el módulo dos plafones de tubos de led
+
+Dos toma…</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">0</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Lucas Martín Barreto Falhaus</div>
+      <div class="lead-tel">3402 48-6725</div>
+      <div class="lead-date">2026-02-12</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Propuesta</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Pendiente</span>
+      <span class="chip">Plazo: Sin plazo</span>
+      <span class="chip gold">Próx: En 30-45 días (nurturing)</span>
+    </div>
+    <div class="lead-obs">quiere una nomada  36 m, para arroyo seco. santa fe. cotizar instalación y transporte....</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">0</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Ana María Duvnjak</div>
+      <div class="lead-tel">5493364576265.0</div>
+      <div class="lead-date">2026-02-26</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Propuesta</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Pendiente</span>
+      <span class="chip">Plazo: Sin plazo</span>
+      <span class="chip gold">Próx: En 30-45 días (nurturing)</span>
+    </div>
+    <div class="lead-obs">EL CABALLERO TOCA EL BANDONEON, QUIEREN COTIZACION DE 1 NOMADA Y UNA DE 6X3</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">0</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Nancy</div>
+      <div class="lead-tel">5492342457694.0</div>
+      <div class="lead-date">2026-02-26</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Propuesta</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Pendiente</span>
+      <span class="chip">Plazo: Sin plazo</span>
+      <span class="chip gold">Próx: En 30-45 días (nurturing)</span>
+    </div>
+    <div class="lead-obs">QUIERE COTIZAR DOS DUPLEX DE 8X3</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">0</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">HUGO AGUERO</div>
+      <div class="lead-tel">3804 52-5240</div>
+      <div class="lead-date">2026-03-16</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Propuesta</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Pendiente</span>
+      <span class="chip">Plazo: Sin plazo</span>
+      <span class="chip gold">Próx: En 30-45 días (nurturing)</span>
+    </div>
+    <div class="lead-obs">ES CONSTRUCTOR, QUIERE COTIZAR MOBILENIO PREMIUM.  6X3</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">0</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Cristian Ali</div>
+      <div class="lead-tel">11 6122-5160</div>
+      <div class="lead-date">2026-03-20</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Propuesta</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Pendiente</span>
+      <span class="chip">Plazo: Sin plazo</span>
+      <span class="chip gold">Próx: En 30-45 días (nurturing)</span>
+    </div>
+    <div class="lead-obs">Es policia el caballero, vive en la plata y la casa de 36 m2 es para carmen de patagones (950 km)</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">0</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">VALERIA TREZZA</div>
+      <div class="lead-tel">2901 468427</div>
+      <div class="lead-date">2026-03-28</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Propuesta</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Pendiente</span>
+      <span class="chip">Plazo: Sin plazo</span>
+      <span class="chip gold">Próx: En 30-45 días (nurturing)</span>
+    </div>
+    <div class="lead-obs">COTIZARLE EL ENVIO DE 3 CASAS NOMADAS A TIERRA DEL FUEGO....</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">0</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Luis Bengolea Ref Nacho Ledesma</div>
+      <div class="lead-tel">11 2237-8692</div>
+      <div class="lead-date">2026-04-23</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Propuesta</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Pendiente</span>
+      <span class="chip">Plazo: Sin plazo</span>
+      <span class="chip gold">Próx: En 30-45 días (nurturing)</span>
+    </div>
+    <div class="lead-obs">QUIERE UNA NOMADA PARA RAUCH. COTIZARLE PROPUESTA.</div>
+  </div>
+</div>
+
+    </div>
+  </section>
+
+  <!-- TIBIOS -->
+  <section class="section" id="tibios">
+    <div class="section-label">Prioridad 02 · primeros a enriquecer</div>
+    <h2>Top 10 tibios priorizables</h2>
+    <p class="section-intro">Scoring 40-59 con los datos actuales. Con el primer contacto + completar los 4 dropdowns del CRM, varios pasan a caliente.</p>
+
+    <div class="lead-list">
+      
+<div class="lead-row">
+  <div class="lead-score">58</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Dario</div>
+      <div class="lead-tel">9 362 421-7274</div>
+      <div class="lead-date">2025-12-20</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Descubrimiento</span>
+      <span class="chip">Terreno: Probable</span>
+      <span class="chip">Presup: Pendiente</span>
+      <span class="chip">Plazo: ≤3 meses</span>
+      <span class="chip gold">Próx: En 10-15 días</span>
+    </div>
+    <div class="lead-obs">20-12-25: ENTREVISTADO DE NUEVO, VIENE A BSAS EN ENERO, TIENE EL HIJO EN TUCUMAN Y PASTEUR, TRABAJA EN EL BANCO DEL CHACO ES ABOGADO,  EL VIVE EN RESISTENCIA Y LA CASA LA QUIERE PARA ALQUILAR Y PARA I…</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">56</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">VICTOR CHAVEZ</div>
+      <div class="lead-tel">2942 55-2721</div>
+      <div class="lead-date">2026-03-23</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Visita/Reunión</span>
+      <span class="chip">Terreno: Probable</span>
+      <span class="chip">Presup: Medio</span>
+      <span class="chip">Plazo: 3-6 meses</span>
+      <span class="chip gold">Próx: En 10-15 días</span>
+    </div>
+    <div class="lead-obs">ES PARA MOQUEHUE NEUQUEN, PARA SEPTIEMBRE, LE INTERESA CASA CON TECHO EXTRA Y GALERIA. 23000 USS . TIENE AMIGOS QUE TIENEN TERRENO, LE OFRECI PARTICIPACION</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">50</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">KARINA GATELUMENDI CON EL ESPOSO MIGUEL</div>
+      <div class="lead-tel">—</div>
+      <div class="lead-date">2026-03-12</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Visita/Reunión</span>
+      <span class="chip">Terreno: Sí</span>
+      <span class="chip">Presup: Pendiente</span>
+      <span class="chip">Plazo: Sin plazo</span>
+      <span class="chip gold">Próx: En 10-15 días</span>
+    </div>
+    <div class="lead-obs">EL CABALLERO ES CONTADOR, HACE VIANDAS, Y ES COCINERO. QUIEREN UNA CASA PARA SU TERRENO EN GRAL RODRIGUEZ</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">50</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">JORGE BUSTOS</div>
+      <div class="lead-tel">299 581 7579</div>
+      <div class="lead-date">2026-04-23</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Visita/Reunión</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Alto</span>
+      <span class="chip">Plazo: Sin plazo</span>
+      <span class="chip gold">Próx: En 10-15 días</span>
+    </div>
+    <div class="lead-obs">QUIERE UNA CASA PARA CENTENARIO NEUQUEN - SE HABLÓ DE USS 600/M2 MAS UNOS USS 4000 EL TECHO EXTRA CON LA GALERÍA . . . . DERIVADO A OSCAR... LE DIJE QUE CUANDO TENGAN LA UNIDAD MODELO EN ALLEN LO VAN …</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">42</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">GUILLERMO LINARES</div>
+      <div class="lead-tel">‪3512 41‑0127‬</div>
+      <div class="lead-date">2026-04-07</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Propuesta</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Alto</span>
+      <span class="chip">Plazo: Sin plazo</span>
+      <span class="chip gold">Próx: En 10-15 días</span>
+    </div>
+    <div class="lead-obs">DEPOSITO FISCAL DE LA CAMARA DE COMERCIO EXTERIOR....OFICINA CON ESPACIO PARA 8 COLABORADORES... SIN COCINA NI BAÑO...... MODULO OPEN SPACE  .... 4 DE 20 PIES...... ZONA INDUSTRIAL SUR A 1 KM DE LA CI…</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">40</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Dario</div>
+      <div class="lead-tel">9 362 421-7274</div>
+      <div class="lead-date">2025-11-12</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Visita/Reunión</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Pendiente</span>
+      <span class="chip">Plazo: ≤3 meses</span>
+      <span class="chip gold">Próx: En 10-15 días</span>
+    </div>
+    <div class="lead-obs">12-11-25 ENTREVISTADO, HACERLE SEGUIMIENTO....Busca un monoambiente para vivienda propia, algo accesible, Instalación previa para febrero</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">40</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Rodrigo</div>
+      <div class="lead-tel">9 3415 47-3501</div>
+      <div class="lead-date">2025-11-13</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Calificación</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Pendiente</span>
+      <span class="chip">Plazo: ≤3 meses</span>
+      <span class="chip gold">Próx: En 10-15 días</span>
+    </div>
+    <div class="lead-obs">Vivienda , lote en Uranga Santa Fe , unidades para dos personas o una , febrero 2026 ENVIAR UN MENSAJE EL LUNES PARA COORDINAR UNA VIDEO LLAMADA</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">40</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Nico</div>
+      <div class="lead-tel">9 11 6706-0158</div>
+      <div class="lead-date">2025-11-17</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Visita/Reunión</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Pendiente</span>
+      <span class="chip">Plazo: ≤3 meses</span>
+      <span class="chip gold">Próx: En 10-15 días</span>
+    </div>
+    <div class="lead-obs">16 hs entrevistado, interesado en 2 modulos desarmados, con baño y cocina....Vivienda, Zona Cañuelas, estimado febrero Marzo lunes 17 16:00 llamada</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">40</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Raul Olivera Cliente Campamento Minero Ref Manuel Pobirsky</div>
+      <div class="lead-tel">—</div>
+      <div class="lead-date">2026-02-03</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Visita/Reunión</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Pendiente</span>
+      <span class="chip">Plazo: ≤3 meses</span>
+      <span class="chip gold">Próx: En 10-15 días</span>
+    </div>
+    <div class="lead-obs">EN SAN JUAN SE VIENE LA EXPLOSIÓN MINERA - HAY UNA NECESIDAD DE VIVIENDA Y LOS CAMPAMENTOS QUE SE VAN A HACER QUE REALMENTE NO EXISTE EN SAN JUAN!! 
+
+A MEDIADOS DE MAYO SE HACE LA FERIA MAS IMPORTANTE…</div>
+  </div>
+</div>
+
+<div class="lead-row">
+  <div class="lead-score">40</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">SANTIAGO ALMEIDA</div>
+      <div class="lead-tel">‪3543 55‑8326‬</div>
+      <div class="lead-date">2026-03-26</div>
+    </div>
+    <div class="lead-meta">
+      <span class="chip">Etapa: Visita/Reunión</span>
+      <span class="chip">Terreno: Pendiente</span>
+      <span class="chip">Presup: Pendiente</span>
+      <span class="chip">Plazo: ≤3 meses</span>
+      <span class="chip gold">Próx: En 10-15 días</span>
+    </div>
+    <div class="lead-obs">ES PARA UNA CASA EN EL CAMPO.... PARA JULIO Y ESTÁ COMPARANDO OPCIONES DE TIPO DE CASAS</div>
+  </div>
+</div>
+
+    </div>
+  </section>
+
+  <!-- REVENDEDORES -->
+  <section class="section" id="revendedores">
+    <div class="section-label">Oportunidad B2B2C · piloto del programa</div>
+    <h2>Los 21 leads interesados en revender</h2>
+    <p class="section-intro">Identificados por mención explícita en observaciones. Son los candidatos naturales para lanzar el Programa Socios Falhaus.</p>
+
+    <div class="highlight-box success">
+      <p><strong>Lo que hacemos con esta lista:</strong> una vez firmado el Acuerdo Marco (entregable aparte), se los contacta en orden de score y se les ofrece entrar al piloto. Empezamos por 2-3 y escalamos.</p>
+    </div>
+
+    <div class="lead-list">
+      
+<div class="lead-row rev-row">
+  <div class="lead-score rev">32</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">MATÍAS CAPUTO FALHAUS</div>
+      <div class="lead-tel">2241 50-9141</div>
+      <div class="lead-date">16/03/2026</div>
+    </div>
+    <div class="lead-obs">VINO POR UN REFUGIO PARA LA RUTA, PODRÍAMOS LLEVARLO A UN MOBILENIO PREMIUM DESARMADO. USS 9000..... VAMOS A VOLVER A HABLAR ESTA SEMANA PARA QUE SEA REVENDEDOR...</div>
+  </div>
+</div>
+
+<div class="lead-row rev-row">
+  <div class="lead-score rev">26</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Nico</div>
+      <div class="lead-tel">2804590351.0</div>
+      <div class="lead-date">12/11/2025</div>
+    </div>
+    <div class="lead-obs">17-11 25: ENTREVISTADO NUEVAMENTE....13-11-25:Entrevistado: Le interesa ser representante, hacerle seguimiento....12-11-25: Uso comercial. Interesado en una unidad. Instalación prevista en 6 meses. comunicarse preferible…</div>
+  </div>
+</div>
+
+<div class="lead-row rev-row">
+  <div class="lead-score rev">10</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Fabian Godoy</div>
+      <div class="lead-tel">2901 44 8711</div>
+      <div class="lead-date">12/11/2025</div>
+    </div>
+    <div class="lead-obs">12-11-25:Entrevistado: Le interesa ser representante, hacerle seguimiento</div>
+  </div>
+</div>
+
+<div class="lead-row rev-row">
+  <div class="lead-score rev">10</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">OSCAR GHILARDELLI</div>
+      <div class="lead-tel">—</div>
+      <div class="lead-date">13/11/2025</div>
+    </div>
+    <div class="lead-obs">13-11-25: ENTREVISTADO, QUIERE UNA CASA DE 36 M2 Y ser representante.</div>
+  </div>
+</div>
+
+<div class="lead-row rev-row">
+  <div class="lead-score rev">10</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">mauricio moyano</div>
+      <div class="lead-tel">351 752 3499</div>
+      <div class="lead-date">13/12/2025</div>
+    </div>
+    <div class="lead-obs">LE INTERESA COMPRAR 3 REFUGIOS.Y SER REVENDEDOR</div>
+  </div>
+</div>
+
+<div class="lead-row rev-row">
+  <div class="lead-score rev">10</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Ing. Emilio Rueda E. E.</div>
+      <div class="lead-tel">3513 92-1127</div>
+      <div class="lead-date">08/01/2026</div>
+    </div>
+    <div class="lead-obs">QUIERE UNA CASA PARA UNA CLIENTA, ES PARA TANTI CORDOBA AHI NOMAS DE VILLA CARLOS PAZ....... QUIERE SER REVENDEDOR EN CORDOBA</div>
+  </div>
+</div>
+
+<div class="lead-row rev-row">
+  <div class="lead-score rev">10</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">MARIO BORDEIRA DE PINAMAR</div>
+      <div class="lead-tel">11 4026-9966</div>
+      <div class="lead-date">19/01/2026</div>
+    </div>
+    <div class="lead-obs">QUIERE SER REPRESENTANTE O REVENDEDOR...</div>
+  </div>
+</div>
+
+<div class="lead-row rev-row">
+  <div class="lead-score rev">10</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">IVAN CON SU HERMANO</div>
+      <div class="lead-tel">11 5845-6912</div>
+      <div class="lead-date">21/01/2026</div>
+    </div>
+    <div class="lead-obs">QUIEREN REVENDER REFUGIOS, EL VIERNES ME ESCRIBE PARA VENIR EL SABADO</div>
+  </div>
+</div>
+
+<div class="lead-row rev-row">
+  <div class="lead-score rev">10</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Agustín Stockli Gualeguaychú E.R  - Falhaus - Aislate Poliuretano</div>
+      <div class="lead-tel">3446 36-5315</div>
+      <div class="lead-date">24/01/2026</div>
+    </div>
+    <div class="lead-obs">QUIERE SER REVENDEDOR - VIENE EL VIERNES 30-1 A LAS 930 HS</div>
+  </div>
+</div>
+
+<div class="lead-row rev-row">
+  <div class="lead-score rev">10</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">AMILCAR PEREZ OLIVERA</div>
+      <div class="lead-tel">2644 73-3794</div>
+      <div class="lead-date">26/01/2026</div>
+    </div>
+    <div class="lead-obs">QUIERE SER REVENDEDOR</div>
+  </div>
+</div>
+
+<div class="lead-row rev-row">
+  <div class="lead-score rev">10</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">🙋🏻‍♂️ Axel Pedemonte Brychand Falhaus</div>
+      <div class="lead-tel">2995 69-3511</div>
+      <div class="lead-date">03/02/2026</div>
+    </div>
+    <div class="lead-obs">AXEL Y NICOLE QUIEREN COMPRAR UN REFUGIO PARA OFICINA Y TAMBIÉN VIAJAR A BSAS PARA REVENDER....</div>
+  </div>
+</div>
+
+<div class="lead-row rev-row">
+  <div class="lead-score rev">10</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Mariela Carolina Di Gennaro San Luis Falhaus</div>
+      <div class="lead-tel">2665 00-2074</div>
+      <div class="lead-date">09/02/2026</div>
+    </div>
+    <div class="lead-obs">quiere ser revendedora</div>
+  </div>
+</div>
+
+<div class="lead-row rev-row">
+  <div class="lead-score rev">10</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">LEANDRO CICHERO</div>
+      <div class="lead-tel">2966 383 875</div>
+      <div class="lead-date">19/02/2026</div>
+    </div>
+    <div class="lead-obs">QUIERE SER REVENDEDOR . ES MILITAR MANEJA HELICOPTERO ES DE RIO GALLEGOS</div>
+  </div>
+</div>
+
+<div class="lead-row rev-row">
+  <div class="lead-score rev">10</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Juan Pablo ARABEL TRUCCO &amp; ASOCIADOS Falhaus</div>
+      <div class="lead-tel">2645 01-3922</div>
+      <div class="lead-date">19/02/2026</div>
+    </div>
+    <div class="lead-obs">QUIERE REVENDER Y TIENE UN PROYECTO DE 6 CASAS CON SUS AMIGOS.</div>
+  </div>
+</div>
+
+<div class="lead-row rev-row">
+  <div class="lead-score rev">10</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">GABRIEL</div>
+      <div class="lead-tel">‪3885 71‑1462‬</div>
+      <div class="lead-date">20/02/2026</div>
+    </div>
+    <div class="lead-obs">ES DE JUJUY, ES FERRETERO, QUIERE UN MODULO DE 6 X 2,5 PARA TURISMO. LE GUSTA LA IDEA DE SER REPRESENTANTE COMERCIAL</div>
+  </div>
+</div>
+
+<div class="lead-row rev-row">
+  <div class="lead-score rev">10</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">JAIME LEGARBURU</div>
+      <div class="lead-tel">—</div>
+      <div class="lead-date">03/03/2026</div>
+    </div>
+    <div class="lead-obs">Posible Revendedor Amba</div>
+  </div>
+</div>
+
+<div class="lead-row rev-row">
+  <div class="lead-score rev">10</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">~mauro climent</div>
+      <div class="lead-tel">362 468‑9589‬</div>
+      <div class="lead-date">11/03/2026</div>
+    </div>
+    <div class="lead-obs">QUIERE REVENDER, UN COPADO EN SAN MARTIN CHACO</div>
+  </div>
+</div>
+
+<div class="lead-row rev-row">
+  <div class="lead-score rev">10</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Jose Vasco Gamio</div>
+      <div class="lead-tel">2245 45-9546</div>
+      <div class="lead-date">13/03/2026</div>
+    </div>
+    <div class="lead-obs">Quiere ser revendedor</div>
+  </div>
+</div>
+
+<div class="lead-row rev-row">
+  <div class="lead-score rev">10</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Inti CVA Deal Falhaus</div>
+      <div class="lead-tel">280 454-2395</div>
+      <div class="lead-date">15/04/2026</div>
+    </div>
+    <div class="lead-obs">PARA QUE SEA REVENDEDOR EN CHUBUT - MADRYN?</div>
+  </div>
+</div>
+
+<div class="lead-row rev-row">
+  <div class="lead-score rev">10</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">Andres Basso, veronica gallardo y julian</div>
+      <div class="lead-tel">‪+54 9 3548 63‑1758‬</div>
+      <div class="lead-date">17/04/2026</div>
+    </div>
+    <div class="lead-obs">TIENEN INMOBILIARIA EN VILLA GIARDINO, QUIEREN UN REFUGIO PARA JULIAN Y ADEMAS COMERCIALIZAR</div>
+  </div>
+</div>
+
+<div class="lead-row rev-row">
+  <div class="lead-score rev">10</div>
+  <div class="lead-body">
+    <div class="lead-head">
+      <div class="lead-name">joni Jonathan De Alvear Mendoza Falhaus</div>
+      <div class="lead-tel">2241 56-4798</div>
+      <div class="lead-date">17/04/2026</div>
+    </div>
+    <div class="lead-obs">QUIERE SER REVENDEDOR , HACE WHOOL FRAME.... VA A VENIR A BSAS</div>
+  </div>
+</div>
+
+    </div>
+  </section>
+
+  <!-- EVOLUCIÓN -->
+  <section class="section" id="evolucion">
+    <div class="section-label">Flujo de entrada</div>
+    <h2>Leads entrantes por mes</h2>
+    <p class="section-intro">La demanda está creciendo. El sistema llega justo a tiempo: sin proceso, cada mes que entra más fuerte es más volumen que se pierde.</p>
+
+    <div class="month-chart">
+      <div class="mb-wrap">
+        
+    <div class="mb-col">
+      <div class="mb-value">4</div>
+      <div class="mb-bar" style="height:4%"></div>
+      <div class="mb-label">Ene '25</div>
+    </div>
+    <div class="mb-col">
+      <div class="mb-value">41</div>
+      <div class="mb-bar" style="height:44%"></div>
+      <div class="mb-label">Nov '25</div>
+    </div>
+    <div class="mb-col">
+      <div class="mb-value">71</div>
+      <div class="mb-bar" style="height:76%"></div>
+      <div class="mb-label">Dic '25</div>
+    </div>
+    <div class="mb-col">
+      <div class="mb-value">73</div>
+      <div class="mb-bar" style="height:78%"></div>
+      <div class="mb-label">Ene '26</div>
+    </div>
+    <div class="mb-col">
+      <div class="mb-value">93</div>
+      <div class="mb-bar" style="height:100%"></div>
+      <div class="mb-label">Feb '26</div>
+    </div>
+    <div class="mb-col">
+      <div class="mb-value">60</div>
+      <div class="mb-bar" style="height:65%"></div>
+      <div class="mb-label">Mar '26</div>
+    </div>
+    <div class="mb-col">
+      <div class="mb-value">52</div>
+      <div class="mb-bar" style="height:56%"></div>
+      <div class="mb-label">Abr '26</div>
+    </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PENDIENTE -->
+  <section class="section" id="pendiente">
+    <div class="section-label">Honestidad del sistema</div>
+    <h2>Qué queda pendiente de carga humana</h2>
+    <p class="section-intro">La máquina hizo lo que pudo con lo que había escrito en observaciones. Los próximos días son de enriquecimiento manual asistido — acá está el detalle.</p>
+
+    <div class="highlight-box">
+      <p><strong>89 leads en Descubrimiento sin datos suficientes:</strong> son leads que quedaron registrados pero sin interacción trazable o con notas demasiado genéricas. No se descartan — entran a la secuencia de nurturing automática para reactivarlos con contenido.</p>
+    </div>
+    <div class="highlight-box info">
+      <p><strong>Por qué la mayoría quedó fría:</strong> porque los 4 campos (terreno, presupuesto, plazo, tipo) estaban vacíos para el 86% del dataset. Con los 5 clics post-reunión implementados desde esta semana, cada lead nuevo ya va a entrar con los 4 datos y score real desde el día 1.</p>
+    </div>
+    <div class="highlight-box success">
+      <p><strong>El dato oro para Fede:</strong> la clasificación no detectó calientes automáticos, pero detectó <em>toda</em> la información estructural que hace falta para operar. Los calientes van a aparecer en los próximos 30 días a medida que vos y el equipo carguen los datos que faltan. La máquina ya está esperando.</p>
+    </div>
+  </section>
+
+  <!-- DESCARGAS -->
+  <section class="section" id="descargas">
+    <div class="section-label">Archivos</div>
+    <h2>Descargar la base clasificada</h2>
+    <p class="section-intro">El xlsx ya viene con formato (colores por umbral, anchos de columna, auto-filter). El CSV es para importar a Prometeo o cualquier otro CRM.</p>
+
+    <div class="downloads">
+      <a class="dl-btn" href="falhaus-leads-clasificados.xlsx" download>XLSX · 395 leads con formato</a>
+      <a class="dl-btn g" href="falhaus-leads-clasificados.csv" download>CSV · mismo dataset para import</a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="brand">ANTUARA</div>
+  <p>Dashboard Leads Clasificados · Falhaus · 24 de abril de 2026<br>Fuente: BASE DE DATOS FALHAUS (1).xlsx · Algoritmo Antuara v1.0</p>
+</footer>
+
+</body>
+</html>

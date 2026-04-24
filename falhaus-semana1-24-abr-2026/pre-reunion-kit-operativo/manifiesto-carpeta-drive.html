@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manifiesto Carpeta Drive · Pre-Reunión Falhaus</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bd:#3b2314;--bm:#5c3a1e;--g:#c9a96e;--gl:#e8d5b0;--t:#2d2d2d;--tl:#6b6b6b;--bg:#faf6f1;--w:#ffffff;--br:#e0d5c8;--cream:#faf3ea;--ok:#27ae60;--wrn:#e67e22}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t);line-height:1.6}
+.container{max-width:1000px;margin:0 auto;padding:40px}
+
+header{margin-bottom:24px;padding-bottom:20px;border-bottom:2px solid var(--g)}
+.badge{display:inline-block;padding:5px 14px;background:var(--cream);border:1px solid var(--g);color:var(--bd);font-size:.7rem;font-weight:700;letter-spacing:2px;border-radius:20px;margin-bottom:14px;text-transform:uppercase}
+header h1{font-family:'Playfair Display',serif;font-size:2.1rem;color:var(--bd);line-height:1.15;margin-bottom:8px}
+header h1 em{color:var(--g);font-style:normal}
+header p{font-size:.95rem;color:var(--tl);max-width:800px;line-height:1.6}
+
+.tree{background:var(--w);border:1px solid var(--br);border-radius:14px;padding:24px 28px;margin-bottom:24px;font-family:'JetBrains Mono',monospace;font-size:.88rem;line-height:1.85;color:var(--t);overflow-x:auto}
+.tree .folder{color:var(--bm);font-weight:700}
+.tree .file{color:var(--t)}
+.tree .comment{color:var(--tl);font-style:italic}
+
+.section{background:var(--w);border:1px solid var(--br);border-radius:14px;padding:24px 28px;margin-bottom:18px}
+.section h2{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--bd);margin-bottom:10px}
+.section p{font-size:.92rem;color:var(--t);line-height:1.65;margin-bottom:10px}
+.section strong{color:var(--bd)}
+.section ul{margin-left:20px}
+.section li{padding:4px 0;font-size:.9rem;line-height:1.6}
+.section li strong{color:var(--bd)}
+
+.status-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+.status-item{background:var(--cream);border-radius:10px;padding:16px 20px;border-left:3px solid var(--g)}
+.status-item.ready{border-left-color:var(--ok)}
+.status-item.pending{border-left-color:var(--wrn)}
+.status-item h4{font-size:.75rem;color:var(--bd);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.status-item p{font-size:.85rem;color:var(--t);line-height:1.55;margin:0}
+
+code{background:var(--cream);padding:2px 8px;border-radius:6px;color:var(--bm);font-weight:600;font-family:'JetBrains Mono',monospace;font-size:.84rem}
+
+.highlight{border-left:4px solid var(--g);background:linear-gradient(135deg,rgba(201,169,110,.08),rgba(201,169,110,.03));padding:18px 22px;border-radius:0 12px 12px 0;margin:16px 0;line-height:1.6;font-size:.9rem}
+.highlight strong{color:var(--bd)}
+
+footer{margin-top:40px;padding:22px;background:var(--bd);color:var(--gl);text-align:center;border-radius:14px}
+footer .brand{font-family:'Playfair Display',serif;color:var(--g);letter-spacing:3px;font-size:1rem;font-weight:700;margin-bottom:6px}
+footer p{font-size:.82rem}
+
+@media(max-width:768px){.container{padding:20px}header h1{font-size:1.6rem}.status-grid{grid-template-columns:1fr}.tree{font-size:.78rem}}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="badge">Kit operativo · Estructura Drive</div>
+    <h1>Manifiesto de la <em>carpeta</em> de contenido</h1>
+    <p>La estructura exacta que tiene que replicarse en Google Drive para que el sistema pre-reunión funcione desde el lunes. Cada carpeta tiene un propósito. Cada archivo un nombre estandarizado.</p>
+  </header>
+
+  <div class="section">
+    <h2>Estructura de carpetas</h2>
+    <p>Crear en Drive una carpeta raíz llamada <code>FALHAUS — Contenido Pre-Reunión</code>. Dentro, replicar este árbol:</p>
+
+    <div class="tree">
+<span class="folder">FALHAUS — Contenido Pre-Reunión/</span>
+│
+├─ <span class="folder">01_Videos/</span>                                    <span class="comment"># activos audiovisuales</span>
+│   ├─ <span class="folder">proceso/</span>                                  <span class="comment"># proceso constructivo (1-2 min)</span>
+│   │   ├─ <span class="file">falhaus-proceso-entreRios-01min.mp4</span>
+│   │   └─ <span class="file">falhaus-proceso-generico-02min.mp4</span>
+│   │
+│   └─ <span class="folder">casos/</span>                                    <span class="comment"># video corto por caso</span>
+│       ├─ <span class="file">caso-familiar-pilar-01min.mp4</span>
+│       └─ <span class="file">caso-inversor-pinamar-01min.mp4</span>
+│
+├─ <span class="folder">02_Casos/</span>                                     <span class="comment"># una carpeta por cada caso cerrado</span>
+│   │
+│   ├─ <span class="folder">caso-01-familiar-pilar/</span>
+│   │   ├─ <span class="file">foto-antes-01.jpg</span>
+│   │   ├─ <span class="file">foto-antes-02.jpg</span>
+│   │   ├─ <span class="file">foto-despues-01.jpg</span>
+│   │   ├─ <span class="file">foto-despues-02.jpg</span>
+│   │   ├─ <span class="file">foto-despues-03.jpg</span>
+│   │   ├─ <span class="file">ficha-caso.pdf</span>                          <span class="comment"># m² + tiempo + presupuesto</span>
+│   │   └─ <span class="file">video-obra-01min.mp4</span>
+│   │
+│   └─ <span class="folder">caso-02-inversor-pinamar/</span>                 <span class="comment"># misma estructura</span>
+│
+├─ <span class="folder">03_Institucional/</span>                             <span class="comment"># material formal para leads exigentes</span>
+│   ├─ <span class="file">brochure-institucional-falhaus-2026.pdf</span>
+│   ├─ <span class="file">catalogo-modelos-2026.pdf</span>
+│   └─ <span class="file">ficha-tecnica-constructiva-2026.pdf</span>
+│
+├─ <span class="folder">04_Plantillas-Mensajes/</span>                       <span class="comment"># los 4 mensajes como .txt</span>
+│   ├─ <span class="file">M1-T48-confirmacion.txt</span>
+│   ├─ <span class="file">M2-T24-caso-exito.txt</span>
+│   ├─ <span class="file">M3-T2h-recordatorio.txt</span>
+│   └─ <span class="file">M4-reagendo.txt</span>
+│
+└─ <span class="folder">99_Links-Cortos/</span>                              <span class="comment"># tabla con links bit.ly activos</span>
+    └─ <span class="file">links-activos.gsheet</span>                        <span class="comment"># nombre → URL corta → URL larga</span>
+    </div>
+
+    <div class="highlight">
+      <p><strong>Convención de nombres:</strong> todos los archivos <code>kebab-case</code>, sin tildes ni eñes (para que los links no rompan). Formato fecha en nombres donde aplique: <code>YYYY-MM-DD</code>.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Permisos de compartir</h2>
+    <p>Cada archivo/carpeta que se comparte con un lead tiene que estar en modo <strong>"Cualquier persona con el enlace: Lector"</strong>. Nunca "solo invitados" — el lead abandona si tiene que logear.</p>
+    <p>Archivos sensibles (ficha-caso.pdf con datos económicos, catálogo con precios) → carpeta de acceso controlado, se comparte solo cuando el lead pide explícitamente.</p>
+  </div>
+
+  <div class="section">
+    <h2>Estado de carga inicial · semana del 28/04</h2>
+    <div class="status-grid">
+      <div class="status-item pending">
+        <h4>01_Videos/proceso/</h4>
+        <p>Editar video de Entre Ríos (grabado miércoles 23). Recorte a 1-2 min. Target: lunes 28.</p>
+      </div>
+      <div class="status-item pending">
+        <h4>02_Casos/ — primer caso</h4>
+        <p>Elegir 1 caso familiar tipo. Gabriel prepara carpeta con fotos antes/después. Target: martes 29.</p>
+      </div>
+      <div class="status-item ready">
+        <h4>03_Institucional/brochure</h4>
+        <p>PDF ya producido 22/04. Copiar a la carpeta Drive y generar link corto.</p>
+      </div>
+      <div class="status-item ready">
+        <h4>04_Plantillas-Mensajes/</h4>
+        <p>Los 4 .txt listos para volcar (copiar desde <code>mensajes-finales-copiables.html</code>).</p>
+      </div>
+      <div class="status-item pending">
+        <h4>99_Links-Cortos/</h4>
+        <p>Abrir cuenta bit.ly (o usar acortador de elección) y generar links para los archivos compartibles.</p>
+      </div>
+      <div class="status-item pending">
+        <h4>02_Casos/ — segundo caso</h4>
+        <p>Caso inversor tipo (Pinamar o similar). Target: jueves 01/05.</p>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <p><strong>Mínimo viable para arrancar el lunes 28:</strong> el brochure (listo) + 1 video de proceso (editado del material de Entre Ríos) + 1 caso con fotos (aunque sea incompleto). Con eso ya dispara la secuencia. El resto se suma sobre la marcha.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Nombres propuestos de archivos .txt (mensajes)</h2>
+    <p>Para que el equipo que dispare los mensajes no tenga que venir a preguntarte cada vez:</p>
+    <ul>
+      <li><code>M1-T48-confirmacion.txt</code> — se dispara al confirmar reunión, 48 h antes</li>
+      <li><code>M2-T24-caso-exito.txt</code> — se dispara 24 h antes con caso matcheado al perfil</li>
+      <li><code>M3-T2h-recordatorio.txt</code> — se dispara 2 h antes con link de Meet</li>
+      <li><code>M4-reagendo.txt</code> — se dispara en caso de no-show</li>
+    </ul>
+  </div>
+
+  <footer>
+    <div class="brand">ANTUARA</div>
+    <p>Manifiesto Carpeta Drive · Pre-Reunión · Falhaus · 24 abril 2026</p>
+  </footer>
+
+</div>
+
+</body>
+</html>

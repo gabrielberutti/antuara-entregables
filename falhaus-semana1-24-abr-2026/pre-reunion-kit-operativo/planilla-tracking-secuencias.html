@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planilla de Tracking · Secuencias Pre-Reunión · Falhaus</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bd:#3b2314;--bm:#5c3a1e;--g:#c9a96e;--gl:#e8d5b0;--t:#2d2d2d;--tl:#6b6b6b;--bg:#faf6f1;--w:#ffffff;--br:#e0d5c8;--cream:#faf3ea;--ok:#27ae60;--wrn:#e67e22;--err:#c0392b}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t);line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:30px 40px}
+
+header{margin-bottom:26px;padding-bottom:20px;border-bottom:2px solid var(--g)}
+.badge{display:inline-block;padding:5px 14px;background:var(--cream);border:1px solid var(--g);color:var(--bd);font-size:.7rem;font-weight:700;letter-spacing:2px;border-radius:20px;margin-bottom:14px;text-transform:uppercase}
+header h1{font-family:'Playfair Display',serif;font-size:2.1rem;color:var(--bd);line-height:1.15;margin-bottom:8px}
+header p{font-size:.95rem;color:var(--tl);max-width:800px;line-height:1.6}
+
+.instrucciones{background:var(--w);border-radius:14px;padding:22px 26px;margin-bottom:24px;border-left:4px solid var(--g);border:1px solid var(--br)}
+.instrucciones h2{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--bd);margin-bottom:8px}
+.instrucciones p{font-size:.88rem;color:var(--t);line-height:1.6;margin-bottom:6px}
+.instrucciones code{background:var(--cream);padding:2px 8px;border-radius:6px;color:var(--bm);font-weight:600;font-size:.82rem}
+
+.actions{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.btn{padding:9px 18px;background:var(--bd);color:white;border:none;border-radius:10px;font-size:.82rem;font-weight:700;cursor:pointer;letter-spacing:.5px;font-family:'Inter',sans-serif;text-decoration:none;display:inline-block;transition:all .2s}
+.btn:hover{background:var(--g);color:var(--bd)}
+.btn.g{background:var(--g);color:var(--bd)}
+.btn.g:hover{background:var(--bd);color:white}
+
+.table-wrap{background:var(--w);border-radius:14px;border:1px solid var(--br);overflow:hidden;margin-bottom:20px}
+.table-scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:1100px}
+thead th{background:var(--bd);color:white;padding:10px 12px;text-align:left;font-size:.65rem;letter-spacing:1px;text-transform:uppercase;font-weight:700;white-space:nowrap;position:sticky;top:0}
+tbody td{padding:9px 12px;border-bottom:1px solid var(--br);vertical-align:middle;white-space:nowrap}
+tbody tr:nth-child(even){background:var(--cream)}
+tbody tr:hover{background:rgba(201,169,110,.12)}
+td strong{color:var(--bd)}
+
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.65rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.tag.ok{background:rgba(39,174,96,.15);color:var(--ok)}
+.tag.w{background:rgba(230,126,34,.15);color:var(--wrn)}
+.tag.r{background:rgba(192,57,43,.15);color:var(--err)}
+.tag.bl{background:#e5e5e5;color:#666}
+
+.legenda{background:var(--w);border:1px solid var(--br);border-radius:14px;padding:18px 24px;font-size:.85rem;color:var(--t);line-height:1.7}
+.legenda h3{font-family:'Playfair Display',serif;color:var(--bd);font-size:1rem;margin-bottom:8px}
+.legenda ul{margin-left:20px;margin-top:6px}
+.legenda li{padding:3px 0}
+.legenda strong{color:var(--bd)}
+
+footer{margin-top:40px;padding:24px;background:var(--bd);color:var(--gl);text-align:center;border-radius:14px}
+footer .brand{font-family:'Playfair Display',serif;color:var(--g);letter-spacing:3px;font-size:1rem;font-weight:700;margin-bottom:6px}
+footer p{font-size:.82rem}
+
+@media(max-width:768px){.container{padding:20px}header h1{font-size:1.6rem}}
+@media print{*{print-color-adjust:exact;-webkit-print-color-adjust:exact}.actions{display:none}}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="badge">Kit operativo · Tracking</div>
+    <h1>Planilla de Tracking · Secuencias Pre-Reunión</h1>
+    <p>Una fila por lead que recibe la secuencia. Se completa al mismo tiempo que Prometeo. Sirve para medir qué funciona y ajustar sin esperar a la próxima reunión.</p>
+  </header>
+
+  <div class="instrucciones">
+    <h2>Cómo se opera</h2>
+    <p><strong>Cuando confirmás una reunión:</strong> creás una fila nueva con <code>ID</code>, <code>Fecha_agenda</code>, <code>Nombre_lead</code>, <code>WhatsApp</code>, <code>Tipo_reunion</code>, <code>Fecha_reunion</code>, <code>Hora_reunion</code>.</p>
+    <p><strong>Al disparar cada mensaje:</strong> marcás <code>SI</code> en la columna correspondiente (M1_T48_enviado, M2_T24_enviado, M3_T2h_enviado).</p>
+    <p><strong>Cuando el lead responde:</strong> anotás en <code>M1_respuesta / M2_respuesta</code> qué pasó (LEIDO, LEIDO+EMOJI, RESPONDIO, SIN_LEER, etc.).</p>
+    <p><strong>Post-reunión:</strong> completás <code>Show_up</code>, <code>Resultado_reunion</code>, <code>Score_calculado</code>, <code>Proximo_contacto</code> y <code>Notas</code>. Mismo contenido que va a Prometeo.</p>
+  </div>
+
+  <div class="actions">
+    <a class="btn" href="tracking-secuencias-pre-reunion.csv" download>⬇ Descargar planilla CSV (abrir en Excel/Sheets)</a>
+    <a class="btn g" href="mensajes-finales-copiables.html">← Volver a mensajes</a>
+  </div>
+
+  <div class="table-wrap">
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Fecha agenda</th>
+            <th>Nombre lead</th>
+            <th>WhatsApp</th>
+            <th>Tipo</th>
+            <th>Fecha reunión</th>
+            <th>Hora</th>
+            <th>M1 T-48</th>
+            <th>M1 resp.</th>
+            <th>M2 T-24</th>
+            <th>M2 resp.</th>
+            <th>M3 T-2h</th>
+            <th>Show up</th>
+            <th>Resultado</th>
+            <th>Score</th>
+            <th>Próximo contacto</th>
+            <th>Notas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>EJ-001</strong></td>
+            <td>24/04</td>
+            <td>Juan Pérez</td>
+            <td>11 5555 1234</td>
+            <td>Virtual</td>
+            <td>28/04</td>
+            <td>10:00</td>
+            <td><span class="tag ok">SI</span></td>
+            <td>Leído</td>
+            <td><span class="tag ok">SI</span></td>
+            <td>Leído + 👍</td>
+            <td><span class="tag ok">SI</span></td>
+            <td><span class="tag ok">Sí</span></td>
+            <td>Avanzó</td>
+            <td><strong>72</strong></td>
+            <td>05/05</td>
+            <td>Va con su señora al showroom lunes</td>
+          </tr>
+          <tr>
+            <td><strong>EJ-002</strong></td>
+            <td>24/04</td>
+            <td>María López</td>
+            <td>221 555 8888</td>
+            <td>Showroom</td>
+            <td>30/04</td>
+            <td>16:30</td>
+            <td><span class="tag ok">SI</span></td>
+            <td>Sin leer</td>
+            <td><span class="tag ok">SI</span></td>
+            <td>Leído</td>
+            <td><span class="tag ok">SI</span></td>
+            <td><span class="tag ok">Sí</span></td>
+            <td>Pendiente</td>
+            <td><strong>45</strong></td>
+            <td>07/05</td>
+            <td>Le preocupa aislamiento térmico invierno</td>
+          </tr>
+          <tr>
+            <td><strong>EJ-003</strong></td>
+            <td>25/04</td>
+            <td>Ignacio Torres</td>
+            <td>11 4444 2222</td>
+            <td>Virtual</td>
+            <td>02/05</td>
+            <td>11:00</td>
+            <td><span class="tag ok">SI</span></td>
+            <td>Leído</td>
+            <td><span class="tag bl">NO</span></td>
+            <td>—</td>
+            <td><span class="tag bl">NO</span></td>
+            <td><span class="tag r">No</span></td>
+            <td>No-show</td>
+            <td><strong>0</strong></td>
+            <td>09/05</td>
+            <td>Disparar variante 04 para reagendar</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="legenda">
+    <h3>Convenciones de llenado</h3>
+    <ul>
+      <li><strong>SI/NO</strong> en columnas de envío (M1, M2, M3)</li>
+      <li><strong>M1_respuesta / M2_respuesta:</strong> LEIDO, SIN_LEER, RESPONDIO, LEIDO+EMOJI, LEIDO+RESPUESTA_LARGA</li>
+      <li><strong>Show_up:</strong> SI / NO / REAGENDADO</li>
+      <li><strong>Resultado_reunion:</strong> Avanzó / Pendiente / Descartado / No-show</li>
+      <li><strong>Score_calculado:</strong> 0-100 (del sistema de scoring)</li>
+      <li><strong>Notas:</strong> solo lo que no entra en los otros campos (objeciones, gente que interviene, competencia mencionada)</li>
+    </ul>
+  </div>
+
+  <footer>
+    <div class="brand">ANTUARA</div>
+    <p>Planilla de Tracking Pre-Reunión · Falhaus · versión 1.0 · 24 abril 2026</p>
+  </footer>
+
+</div>
+
+</body>
+</html>

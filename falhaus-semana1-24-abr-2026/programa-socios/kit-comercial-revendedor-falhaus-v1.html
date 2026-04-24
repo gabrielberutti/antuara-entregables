@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kit Comercial Revendedor · Falhaus · v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bd:#3b2314;--bm:#5c3a1e;--bl:#7a4f2b;--g:#c9a96e;--gl:#e8d5b0;--t:#2d2d2d;--tl:#6b6b6b;--bg:#faf6f1;--w:#ffffff;--br:#e0d5c8;--cream:#faf3ea;--ok:#27ae60;--wrn:#e67e22;--err:#c0392b;--info:#2980b9}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t);line-height:1.65}
+.container{max-width:1060px;margin:0 auto;padding:0 40px}
+
+/* COVER */
+.cover{background:linear-gradient(135deg,#3b2314,#5c3a1e,#7a4f2b);color:white;padding:80px 40px 70px;position:relative;overflow:hidden;text-align:center;min-height:65vh;display:flex;flex-direction:column;justify-content:center}
+.cover::before{content:'';position:absolute;top:-30%;right:-15%;width:750px;height:750px;background:radial-gradient(circle,rgba(201,169,110,.14),transparent 70%);border-radius:50%}
+.cover::after{content:'';position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--g),var(--gl),var(--g))}
+.cover-inner{position:relative;z-index:2;max-width:880px;margin:0 auto}
+.cover-badge{display:inline-block;padding:8px 22px;background:rgba(201,169,110,.18);border:1.5px solid var(--g);color:var(--gl);font-size:.72rem;font-weight:800;letter-spacing:3px;border-radius:40px;margin-bottom:30px;text-transform:uppercase}
+.cover h1{font-family:'Playfair Display',serif;font-size:3.4rem;font-weight:800;line-height:1.05;margin-bottom:22px}
+.cover h1 em{color:var(--g);font-style:normal}
+.cover-divider{width:70px;height:3px;background:var(--g);margin:16px auto 24px}
+.cover-sub{font-size:1.15rem;color:var(--gl);font-weight:300;max-width:760px;margin:0 auto 36px;line-height:1.65}
+.cover-meta{font-size:.8rem;color:rgba(255,255,255,.55);letter-spacing:2.5px;text-transform:uppercase;margin-top:20px}
+
+/* NAV */
+nav.toc{position:sticky;top:0;background:rgba(250,246,241,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--br);padding:12px 0;z-index:50}
+.toc-inner{max-width:1060px;margin:0 auto;padding:0 40px;display:flex;gap:14px;overflow-x:auto;scrollbar-width:none;align-items:center}
+.toc-inner::-webkit-scrollbar{display:none}
+.toc-label{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g);margin-right:4px;white-space:nowrap}
+.toc a{text-decoration:none;color:var(--tl);font-size:.8rem;font-weight:600;white-space:nowrap;padding:4px 2px;border-bottom:2px solid transparent;transition:all .2s}
+.toc a:hover{color:var(--bd);border-bottom-color:var(--g)}
+
+/* SECTIONS */
+.section{padding:60px 0;border-bottom:1px solid var(--br)}
+.section:last-of-type{border-bottom:none}
+.section-label{font-size:.64rem;font-weight:700;letter-spacing:3px;color:var(--g);text-transform:uppercase;margin-bottom:12px}
+.section h2{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:700;color:var(--bd);line-height:1.1;margin-bottom:14px}
+.section-intro{font-size:1rem;color:var(--tl);max-width:820px;margin-bottom:28px;line-height:1.65}
+
+/* WELCOME */
+.welcome{background:var(--w);border-radius:18px;padding:36px 42px;border:1px solid var(--br);margin:20px 0;position:relative;overflow:hidden}
+.welcome::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--g),var(--gl),var(--g));border-radius:18px 18px 0 0}
+.welcome h3{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--bd);margin-bottom:16px;line-height:1.2}
+.welcome h3 em{color:var(--g);font-style:normal}
+.welcome p{font-size:1.02rem;color:var(--t);line-height:1.8;margin-bottom:14px}
+.welcome p strong{color:var(--bd)}
+.welcome .sign{font-family:'Playfair Display',serif;font-size:1rem;color:var(--bm);margin-top:20px;font-style:italic}
+
+/* CATEGORÍAS */
+.cats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:22px 0}
+.cat-card{background:var(--w);border-radius:16px;padding:28px;border:1px solid var(--br);position:relative;overflow:hidden;display:flex;flex-direction:column}
+.cat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px}
+.cat-card.c1::before{background:var(--ok)}
+.cat-card.c2::before{background:var(--wrn)}
+.cat-card.c3::before{background:var(--err)}
+.cat-badge{display:inline-block;padding:4px 10px;border-radius:12px;font-size:.62rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;align-self:flex-start}
+.cat-card.c1 .cat-badge{background:rgba(39,174,96,.12);color:var(--ok)}
+.cat-card.c2 .cat-badge{background:rgba(230,126,34,.12);color:var(--wrn)}
+.cat-card.c3 .cat-badge{background:rgba(192,57,43,.12);color:var(--err)}
+.cat-card h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--bd);margin-bottom:10px;line-height:1.2}
+.cat-card p{font-size:.9rem;color:var(--tl);line-height:1.6;margin-bottom:16px;flex:1}
+.cat-specs{border-top:1px solid var(--br);padding-top:14px}
+.cat-spec{display:flex;justify-content:space-between;padding:4px 0;font-size:.84rem}
+.cat-spec-label{color:var(--tl)}
+.cat-spec-value{color:var(--bd);font-weight:700}
+
+/* COMMISSION TABLE */
+.comm-table{background:var(--w);border-radius:14px;overflow:hidden;border:1px solid var(--br);margin:20px 0}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+thead th{background:var(--bd);color:white;padding:14px 18px;text-align:left;font-size:.72rem;letter-spacing:1px;text-transform:uppercase;font-weight:700}
+tbody td{padding:13px 18px;border-bottom:1px solid var(--br);vertical-align:middle}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:var(--cream)}
+td strong{color:var(--bd)}
+.pct{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:800;color:var(--bd)}
+
+/* INCLUYE (CHECKLIST) */
+.includes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0}
+.include-item{background:var(--w);border-radius:12px;padding:20px 22px;border:1px solid var(--br);display:flex;gap:14px;align-items:flex-start}
+.include-check{width:32px;height:32px;background:var(--ok);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0}
+.include-body h4{font-family:'Playfair Display',serif;font-size:1.02rem;color:var(--bd);margin-bottom:4px}
+.include-body p{font-size:.84rem;color:var(--tl);line-height:1.55}
+
+/* CRITERIOS */
+.crit-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.crit-card{background:var(--w);border-radius:12px;padding:22px 26px;border:1px solid var(--br);position:relative}
+.crit-card.yes{border-left:4px solid var(--ok)}
+.crit-card.no{border-left:4px solid var(--err)}
+.crit-card h4{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--bd);margin-bottom:10px}
+.crit-card ul{list-style:none;padding:0}
+.crit-card li{padding:6px 0 6px 22px;position:relative;font-size:.88rem;line-height:1.55;color:var(--t)}
+.crit-card.yes li::before{content:'✓';position:absolute;left:0;top:6px;color:var(--ok);font-weight:800}
+.crit-card.no li::before{content:'✕';position:absolute;left:0;top:6px;color:var(--err);font-weight:800}
+
+/* ONBOARDING TIMELINE */
+.onbo-timeline{margin:22px 0;padding-left:30px;position:relative}
+.onbo-timeline::before{content:'';position:absolute;left:11px;top:10px;bottom:10px;width:3px;background:linear-gradient(to bottom,var(--g),var(--gl))}
+.onbo-item{position:relative;background:var(--w);border-radius:14px;padding:22px 26px;border:1px solid var(--br);margin-bottom:16px}
+.onbo-item::before{content:'';position:absolute;left:-26px;top:24px;width:16px;height:16px;background:var(--g);border-radius:50%;border:4px solid var(--bg)}
+.onbo-hour{display:inline-block;padding:4px 12px;background:var(--bd);color:var(--g);border-radius:18px;font-size:.68rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+.onbo-item h4{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--bd);margin-bottom:6px;line-height:1.2}
+.onbo-item p{font-size:.88rem;color:var(--tl);line-height:1.6;margin-bottom:6px}
+.onbo-item ul{margin:8px 0 0 20px;font-size:.84rem;color:var(--t);line-height:1.6}
+
+/* PROCESO LEAD */
+.proc-steps{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:20px 0;position:relative}
+.proc-step{background:var(--w);border-radius:12px;padding:16px 10px;border:1px solid var(--br);text-align:center;position:relative}
+.proc-step::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--g);border-radius:12px 12px 0 0}
+.proc-step .pn{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:800;color:var(--g);line-height:1;margin-bottom:6px}
+.proc-step h4{font-size:.78rem;color:var(--bd);font-weight:700;line-height:1.25;margin-bottom:4px;text-transform:uppercase;letter-spacing:.3px}
+.proc-step p{font-size:.72rem;color:var(--tl);line-height:1.4}
+
+/* FAQ */
+.faq-list{margin:20px 0}
+.faq-item{background:var(--w);border-radius:12px;padding:20px 26px;border:1px solid var(--br);margin-bottom:10px}
+.faq-item h4{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--bd);margin-bottom:8px;line-height:1.3}
+.faq-item h4::before{content:'¿';color:var(--g);font-weight:800;margin-right:4px}
+.faq-item h4::after{content:'?';color:var(--g);font-weight:800}
+.faq-item p{font-size:.9rem;color:var(--t);line-height:1.65}
+.faq-item p strong{color:var(--bd)}
+
+/* HIGHLIGHT */
+.highlight-box{border-left:4px solid var(--g);background:linear-gradient(135deg,rgba(201,169,110,.07),rgba(201,169,110,.02));padding:20px 26px;border-radius:0 12px 12px 0;margin:20px 0;line-height:1.7;font-size:.93rem}
+.highlight-box.success{border-left-color:var(--ok);background:linear-gradient(135deg,rgba(39,174,96,.05),rgba(39,174,96,.02))}
+.highlight-box.info{border-left-color:var(--info);background:linear-gradient(135deg,rgba(41,128,185,.05),rgba(41,128,185,.02))}
+.highlight-box strong{color:var(--bd)}
+
+/* NEXT STEPS */
+.next-block{background:linear-gradient(135deg,#3b2314,#5c3a1e,#7a4f2b);color:white;padding:44px 48px;border-radius:18px;margin:24px 0;position:relative;overflow:hidden}
+.next-block::after{content:'→';position:absolute;top:50%;right:44px;transform:translateY(-50%);font-size:10rem;color:rgba(201,169,110,.08);font-weight:800}
+.next-block h3{font-family:'Playfair Display',serif;font-size:1.7rem;color:white;margin-bottom:20px;position:relative}
+.next-block ol{list-style:none;counter-reset:n;margin:0;padding:0;position:relative}
+.next-block li{padding:12px 0 12px 48px;position:relative;font-size:.96rem;color:var(--gl);border-bottom:1px solid rgba(201,169,110,.15);line-height:1.6}
+.next-block li:last-child{border-bottom:none}
+.next-block li::before{content:counter(n);counter-increment:n;position:absolute;left:0;top:12px;width:30px;height:30px;background:var(--g);color:var(--bd);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-family:'Playfair Display',serif;font-size:.85rem}
+.next-block strong{color:white}
+
+/* FOOTER */
+footer{background:var(--bd);color:var(--gl);padding:44px 0;margin-top:40px;text-align:center}
+footer .brand{font-family:'Playfair Display',serif;font-size:1.1rem;letter-spacing:4px;color:var(--g);font-weight:700;margin-bottom:10px}
+footer p{font-size:.85rem;line-height:1.7}
+footer a{color:var(--g);text-decoration:none}
+
+.animate-on-scroll{opacity:0;transform:translateY(30px);transition:all .6s ease}
+.animate-on-scroll.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){.container{padding:0 24px}.toc-inner{padding:0 24px}.cover h1{font-size:2.2rem}.section h2{font-size:1.7rem}.cats-grid,.includes-grid,.crit-grid{grid-template-columns:1fr}.proc-steps{grid-template-columns:repeat(3,1fr)}.welcome{padding:26px 28px}.next-block{padding:32px 28px}.next-block::after{display:none}}
+@media print{*{print-color-adjust:exact;-webkit-print-color-adjust:exact}.section,.cat-card,.include-item,.onbo-item,.faq-item{page-break-inside:avoid}nav.toc{display:none}.cover{page-break-after:always}.animate-on-scroll{opacity:1!important;transform:none!important}}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<header class="cover">
+  <div class="cover-inner">
+    <div class="cover-badge">Programa Socios Falhaus · Versión 1</div>
+    <h1>Kit Comercial<br>del <em>Revendedor</em></h1>
+    <div class="cover-divider"></div>
+    <p class="cover-sub">Todo lo que necesitás saber para representar Falhaus en tu zona: qué vendés, cuánto ganás, qué te provee Falhaus, cómo se opera cada venta y cómo te sumás al programa.</p>
+    <div class="cover-meta">Falhaus · 24 de abril de 2026 · Kit v1</div>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <div class="toc-inner">
+    <span class="toc-label">Secciones →</span>
+    <a href="#bienvenida">Bienvenida</a>
+    <a href="#propuesta">Propuesta</a>
+    <a href="#categorias">Categorías</a>
+    <a href="#comisiones">Comisiones</a>
+    <a href="#incluye">Qué incluye</a>
+    <a href="#criterios">Criterios admisión</a>
+    <a href="#proceso">Proceso de venta</a>
+    <a href="#onboarding">Onboarding 1 día</a>
+    <a href="#marca">Política de marca</a>
+    <a href="#faq">FAQ</a>
+    <a href="#proximos-pasos">Próximos pasos</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- BIENVENIDA -->
+  <section class="section" id="bienvenida">
+    <div class="animate-on-scroll">
+      <div class="section-label">01 · Bienvenida</div>
+      <h2>Bienvenido al Programa Socios Falhaus</h2>
+
+      <div class="welcome">
+        <h3>Esto no es un <em>contrato de reventa</em>. Es una alianza.</h3>
+        <p>Si estás leyendo este documento es porque te interesa representar Falhaus en tu zona o con tu red de contactos. Gracias. Tenemos varias personas que se acercaron a ofrecerse como revendedores, y estamos armando un programa serio para que los que entren tengan todo lo que necesitan: producto probado, soporte real y una comisión que vale la pena.</p>
+        <p>Falhaus fabrica <strong>viviendas industrializadas de alta calidad</strong>. Entregamos casas, refugios apilables y oficinas modulares en un modelo constructivo que es más rápido, más predecible y más prolijo que la construcción tradicional. Lo que hace ruido en el mercado desde hace dos años ya no es una curiosidad — es una decisión para cada vez más familias, inversores y desarrolladores.</p>
+        <p>Vos traés la red, la cercanía con el cliente y la capacidad de entusiasmar. Nosotros ponemos el producto, el soporte y la garantía. Así multiplicamos lo que ambos hacemos bien, sin que nadie tenga que cambiar de oficio.</p>
+        <p class="sign">— Federico · Falhaus</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPUESTA -->
+  <section class="section" id="propuesta">
+    <div class="animate-on-scroll">
+      <div class="section-label">02 · La propuesta</div>
+      <h2>Qué te ofrece Falhaus</h2>
+      <p class="section-intro">En concreto, tres cosas: un producto que se vende solo cuando lo mostrás bien, una comisión clara por cada venta cerrada, y un sistema de soporte que te deja trabajar sin tener que ser técnico en construcción.</p>
+
+      <div class="includes-grid">
+        <div class="include-item">
+          <div class="include-check">1</div>
+          <div class="include-body">
+            <h4>Un producto con demanda real</h4>
+            <p>Viviendas industrializadas, refugios apilables y oficinas modulares. Ticket promedio entre USD 15.000 y USD 120.000. Mercado en crecimiento. Ya tenemos casos construidos en todo el país.</p>
+          </div>
+        </div>
+        <div class="include-item">
+          <div class="include-check">2</div>
+          <div class="include-body">
+            <h4>Comisiones competitivas</h4>
+            <p>Entre 12% y 20% según categoría, con escala progresiva por volumen. Se paga cuando Falhaus cobra la seña al cliente, dentro de los 30 días.</p>
+          </div>
+        </div>
+        <div class="include-item">
+          <div class="include-check">3</div>
+          <div class="include-body">
+            <h4>Soporte de segundo nivel</h4>
+            <p>Cuando no sabés algo o el cliente te hace una pregunta técnica, escribís y tenés respuesta en 48 hs. No estás solo.</p>
+          </div>
+        </div>
+        <div class="include-item">
+          <div class="include-check">4</div>
+          <div class="include-body">
+            <h4>Relación contractual con el cliente a cargo de Falhaus</h4>
+            <p>Vos captás y acompañás. Falhaus firma el contrato, cobra, produce y entrega. Menos dolor de cabeza operativo para vos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORÍAS -->
+  <section class="section" id="categorias">
+    <div class="animate-on-scroll">
+      <div class="section-label">03 · Tres maneras de ser Socio</div>
+      <h2>Categorías del Programa</h2>
+      <p class="section-intro">El programa tiene tres categorías según el nivel de compromiso, volumen y estructura del Socio. Empezás por la que mejor se adapte a tu momento y escalás a medida que crece tu operación.</p>
+
+      <div class="cats-grid">
+        <div class="cat-card c1">
+          <span class="cat-badge">Categoría 01</span>
+          <h3>Revendedor individual</h3>
+          <p>Para quienes quieren sumar Falhaus a su red sin transformar su negocio. Profesionales independientes, inmobiliarios, arquitectos, influencers de construcción, personas con red personal activa.</p>
+          <div class="cat-specs">
+            <div class="cat-spec"><span class="cat-spec-label">Comisión base</span><span class="cat-spec-value">12–15 %</span></div>
+            <div class="cat-spec"><span class="cat-spec-label">Volumen esperado</span><span class="cat-spec-value">2–6 casas/año</span></div>
+            <div class="cat-spec"><span class="cat-spec-label">Exclusividad</span><span class="cat-spec-value">No</span></div>
+            <div class="cat-spec"><span class="cat-spec-label">Compromiso inicial</span><span class="cat-spec-value">1 día onboarding</span></div>
+          </div>
+        </div>
+        <div class="cat-card c2">
+          <span class="cat-badge">Categoría 02</span>
+          <h3>Representante regional</h3>
+          <p>Socio estratégico por provincia o región, con showroom propio (o compartido) y objetivo anual. Para empresas ya establecidas que quieren diversificar con una línea de negocio industrializada.</p>
+          <div class="cat-specs">
+            <div class="cat-spec"><span class="cat-spec-label">Comisión base</span><span class="cat-spec-value">15–20 %</span></div>
+            <div class="cat-spec"><span class="cat-spec-label">Volumen esperado</span><span class="cat-spec-value">10–25 casas/año</span></div>
+            <div class="cat-spec"><span class="cat-spec-label">Exclusividad</span><span class="cat-spec-value">Sí (territorio)</span></div>
+            <div class="cat-spec"><span class="cat-spec-label">Compromiso inicial</span><span class="cat-spec-value">Contrato 12 meses</span></div>
+          </div>
+        </div>
+        <div class="cat-card c3">
+          <span class="cat-badge">Categoría 03</span>
+          <h3>Aliado institucional</h3>
+          <p>Desarrolladores de barrios privados, inmobiliarias corporativas, constructoras que integran Falhaus a sus proyectos de volumen. Esquema de precios mayoristas, acuerdos por proyecto.</p>
+          <div class="cat-specs">
+            <div class="cat-spec"><span class="cat-spec-label">Esquema</span><span class="cat-spec-value">Mayorista</span></div>
+            <div class="cat-spec"><span class="cat-spec-label">Volumen esperado</span><span class="cat-spec-value">30–80 casas/año</span></div>
+            <div class="cat-spec"><span class="cat-spec-label">Exclusividad</span><span class="cat-spec-value">Por acuerdo</span></div>
+            <div class="cat-spec"><span class="cat-spec-label">Compromiso inicial</span><span class="cat-spec-value">Acuerdo específico</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <p><strong>Cómo elegir categoría:</strong> si recién arrancás, empezá por Revendedor individual. Es la puerta de entrada. Si demostrás volumen sostenido durante 12 meses, podés pasar a Representante regional (con exclusividad en tu zona). La Categoría 03 se activa por invitación tras conversaciones específicas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMISIONES -->
+  <section class="section" id="comisiones">
+    <div class="animate-on-scroll">
+      <div class="section-label">04 · Esquema de comisiones</div>
+      <h2>Cuánto vas a ganar</h2>
+      <p class="section-intro">Los números concretos. Comisión base por categoría, escala progresiva cuando crecés, condiciones de pago claras.</p>
+
+      <div class="comm-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Escenario</th>
+              <th style="width:22%">Comisión</th>
+              <th>Condición</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Revendedor individual — base</strong></td>
+              <td><span class="pct">12 %</span></td>
+              <td>Primera a segunda Operación Cerrada</td>
+            </tr>
+            <tr>
+              <td><strong>Revendedor individual — con volumen</strong></td>
+              <td><span class="pct">15 %</span></td>
+              <td>A partir de 3 Operaciones Cerradas en un trimestre</td>
+            </tr>
+            <tr>
+              <td><strong>Revendedor individual — escala anual</strong></td>
+              <td><span class="pct">17 %</span></td>
+              <td>A partir de 6 Operaciones Cerradas en el año calendario</td>
+            </tr>
+            <tr>
+              <td><strong>Representante regional — base</strong></td>
+              <td><span class="pct">15 %</span></td>
+              <td>Por contrato con exclusividad territorial</td>
+            </tr>
+            <tr>
+              <td><strong>Representante regional — escala</strong></td>
+              <td><span class="pct">18–20 %</span></td>
+              <td>Al superar el objetivo anual del Anexo C</td>
+            </tr>
+            <tr>
+              <td><strong>Aliado institucional</strong></td>
+              <td><span class="pct">Mayorista</span></td>
+              <td>Precio mayorista por volumen, acuerdo específico</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;color:var(--bd);font-size:1.25rem;margin:24px 0 10px">Base de cálculo</h3>
+      <p>La comisión se aplica sobre el <strong>ticket neto</strong> de la Operación Cerrada. Eso quiere decir: precio final del cliente, descontando IVA, fletes facturados aparte y descuentos autorizados. El número bruto del que se parte es el <em>que Falhaus efectivamente factura</em>, no el precio de lista.</p>
+
+      <h3 style="font-family:'Playfair Display',serif;color:var(--bd);font-size:1.25rem;margin:24px 0 10px">Cuándo se cobra</h3>
+      <p>El pago se hace efectivo cuando <strong>Falhaus cobra la seña del cliente</strong> (típicamente el 30% del total). A partir de ese momento, tenés la comisión acreditada en un plazo máximo de <strong>30 días corridos</strong>, contra factura tuya.</p>
+
+      <div class="highlight-box info">
+        <p><strong>Ejemplo real orientativo:</strong> casa de 72 m² con ticket neto USD 43.200 → comisión base (12%) = <strong>USD 5.184</strong>. Si esa fue tu tercera Operación del trimestre, pasás a 15% y la siguiente ya te deja USD 6.480. Cuatro casas en el trimestre te ponen automáticamente en USD 24.000+ de comisión.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INCLUYE -->
+  <section class="section" id="incluye">
+    <div class="animate-on-scroll">
+      <div class="section-label">05 · Qué te entrega Falhaus</div>
+      <h2>Incluido en el Kit</h2>
+      <p class="section-intro">Todo lo que recibís desde el momento en que firmás el Acuerdo. No tenés que producirlo vos: Falhaus lo actualiza y lo comparte con cada Socio activo.</p>
+
+      <div class="includes-grid">
+        <div class="include-item">
+          <div class="include-check">✓</div>
+          <div class="include-body">
+            <h4>Brochure institucional</h4>
+            <p>PDF de alta resolución, co-brandeable con tu logo cuando corresponda. Para compartir con prospectos "formales" que pidan algo más que WhatsApp.</p>
+          </div>
+        </div>
+        <div class="include-item">
+          <div class="include-check">✓</div>
+          <div class="include-body">
+            <h4>Catálogo de productos</h4>
+            <p>Todos los modelos de Falhaus con medidas, especificaciones técnicas, fotos y precios de lista. Actualizado cada trimestre.</p>
+          </div>
+        </div>
+        <div class="include-item">
+          <div class="include-check">✓</div>
+          <div class="include-body">
+            <h4>Plantilla de propuesta</h4>
+            <p>Documento pre-armado. Solo cambiás nombre del cliente, modelo elegido y adicionales. En 10 minutos tenés propuesta lista para enviar.</p>
+          </div>
+        </div>
+        <div class="include-item">
+          <div class="include-check">✓</div>
+          <div class="include-body">
+            <h4>Showreel de casos</h4>
+            <p>Videos cortos de casas construidas. Te sirve para enviar antes de la reunión y generar interés previo (funciona mejor que mil explicaciones).</p>
+          </div>
+        </div>
+        <div class="include-item">
+          <div class="include-check">✓</div>
+          <div class="include-body">
+            <h4>Guión de ventas</h4>
+            <p>Estructura recomendada para la primera reunión con un prospecto. Preguntas clave para calificar. Objeciones típicas y cómo responderlas.</p>
+          </div>
+        </div>
+        <div class="include-item">
+          <div class="include-check">✓</div>
+          <div class="include-body">
+            <h4>Acceso al CRM Falhaus</h4>
+            <p>Usuario en Prometeo para registrar tus Leads y mantener tu pipeline ordenado. Lo mismo que usa el equipo interno.</p>
+          </div>
+        </div>
+        <div class="include-item">
+          <div class="include-check">✓</div>
+          <div class="include-body">
+            <h4>Onboarding de 1 día</h4>
+            <p>Jornada presencial en el showroom de Falhaus. Producto, discurso, objeciones, casos, visita a planta. Requisito de ingreso al programa.</p>
+          </div>
+        </div>
+        <div class="include-item">
+          <div class="include-check">✓</div>
+          <div class="include-body">
+            <h4>Red de Socios activa</h4>
+            <p>Reunión trimestral de toda la red (virtual). Novedades, mejores prácticas, casos destacados, sentido de comunidad. No sos un proveedor aislado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRITERIOS -->
+  <section class="section" id="criterios">
+    <div class="animate-on-scroll">
+      <div class="section-label">06 · Criterios de admisión</div>
+      <h2>Quién entra y quién no</h2>
+      <p class="section-intro">El programa es selectivo. Preferimos pocos Socios que representen bien a Falhaus, antes que muchos que diluyan la marca. Estos son los criterios que usamos para decidir.</p>
+
+      <div class="crit-grid">
+        <div class="crit-card yes">
+          <h4>Entra al programa</h4>
+          <ul>
+            <li>Persona o empresa con <strong>actividad comercial activa</strong> (profesional independiente, inmobiliaria, estudio, influencer local, etc.)</li>
+            <li><strong>Red de contactos real</strong> en su zona o sector</li>
+            <li>Disponibilidad para el <strong>Onboarding de 1 día</strong> en el showroom</li>
+            <li>Capacidad de <strong>reporte mensual</strong> simple (3 campos en una planilla)</li>
+            <li><strong>Integridad profesional</strong> verificable (referencias, trayectoria, redes sociales coherentes)</li>
+            <li>Disposición a <strong>usar los materiales oficiales</strong> sin modificar la marca</li>
+          </ul>
+        </div>
+        <div class="crit-card no">
+          <h4>No entra al programa</h4>
+          <ul>
+            <li>Personas o empresas que comercializan <strong>productos de competencia directa</strong> (otras marcas de viviendas industrializadas equivalentes)</li>
+            <li>Quienes ya tienen <strong>conflicto de intereses</strong> con Falhaus (causas judiciales, incumplimientos previos)</li>
+            <li>Personas sin <strong>actividad comercial demostrable</strong> — el programa no es un "plan de ingresos pasivos"</li>
+            <li>Quienes <strong>no pueden hacer el Onboarding</strong> en los primeros 60 días desde la firma</li>
+            <li>Personas que exigen <strong>exclusividad inmediata</strong> sin trayectoria previa</li>
+            <li>Estilos comerciales <strong>agresivos o de presión</strong> que no coinciden con el tono de Falhaus</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="highlight-box info">
+        <p><strong>Proceso de admisión:</strong> entrevista inicial (30–45 min) con Federico → completás formulario de declaración básica → revisión de referencias cuando corresponda → decisión en máximo 7 días. Si la respuesta es positiva, se firma el Acuerdo Marco y se coordina el Onboarding.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO LEAD -->
+  <section class="section" id="proceso">
+    <div class="animate-on-scroll">
+      <div class="section-label">07 · Cómo funciona una venta</div>
+      <h2>El proceso paso a paso</h2>
+      <p class="section-intro">Desde que detectás un prospecto hasta que cobrás la comisión. Seis etapas simples. Vos estás en las primeras, Falhaus en las últimas.</p>
+
+      <div class="proc-steps">
+        <div class="proc-step">
+          <div class="pn">01</div>
+          <h4>Identificás</h4>
+          <p>Detectás un prospecto en tu red.</p>
+        </div>
+        <div class="proc-step">
+          <div class="pn">02</div>
+          <h4>Registrás</h4>
+          <p>Cargás Lead en CRM en 48 hs.</p>
+        </div>
+        <div class="proc-step">
+          <div class="pn">03</div>
+          <h4>Calificás</h4>
+          <p>Completás 4 datos clave.</p>
+        </div>
+        <div class="proc-step">
+          <div class="pn">04</div>
+          <h4>Proponés</h4>
+          <p>Armás propuesta con plantilla.</p>
+        </div>
+        <div class="proc-step">
+          <div class="pn">05</div>
+          <h4>Falhaus firma</h4>
+          <p>Contrato y cobranza a cargo nuestro.</p>
+        </div>
+        <div class="proc-step">
+          <div class="pn">06</div>
+          <h4>Cobrás</h4>
+          <p>Comisión a los 30 días de la seña.</p>
+        </div>
+      </div>
+
+      <div class="highlight-box success">
+        <p><strong>Tu trabajo termina en la etapa 04.</strong> Podés acompañar en las etapas 05 y 06 si la relación con el cliente lo pide, pero no tenés obligación operativa. Falhaus se encarga del contrato, la cobranza, la producción y la entrega. Tu foco queda en seguir generando Leads.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ONBOARDING -->
+  <section class="section" id="onboarding">
+    <div class="animate-on-scroll">
+      <div class="section-label">08 · Agenda del Onboarding</div>
+      <h2>Un día completo en el showroom</h2>
+      <p class="section-intro">Antes de empezar a comercializar, pasás un día con el equipo de Falhaus para conocer el producto, el discurso y las herramientas. Te lo dejamos diseñado para que salgas listo para tu primera reunión al día siguiente.</p>
+
+      <div class="onbo-timeline">
+
+        <div class="onbo-item">
+          <span class="onbo-hour">09:00 – 10:00</span>
+          <h4>Recepción y presentación de Falhaus</h4>
+          <p>Historia, propuesta de valor, posicionamiento. Por qué elegimos este modelo constructivo, para quién es y para quién no es.</p>
+          <ul>
+            <li>Quiénes somos y cómo llegamos acá</li>
+            <li>Modelo de negocio y diferencial</li>
+            <li>Dónde estamos y dónde queremos llegar</li>
+          </ul>
+        </div>
+
+        <div class="onbo-item">
+          <span class="onbo-hour">10:00 – 12:30</span>
+          <h4>Producto técnico</h4>
+          <p>Recorrida por los modelos del catálogo con explicación de sistema constructivo, variantes, adicionales y tiempos de obra.</p>
+          <ul>
+            <li>Nómada, Refugio apilable, Oficina modular</li>
+            <li>Preguntas técnicas frecuentes</li>
+            <li>Limitaciones del producto (importante saber qué NO hacemos)</li>
+          </ul>
+        </div>
+
+        <div class="onbo-item">
+          <span class="onbo-hour">12:30 – 13:30</span>
+          <h4>Almuerzo de trabajo</h4>
+          <p>Con el equipo de Falhaus. Charla informal, preguntas libres, networking entre Socios si hay más de uno en la misma cohorte.</p>
+        </div>
+
+        <div class="onbo-item">
+          <span class="onbo-hour">13:30 – 15:30</span>
+          <h4>Discurso comercial y objeciones</h4>
+          <p>Cómo se presenta Falhaus en una primera reunión. Preguntas clave para calificar al prospecto. Las 10 objeciones más frecuentes y cómo responderlas.</p>
+          <ul>
+            <li>Guión estructurado de reunión</li>
+            <li>Role-play de objeciones con el equipo</li>
+            <li>Material comercial que tenés que llevar a cada encuentro</li>
+          </ul>
+        </div>
+
+        <div class="onbo-item">
+          <span class="onbo-hour">15:30 – 17:00</span>
+          <h4>Herramientas operativas</h4>
+          <p>CRM (Prometeo), plantilla de propuesta, secuencia de mensajes pre-reunión, tracking, reporte mensual.</p>
+          <ul>
+            <li>Alta de usuario en CRM en vivo</li>
+            <li>Cómo se carga un Lead y se califica</li>
+            <li>Cómo se solicita una cotización formal a Falhaus</li>
+          </ul>
+        </div>
+
+        <div class="onbo-item">
+          <span class="onbo-hour">17:00 – 18:00</span>
+          <h4>Cierre + compromisos</h4>
+          <p>Acuerdo firmado en vivo, entrega formal del Kit, definición de plan de los primeros 30 días, fecha tentativa de primera reunión de seguimiento.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MARCA -->
+  <section class="section" id="marca">
+    <div class="animate-on-scroll">
+      <div class="section-label">09 · Política de marca</div>
+      <h2>Qué podés y qué no podés publicar</h2>
+      <p class="section-intro">Reglas breves. Si tenés dudas, preguntás. Todo lo que esté dentro de este marco no requiere aprobación previa.</p>
+
+      <div class="crit-grid">
+        <div class="crit-card yes">
+          <h4>Podés hacer libremente</h4>
+          <ul>
+            <li>Publicar en tus redes que sos Revendedor Oficial de Falhaus, usando el isologo provisto</li>
+            <li>Compartir el brochure institucional, videos y fotos del Kit</li>
+            <li>Contar tus propias experiencias con clientes (sin nombrar a nadie sin autorización)</li>
+            <li>Usar las plantillas de propuesta y el lenguaje de marca</li>
+            <li>Participar de eventos locales como Revendedor Oficial, identificándote como tal</li>
+          </ul>
+        </div>
+        <div class="crit-card no">
+          <h4>Necesitás aprobación previa</h4>
+          <ul>
+            <li>Diseñar cualquier pieza gráfica que combine tu marca + Falhaus (co-branding)</li>
+            <li>Armar campañas pagas (Meta Ads, Google Ads) mencionando Falhaus</li>
+            <li>Modificar textos, precios o especificaciones del catálogo oficial</li>
+            <li>Declarar precios o plazos distintos a los del catálogo vigente</li>
+            <li>Registrar dominios, cuentas o perfiles que incluyan la palabra "Falhaus"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <p><strong>Para aprobar algo:</strong> enviás el material por el canal único del Programa (mail oficial o grupo de WhatsApp de Socios) y Falhaus responde en 48 hs hábiles con OK, pedido de ajuste o sugerencia. Nunca queda sin respuesta.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="animate-on-scroll">
+      <div class="section-label">10 · Preguntas frecuentes</div>
+      <h2>Lo que todos preguntan antes de firmar</h2>
+
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <h4>Tengo que pagar algo para entrar al programa</h4>
+          <p><strong>No.</strong> El ingreso es sin costo. El único compromiso inicial es el día de Onboarding (traslados + almuerzo corren por tu cuenta si sos de otra provincia). No hay fee de ingreso, ni matrícula, ni membresía mensual.</p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Cuánto tiempo tarda mi primera venta</h4>
+          <p>Depende del tipo de prospectos que ya tengas en tu red. En la experiencia previa de Falhaus con Revendedores informales, las primeras Operaciones Cerradas se registran entre los <strong>45 y 90 días posteriores al Onboarding</strong>. El ciclo de decisión de una vivienda es largo — no es venta impulsiva.</p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Qué pasa si un Lead mío se contacta directo con Falhaus</h4>
+          <p>Mientras el Lead esté registrado en el CRM con tu nombre y dentro del plazo de 12 meses desde el registro, la comisión es <strong>tuya</strong> aunque el cierre se produzca por un contacto directo Falhaus-cliente. La atribución la define el CRM, no quién habló último.</p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Puedo vender Falhaus y otras marcas de viviendas industrializadas</h4>
+          <p>Como <strong>Revendedor individual (Categoría 01)</strong> no hay exclusividad de producto, pero te pedimos que no representes marcas que sean competencia directa (mismo tipo de vivienda industrializada, mismo segmento). Como <strong>Representante regional (Categoría 02)</strong> sí aplica exclusividad de producto. Se aclara en el Acuerdo Marco.</p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Qué pasa si un cliente mío pide modificaciones especiales al producto</h4>
+          <p>Falhaus evalúa cada pedido de personalización. Algunas son posibles (adicionales del catálogo), otras no (modificaciones estructurales). Vos no tenés que ser técnico — derivás la consulta a Falhaus y te respondemos en 48 hs con factibilidad, tiempo y costo adicional.</p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Puedo operar desde el interior del país</h4>
+          <p><strong>Sí.</strong> Falhaus entrega en todo el territorio argentino. Como Revendedor, operás donde tengas red. El flete de la unidad lo calculamos en cada propuesta según destino. Algunas zonas alejadas tienen tiempos de entrega más largos — lo aclaramos al cliente desde el principio.</p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Cómo se manejan los reclamos de postventa</h4>
+          <p>Falhaus asume la postventa directa con el cliente final. Vos no tenés obligación operativa en garantías, reparaciones o reclamos técnicos. Si un cliente tuyo tiene un problema, derivás a Falhaus y acompañás solo si querés. No te juega en contra: tu comisión ya se consolidó con la seña.</p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Qué pasa si quiero dejar el programa</h4>
+          <p>Podés terminar el Acuerdo cuando quieras con 30 días de aviso, sin penalidad. Las comisiones que tengas devengadas por Operaciones Cerradas previas al aviso, y por Leads registrados antes de la terminación que cierren en los 60 días posteriores, siguen siendo tuyas. Simplemente dejás de usar la marca y devolvés el material.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRÓXIMOS PASOS -->
+  <section class="section" id="proximos-pasos">
+    <div class="animate-on-scroll">
+      <div class="section-label">11 · Ahora qué</div>
+      <h2>Cómo te sumás al Programa</h2>
+      <p class="section-intro">Cuatro pasos. Ninguno complicado. Si todo fluye, en 15 días estás haciendo tu primera reunión como Revendedor Oficial de Falhaus.</p>
+
+      <div class="next-block">
+        <h3>Los 4 pasos para arrancar</h3>
+        <ol>
+          <li><strong>Entrevista inicial con Federico</strong> — 30 a 45 minutos, virtual u presencial. Charlamos sobre tu red, tu motivación y tus expectativas. De ahí salís con una respuesta tentativa.</li>
+          <li><strong>Formulario de declaración básica</strong> — 10 minutos. Datos identitarios, referencias, comprobante de actividad comercial. Sirve para completar el Acuerdo.</li>
+          <li><strong>Firma del Acuerdo Marco</strong> — si ambos vamos adelante, firmás el Acuerdo Marco (versión 1, redactada en lenguaje claro). En ese momento empiezan tus derechos como Socio.</li>
+          <li><strong>Onboarding de 1 día</strong> — coordinamos fecha en los siguientes 30 a 60 días. Ese día salís con el Kit completo, acceso al CRM y primera reunión agendada (si querés, incluso con un Lead ya tuyo).</li>
+        </ol>
+      </div>
+
+      <div class="highlight-box success">
+        <p><strong>Punto de contacto:</strong> escribinos a <a href="#" style="color:var(--bm);font-weight:700">[correo Programa Socios]</a> o por WhatsApp al <strong>[número Falhaus]</strong>. En el mensaje: tu nombre, tu zona, una línea sobre tu actividad actual. Te respondemos en 48 hs hábiles para coordinar la entrevista.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="brand">ANTUARA</div>
+  <p>Kit Comercial Revendedor — Falhaus · versión 1 · 24 de abril de 2026<br>Documento complementario al Acuerdo Marco de Socios Falhaus</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

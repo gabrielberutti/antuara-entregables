@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estrategia B2B2C Revendedores — Falhaus | 24 Abril 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bd:#3b2314;--bm:#5c3a1e;--bl:#7a4f2b;--g:#c9a96e;--gl:#e8d5b0;--t:#2d2d2d;--tl:#6b6b6b;--bg:#faf6f1;--w:#ffffff;--br:#e0d5c8;--cream:#faf3ea;--ok:#27ae60;--wrn:#e67e22;--err:#c0392b;--info:#2980b9}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t);line-height:1.6}
+.container{max-width:1080px;margin:0 auto;padding:0 40px}
+
+.hero{background:linear-gradient(135deg,#3b2314,#5c3a1e,#7a4f2b);color:white;padding:68px 40px 52px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-30%;right:-15%;width:600px;height:600px;background:radial-gradient(circle,rgba(201,169,110,.12),transparent 70%);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--g),var(--gl),var(--g))}
+.hero-inner{max-width:1080px;margin:0 auto;position:relative;z-index:2}
+.hero-badge{display:inline-block;padding:6px 16px;background:rgba(201,169,110,.18);border:1px solid var(--g);color:var(--gl);font-size:.68rem;font-weight:700;letter-spacing:3px;border-radius:30px;margin-bottom:20px}
+.hero h1{font-family:'Playfair Display',serif;font-size:3rem;font-weight:800;line-height:1.08;margin-bottom:14px;max-width:900px}
+.hero h1 em{color:var(--g);font-style:normal}
+.hero-sub{font-size:1.12rem;color:var(--gl);font-weight:300;max-width:830px;line-height:1.6;margin-bottom:20px}
+.hero-meta{font-size:.8rem;color:rgba(255,255,255,.55);letter-spacing:2px;text-transform:uppercase}
+
+nav.toc{position:sticky;top:0;background:rgba(250,246,241,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--br);padding:14px 0;z-index:50}
+.toc-inner{max-width:1080px;margin:0 auto;padding:0 40px;display:flex;gap:18px;overflow-x:auto;scrollbar-width:none}
+.toc-inner::-webkit-scrollbar{display:none}
+.toc a{text-decoration:none;color:var(--tl);font-size:.82rem;font-weight:600;letter-spacing:.4px;white-space:nowrap;padding:4px 2px;border-bottom:2px solid transparent;transition:all .2s}
+.toc a:hover{color:var(--bd);border-bottom-color:var(--g)}
+
+.section{padding:60px 0;border-bottom:1px solid var(--br)}
+.section:last-of-type{border-bottom:none}
+.section-label{font-size:.64rem;font-weight:700;letter-spacing:3px;color:var(--g);text-transform:uppercase;margin-bottom:10px}
+.section h2{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--bd);line-height:1.1;margin-bottom:14px}
+.section-intro{font-size:.98rem;color:var(--tl);max-width:830px;margin-bottom:30px;line-height:1.65}
+
+/* RUTAS */
+.route-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:24px 0}
+.route-card{background:var(--w);border-radius:16px;padding:28px;border:1px solid var(--br);position:relative;overflow:hidden}
+.route-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--g)}
+.route-card.r1::before{background:var(--ok)}
+.route-card.r2::before{background:var(--wrn)}
+.route-card.r3::before{background:var(--err)}
+.route-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:800;color:var(--g);opacity:.3;line-height:1;margin-bottom:4px}
+.route-card h3{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--bd);margin-bottom:6px;line-height:1.2}
+.route-card .route-sub{font-size:.8rem;color:var(--g);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;display:block}
+.route-card p{font-size:.88rem;color:var(--tl);line-height:1.6;margin-bottom:10px}
+.route-card strong{color:var(--bd)}
+.route-attrs{margin-top:14px;border-top:1px solid var(--br);padding-top:12px}
+.route-attr{display:flex;justify-content:space-between;padding:4px 0;font-size:.8rem;color:var(--tl)}
+.route-attr strong{color:var(--bd);font-weight:700}
+
+/* COMPARATIVO */
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.88rem;background:var(--w);border-radius:14px;overflow:hidden;border:1px solid var(--br)}
+thead th{background:var(--bd);color:white;padding:12px 16px;text-align:left;font-size:.72rem;letter-spacing:1px;text-transform:uppercase;font-weight:700}
+tbody td{padding:12px 16px;border-bottom:1px solid var(--br);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:var(--cream)}
+td strong{color:var(--bd)}
+.tag-status{display:inline-block;padding:3px 10px;border-radius:12px;font-size:.7rem;font-weight:700}
+.tag-green{background:rgba(39,174,96,.12);color:var(--ok)}
+.tag-yellow{background:rgba(230,126,34,.12);color:var(--wrn)}
+.tag-red{background:rgba(192,57,43,.12);color:var(--err)}
+
+/* HIGHLIGHT */
+.highlight-box{border-left:4px solid var(--g);background:linear-gradient(135deg,rgba(201,169,110,.08),rgba(201,169,110,.03));padding:22px 26px;border-radius:0 14px 14px 0;margin:20px 0;line-height:1.6;font-size:.93rem}
+.highlight-box.danger{border-left-color:var(--err);background:linear-gradient(135deg,rgba(192,57,43,.06),rgba(192,57,43,.02))}
+.highlight-box.success{border-left-color:var(--ok);background:linear-gradient(135deg,rgba(39,174,96,.06),rgba(39,174,96,.02))}
+.highlight-box.info{border-left-color:var(--info);background:linear-gradient(135deg,rgba(41,128,185,.06),rgba(41,128,185,.02))}
+.highlight-box strong{color:var(--bd)}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:22px 0}
+.stat-box{background:var(--w);border-radius:14px;padding:22px 18px;border:1px solid var(--br);text-align:center;position:relative;overflow:hidden}
+.stat-box::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--g),var(--gl))}
+.stat-value{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:800;color:var(--bd);line-height:1;margin-bottom:6px}
+.stat-label{font-size:.78rem;color:var(--tl);line-height:1.3}
+
+/* DECISIÓN */
+.decision-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}
+.decision-card{background:var(--w);border-radius:14px;padding:22px 26px;border:1px solid var(--br);position:relative}
+.decision-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--g);border-radius:14px 14px 0 0}
+.decision-card h4{font-family:'Playfair Display',serif;color:var(--bd);font-size:1.1rem;margin-bottom:8px}
+.decision-card p{font-size:.88rem;color:var(--tl);line-height:1.6;margin-bottom:10px}
+.decision-card .recom{background:var(--cream);padding:10px 14px;border-radius:8px;font-size:.85rem;color:var(--t);border-left:3px solid var(--g);margin-top:12px}
+.decision-card .recom strong{color:var(--bd)}
+
+/* CHECKLIST */
+.check-list{list-style:none;padding:0;margin:16px 0}
+.check-list li{padding:13px 0 13px 34px;position:relative;border-bottom:1px solid var(--br);font-size:.93rem;color:var(--t);line-height:1.55}
+.check-list li:last-child{border-bottom:none}
+.check-list li::before{content:'';position:absolute;left:0;top:16px;width:18px;height:18px;border:2.5px solid var(--g);border-radius:4px}
+.check-list li strong{color:var(--bd)}
+
+/* ROADMAP */
+.roadmap{display:flex;gap:16px;margin:24px 0;overflow-x:auto}
+.roadmap-step{background:var(--w);border-radius:14px;padding:22px 22px 20px;border:1px solid var(--br);min-width:230px;flex:1;position:relative}
+.roadmap-step::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--g);border-radius:14px 14px 0 0}
+.roadmap-step.q1::before{background:var(--ok)}
+.roadmap-step.q2::before{background:var(--wrn)}
+.roadmap-step.q3::before{background:var(--info)}
+.roadmap-step.q4::before{background:var(--bm)}
+.roadmap-when{display:block;font-size:.72rem;color:var(--g);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.roadmap-step h4{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--bd);margin-bottom:8px;line-height:1.2}
+.roadmap-step ul{list-style:none;padding:0}
+.roadmap-step li{padding:5px 0 5px 16px;position:relative;font-size:.82rem;color:var(--tl);line-height:1.5}
+.roadmap-step li::before{content:'–';position:absolute;left:0;top:5px;color:var(--g);font-weight:700}
+
+/* SCENARIO */
+.scenario-box{background:var(--bd);color:white;border-radius:16px;padding:30px 34px;margin:22px 0;position:relative}
+.scenario-box::before{content:'ESCENARIO';position:absolute;top:-10px;left:30px;background:var(--g);color:var(--bd);padding:4px 14px;border-radius:10px;font-size:.65rem;font-weight:800;letter-spacing:2px}
+.scenario-box h4{font-family:'Playfair Display',serif;color:var(--gl);font-size:1.2rem;margin-top:8px;margin-bottom:14px}
+.scenario-box p{color:rgba(255,255,255,.8);font-size:.92rem;line-height:1.7;margin-bottom:10px}
+.scenario-box strong{color:white}
+.scenario-box .calc{background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.25);border-radius:10px;padding:16px 20px;margin:14px 0;font-family:'Inter',sans-serif}
+.scenario-box .calc-row{display:flex;justify-content:space-between;padding:4px 0;font-size:.88rem;color:var(--gl)}
+.scenario-box .calc-row strong{color:white;font-family:'Playfair Display',serif;font-weight:700}
+.scenario-box .calc-total{border-top:1px solid rgba(201,169,110,.25);padding-top:10px;margin-top:10px;font-size:1.05rem;color:var(--g)}
+.scenario-box .calc-total strong{color:var(--g)}
+
+/* NEXT BLOCK */
+.next-block{background:linear-gradient(135deg,#3b2314,#5c3a1e,#7a4f2b);color:white;padding:44px 48px;border-radius:20px;margin:24px 0;position:relative;overflow:hidden}
+.next-block::after{content:'→';position:absolute;top:50%;right:44px;transform:translateY(-50%);font-size:10rem;color:rgba(201,169,110,.08);font-weight:800}
+.next-block h3{font-family:'Playfair Display',serif;font-size:1.7rem;margin-bottom:22px;position:relative;color:white}
+.commit-list{list-style:none;counter-reset:commit;position:relative}
+.commit-list li{padding:12px 0 12px 46px;position:relative;font-size:.95rem;color:var(--gl);border-bottom:1px solid rgba(201,169,110,.15);line-height:1.55}
+.commit-list li:last-child{border-bottom:none}
+.commit-list li::before{content:counter(commit);counter-increment:commit;position:absolute;left:0;top:12px;width:28px;height:28px;background:var(--g);color:var(--bd);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-family:'Playfair Display',serif;font-size:.82rem}
+.commit-list li strong{color:white}
+
+footer{background:var(--bd);color:var(--gl);padding:40px 0;margin-top:40px;text-align:center}
+footer .brand{font-family:'Playfair Display',serif;font-size:1.1rem;letter-spacing:4px;color:var(--g);font-weight:700;margin-bottom:8px}
+footer p{font-size:.85rem;line-height:1.6}
+
+.animate-on-scroll{opacity:0;transform:translateY(30px);transition:all .6s ease}
+.animate-on-scroll.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){.container{padding:0 20px}.hero{padding:48px 20px 40px}.hero h1{font-size:2rem}.section h2{font-size:1.7rem}.route-grid,.stats-grid,.decision-grid{grid-template-columns:1fr}.roadmap{flex-direction:column}.toc-inner{padding:0 20px}}
+@media print{*{print-color-adjust:exact;-webkit-print-color-adjust:exact}.section{page-break-inside:avoid}nav.toc{display:none}.animate-on-scroll{opacity:1!important;transform:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">ESTRATEGIA · ESCALA COMERCIAL</div>
+    <h1>De vender casas<br>a tener una <em>red que vende</em></h1>
+    <p class="hero-sub">Propuesta estratégica para pivotear Falhaus hacia un modelo B2B2C donde la marca escala sin que Federico tenga que estar en cada venta. Tres rutas posibles, una recomendación concreta y un plan de 6 meses.</p>
+    <div class="hero-meta">Falhaus · 24 de abril 2026 · Documento estratégico</div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#por-que">Por qué</a>
+    <a href="#rutas">Las 3 rutas</a>
+    <a href="#recomendacion">Recomendación</a>
+    <a href="#programa">Programa Socios</a>
+    <a href="#expo">Expo Real Estate</a>
+    <a href="#economia">Economía</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#compromisos">Próximos pasos</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- POR QUÉ -->
+  <section class="section" id="por-que">
+    <div class="animate-on-scroll">
+      <div class="section-label">Punto de partida</div>
+      <h2>Por qué esta conversación aparece ahora</h2>
+      <p class="section-intro">En los últimos 90 días, varias personas se acercaron espontáneamente a ofrecer representar Falhaus en su región. No fue algo que fuimos a buscar — apareció. Eso es una señal de mercado: el producto tiene magnetismo propio. La pregunta ya no es si hay demanda de representación, sino cómo la canalizamos sin romper lo que funciona.</p>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-value">3+</div>
+          <div class="stat-label">Interesados espontáneos en revender en los últimos 90 días</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value">100%</div>
+          <div class="stat-label">De las ventas actuales pasan por Federico personalmente</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value">1</div>
+          <div class="stat-label">Showroom físico (limita cobertura geográfica)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value">24</div>
+          <div class="stat-label">Provincias donde Falhaus podría operar con socios</div>
+        </div>
+      </div>
+
+      <div class="highlight-box info">
+        <p><strong>La tensión estratégica:</strong> Federico tiene la mejor conversión del equipo. Si armamos mal la red de revendedores, estamos diluyendo la calidad del proceso de venta y diluyendo la marca. Si la armamos bien, multiplicamos por 5x la capacidad instalada sin sumar costos fijos. La diferencia entre los dos escenarios está 100% en cómo se diseña el programa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RUTAS -->
+  <section class="section" id="rutas">
+    <div class="animate-on-scroll">
+      <div class="section-label">Mapa de opciones</div>
+      <h2>Las 3 rutas posibles</h2>
+      <p class="section-intro">Cada ruta tiene un perfil de socio distinto, una estructura de acuerdo distinta y un retorno esperado distinto. No son excluyentes — pueden convivir. Lo importante es saber cuál se activa primero y cuál espera.</p>
+
+      <div class="route-grid">
+        <div class="route-card r1">
+          <div class="route-num">01</div>
+          <span class="route-sub">Barrera baja · Ticket bajo-medio</span>
+          <h3>Revendedor individual</h3>
+          <p>Personas con red personal, profesionales de venta (inmobiliarios independientes, arquitectos boutique, influencers locales) que quieren ofrecer Falhaus como parte de su propuesta.</p>
+          <div class="route-attrs">
+            <div class="route-attr"><span>Perfil</span><strong>Individual</strong></div>
+            <div class="route-attr"><span>Volumen esperado</span><strong>2-6 casas/año</strong></div>
+            <div class="route-attr"><span>Comisión</span><strong>12-15%</strong></div>
+            <div class="route-attr"><span>Exclusividad</span><strong>No</strong></div>
+            <div class="route-attr"><span>Puede arrancar</span><strong>Mayo 2026</strong></div>
+          </div>
+        </div>
+        <div class="route-card r2">
+          <div class="route-num">02</div>
+          <span class="route-sub">Barrera media · Ticket alto</span>
+          <h3>Representación regional</h3>
+          <p>Socio estratégico por provincia o región con showroom propio (o compartido), objetivo anual, capacitación formal y derechos de uso de marca. Es el core del programa.</p>
+          <div class="route-attrs">
+            <div class="route-attr"><span>Perfil</span><strong>Empresa</strong></div>
+            <div class="route-attr"><span>Volumen esperado</span><strong>10-25 casas/año</strong></div>
+            <div class="route-attr"><span>Comisión</span><strong>15-20%</strong></div>
+            <div class="route-attr"><span>Exclusividad</span><strong>Sí (territorio)</strong></div>
+            <div class="route-attr"><span>Puede arrancar</span><strong>Jul-Ago 2026</strong></div>
+          </div>
+        </div>
+        <div class="route-card r3">
+          <div class="route-num">03</div>
+          <span class="route-sub">Barrera alta · Ticket muy alto</span>
+          <h3>Alianza institucional</h3>
+          <p>Desarrolladores de barrios privados, inmobiliarias corporativas, constructoras medianas que integran Falhaus como opción para sus clientes. Volumen alto por acuerdo.</p>
+          <div class="route-attrs">
+            <div class="route-attr"><span>Perfil</span><strong>Corporate</strong></div>
+            <div class="route-attr"><span>Volumen esperado</span><strong>30-80 casas/año</strong></div>
+            <div class="route-attr"><span>Comisión</span><strong>Precio mayorista</strong></div>
+            <div class="route-attr"><span>Exclusividad</span><strong>Por acuerdo</strong></div>
+            <div class="route-attr"><span>Puente</span><strong>Expo Real Estate (jun)</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Dimensión</th>
+            <th>Ruta 1 · Individual</th>
+            <th>Ruta 2 · Regional</th>
+            <th>Ruta 3 · Institucional</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Inversión de Falhaus</strong></td>
+            <td><span class="tag-status tag-green">Baja</span></td>
+            <td><span class="tag-status tag-yellow">Media</span></td>
+            <td><span class="tag-status tag-red">Alta</span></td>
+          </tr>
+          <tr>
+            <td><strong>Tiempo hasta primera venta</strong></td>
+            <td>30-60 días</td>
+            <td>90-120 días</td>
+            <td>120-180 días</td>
+          </tr>
+          <tr>
+            <td><strong>Riesgo de marca</strong></td>
+            <td><span class="tag-status tag-yellow">Medio (control parcial)</span></td>
+            <td><span class="tag-status tag-green">Bajo (socio capacitado)</span></td>
+            <td><span class="tag-status tag-green">Bajo (institucional)</span></td>
+          </tr>
+          <tr>
+            <td><strong>Escalabilidad</strong></td>
+            <td><span class="tag-status tag-yellow">Media</span></td>
+            <td><span class="tag-status tag-green">Alta</span></td>
+            <td><span class="tag-status tag-green">Muy alta</span></td>
+          </tr>
+          <tr>
+            <td><strong>Soporte requerido de Falhaus</strong></td>
+            <td>Bajo (kit comercial)</td>
+            <td>Medio (capacitación trimestral)</td>
+            <td>Alto (acompañamiento por proyecto)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- RECOMENDACIÓN -->
+  <section class="section" id="recomendacion">
+    <div class="animate-on-scroll">
+      <div class="section-label">Nuestra lectura</div>
+      <h2>Por cuál empezar — y por qué</h2>
+      <p class="section-intro">La recomendación no es elegir uno. Es ordenar la secuencia para que el aprendizaje de uno alimente al siguiente sin romper el presente.</p>
+
+      <div class="decision-grid">
+        <div class="decision-card">
+          <h4>FASE 1 · Mayo-Junio</h4>
+          <p><strong>Activar Ruta 1 (Revendedor individual)</strong> con los 2-3 interesados espontáneos como pilotos. Barrera de entrada baja. Riesgo contenido. Nos permite testear el kit comercial, las comisiones y el flujo operativo en terreno real.</p>
+          <div class="recom">
+            <strong>Qué aprendemos:</strong> ¿qué tipo de lead trae un revendedor individual vs. nuestros canales? ¿cuánto soporte real necesita? ¿cuál es el margen que nos deja sostenible?
+          </div>
+        </div>
+        <div class="decision-card">
+          <h4>FASE 2 · Junio-Julio</h4>
+          <p><strong>Preparar Ruta 3 (Alianza institucional)</strong> con Expo Real Estate como plataforma de lanzamiento. No abrimos acuerdos en la Expo — generamos conversaciones que maduran post-evento. La Expo es showcase, no cierre.</p>
+          <div class="recom">
+            <strong>Qué aprendemos:</strong> ¿cómo reacciona el mundo corporativo al producto? ¿qué tipo de partnership institucional tiene más sentido (exclusividad, marca blanca, integración a proyectos)?
+          </div>
+        </div>
+        <div class="decision-card">
+          <h4>FASE 3 · Agosto-Octubre</h4>
+          <p><strong>Lanzar Ruta 2 (Representación regional)</strong> con el aprendizaje acumulado de las fases 1 y 2. Perfil más exigente, mejor definido, con expectativas calibradas. Los primeros 2 representantes son los que validan el modelo.</p>
+          <div class="recom">
+            <strong>Qué aprendemos:</strong> ¿cuál es el perfil ideal del representante regional? ¿cuánto volumen puede generar realmente? ¿cómo se compara el costo vs. abrir showroom propio?
+          </div>
+        </div>
+        <div class="decision-card">
+          <h4>FASE 4 · Noviembre +</h4>
+          <p><strong>Consolidar y escalar</strong>. Con 2-3 representantes regionales validados y 1-2 acuerdos institucionales firmados, abrimos programa formal con proceso de selección. Para entonces la marca tiene presencia distribuida y Federico puede delegar buena parte del seguimiento.</p>
+          <div class="recom">
+            <strong>Qué aprendemos:</strong> ¿qué tan lejos puede escalar este modelo sin perder la identidad? ¿cuál es el techo de ventas asistidas antes de tener que abrir planta nueva?
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-box success">
+        <p><strong>Por qué esta secuencia y no otra:</strong> la tentación natural es ir por la Ruta 2 primero (el sueño del representante exclusivo), pero esa ruta requiere un manual, un track record de casos con revendedores, y una propuesta de valor madura. La Ruta 1 es el laboratorio. La Ruta 3 es el escaparate. La Ruta 2 es la cosecha.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMA SOCIOS -->
+  <section class="section" id="programa">
+    <div class="animate-on-scroll">
+      <div class="section-label">Infraestructura del programa</div>
+      <h2>Qué tiene que tener listo el "Programa Socios Falhaus"</h2>
+      <p class="section-intro">Antes de firmar el primer acuerdo con un revendedor, estos elementos tienen que estar resueltos. Si no, cada acuerdo es artesanal y no escalamos.</p>
+
+      <ul class="check-list">
+        <li><strong>Acuerdo marco de 2 páginas</strong> — comisión, territorio (o no), plazo inicial, causas de terminación, confidencialidad. Redactado con abogado pero entendible sin abogado.</li>
+        <li><strong>Kit comercial co-brandeable</strong> — brochure institucional (ya tenemos), presentación comercial editable, catálogo de modelos, showreel de casos (el video de Entre Ríos es el primer hit).</li>
+        <li><strong>Plantillas de propuesta</strong> — la cotización no la arma el revendedor desde cero. Le entregamos un template con los números completos y él solo ajusta opciones.</li>
+        <li><strong>Proceso de handoff del lead</strong> — cuándo un lead del revendedor pasa a Falhaus central (visita a planta, firma, postventa) y cómo se comunica al cliente sin fricción.</li>
+        <li><strong>Onboarding de 1 día</strong> — jornada de capacitación en el showroom. Producto, discurso de venta, objeciones típicas, casos. Asistencia obligatoria antes de poder usar la marca.</li>
+        <li><strong>Tablero mensual de seguimiento</strong> — cada revendedor reporta leads generados y cerrados en un formato único. Alimenta la misma Prometeo que usa Federico.</li>
+        <li><strong>Política de marca clara</strong> — qué pueden publicar en redes, qué material es oficial, qué requiere aprobación previa. Una página. Simple.</li>
+        <li><strong>Reunión trimestral de red</strong> — todos los revendedores juntos (virtual). Novedades, mejores prácticas, sentido de comunidad. Previene que se sientan "proveedores aislados".</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p><strong>El objetivo real del programa no es la comisión — es la replicabilidad.</strong> Si la operación comercial depende de Federico en el 100% de los casos, la marca no escala. Si un revendedor con 1 día de capacitación y un kit bien armado puede cerrar una casa, entonces la marca es la que vende, no la persona. Eso es lo que buscamos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPO REAL ESTATE -->
+  <section class="section" id="expo">
+    <div class="animate-on-scroll">
+      <div class="section-label">Evento ancla</div>
+      <h2>Expo Real Estate como plataforma</h2>
+      <p class="section-intro">La Expo Real Estate (Buenos Aires, junio) concentra desarrolladores, inmobiliarias corporativas y compradores institucionales. Es el escenario natural para presentar la faceta B2B de Falhaus. Hay dos modos de participar y cada uno tiene su ROI.</p>
+
+      <div class="decision-grid">
+        <div class="decision-card">
+          <h4>Modo A · Stand propio</h4>
+          <p>Alquiler de espacio + construcción del stand + staff + material POP. Inversión alta. Presencia mayor. Posibilidad de mostrar un módulo completo en la entrada del predio (si logística lo permite).</p>
+          <div class="recom">
+            <strong>Cuándo conviene:</strong> si hay 2-3 aliados estratégicos que aporten parte del costo a cambio de co-branding.
+          </div>
+        </div>
+        <div class="decision-card">
+          <h4>Modo B · Visitante con agenda</h4>
+          <p>Participación como visitante con 25-30 reuniones pre-agendadas con desarrolladores clave. Inversión baja (entrada + viajes + café con cada uno). No hay stand propio pero hay conversación real.</p>
+          <div class="recom">
+            <strong>Cuándo conviene:</strong> para la primera participación. Testear el interés institucional antes de invertir fuerte en stand.
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-box info">
+        <p><strong>Nuestra propuesta para esta Expo:</strong> ir en Modo B. Invertir el dinero que costaría un stand en producir el material específico B2B (brochure institucional dedicado, carpeta de programa socios, showreel corporativo) y en pagar 3 almuerzos de trabajo con desarrolladores top. ROI esperado: 30 conversaciones, 10 reuniones post-evento, 3 acuerdos en los 90 días siguientes. En 2027, si el modelo valida, vamos con stand propio.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECONOMÍA -->
+  <section class="section" id="economia">
+    <div class="animate-on-scroll">
+      <div class="section-label">Los números</div>
+      <h2>Economía de una venta con revendedor</h2>
+      <p class="section-intro">Simulación simple con cifras ilustrativas. Los valores reales los calibramos con los datos internos de Falhaus. Lo importante acá es la forma de la economía — qué se gana, qué se resigna, qué se protege.</p>
+
+      <div class="scenario-box">
+        <h4>Venta directa (Federico) vs. Venta con revendedor</h4>
+        <p>Caso hipotético: casa de m² medios, ticket de referencia $$$ (placeholder). Margen bruto actual Falhaus estimado ~35-40% del ticket.</p>
+
+        <div class="calc">
+          <div class="calc-row"><span>Ticket de venta</span><strong>100%</strong></div>
+          <div class="calc-row"><span>Costo producto</span><strong>-60%</strong></div>
+          <div class="calc-row"><span>Margen bruto Falhaus (venta directa)</span><strong>40%</strong></div>
+          <div class="calc-row calc-total"><span>Margen bruto neto — venta directa</span><strong>40%</strong></div>
+        </div>
+
+        <div class="calc">
+          <div class="calc-row"><span>Ticket de venta</span><strong>100%</strong></div>
+          <div class="calc-row"><span>Costo producto</span><strong>-60%</strong></div>
+          <div class="calc-row"><span>Comisión revendedor</span><strong>-15%</strong></div>
+          <div class="calc-row calc-total"><span>Margen bruto neto — vía revendedor</span><strong>25%</strong></div>
+        </div>
+
+        <p style="margin-top:14px"><strong>Lectura:</strong> cada venta por revendedor deja 15 puntos menos de margen. A cambio, Falhaus no invierte tiempo comercial, no sostiene showroom adicional, no costea marketing para esa venta. La pregunta clave es: <strong>¿podemos vender más casas con socios de las que podríamos vender solos?</strong> Si la respuesta es sí (y sobran indicios), 25% x 3 &gt; 40% x 1.</p>
+      </div>
+
+      <div class="highlight-box">
+        <p><strong>Variables que hay que definir en conjunto con Sabrina:</strong> margen bruto real actual, estructura de costo fijo mensual, capacidad operativa de producción (¿cuántas casas por mes puede fabricar la planta?), umbral de quiebre de rentabilidad por venta. Con esos 4 datos afinamos las comisiones finales y los thresholds de exclusividad.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section class="section" id="roadmap">
+    <div class="animate-on-scroll">
+      <div class="section-label">Plan a 6 meses</div>
+      <h2>Cómo se va viendo esto mes a mes</h2>
+      <p class="section-intro">Cada trimestre tiene un foco claro. Se suman capacidades sin solaparse. Al final del período tenemos red operativa, no una lista de intenciones.</p>
+
+      <div class="roadmap">
+        <div class="roadmap-step q1">
+          <span class="roadmap-when">Mayo 2026</span>
+          <h4>Diseño del programa</h4>
+          <ul>
+            <li>Acuerdo marco listo</li>
+            <li>Kit comercial v1</li>
+            <li>Onboarding de 1 día armado</li>
+            <li>Comisiones finales cerradas</li>
+          </ul>
+        </div>
+        <div class="roadmap-step q2">
+          <span class="roadmap-when">Junio 2026</span>
+          <h4>Piloto + Expo Real Estate</h4>
+          <ul>
+            <li>2-3 revendedores individuales firmados</li>
+            <li>Expo Real Estate (Modo B)</li>
+            <li>Material B2B institucional</li>
+            <li>Primera reunión de red (trimestral)</li>
+          </ul>
+        </div>
+        <div class="roadmap-step q3">
+          <span class="roadmap-when">Jul-Ago 2026</span>
+          <h4>Expansión regional</h4>
+          <ul>
+            <li>Primeras ventas de revendedores</li>
+            <li>2 representantes regionales en onboarding</li>
+            <li>Seguimiento de acuerdos post-Expo</li>
+            <li>Ajuste de kit con learnings</li>
+          </ul>
+        </div>
+        <div class="roadmap-step q4">
+          <span class="roadmap-when">Sep-Oct 2026</span>
+          <h4>Consolidación</h4>
+          <ul>
+            <li>5-7 socios activos totales</li>
+            <li>1-2 acuerdos institucionales firmados</li>
+            <li>Reporte consolidado de red</li>
+            <li>Decisión sobre programa formal 2027</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPROMISOS -->
+  <section class="section" id="compromisos">
+    <div class="animate-on-scroll">
+      <div class="section-label">Próximos pasos concretos</div>
+      <h2>Qué hacemos en las próximas 2 semanas</h2>
+
+      <div class="next-block">
+        <h3>Compromisos para llegar al piloto</h3>
+        <ol class="commit-list">
+          <li><strong>Gabriel:</strong> redactar "Acuerdo Marco Socios Falhaus" v1 (2 páginas, legible, con abogado en segunda revisión). <em>Viernes 02/05</em></li>
+          <li><strong>Gabriel:</strong> armar carpeta "Kit Comercial Revendedor" (brochure + presentación + catálogo + plantillas). <em>Viernes 02/05</em></li>
+          <li><strong>Federico:</strong> alinear con Sabrina margen bruto real y comisiones sostenibles. <em>Lunes 28/04</em></li>
+          <li><strong>Federico:</strong> retomar contacto con los 2-3 interesados espontáneos, invitarlos a una charla exploratoria. <em>Semana del 28/04</em></li>
+          <li><strong>Gabriel:</strong> brief de participación en Expo Real Estate (costos, logística, agenda de reuniones objetivo). <em>Viernes 02/05</em></li>
+          <li><strong>Juntos:</strong> definir criterio de admisión del piloto (qué tipo de persona admitimos y cuál no, para evitar conflictos de marca desde el día uno). <em>Reunión del 02/05</em></li>
+          <li><strong>Juntos:</strong> primera firma de piloto con revendedor — objetivo. <em>Semana del 12/05</em></li>
+        </ol>
+      </div>
+
+      <div class="highlight-box success">
+        <p><strong>Mi rol en esto:</strong> armar la infraestructura del programa (documentos, kit, lineamientos) para que vos no tengas que inventar cada acuerdo. Tu rol: ser el filtro humano que decide quién entra. Nadie conoce mejor que vos qué persona representa bien Falhaus y cuál no. Eso lo ponemos por encima de cualquier proceso documentado.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="brand">ANTUARA</div>
+  <p>Estrategia B2B2C Revendedores — Falhaus · 24 de abril 2026<br>Documento interno de trabajo · Próxima revisión: viernes 2 de mayo</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

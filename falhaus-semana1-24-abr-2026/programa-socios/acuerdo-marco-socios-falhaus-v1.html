@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acuerdo Marco de Socios · Falhaus · v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bd:#3b2314;--bm:#5c3a1e;--bl:#7a4f2b;--g:#c9a96e;--gl:#e8d5b0;--t:#2d2d2d;--tl:#6b6b6b;--bg:#faf6f1;--w:#ffffff;--br:#e0d5c8;--cream:#faf3ea;--ok:#27ae60;--err:#c0392b;--info:#2980b9}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t);line-height:1.75}
+.container{max-width:860px;margin:0 auto;padding:0 44px}
+
+/* COVER PAGE */
+.cover{background:linear-gradient(135deg,#3b2314,#5c3a1e,#7a4f2b);color:white;padding:80px 44px 70px;position:relative;overflow:hidden;text-align:center;min-height:60vh;display:flex;flex-direction:column;justify-content:center}
+.cover::before{content:'';position:absolute;top:-30%;left:-15%;width:700px;height:700px;background:radial-gradient(circle,rgba(201,169,110,.14),transparent 70%);border-radius:50%}
+.cover::after{content:'';position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--g),var(--gl),var(--g))}
+.cover-inner{position:relative;z-index:2;max-width:760px;margin:0 auto}
+.cover-badge{display:inline-block;padding:8px 20px;background:rgba(201,169,110,.18);border:1.5px solid var(--g);color:var(--gl);font-size:.72rem;font-weight:800;letter-spacing:3px;border-radius:40px;margin-bottom:30px;text-transform:uppercase}
+.cover h1{font-family:'Playfair Display',serif;font-size:3.1rem;font-weight:800;line-height:1.08;margin-bottom:22px}
+.cover h1 em{color:var(--g);font-style:normal}
+.cover-divider{width:60px;height:3px;background:var(--g);margin:14px auto 22px}
+.cover-sub{font-size:1.05rem;color:var(--gl);font-weight:300;max-width:640px;margin:0 auto 30px;line-height:1.6}
+.cover-meta{font-size:.78rem;color:rgba(255,255,255,.55);letter-spacing:2.5px;text-transform:uppercase;margin-top:30px}
+.cover-meta strong{color:var(--gl)}
+
+/* NAV */
+nav.toc{position:sticky;top:0;background:rgba(250,246,241,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--br);padding:12px 0;z-index:50}
+.toc-inner{max-width:860px;margin:0 auto;padding:0 44px;display:flex;gap:14px;overflow-x:auto;scrollbar-width:none;align-items:center}
+.toc-inner::-webkit-scrollbar{display:none}
+.toc-label{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g);margin-right:4px;white-space:nowrap}
+.toc a{text-decoration:none;color:var(--tl);font-size:.78rem;font-weight:600;white-space:nowrap;padding:4px 2px;border-bottom:2px solid transparent;transition:all .2s}
+.toc a:hover{color:var(--bd);border-bottom-color:var(--g)}
+
+/* DOCUMENT BODY */
+.doc{padding:60px 0 80px}
+.doc-label{font-size:.62rem;font-weight:700;letter-spacing:3px;color:var(--g);text-transform:uppercase;margin-bottom:10px}
+.doc h2{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--bd);line-height:1.15;margin:44px 0 14px;padding-bottom:10px;border-bottom:1px solid var(--br);position:relative}
+.doc h2::before{content:'';position:absolute;bottom:-1px;left:0;width:50px;height:2px;background:var(--g)}
+.doc h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--bd);font-weight:600;margin:22px 0 10px}
+.doc p{font-size:.98rem;color:var(--t);line-height:1.85;margin-bottom:14px;text-align:justify;hyphens:auto}
+.doc p strong{color:var(--bd);font-weight:700}
+.doc ul,.doc ol{margin:10px 0 16px 22px}
+.doc li{font-size:.96rem;color:var(--t);line-height:1.75;margin-bottom:8px}
+.doc li strong{color:var(--bd)}
+
+.clause{background:var(--w);border-radius:14px;padding:28px 32px;margin:18px 0;border:1px solid var(--br);position:relative}
+.clause::before{content:'';position:absolute;top:0;left:0;bottom:0;width:4px;background:var(--g);border-radius:14px 0 0 14px}
+.clause-num{font-family:'Playfair Display',serif;font-size:.78rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--g);margin-bottom:6px;display:block}
+.clause h2{font-size:1.45rem;margin:0 0 16px;border-bottom:none;padding-bottom:0}
+.clause h2::before{display:none}
+
+.definitions{background:var(--cream);border-radius:12px;padding:22px 28px;margin:16px 0;border:1px solid var(--br)}
+.definitions dt{font-weight:700;color:var(--bd);font-family:'Playfair Display',serif;font-size:1.02rem;margin-top:12px;margin-bottom:4px}
+.definitions dt:first-of-type{margin-top:0}
+.definitions dd{font-size:.92rem;color:var(--t);line-height:1.7;margin-left:0;margin-bottom:8px}
+
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.9rem;background:var(--w);border-radius:12px;overflow:hidden;border:1px solid var(--br)}
+thead th{background:var(--bd);color:white;padding:11px 14px;text-align:left;font-size:.72rem;letter-spacing:1px;text-transform:uppercase;font-weight:700}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--br);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:var(--cream)}
+td strong{color:var(--bd)}
+
+.note-box{border-left:4px solid var(--g);background:linear-gradient(135deg,rgba(201,169,110,.06),rgba(201,169,110,.02));padding:18px 22px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.92rem;line-height:1.7}
+.note-box strong{color:var(--bd)}
+.note-box.info{border-left-color:var(--info);background:linear-gradient(135deg,rgba(41,128,185,.05),rgba(41,128,185,.02))}
+.note-box.danger{border-left-color:var(--err);background:linear-gradient(135deg,rgba(192,57,43,.05),rgba(192,57,43,.02))}
+
+/* SIGNATURES */
+.signatures{margin:60px 0 40px;padding:36px 40px;background:var(--w);border:2px solid var(--g);border-radius:16px}
+.signatures h2{margin-top:0;border-bottom:none;padding-bottom:0}
+.signatures h2::before{display:none}
+.sig-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;margin-top:36px}
+.sig-block{text-align:center}
+.sig-line{height:1px;background:var(--bd);margin-bottom:10px}
+.sig-label{font-size:.74rem;color:var(--tl);letter-spacing:1.5px;text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.sig-name{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--bd);font-weight:700;margin-bottom:4px}
+.sig-rol{font-size:.82rem;color:var(--tl)}
+.sig-date-box{margin-top:30px;text-align:center;font-size:.88rem;color:var(--tl)}
+.sig-date-box span{display:inline-block;margin:0 16px;padding-bottom:2px;border-bottom:1px solid var(--tl);min-width:140px}
+
+footer{background:var(--bd);color:var(--gl);padding:36px 0;text-align:center}
+footer .brand{font-family:'Playfair Display',serif;font-size:1rem;letter-spacing:4px;color:var(--g);font-weight:700;margin-bottom:8px}
+footer p{font-size:.78rem;line-height:1.6}
+
+/* PRINT */
+@media print{
+  *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  body{background:white}
+  .cover{page-break-after:always;min-height:auto;padding:70px 44px}
+  nav.toc{display:none}
+  .clause{page-break-inside:avoid;box-shadow:none}
+  h2{page-break-after:avoid}
+  footer{page-break-inside:avoid}
+}
+
+@media(max-width:700px){
+  .container{padding:0 24px}
+  .toc-inner{padding:0 24px}
+  .cover{padding:56px 24px}
+  .cover h1{font-size:2.1rem}
+  .clause{padding:22px 24px}
+  .sig-grid{grid-template-columns:1fr;gap:30px}
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<header class="cover">
+  <div class="cover-inner">
+    <div class="cover-badge">Documento contractual · Versión 1</div>
+    <h1>Acuerdo Marco<br>de <em>Socios Comerciales</em></h1>
+    <div class="cover-divider"></div>
+    <p class="cover-sub">Documento base que regula la relación entre <strong>Falhaus</strong> y las personas o empresas que se incorporan al <strong>Programa Socios Falhaus</strong> como revendedores, representantes regionales o aliados institucionales.</p>
+    <div class="cover-meta">Falhaus · 24 de abril de 2026 · <strong>v1 · documento de trabajo</strong></div>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <div class="toc-inner">
+    <span class="toc-label">Cláusulas →</span>
+    <a href="#partes">1. Partes</a>
+    <a href="#definiciones">2. Definiciones</a>
+    <a href="#objeto">3. Objeto</a>
+    <a href="#comision">4. Comisión</a>
+    <a href="#territorio">5. Territorio</a>
+    <a href="#obligaciones-socio">6. Obligaciones Socio</a>
+    <a href="#obligaciones-falhaus">7. Obligaciones Falhaus</a>
+    <a href="#lead-handoff">8. Lead y handoff</a>
+    <a href="#marca">9. Marca</a>
+    <a href="#confidencialidad">10. Confidencialidad</a>
+    <a href="#plazo">11. Plazo</a>
+    <a href="#terminacion">12. Terminación</a>
+    <a href="#ley">13. Ley aplicable</a>
+    <a href="#anexos">Anexos</a>
+    <a href="#firmas">Firmas</a>
+  </div>
+</nav>
+
+<div class="container doc">
+
+  <div class="note-box info">
+    <strong>Sobre este documento.</strong> Esta versión 1 fue redactada por Antuara para Falhaus como base operativa del Programa Socios. Está escrita en lenguaje claro, con cláusulas ejecutables. Antes de usarla con un socio real, debe pasar por revisión legal del estudio de confianza de Falhaus para validación formal. Los montos y porcentajes son orientativos y se calibran en el proceso de selección de cada socio (Anexo A).
+  </div>
+
+  <!-- 1. PARTES -->
+  <section class="clause" id="partes">
+    <span class="clause-num">Cláusula 01</span>
+    <h2>Partes del acuerdo</h2>
+    <p>El presente <strong>Acuerdo Marco</strong> se celebra entre:</p>
+    <ol>
+      <li><strong>Falhaus</strong> (en adelante, <strong>"Falhaus"</strong> o <strong>"la Empresa"</strong>), con domicilio comercial en [domicilio completo], representada en este acto por su Director Comercial, <strong>Federico [Apellido]</strong>, DNI [XX.XXX.XXX];</li>
+      <li><strong>[Nombre completo del socio]</strong> (en adelante, el <strong>"Socio"</strong>), DNI / CUIT [XX.XXX.XXX], con domicilio en [domicilio completo], en representación propia o de la sociedad [Razón Social si aplica], con facultades suficientes para suscribir el presente.</li>
+    </ol>
+    <p>Ambas partes, en adelante y de manera conjunta, <strong>"las Partes"</strong>.</p>
+  </section>
+
+  <!-- 2. DEFINICIONES -->
+  <section class="clause" id="definiciones">
+    <span class="clause-num">Cláusula 02</span>
+    <h2>Definiciones</h2>
+    <p>A los efectos del presente Acuerdo, se establecen las siguientes definiciones:</p>
+    <div class="definitions">
+      <dl>
+        <dt>Producto</dt>
+        <dd>Cualquiera de las unidades constructivas industrializadas producidas y comercializadas por Falhaus (viviendas modulares, refugios apilables, oficinas, y cualquier línea que Falhaus incorpore a su catálogo vigente).</dd>
+
+        <dt>Lead</dt>
+        <dd>Persona física o jurídica con intención manifestada de adquirir un Producto, registrada en el sistema de gestión comercial de Falhaus con fecha, datos de contacto y origen identificable.</dd>
+
+        <dt>Lead Socio</dt>
+        <dd>Lead presentado al CRM de Falhaus por el Socio, con evidencia documental de que fue él quien generó el primer contacto con el prospecto.</dd>
+
+        <dt>Operación Cerrada</dt>
+        <dd>Venta formalizada mediante contrato firmado entre Falhaus y el cliente final, con seña cobrada y registro en el sistema.</dd>
+
+        <dt>Territorio</dt>
+        <dd>Zona geográfica de actuación del Socio conforme al Anexo B del presente Acuerdo.</dd>
+
+        <dt>Comisión</dt>
+        <dd>Contraprestación económica que Falhaus abona al Socio por Operaciones Cerradas originadas por un Lead Socio, conforme a la Cláusula 04 y al Anexo A.</dd>
+
+        <dt>Kit Comercial</dt>
+        <dd>Conjunto de materiales (brochure, catálogo, plantillas de propuesta, casos, videos institucionales) que Falhaus provee al Socio para sostener su actividad comercial.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 3. OBJETO -->
+  <section class="clause" id="objeto">
+    <span class="clause-num">Cláusula 03</span>
+    <h2>Objeto del acuerdo</h2>
+    <p>Por el presente, Falhaus incorpora al Socio al <strong>Programa Socios Falhaus</strong>, facultándolo a promocionar, referenciar y captar Leads para los Productos de la Empresa en el Territorio definido, bajo los términos y condiciones que se detallan a continuación.</p>
+    <p>El Socio actúa como <strong>agente comercial independiente</strong>. Queda expresamente establecido que el presente Acuerdo <strong>no genera vínculo laboral, de dependencia ni societario</strong> entre las Partes. El Socio conserva plena autonomía operativa, asume sus propios costos fiscales y de estructura, y no representa a Falhaus más allá de lo expresamente autorizado en este documento.</p>
+    <p>El Socio <strong>no está facultado para firmar contratos de venta en nombre de Falhaus</strong>, ni para recibir pagos directos de clientes finales, ni para otorgar descuentos o modificaciones al Producto que no estén previamente autorizados por escrito.</p>
+  </section>
+
+  <!-- 4. COMISIÓN -->
+  <section class="clause" id="comision">
+    <span class="clause-num">Cláusula 04</span>
+    <h2>Comisión y forma de pago</h2>
+    <p>Por cada <strong>Operación Cerrada</strong> originada por un <strong>Lead Socio</strong>, Falhaus abonará al Socio una comisión calculada según el siguiente esquema:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Categoría del Socio</th>
+          <th>Comisión sobre ticket neto</th>
+          <th>Condición</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Revendedor individual</strong></td>
+          <td>12 %</td>
+          <td>Comisión base</td>
+        </tr>
+        <tr>
+          <td><strong>Revendedor con volumen</strong></td>
+          <td>15 %</td>
+          <td>A partir de 3 Operaciones Cerradas en un trimestre calendario</td>
+        </tr>
+        <tr>
+          <td><strong>Representante regional</strong></td>
+          <td>15 – 20 %</td>
+          <td>Contrato con exclusividad territorial y objetivo anual (Anexo C)</td>
+        </tr>
+        <tr>
+          <td><strong>Aliado institucional</strong></td>
+          <td>Precio mayorista</td>
+          <td>Ejecutado por acuerdo específico (Anexo D)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>4.1. Base de cálculo</h3>
+    <p>La comisión se calcula sobre el <strong>ticket neto de la Operación Cerrada</strong>, entendido como el precio final de la Unidad (con sus adicionales) descontados: (i) IVA, (ii) costos de flete cuando estén facturados aparte y (iii) descuentos autorizados por Falhaus.</p>
+
+    <h3>4.2. Condición de pago</h3>
+    <p>El derecho a percibir la comisión se consolida cuando <strong>Falhaus ha cobrado efectivamente la seña</strong> del cliente final. A partir de ese hito, el pago se efectúa dentro de los <strong>30 (treinta) días corridos</strong> mediante transferencia bancaria a la cuenta declarada por el Socio, previa emisión de la factura correspondiente.</p>
+
+    <h3>4.3. Devoluciones y cancelaciones</h3>
+    <p>Si una Operación Cerrada se cancela antes de la entrega de la Unidad por causas imputables al cliente final, la comisión abonada al Socio será <strong>reintegrada a Falhaus</strong> en el próximo ciclo de liquidación. Si la cancelación es por causas imputables a Falhaus, la comisión queda firme.</p>
+
+    <div class="note-box">
+      <strong>Escala progresiva:</strong> el Programa Socios prevé una escala progresiva que se activa cuando el Socio supera los 6 Operaciones Cerradas en un año calendario, elevando la comisión base al 17%. Los detalles operativos se describen en el Anexo A.
+    </div>
+  </section>
+
+  <!-- 5. TERRITORIO -->
+  <section class="clause" id="territorio">
+    <span class="clause-num">Cláusula 05</span>
+    <h2>Territorio y exclusividad</h2>
+    <p>El Socio actúa dentro del Territorio descripto en el <strong>Anexo B</strong>. Las condiciones de exclusividad territorial son las siguientes:</p>
+
+    <h3>5.1. Revendedor individual (sin exclusividad)</h3>
+    <p>El Socio puede operar en cualquier zona geográfica de Argentina. Falhaus se reserva el derecho de designar otros Socios en las mismas zonas. Las Operaciones Cerradas se atribuyen al Socio que haya registrado primero el Lead en el CRM de Falhaus.</p>
+
+    <h3>5.2. Representante regional (con exclusividad)</h3>
+    <p>Falhaus otorga exclusividad territorial al Representante Regional conforme al Anexo B. Durante la vigencia del Acuerdo, Falhaus no designará otros representantes en la misma zona, con la salvedad de los Revendedores individuales preexistentes al momento de firma.</p>
+
+    <p>La exclusividad está condicionada al cumplimiento del <strong>objetivo anual</strong> de Operaciones Cerradas pactado en el Anexo C. Su incumplimiento por dos (2) trimestres consecutivos habilita a Falhaus a revocar la exclusividad manteniendo el resto del Acuerdo, previa notificación por escrito con 30 (treinta) días de antelación.</p>
+  </section>
+
+  <!-- 6. OBLIGACIONES SOCIO -->
+  <section class="clause" id="obligaciones-socio">
+    <span class="clause-num">Cláusula 06</span>
+    <h2>Obligaciones del Socio</h2>
+    <p>El Socio se obliga a:</p>
+    <ol>
+      <li><strong>Representar fielmente</strong> a Falhaus y sus Productos, utilizando únicamente el material oficial provisto por la Empresa, sin alterar textos, precios, especificaciones técnicas ni identidad visual sin autorización expresa;</li>
+      <li><strong>Registrar todo Lead Socio</strong> en el CRM de Falhaus dentro de las 48 horas posteriores al primer contacto con el prospecto, para que la atribución comercial quede asegurada;</li>
+      <li><strong>Asistir al Onboarding inicial</strong> de un (1) día en el showroom de Falhaus y participar de las reuniones trimestrales de red de socios;</li>
+      <li><strong>Reportar mensualmente</strong> su pipeline de Leads y el estado de cada uno, en el formato único del Kit Comercial;</li>
+      <li><strong>Abstenerse de comercializar productos de la competencia directa</strong> (viviendas industrializadas equivalentes) durante la vigencia del Acuerdo, cuando su categoría lo establezca (Representante Regional y Aliado Institucional);</li>
+      <li><strong>Respetar los lineamientos de marca</strong> descriptos en la Cláusula 09 y sus anexos;</li>
+      <li><strong>Mantener la confidencialidad</strong> sobre información sensible de Falhaus (costos, márgenes, estrategia comercial) conforme a la Cláusula 10;</li>
+      <li><strong>Asumir sus propios costos</strong> fiscales, impositivos y de infraestructura, emitiendo facturación propia por la comisión devengada.</li>
+    </ol>
+  </section>
+
+  <!-- 7. OBLIGACIONES FALHAUS -->
+  <section class="clause" id="obligaciones-falhaus">
+    <span class="clause-num">Cláusula 07</span>
+    <h2>Obligaciones de Falhaus</h2>
+    <p>Falhaus se obliga a:</p>
+    <ol>
+      <li><strong>Proveer el Kit Comercial</strong> actualizado (brochure, catálogo, plantillas de propuesta, casos de éxito, material audiovisual) sin costo para el Socio;</li>
+      <li><strong>Capacitar al Socio</strong> en el Onboarding inicial de un (1) día y en las instancias trimestrales de la red de socios;</li>
+      <li><strong>Dar soporte comercial de segundo nivel</strong>, respondiendo consultas técnicas o estratégicas del Socio dentro de las 48 horas hábiles;</li>
+      <li><strong>Cotizar cada Propuesta Comercial</strong> dirigida por el Socio en un plazo máximo de 72 horas hábiles;</li>
+      <li><strong>Emitir los contratos de venta</strong> una vez que el Lead llega a la etapa de cierre, centralizando la relación contractual con el cliente final;</li>
+      <li><strong>Gestionar la producción y entrega</strong> de la Unidad conforme a los tiempos establecidos con el cliente;</li>
+      <li><strong>Liquidar y abonar las comisiones</strong> en los plazos pactados en la Cláusula 04;</li>
+      <li><strong>Notificar con anticipación</strong> cualquier cambio estructural en el Programa (comisiones, kit, políticas de marca) que afecte al Socio.</li>
+    </ol>
+  </section>
+
+  <!-- 8. LEAD & HANDOFF -->
+  <section class="clause" id="lead-handoff">
+    <span class="clause-num">Cláusula 08</span>
+    <h2>Proceso de lead y handoff</h2>
+    <p>Para evitar conflictos de atribución y mantener la coherencia en la experiencia del cliente, las Partes acuerdan el siguiente proceso:</p>
+
+    <ol>
+      <li><strong>Primer contacto.</strong> El Socio identifica un prospecto y realiza el primer contacto (reunión, visita, llamada). Registra al Lead Socio en el CRM de Falhaus dentro de 48 hs.</li>
+      <li><strong>Calificación.</strong> El Socio completa los cuatro datos clave en el CRM: situación del terreno, presupuesto, plazo y tipo de proyecto. Si el Lead no cumple los mínimos de calificación, se mantiene en nurturing.</li>
+      <li><strong>Propuesta comercial.</strong> Cuando el Lead Socio está calificado, el Socio solicita cotización a Falhaus mediante el canal único establecido. Falhaus responde en 72 hs hábiles con la propuesta formal.</li>
+      <li><strong>Visita a planta / showroom central.</strong> Falhaus acompaña al Lead en la visita si el Socio la requiere. En esta etapa, la relación con el cliente puede pasar parcial o totalmente a Falhaus, pero la <strong>atribución comercial permanece con el Socio</strong>.</li>
+      <li><strong>Cierre.</strong> Falhaus firma el contrato con el cliente final y cobra la seña. Con la seña cobrada se consolida el derecho del Socio a percibir la comisión.</li>
+      <li><strong>Postventa.</strong> Falhaus es responsable de la producción, entrega e instalación. El Socio puede acompañar pero no tiene obligación operativa.</li>
+    </ol>
+
+    <div class="note-box info">
+      <strong>Regla de atribución:</strong> en caso de disputa sobre la atribución de un Lead (dos Socios registran el mismo prospecto), prevalece el registro con timestamp anterior en el CRM, salvo evidencia documental en contrario (comprobante de reunión, correo con datos de contacto, etc.).
+    </div>
+  </section>
+
+  <!-- 9. MARCA -->
+  <section class="clause" id="marca">
+    <span class="clause-num">Cláusula 09</span>
+    <h2>Uso de marca y política de comunicación</h2>
+    <p>Durante la vigencia del Acuerdo, el Socio queda autorizado a utilizar la marca <strong>Falhaus</strong> y sus activos visuales exclusivamente para actividades comerciales vinculadas al Programa. Las condiciones son:</p>
+
+    <ol>
+      <li>El Socio <strong>no puede modificar</strong> el isologo, tipografía, paleta de colores ni lenguaje de marca de Falhaus sin autorización expresa;</li>
+      <li>Todo material gráfico o audiovisual producido por el Socio que incluya la marca Falhaus debe ser <strong>aprobado previamente por escrito</strong> por la Empresa;</li>
+      <li>Las publicaciones en redes sociales con menciones a Falhaus pueden hacerse <strong>sin aprobación previa</strong>, siempre que respeten los lineamientos del Kit Comercial vigente;</li>
+      <li>El Socio <strong>no puede registrar</strong> cuentas, dominios, marcas comerciales ni identificadores que incluyan el término "Falhaus" o similares;</li>
+      <li>Al terminar el Acuerdo por cualquier causa, el Socio <strong>debe cesar de inmediato</strong> el uso de la marca, eliminar los materiales gráficos y archivar las publicaciones.</li>
+    </ol>
+  </section>
+
+  <!-- 10. CONFIDENCIALIDAD -->
+  <section class="clause" id="confidencialidad">
+    <span class="clause-num">Cláusula 10</span>
+    <h2>Confidencialidad</h2>
+    <p>El Socio se compromete a mantener absoluta reserva sobre toda <strong>información confidencial</strong> a la que acceda en el marco del Programa, incluyendo sin limitación: costos de producción, márgenes, estrategia comercial, datos de clientes, proveedores, procesos productivos, lista de otros Socios, y cualquier dato técnico, económico o estratégico de Falhaus.</p>
+
+    <p>Esta obligación <strong>sobrevive</strong> a la terminación del Acuerdo por un plazo adicional de <strong>24 (veinticuatro) meses</strong>. El incumplimiento habilita a Falhaus a reclamar los daños y perjuicios correspondientes y a solicitar medidas cautelares judiciales.</p>
+
+    <p>No se considera información confidencial: (i) la que sea de dominio público al momento de su divulgación; (ii) la que el Socio haya obtenido legítimamente de terceros sin obligación de reserva; (iii) la que deba divulgarse por requerimiento de autoridad competente, siempre que se notifique a Falhaus con antelación razonable.</p>
+  </section>
+
+  <!-- 11. PLAZO -->
+  <section class="clause" id="plazo">
+    <span class="clause-num">Cláusula 11</span>
+    <h2>Plazo y renovación</h2>
+    <p>El presente Acuerdo tiene una <strong>vigencia inicial de 12 (doce) meses</strong> contados desde su firma, con posibilidad de renovación automática por períodos sucesivos de igual duración, salvo que alguna de las Partes notifique por escrito su voluntad de no renovar con al menos <strong>60 (sesenta) días</strong> de antelación al vencimiento.</p>
+
+    <p>Al finalizar el primer año, ambas Partes realizarán una <strong>evaluación de desempeño</strong> mutua para definir: (i) continuidad en la misma categoría, (ii) ascenso de categoría (de Revendedor a Representante Regional), o (iii) no renovación sin penalidad para ninguna de las Partes.</p>
+  </section>
+
+  <!-- 12. TERMINACIÓN -->
+  <section class="clause" id="terminacion">
+    <span class="clause-num">Cláusula 12</span>
+    <h2>Causales de terminación</h2>
+    <p>El Acuerdo podrá terminarse anticipadamente por las siguientes causales:</p>
+
+    <ol>
+      <li><strong>Por mutuo acuerdo entre las Partes</strong>, instrumentado por escrito;</li>
+      <li><strong>Por incumplimiento grave</strong> de cualquier cláusula del presente Acuerdo, previa intimación por escrito con plazo de 15 (quince) días corridos para subsanarlo;</li>
+      <li><strong>Por incumplimiento de objetivos</strong> en el caso de Representantes Regionales, conforme a la Cláusula 05 y el Anexo C;</li>
+      <li><strong>Por conducta lesiva a la imagen de Falhaus</strong>, debidamente documentada;</li>
+      <li><strong>Por acto de competencia desleal</strong>, desvío de Leads a la competencia o uso indebido de información confidencial;</li>
+      <li><strong>Por fuerza mayor</strong> o caso fortuito que impida la continuidad del Acuerdo por más de 90 (noventa) días.</li>
+    </ol>
+
+    <h3>12.1. Efectos de la terminación</h3>
+    <p>La terminación <strong>no afecta</strong> el derecho del Socio a percibir las comisiones devengadas por Operaciones Cerradas previas a la fecha de terminación, ni las que se cierren en los 60 (sesenta) días posteriores si se trata de Leads registrados con antelación.</p>
+    <p>El Socio debe <strong>devolver o destruir</strong> todo material confidencial, kits, accesos y cuentas entregadas por Falhaus, cesando de inmediato el uso de la marca.</p>
+  </section>
+
+  <!-- 13. LEY APLICABLE -->
+  <section class="clause" id="ley">
+    <span class="clause-num">Cláusula 13</span>
+    <h2>Ley aplicable y jurisdicción</h2>
+    <p>Este Acuerdo se rige por las leyes de la <strong>República Argentina</strong>. Las Partes se someten, para toda cuestión judicial derivada del presente, a la jurisdicción de los <strong>Tribunales Ordinarios de la Ciudad Autónoma de Buenos Aires</strong>, con renuncia expresa a cualquier otro fuero o jurisdicción que pudiera corresponder.</p>
+
+    <p>Previo a iniciar cualquier acción judicial, las Partes se comprometen a intentar una <strong>instancia de mediación privada</strong>, sin carácter vinculante, de una duración máxima de 30 (treinta) días, a cargo de un mediador designado de común acuerdo o, en su defecto, por sorteo entre mediadores matriculados de la Capital Federal.</p>
+  </section>
+
+  <!-- ANEXOS -->
+  <section class="clause" id="anexos">
+    <span class="clause-num">Anexos adjuntos</span>
+    <h2>Anexos que integran el presente Acuerdo</h2>
+    <p>Los siguientes anexos se consideran parte integrante del presente Acuerdo Marco y, en caso de modificación, requieren acuerdo por escrito entre las Partes:</p>
+
+    <ul>
+      <li><strong>Anexo A · Esquema de comisiones detallado</strong> — escalas progresivas, casos especiales, condiciones de pago.</li>
+      <li><strong>Anexo B · Territorio asignado</strong> — detalle geográfico preciso del ámbito de actuación del Socio.</li>
+      <li><strong>Anexo C · Objetivos anuales</strong> — aplicable solamente a Representantes Regionales y Aliados Institucionales.</li>
+      <li><strong>Anexo D · Kit Comercial y política de marca</strong> — listado de materiales, condiciones de uso y actualizaciones.</li>
+      <li><strong>Anexo E · Datos de facturación y cuenta bancaria</strong> — información operativa para pagos.</li>
+    </ul>
+  </section>
+
+  <!-- FIRMAS -->
+  <section class="signatures" id="firmas">
+    <h2>En prueba de conformidad</h2>
+    <p>Leído y conforme, las Partes suscriben el presente Acuerdo Marco en dos (2) ejemplares de idéntico tenor y a un solo efecto, en la Ciudad de __________________________, a los ____ días del mes de __________________________ del año ______.</p>
+
+    <div class="sig-grid">
+      <div class="sig-block">
+        <div class="sig-line"></div>
+        <div class="sig-label">Por Falhaus</div>
+        <div class="sig-name">Federico [Apellido]</div>
+        <div class="sig-rol">Director Comercial · DNI [XX.XXX.XXX]</div>
+      </div>
+      <div class="sig-block">
+        <div class="sig-line"></div>
+        <div class="sig-label">Por el Socio</div>
+        <div class="sig-name">[Nombre del Socio]</div>
+        <div class="sig-rol">[Rol / Razón Social] · DNI/CUIT [XX.XXX.XXX]</div>
+      </div>
+    </div>
+
+    <div class="sig-date-box">
+      Lugar: <span></span> &nbsp; · &nbsp; Fecha: <span></span>
+    </div>
+  </section>
+
+  <div class="note-box danger" style="margin-top:50px">
+    <strong>Nota de versión.</strong> Este es el documento v1 de trabajo. Antes de usarse con un Socio real, debe: (i) completar los datos identitarios de ambas partes, (ii) validarse con el estudio jurídico de Falhaus, (iii) adjuntarse los Anexos A a E firmados. Revisiones y actualizaciones del documento se registran en el repositorio de Antuara con número de versión y fecha.
+  </div>
+
+</div>
+
+<footer>
+  <div class="brand">ANTUARA</div>
+  <p>Acuerdo Marco de Socios — Falhaus · versión 1 · 24 de abril de 2026<br>Redactado por Antuara como base contractual del Programa Socios Falhaus</p>
+</footer>
+
+</body>
+</html>

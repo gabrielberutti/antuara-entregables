@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MVP Engagement Pre-Reunión — Falhaus | 24 Abril 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bd:#3b2314;--bm:#5c3a1e;--bl:#7a4f2b;--g:#c9a96e;--gl:#e8d5b0;--t:#2d2d2d;--tl:#6b6b6b;--bg:#faf6f1;--w:#ffffff;--br:#e0d5c8;--cream:#faf3ea;--ok:#27ae60;--wrn:#e67e22;--err:#c0392b;--info:#2980b9;--wa:#25D366}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t);line-height:1.6}
+.container{max-width:1040px;margin:0 auto;padding:0 40px}
+
+.hero{background:linear-gradient(135deg,#3b2314,#5c3a1e,#7a4f2b);color:white;padding:64px 40px 50px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--g),var(--gl),var(--g))}
+.hero-inner{max-width:1040px;margin:0 auto;position:relative;z-index:2}
+.hero-badge{display:inline-block;padding:6px 16px;background:rgba(201,169,110,.18);border:1px solid var(--g);color:var(--gl);font-size:.68rem;font-weight:700;letter-spacing:3px;border-radius:30px;margin-bottom:20px}
+.hero h1{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:800;line-height:1.08;margin-bottom:14px}
+.hero h1 em{color:var(--g);font-style:normal}
+.hero-sub{font-size:1.1rem;color:var(--gl);font-weight:300;max-width:820px;line-height:1.6;margin-bottom:20px}
+.hero-meta{font-size:.8rem;color:rgba(255,255,255,.55);letter-spacing:2px;text-transform:uppercase}
+
+nav.toc{position:sticky;top:0;background:rgba(250,246,241,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--br);padding:14px 0;z-index:50}
+.toc-inner{max-width:1040px;margin:0 auto;padding:0 40px;display:flex;gap:18px;overflow-x:auto;scrollbar-width:none}
+.toc-inner::-webkit-scrollbar{display:none}
+.toc a{text-decoration:none;color:var(--tl);font-size:.82rem;font-weight:600;letter-spacing:.4px;white-space:nowrap;padding:4px 2px;border-bottom:2px solid transparent;transition:all .2s}
+.toc a:hover{color:var(--bd);border-bottom-color:var(--g)}
+
+.section{padding:56px 0;border-bottom:1px solid var(--br)}
+.section:last-of-type{border-bottom:none}
+.section-label{font-size:.64rem;font-weight:700;letter-spacing:3px;color:var(--g);text-transform:uppercase;margin-bottom:10px}
+.section h2{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:700;color:var(--bd);line-height:1.1;margin-bottom:14px}
+.section-intro{font-size:.98rem;color:var(--tl);max-width:820px;margin-bottom:30px;line-height:1.6}
+
+/* PROBLEMA/SOLUCIÓN */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:20px 0}
+.compare-card{background:var(--w);border-radius:14px;padding:24px 26px;border:1px solid var(--br)}
+.compare-card.before{border-top:5px solid var(--err)}
+.compare-card.after{border-top:5px solid var(--ok)}
+.compare-card h3{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--bd);margin-bottom:12px}
+.compare-card p{font-size:.92rem;color:var(--t);line-height:1.65;margin-bottom:10px}
+.compare-card strong{color:var(--bd)}
+
+/* TIMELINE */
+.timeline{margin:28px 0;position:relative;padding-left:44px}
+.timeline::before{content:'';position:absolute;left:18px;top:10px;bottom:10px;width:3px;background:linear-gradient(to bottom,var(--g),var(--gl),var(--g))}
+.timeline-item{position:relative;margin-bottom:24px;background:var(--w);border-radius:16px;padding:24px 28px;border:1px solid var(--br)}
+.timeline-item::before{content:'';position:absolute;left:-33px;top:28px;width:18px;height:18px;background:var(--g);border-radius:50%;border:4px solid var(--bg)}
+.timeline-time{display:inline-block;padding:4px 12px;background:var(--bd);color:var(--g);border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+.timeline-item h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--bd);margin-bottom:6px;line-height:1.2}
+.timeline-objetivo{font-size:.88rem;color:var(--tl);margin-bottom:16px;line-height:1.5}
+.timeline-objetivo strong{color:var(--bd)}
+
+.wa-mock{background:#ECE5DD;border-radius:12px;padding:16px;margin:14px 0;position:relative}
+.wa-bubble{background:#DCF8C6;padding:12px 16px;border-radius:10px;font-size:.88rem;color:#333;line-height:1.55;max-width:90%;margin-left:auto;position:relative;font-family:'Inter',sans-serif}
+.wa-bubble::after{content:'';position:absolute;right:-6px;top:0;width:0;height:0;border-top:10px solid #DCF8C6;border-right:8px solid transparent}
+.wa-time{font-size:.7rem;color:#999;text-align:right;margin-top:4px}
+.wa-label{display:inline-block;padding:3px 10px;background:var(--wa);color:white;border-radius:12px;font-size:.65rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+
+.asset-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}
+.asset-item{background:var(--cream);border-radius:10px;padding:12px 16px;font-size:.85rem;color:var(--t);display:flex;align-items:center;gap:10px}
+.asset-item::before{content:'📎';font-size:1rem}
+.asset-item strong{color:var(--bd)}
+
+/* HIGHLIGHT */
+.highlight-box{border-left:4px solid var(--g);background:linear-gradient(135deg,rgba(201,169,110,.08),rgba(201,169,110,.03));padding:20px 24px;border-radius:0 12px 12px 0;margin:20px 0;line-height:1.6;font-size:.92rem}
+.highlight-box.danger{border-left-color:var(--err);background:linear-gradient(135deg,rgba(192,57,43,.06),rgba(192,57,43,.02))}
+.highlight-box.success{border-left-color:var(--ok);background:linear-gradient(135deg,rgba(39,174,96,.06),rgba(39,174,96,.02))}
+.highlight-box.info{border-left-color:var(--info);background:linear-gradient(135deg,rgba(41,128,185,.06),rgba(41,128,185,.02))}
+.highlight-box strong{color:var(--bd)}
+
+/* TABLE */
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.88rem;background:var(--w);border-radius:14px;overflow:hidden;border:1px solid var(--br)}
+thead th{background:var(--bd);color:white;padding:12px 16px;text-align:left;font-size:.72rem;letter-spacing:1px;text-transform:uppercase;font-weight:700}
+tbody td{padding:12px 16px;border-bottom:1px solid var(--br);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:var(--cream)}
+td strong{color:var(--bd)}
+.tag-status{display:inline-block;padding:3px 10px;border-radius:12px;font-size:.7rem;font-weight:700}
+.tag-green{background:rgba(39,174,96,.15);color:var(--ok)}
+.tag-yellow{background:rgba(230,126,34,.15);color:var(--wrn)}
+.tag-red{background:rgba(192,57,43,.15);color:var(--err)}
+
+/* KPIs */
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
+.kpi-card{background:var(--w);border-radius:14px;padding:20px 18px;border:1px solid var(--br);text-align:center;position:relative;overflow:hidden}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--g),var(--gl))}
+.kpi-value{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:800;color:var(--bd);line-height:1;margin-bottom:4px}
+.kpi-value small{font-size:1rem;color:var(--tl)}
+.kpi-label{font-size:.76rem;color:var(--tl);line-height:1.3}
+
+/* CHECKLIST */
+.check-list{list-style:none;padding:0}
+.check-list li{padding:12px 0 12px 32px;position:relative;border-bottom:1px solid var(--br);font-size:.92rem;color:var(--t);line-height:1.5}
+.check-list li:last-child{border-bottom:none}
+.check-list li::before{content:'✓';position:absolute;left:0;top:12px;width:18px;height:18px;background:var(--g);color:var(--bd);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800}
+.check-list li strong{color:var(--bd)}
+
+/* ROADMAP */
+.roadmap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+.roadmap-card{background:var(--w);border-radius:16px;padding:24px;border:1px solid var(--br);position:relative}
+.roadmap-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--g);border-radius:16px 16px 0 0}
+.roadmap-card.v0::before{background:var(--ok)}
+.roadmap-card.v1::before{background:var(--wrn)}
+.roadmap-card.v2::before{background:var(--info)}
+.roadmap-card h4{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--bd);margin-bottom:4px}
+.roadmap-when{font-size:.72rem;color:var(--g);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+.roadmap-card p{font-size:.86rem;color:var(--tl);line-height:1.55;margin-bottom:8px}
+.roadmap-card ul{margin-left:18px;font-size:.84rem;color:var(--t);line-height:1.5}
+.roadmap-card li{padding:2px 0}
+
+footer{background:var(--bd);color:var(--gl);padding:40px 0;margin-top:40px;text-align:center}
+footer .brand{font-family:'Playfair Display',serif;font-size:1.1rem;letter-spacing:4px;color:var(--g);font-weight:700;margin-bottom:8px}
+footer p{font-size:.85rem;line-height:1.6}
+
+.animate-on-scroll{opacity:0;transform:translateY(30px);transition:all .6s ease}
+.animate-on-scroll.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){.container{padding:0 20px}.hero{padding:48px 20px 40px}.hero h1{font-size:1.9rem}.section h2{font-size:1.6rem}.compare-grid,.asset-grid,.roadmap-grid,.kpi-grid{grid-template-columns:1fr}.toc-inner{padding:0 20px}}
+@media print{*{print-color-adjust:exact;-webkit-print-color-adjust:exact}.section{page-break-inside:avoid}nav.toc{display:none}.animate-on-scroll{opacity:1!important;transform:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">MVP · ENGAGEMENT PRE-REUNIÓN</div>
+    <h1>Calentar al prospecto<br>antes de <em>la llamada</em></h1>
+    <p class="hero-sub">Tres puntos de contacto entre el "sí, nos vemos el jueves" y el momento en que se conectan. Cero automatización compleja. WhatsApp + Google Drive. Activable el lunes 28 de abril.</p>
+    <div class="hero-meta">Falhaus · 24 de abril 2026</div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#problema">El problema</a>
+    <a href="#secuencia">La secuencia</a>
+    <a href="#contenido">Banco de contenido</a>
+    <a href="#implementacion">Cómo se activa</a>
+    <a href="#kpis">Qué medir</a>
+    <a href="#evolucion">Hacia dónde va</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- PROBLEMA -->
+  <section class="section" id="problema">
+    <div class="animate-on-scroll">
+      <div class="section-label">El problema que resolvemos</div>
+      <h2>El silencio entre el "sí" y la llamada</h2>
+      <p class="section-intro">Entre que el prospecto confirma la reunión y que efectivamente se conectan pasan 24-72 horas. En ese lapso el lead: chequea la competencia, pierde foco, se distrae con trámites del terreno, o simplemente se enfría. Hoy no hacemos nada para ocupar ese espacio.</p>
+
+      <div class="compare-grid">
+        <div class="compare-card before">
+          <h3>Hoy (sin sistema)</h3>
+          <p><strong>T-0:</strong> Agendó la reunión.</p>
+          <p><strong>T-24h:</strong> Nada.</p>
+          <p><strong>T-2h:</strong> Nada.</p>
+          <p><strong>T-0:</strong> Se conecta sin contexto. Federico tiene que empezar desde cero. Muchas veces: cancelación silenciosa, o llega tibio.</p>
+        </div>
+        <div class="compare-card after">
+          <h3>Con el MVP activado</h3>
+          <p><strong>T-48h:</strong> Mensaje + video corto de un caso.</p>
+          <p><strong>T-24h:</strong> Caso de éxito + antes/después.</p>
+          <p><strong>T-2h:</strong> Recordatorio con link de la llamada.</p>
+          <p><strong>T-0:</strong> Se conecta "cebado". Ya vio qué hace Falhaus. Entra con preguntas específicas. Show-up rate sube. Cancelaciones bajan.</p>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <p><strong>La hipótesis detrás:</strong> el costo marginal de 3 mensajes de WhatsApp es cero. El impacto en show-up rate y en calidad de la conversación es enorme. Es fruta madura.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECUENCIA -->
+  <section class="section" id="secuencia">
+    <div class="animate-on-scroll">
+      <div class="section-label">El corazón del MVP</div>
+      <h2>La secuencia de 3 toques</h2>
+      <p class="section-intro">Cada mensaje tiene un objetivo único y una función en el sistema. No se repiten. Cada uno agrega algo que el anterior no dio.</p>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <span class="timeline-time">T-48 horas</span>
+          <h3>Confirmación + bienvenida a Falhaus</h3>
+          <p class="timeline-objetivo"><strong>Objetivo:</strong> confirmar que la reunión existe y generar la primera exposición a la marca sin vender. Bajarle la ansiedad del "¿con quién voy a hablar?".</p>
+          <div class="wa-mock">
+            <div class="wa-label">WhatsApp · 48 hs antes</div>
+            <div class="wa-bubble">
+              ¡Hola [Nombre]! 👋<br><br>
+              Quedó agendada nuestra llamada para el <strong>[día] a las [hora]</strong>. Me gustó lo que me contaste de tu proyecto en [localidad/contexto].<br><br>
+              Para que aproveches mejor nuestro rato, te dejo un video corto (2 min) de una casa que entregamos hace poco. Así ves cómo trabajamos antes de la llamada:<br><br>
+              🎥 [link al video]<br><br>
+              Cualquier duda previa me escribís por acá.
+              <div class="wa-time">14:32 ✓✓</div>
+            </div>
+          </div>
+          <div class="asset-grid">
+            <div class="asset-item"><strong>Video 1-2 min</strong> proceso/instalación</div>
+            <div class="asset-item"><strong>Link corto</strong> (bit.ly o similar)</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-time">T-24 horas</span>
+          <h3>Caso de éxito + prueba social</h3>
+          <p class="timeline-objetivo"><strong>Objetivo:</strong> construir autoridad antes de que chequee a la competencia. Mostrar que ya hay gente como él que eligió Falhaus y está feliz.</p>
+          <div class="wa-mock">
+            <div class="wa-label">WhatsApp · 24 hs antes</div>
+            <div class="wa-bubble">
+              Mañana nos vemos, [Nombre].<br><br>
+              Te dejo este caso real que te puede servir como referencia: <strong>[Cliente X]</strong> terminó su casa de <strong>[m²] m²</strong> en <strong>[tiempo]</strong> con nosotros. El antes/después más un video de la obra:<br><br>
+              📂 [link a carpeta]<br><br>
+              Preparate cualquier pregunta que quieras hacernos mañana. Nos sirve más una charla con preguntas concretas que una explicación genérica.
+              <div class="wa-time">10:15 ✓✓</div>
+            </div>
+          </div>
+          <div class="asset-grid">
+            <div class="asset-item"><strong>Carpeta Drive</strong> con caso elegido</div>
+            <div class="asset-item"><strong>Fotos antes/después</strong> + métricas</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-time">T-2 horas</span>
+          <h3>Recordatorio + link de conexión</h3>
+          <p class="timeline-objetivo"><strong>Objetivo:</strong> bajar cancelación silenciosa a cero. Que el prospecto sepa que hay alguien concreto del otro lado esperándolo.</p>
+          <div class="wa-mock">
+            <div class="wa-label">WhatsApp · 2 hs antes</div>
+            <div class="wa-bubble">
+              [Nombre], en 2 horas nos conectamos.<br><br>
+              Acá va el link de Meet:<br>
+              🔗 [link reunión]<br><br>
+              Si surge algo y necesitás mover la hora, avisame por acá y lo resolvemos. Te espero.
+              <div class="wa-time">12:00 ✓✓</div>
+            </div>
+          </div>
+          <div class="asset-grid">
+            <div class="asset-item"><strong>Link Meet</strong> ya generado</div>
+            <div class="asset-item"><strong>Opt-out amable</strong> (reduce fricción)</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="highlight-box success">
+        <p><strong>Por qué en este orden:</strong> T-48h siembra (genera expectativa). T-24h construye autoridad (antes que el cliente salga a comparar). T-2h cierra el costo de ausentarse (si no viene, avisa). Es una arquitectura probada en industrias de ciclo largo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANCO DE CONTENIDO -->
+  <section class="section" id="contenido">
+    <div class="animate-on-scroll">
+      <div class="section-label">Lo que hace falta tener listo</div>
+      <h2>Banco de contenido mínimo</h2>
+      <p class="section-intro">La secuencia arranca con lo que hoy ya está disponible. Con 5 piezas organizadas es suficiente para el MVP. El resto se va sumando con el uso.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30%">Pieza</th>
+            <th>Descripción</th>
+            <th style="width:18%">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Video proceso / instalación</strong></td>
+            <td>Timelapse o corto de 1-2 min mostrando cómo se construye una Falhaus. El de Entre Ríos (grabado el miércoles) es ideal.</td>
+            <td><span class="tag-status tag-yellow">A editar esta semana</span></td>
+          </tr>
+          <tr>
+            <td><strong>Caso de éxito A</strong></td>
+            <td>Cliente familiar · vivienda principal · m² medios. Foto exterior + interior + dato clave (tiempo de obra).</td>
+            <td><span class="tag-status tag-green">Candidatos identificados</span></td>
+          </tr>
+          <tr>
+            <td><strong>Caso de éxito B</strong></td>
+            <td>Cliente inversor · segunda residencia · m² altos. Diferente perfil para alternar según tipo de prospecto.</td>
+            <td><span class="tag-status tag-yellow">A seleccionar</span></td>
+          </tr>
+          <tr>
+            <td><strong>Brochure institucional</strong></td>
+            <td>PDF ya producido el 22/04. Se envía cuando el prospecto pide "algo más formal".</td>
+            <td><span class="tag-status tag-green">Listo</span></td>
+          </tr>
+          <tr>
+            <td><strong>Plantilla 3 mensajes</strong></td>
+            <td>Textos copy-paste. Solo cambiás nombre, localidad y caso mencionado.</td>
+            <td><span class="tag-status tag-green">Listo (este documento)</span></td>
+          </tr>
+          <tr>
+            <td><strong>Carpeta Drive organizada</strong></td>
+            <td>Estructura: /Videos/ /Casos/ /Institucional/. Cada archivo con link corto.</td>
+            <td><span class="tag-status tag-yellow">Armo lunes 28/04</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box info">
+        <p><strong>Aprovechar el viaje a Entre Ríos:</strong> el material grabado el miércoles 23 es oro puro. Con 1 video corto editado (1-2 min) reemplazamos cualquier contenido genérico y subimos inmediatamente la calidad percibida. Propuesta: grabás con celular, yo te sugiero recorte y lo mandamos a editar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPLEMENTACIÓN -->
+  <section class="section" id="implementacion">
+    <div class="animate-on-scroll">
+      <div class="section-label">De la idea a la operación</div>
+      <h2>Cómo se activa el lunes 28</h2>
+      <p class="section-intro">El MVP es puro manual asistido. No hay integración de software. Es Federico (o asistente) abriendo WhatsApp Web y pegando el mensaje con los datos del lead. Lo que sigue después del MVP es automatización — pero para validar alcanza con esto.</p>
+
+      <ul class="check-list">
+        <li><strong>Lunes AM (15 min):</strong> armar la carpeta Drive con las 5 piezas mínimas y generar links cortos para compartir.</li>
+        <li><strong>Lunes PM (20 min):</strong> guardar las 3 plantillas de mensaje en WhatsApp como "respuestas rápidas" o en Notas del teléfono, listas para copiar.</li>
+        <li><strong>Desde el martes:</strong> cada vez que se confirma una reunión nueva, se dispara la secuencia manualmente. Toma ~2 min por reunión.</li>
+        <li><strong>Viernes (review interno):</strong> contar cuántas secuencias se enviaron, cuántas reuniones se hicieron efectivamente, cuántos leads respondieron al T-48h o T-24h.</li>
+        <li><strong>Próximo review conjunto:</strong> viernes 2 de mayo, evaluamos métricas y decidimos si pasamos a v1 (automatizado).</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p><strong>Quién dispara los mensajes:</strong> idealmente una persona del equipo que NO sea Federico (evitar que Federico pierda tiempo en copy-paste). Si no hay asistente por ahora, lo hace Federico. Si después de 2 semanas queda claro que funciona, pasamos a automatizar con n8n o WhatsApp Business API.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KPIs -->
+  <section class="section" id="kpis">
+    <div class="animate-on-scroll">
+      <div class="section-label">Qué medir</div>
+      <h2>KPIs del MVP (primeras 2 semanas)</h2>
+      <p class="section-intro">4 métricas simples. Las comparamos contra el baseline (semanas previas al MVP) para tomar decisiones.</p>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-value">+<small>%</small></div>
+          <div class="kpi-label">Show-up rate<br>(reunión efectiva / agendada)</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">−<small>%</small></div>
+          <div class="kpi-label">Cancelaciones silenciosas<br>(no-show sin aviso)</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">+<small>%</small></div>
+          <div class="kpi-label">Tasa de respuesta<br>en T-48h o T-24h</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">+<small>pts</small></div>
+          <div class="kpi-label">Score promedio del lead<br>al entrar a la reunión</div>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Métrica</th>
+            <th>Baseline (pre-MVP)</th>
+            <th>Objetivo v0 (2 semanas)</th>
+            <th>Objetivo v1 (6 semanas)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Show-up rate</strong></td>
+            <td>A medir esta semana</td>
+            <td>+15 pp</td>
+            <td>+25 pp / 85% sostenido</td>
+          </tr>
+          <tr>
+            <td><strong>Cancelaciones silenciosas</strong></td>
+            <td>A medir esta semana</td>
+            <td>−30%</td>
+            <td>−60%</td>
+          </tr>
+          <tr>
+            <td><strong>Tasa de respuesta</strong></td>
+            <td>~0% (no hay mensajes)</td>
+            <td>&gt;30% en al menos uno de los 3</td>
+            <td>&gt;50% en T-24h</td>
+          </tr>
+          <tr>
+            <td><strong>Conversión a Propuesta</strong></td>
+            <td>Dato oculto (sin tracking)</td>
+            <td>Trackeada</td>
+            <td>+20% vs. baseline</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box danger">
+        <p><strong>Importante:</strong> el baseline lo vamos a construir con los datos de esta semana. No tenemos una medición previa limpia. Por eso los primeros 7 días el MVP corre en paralelo con la medición del "como era antes" — para tener con qué comparar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVOLUCIÓN -->
+  <section class="section" id="evolucion">
+    <div class="animate-on-scroll">
+      <div class="section-label">Roadmap</div>
+      <h2>Hacia dónde evoluciona este MVP</h2>
+      <p class="section-intro">El v0 es manual y limitado a pre-reunión. Si los KPIs validan, pasamos a v1 con automatización. Si v1 también valida, v2 agrega pre-showroom y pre-propuesta.</p>
+
+      <div class="roadmap-grid">
+        <div class="roadmap-card v0">
+          <div class="roadmap-when">v0 · AHORA</div>
+          <h4>Manual asistido</h4>
+          <p>WhatsApp + Drive. 3 mensajes pre-reunión disparados a mano.</p>
+          <ul>
+            <li>Plantillas copy-paste</li>
+            <li>Disparo manual</li>
+            <li>Medición en planilla</li>
+          </ul>
+        </div>
+        <div class="roadmap-card v1">
+          <div class="roadmap-when">v1 · 6 SEMANAS</div>
+          <h4>Automatizado</h4>
+          <p>n8n o WhatsApp Business API conectado a Prometeo. El lead confirma → la secuencia se dispara sola.</p>
+          <ul>
+            <li>Templates dinámicos por tipo de lead</li>
+            <li>Tracking de lectura/respuesta</li>
+            <li>Triggers según score</li>
+          </ul>
+        </div>
+        <div class="roadmap-card v2">
+          <div class="roadmap-when">v2 · 12 SEMANAS</div>
+          <h4>Secuencias múltiples</h4>
+          <p>Pre-showroom (T-48h + día antes), pre-propuesta (T-24h + mañana de envío), post-propuesta (día 3, día 7, día 14).</p>
+          <ul>
+            <li>Lifecycle completo por etapa</li>
+            <li>A/B testing de mensajes</li>
+            <li>Reactivación de leads fríos</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="highlight-box success">
+        <p><strong>El criterio para avanzar:</strong> no pasamos a v1 si v0 no demuestra impacto claro. Mejor 2 semanas más de v0 optimizado que 2 meses de desarrollo de una automatización que no mueve la aguja. La tecnología sigue a la evidencia.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="brand">ANTUARA</div>
+  <p>MVP Engagement Pre-Reunión — Falhaus · 24 de abril 2026<br>Próximo review: viernes 2 de mayo · 14:00</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

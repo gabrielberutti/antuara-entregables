@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reunión Interáreas Semanal — Hierbas del Oasis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brown-dark: #3b2314; --brown-medium: #5c3a1e;
+            --brown-gradient: linear-gradient(135deg, #3b2314 0%, #5c3a1e 50%, #7a4f2b 100%);
+            --gold: #c9a96e; --gold-light: #e8d5b0;
+            --gold-gradient: linear-gradient(135deg, #c9a96e, #d4b896);
+            --text: #2d2d2d; --text-light: #6b6b6b; --bg: #faf6f1;
+            --white: #ffffff; --border: #e0d5c8;
+            --success: #27ae60; --warning: #e67e22; --danger: #c0392b; --info: #2980b9;
+            --ventas: #2980b9; --compras: #8e44ad; --produccion: #27ae60; --direccion: #c9a96e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+        .hero { background: var(--brown-gradient); color: white; padding: 70px 0 50px; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(201,169,110,0.12) 0%, transparent 70%); border-radius: 50%; }
+        .hero-content { position: relative; z-index: 2; }
+        .hero-badge { display: inline-block; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,169,110,0.4); padding: 6px 16px; border-radius: 30px; margin-bottom: 24px; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 700; line-height: 1.15; margin-bottom: 12px; }
+        .hero-subtitle { font-size: 1.15rem; color: rgba(255,255,255,0.8); font-weight: 300; margin-bottom: 20px; }
+        .hero-meta { font-size: 0.85rem; color: var(--gold-light); letter-spacing: 1px; }
+        .hero-gold-line { position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--gold-gradient); }
+        .section { padding: 60px 0; }
+        .section:nth-child(even) { background: var(--white); }
+        .section-header { margin-bottom: 36px; }
+        .section-number { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 800; color: var(--gold); opacity: 0.3; line-height: 1; display: block; }
+        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--brown-dark); margin-top: -8px; }
+        .section-header p { color: var(--text-light); font-size: 0.95rem; margin-top: 8px; }
+        .highlight-box { border-left: 4px solid var(--gold); background: linear-gradient(135deg, #faf3ea, #f5ebe0); padding: 24px 28px; border-radius: 0 12px 12px 0; margin-bottom: 24px; }
+        .highlight-box h4 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--brown-dark); margin-bottom: 8px; }
+        .highlight-box p, .highlight-box li { font-size: 0.88rem; color: var(--text); line-height: 1.7; }
+        .highlight-box ul { margin-left: 16px; margin-top: 8px; }
+        .highlight-box ul li { margin-bottom: 4px; }
+        .objective-big { background: linear-gradient(135deg, var(--brown-dark) 0%, #7a4f2b 100%); color: white; padding: 44px 40px; border-radius: 20px; text-align: center; position: relative; overflow: hidden; margin-bottom: 24px; }
+        .objective-big::before { content: ''; position: absolute; top: -100px; left: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(201,169,110,0.15) 0%, transparent 70%); border-radius: 50%; }
+        .objective-big .label { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+        .objective-big h3 { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; margin-bottom: 14px; position: relative; z-index: 2; }
+        .objective-big p { font-size: 0.95rem; opacity: 0.85; max-width: 700px; margin: 0 auto; position: relative; z-index: 2; }
+        .data-table { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--white); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 24px; }
+        .data-table th { background: var(--brown-dark); color: white; padding: 14px 16px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; text-align: left; }
+        .data-table td { padding: 12px 16px; font-size: 0.85rem; border-bottom: 1px solid #f0e8e0; vertical-align: top; }
+        .data-table tr:last-child td { border-bottom: none; }
+        .data-table tr:hover td { background: #faf6f1; }
+
+        /* CONFLICT VISUAL */
+        .conflict-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+        .conflict-card { background: var(--white); border-radius: 16px; padding: 24px; border: 1px solid var(--border); text-align: center; transition: all 0.3s ease; }
+        .conflict-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+        .conflict-card .area-icon { font-size: 2.2rem; margin-bottom: 10px; }
+        .conflict-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--brown-dark); margin-bottom: 6px; }
+        .conflict-card .conflict-obj { font-size: 0.82rem; font-weight: 600; padding: 6px 12px; border-radius: 8px; margin-bottom: 10px; display: inline-block; }
+        .conflict-card p { font-size: 0.78rem; color: var(--text-light); line-height: 1.6; }
+
+        /* AREA REPORT CARDS */
+        .area-block { margin-bottom: 32px; }
+        .area-header { display: flex; align-items: center; gap: 16px; padding: 20px 28px; border-radius: 16px 16px 0 0; color: white; }
+        .area-header.ventas { background: linear-gradient(135deg, #1a5276, var(--ventas)); }
+        .area-header.compras { background: linear-gradient(135deg, #6c3483, var(--compras)); }
+        .area-header.produccion { background: linear-gradient(135deg, #1a6b3a, var(--produccion)); }
+        .area-header.direccion { background: linear-gradient(135deg, var(--brown-dark), var(--brown-medium)); }
+        .area-header .area-emoji { font-size: 2rem; }
+        .area-header h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; }
+        .area-header .area-sub { font-size: 0.78rem; opacity: 0.8; }
+        .area-body { background: var(--white); border: 1px solid var(--border); border-top: none; border-radius: 0 0 16px 16px; padding: 28px; }
+        .report-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid #f0e8e0; }
+        .report-item:last-child { border-bottom: none; }
+        .report-num { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 800; font-size: 0.75rem; color: white; margin-top: 2px; }
+        .report-num.ventas { background: var(--ventas); }
+        .report-num.compras { background: var(--compras); }
+        .report-num.produccion { background: var(--produccion); }
+        .report-num.direccion { background: var(--gold); color: var(--brown-dark); }
+        .report-content { flex: 1; }
+        .report-content strong { color: var(--brown-dark); font-size: 0.9rem; }
+        .report-content p { font-size: 0.82rem; color: var(--text-light); margin-top: 4px; line-height: 1.6; }
+        .report-example { font-size: 0.78rem; color: var(--info); background: #eaf4fd; padding: 8px 12px; border-radius: 8px; margin-top: 8px; font-style: italic; }
+
+        /* CIRCUIT VISUAL */
+        .circuit-center { text-align: center; margin: 40px 0; }
+        .circuit-ring { display: inline-grid; grid-template-columns: 1fr 1fr; gap: 0; width: 600px; }
+        .circuit-node { padding: 28px 20px; text-align: center; border: 2px solid var(--border); }
+        .circuit-node:nth-child(1) { border-radius: 20px 0 0 0; border-color: var(--ventas); }
+        .circuit-node:nth-child(2) { border-radius: 0 20px 0 0; border-color: var(--compras); }
+        .circuit-node:nth-child(3) { border-radius: 0 0 0 20px; border-color: var(--produccion); }
+        .circuit-node:nth-child(4) { border-radius: 0 0 20px 0; border-color: var(--gold); }
+        .circuit-node h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; margin-bottom: 4px; }
+        .circuit-node p { font-size: 0.72rem; color: var(--text-light); }
+        .circuit-node .c-icon { font-size: 1.8rem; margin-bottom: 8px; }
+
+        /* AGENDA TIMELINE */
+        .agenda-block { background: var(--white); border-radius: 16px; padding: 32px; border: 1px solid var(--border); margin-bottom: 24px; }
+        .agenda-block h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--brown-dark); margin-bottom: 20px; }
+        .agenda-row { display: grid; grid-template-columns: 80px 1fr 100px; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid #f0e8e0; }
+        .agenda-row:last-child { border-bottom: none; }
+        .agenda-time { font-weight: 700; font-size: 0.85rem; color: var(--brown-dark); text-align: center; }
+        .agenda-what { font-size: 0.88rem; }
+        .agenda-what strong { color: var(--brown-dark); }
+        .agenda-who { font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 20px; text-align: center; color: white; }
+        .agenda-who.ventas { background: var(--ventas); }
+        .agenda-who.compras { background: var(--compras); }
+        .agenda-who.produccion { background: var(--produccion); }
+        .agenda-who.direccion { background: var(--gold); color: var(--brown-dark); }
+        .agenda-who.todos { background: var(--brown-dark); }
+
+        /* FRICTION VISUAL */
+        .friction-grid { display: grid; grid-template-columns: 1fr 60px 1fr; gap: 0; align-items: center; margin-bottom: 16px; }
+        .friction-area { background: var(--white); border-radius: 12px; padding: 16px 20px; border: 1px solid var(--border); text-align: center; }
+        .friction-area h5 { font-size: 0.85rem; font-weight: 700; margin-bottom: 4px; }
+        .friction-area p { font-size: 0.75rem; color: var(--text-light); }
+        .friction-vs { text-align: center; font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 800; color: var(--danger); }
+        .friction-solution { background: linear-gradient(135deg, #faf3ea, #f5ebe0); border-radius: 12px; padding: 14px 20px; margin-bottom: 20px; text-align: center; }
+        .friction-solution p { font-size: 0.82rem; color: var(--brown-dark); }
+        .friction-solution strong { color: var(--success); }
+
+        footer { background: var(--brown-dark); color: rgba(255,255,255,0.7); padding: 40px 0; text-align: center; }
+        .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--gold); letter-spacing: 3px; }
+        .footer-tagline { font-size: 0.8rem; margin-top: 4px; letter-spacing: 1px; }
+        .footer-divider { width: 60px; height: 2px; background: var(--gold); opacity: 0.4; margin: 16px auto; }
+        .footer-info { font-size: 0.7rem; opacity: 0.5; }
+        .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+        @media print { .section { page-break-before: always; } .area-block, .highlight-box { break-inside: avoid; } .animate-on-scroll { opacity: 1 !important; transform: none !important; } * { print-color-adjust: exact; -webkit-print-color-adjust: exact; } }
+        @media (max-width: 768px) { .container { padding: 0 20px; } .hero h1 { font-size: 2rem; } .conflict-grid { grid-template-columns: 1fr; } .circuit-ring { width: 100%; } .agenda-row { grid-template-columns: 60px 1fr; } .agenda-who { display: none; } .friction-grid { grid-template-columns: 1fr; } .friction-vs { transform: rotate(90deg); } }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <div class="container hero-content">
+            <div class="hero-badge">HIERBAS DEL OASIS · Circuito Organizacional</div>
+            <h1>Reunión Interáreas Semanal</h1>
+            <p class="hero-subtitle">Compras, Producción, Ventas y Dirección — Un solo propósito, un solo ritmo</p>
+            <div class="hero-meta">25 minutos · Todos los [día a definir] · Abril 2026</div>
+        </div>
+        <div class="hero-gold-line"></div>
+    </div>
+
+    <!-- SECCIÓN 1: POR QUÉ -->
+    <div class="section" id="seccion-1">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-number">01</span>
+                <h2>Por qué necesitamos esta reunión</h2>
+                <p>El problema de fondo: tres áreas con objetivos distintos que chocan entre sí</p>
+            </div>
+
+            <div class="objective-big animate-on-scroll">
+                <div class="label">El diagnóstico</div>
+                <h3>Compras, Producción y Ventas no funcionan como un sistema. Funcionan como islas.</h3>
+                <p>Cada área optimiza lo suyo sin ver el impacto en las demás. El resultado: faltantes que frenan ventas, stock que no rota, despachos que se demoran, y decisiones que se toman sin información completa. Esto no es un problema de personas — es un problema de circuito.</p>
+            </div>
+
+            <div class="conflict-grid animate-on-scroll">
+                <div class="conflict-card">
+                    <div class="area-icon">📦</div>
+                    <h4>Compras</h4>
+                    <div class="conflict-obj" style="background: #f0e6f6; color: var(--compras);">Objetivo: comprar bien y barato</div>
+                    <p>Busca optimizar costos, negociar volúmenes, mantener stock mínimo para no inmovilizar capital. Tiende a comprar lo justo y necesario.</p>
+                </div>
+                <div class="conflict-card">
+                    <div class="area-icon">🏭</div>
+                    <h4>Producción</h4>
+                    <div class="conflict-obj" style="background: #e8f8ef; color: var(--produccion);">Objetivo: producir sin interrupciones</div>
+                    <p>Necesita insumos disponibles, tiempos previsibles, y lotes eficientes. Prefiere tandas largas de un mismo producto porque reduce costos de setup.</p>
+                </div>
+                <div class="conflict-card">
+                    <div class="area-icon">💰</div>
+                    <h4>Ventas</h4>
+                    <div class="conflict-obj" style="background: #eaf4fd; color: var(--ventas);">Objetivo: vender todo, ahora</div>
+                    <p>Quiere todo el catálogo disponible, despacho inmediato, promos agresivas, y flexibilidad para cerrar negocios. Promete al cliente sin consultar stock.</p>
+                </div>
+            </div>
+
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--brown-dark); margin-bottom: 20px;" class="animate-on-scroll">Las fricciones más comunes cuando no hay circuito</h3>
+
+            <div class="animate-on-scroll">
+                <div class="friction-grid">
+                    <div class="friction-area">
+                        <h5 style="color: var(--ventas);">Ventas</h5>
+                        <p>"Necesito 500 unidades de Manzanilla para una promo"</p>
+                    </div>
+                    <div class="friction-vs">vs</div>
+                    <div class="friction-area">
+                        <h5 style="color: var(--produccion);">Producción</h5>
+                        <p>"Nadie me avisó, no tengo insumos ni planificación"</p>
+                    </div>
+                </div>
+                <div class="friction-solution">
+                    <p><strong>Con el circuito:</strong> Ventas anticipa la promo en la reunión semanal → Producción programa la tanda → Compras asegura el insumo</p>
+                </div>
+
+                <div class="friction-grid">
+                    <div class="friction-area">
+                        <h5 style="color: var(--compras);">Compras</h5>
+                        <p>"Compré menos porque el proveedor subió el precio"</p>
+                    </div>
+                    <div class="friction-vs">vs</div>
+                    <div class="friction-area">
+                        <h5 style="color: var(--ventas);">Ventas</h5>
+                        <p>"Me quedé sin stock en medio de una campaña"</p>
+                    </div>
+                </div>
+                <div class="friction-solution">
+                    <p><strong>Con el circuito:</strong> Compras reporta la situación del proveedor → Ventas ajusta la campaña o busca alternativa → Dirección arbitra si hace falta</p>
+                </div>
+
+                <div class="friction-grid">
+                    <div class="friction-area">
+                        <h5 style="color: var(--produccion);">Producción</h5>
+                        <p>"Tengo pedidos expresos todos los días, no puedo planificar"</p>
+                    </div>
+                    <div class="friction-vs">vs</div>
+                    <div class="friction-area">
+                        <h5 style="color: var(--ventas);">Ventas</h5>
+                        <p>"El cliente lo necesita urgente, es plata para la empresa"</p>
+                    </div>
+                </div>
+                <div class="friction-solution">
+                    <p><strong>Con el circuito:</strong> Se define una regla: expresos se despachan cada 48 horas máximo. Ventas lo sabe, el cliente lo sabe, producción puede planificar</p>
+                </div>
+            </div>
+
+            <div class="highlight-box animate-on-scroll">
+                <h4>La reunión interáreas no es para controlarse — es para sincronizarse</h4>
+                <p>No se trata de que un área le rinda cuentas a otra. Se trata de que las 4 áreas tengan la misma foto de la semana: qué se va a vender, qué se necesita producir, qué hay que comprar, y hacia dónde apunta la empresa. <strong>25 minutos por semana que evitan horas de fricciones, errores y plata perdida.</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 2: EL CIRCUITO -->
+    <div class="section" id="seccion-2">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-number">02</span>
+                <h2>El circuito: cómo se conectan las 4 áreas</h2>
+                <p>Cada área alimenta a la siguiente — el flujo es circular, no lineal</p>
+            </div>
+
+            <div class="circuit-center animate-on-scroll">
+                <div class="circuit-ring">
+                    <div class="circuit-node">
+                        <div class="c-icon">💰</div>
+                        <h4 style="color: var(--ventas);">VENTAS</h4>
+                        <p>Detecta demanda, anticipa promos, reporta faltantes y oportunidades</p>
+                        <p style="margin-top: 8px; font-size: 0.68rem; color: var(--ventas); font-weight: 700;">→ Le dice a PRODUCCIÓN qué va a necesitar</p>
+                    </div>
+                    <div class="circuit-node">
+                        <div class="c-icon">📦</div>
+                        <h4 style="color: var(--compras);">COMPRAS</h4>
+                        <p>Asegura insumos, reporta variaciones de precios, alerta faltantes de proveedores</p>
+                        <p style="margin-top: 8px; font-size: 0.68rem; color: var(--compras); font-weight: 700;">→ Le dice a PRODUCCIÓN qué insumos hay disponibles</p>
+                    </div>
+                    <div class="circuit-node">
+                        <div class="c-icon">🏭</div>
+                        <h4 style="color: var(--produccion);">PRODUCCIÓN</h4>
+                        <p>Ejecuta la planificación, reporta capacidad, avisa cuellos de botella y tiempos</p>
+                        <p style="margin-top: 8px; font-size: 0.68rem; color: var(--produccion); font-weight: 700;">→ Le dice a VENTAS qué está listo para despachar</p>
+                    </div>
+                    <div class="circuit-node">
+                        <div class="c-icon">🎯</div>
+                        <h4 style="color: var(--gold);">DIRECCIÓN</h4>
+                        <p>Define prioridades estratégicas, arbitra conflictos, toma decisiones que las áreas no pueden tomar solas</p>
+                        <p style="margin-top: 8px; font-size: 0.68rem; color: var(--gold); font-weight: 700;">→ Alinea a las 3 áreas bajo un mismo propósito</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box animate-on-scroll">
+                <h4>El propósito unificador</h4>
+                <p>Las 3 áreas operativas (Compras, Producción, Ventas) tienen objetivos distintos pero un propósito compartido: <strong>que el producto correcto llegue al cliente correcto, en el momento correcto, al precio correcto.</strong> Si una sola de estas variables falla, la cadena se rompe. La reunión semanal es el mecanismo que mantiene la cadena funcionando.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 3: QUÉ TRAE CADA ÁREA -->
+    <div class="section" id="seccion-3">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-number">03</span>
+                <h2>Qué reporta cada área en la reunión</h2>
+                <p>Información concreta que cada responsable debe traer preparada</p>
+            </div>
+
+            <!-- VENTAS -->
+            <div class="area-block animate-on-scroll">
+                <div class="area-header ventas">
+                    <div class="area-emoji">💰</div>
+                    <div>
+                        <h3>Ventas</h3>
+                        <div class="area-sub">Reporte semanal — 5 minutos</div>
+                    </div>
+                </div>
+                <div class="area-body">
+                    <div class="report-item">
+                        <div class="report-num ventas">1</div>
+                        <div class="report-content">
+                            <strong>Anticipación de promociones y campañas</strong>
+                            <p>Qué promos se van a lanzar en los próximos 7-15 días, qué productos involucran, y qué volumen estimado se necesita. Producción y Compras necesitan esta información con anticipación para planificar.</p>
+                            <div class="report-example">"La semana que viene lanzamos promo de Mezclas 12+3. Estimamos necesitar 600 unidades de mezclas N1 a N15. ¿Hay stock? ¿Hay que producir?"</div>
+                        </div>
+                    </div>
+                    <div class="report-item">
+                        <div class="report-num ventas">2</div>
+                        <div class="report-content">
+                            <strong>Faltantes detectados en calle</strong>
+                            <p>Productos que los vendedores o los clientes están pidiendo y no hay stock. Esto es dinero que se pierde cada día que no se resuelve.</p>
+                            <div class="report-example">"Ariel reporta que 3 dietéticas le pidieron Tintura de Cardo Mariano y no hay stock hace 10 días. Estamos perdiendo ventas."</div>
+                        </div>
+                    </div>
+                    <div class="report-item">
+                        <div class="report-num ventas">3</div>
+                        <div class="report-content">
+                            <strong>Estado de despachos y expresos pendientes</strong>
+                            <p>Pedidos que están demorados, expresos que no salieron en 48 horas, clientes que están esperando. Los expresos son dinero — cada día de demora es riesgo de pérdida.</p>
+                            <div class="report-example">"Hay 4 expresos de ayer que no salieron. Son $X de facturación retenida. Necesitamos que se despachen hoy."</div>
+                        </div>
+                    </div>
+                    <div class="report-item">
+                        <div class="report-num ventas">4</div>
+                        <div class="report-content">
+                            <strong>Feedback del mercado</strong>
+                            <p>Qué dice el cliente sobre precios, calidad, competencia. Información que Compras y Producción no tienen acceso directo y que puede cambiar decisiones.</p>
+                            <div class="report-example">"Tres clientes esta semana nos compararon con Fronteras en yerba. Dicen que el packaging de ellos es más atractivo en góndola."</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMPRAS -->
+            <div class="area-block animate-on-scroll">
+                <div class="area-header compras">
+                    <div class="area-emoji">📦</div>
+                    <div>
+                        <h3>Compras</h3>
+                        <div class="area-sub">Reporte semanal — 5 minutos</div>
+                    </div>
+                </div>
+                <div class="area-body">
+                    <div class="report-item">
+                        <div class="report-num compras">1</div>
+                        <div class="report-content">
+                            <strong>Estado de insumos críticos</strong>
+                            <p>Qué insumos están en nivel bajo, cuáles tienen pedido en tránsito, cuáles tienen demora del proveedor. Producción necesita saber si puede contar con el material para la semana.</p>
+                            <div class="report-example">"El envase de tinturas de 30ml tiene stock para 10 días. El proveedor confirmó entrega para el jueves."</div>
+                        </div>
+                    </div>
+                    <div class="report-item">
+                        <div class="report-num compras">2</div>
+                        <div class="report-content">
+                            <strong>Alertas de precio y disponibilidad</strong>
+                            <p>Variaciones de precio de proveedores, cambios en condiciones, posibles desabastecimientos. Esto impacta directamente en costos y en la política de precios que maneja Ventas.</p>
+                            <div class="report-example">"El proveedor de manzanilla aumentó 15% esta semana. Hay que evaluar si se absorbe o se traslada al precio."</div>
+                        </div>
+                    </div>
+                    <div class="report-item">
+                        <div class="report-num compras">3</div>
+                        <div class="report-content">
+                            <strong>Faltantes confirmados y fecha estimada de resolución</strong>
+                            <p>Respuesta directa a los faltantes que reporta Ventas: qué se pidió, cuándo llega, y si hay alternativa mientras tanto.</p>
+                            <div class="report-example">"La Tintura de Cardo Mariano: el insumo llega el miércoles, se puede producir el jueves. Disponible para despacho el viernes."</div>
+                        </div>
+                    </div>
+                    <div class="report-item">
+                        <div class="report-num compras">4</div>
+                        <div class="report-content">
+                            <strong>Oportunidades de compra</strong>
+                            <p>Proveedores que ofrecen descuento por volumen, insumos con oportunidad de precio, o posibilidad de stockear algo estacional.</p>
+                            <div class="report-example">"El proveedor de envases ofrece 20% de descuento si compramos el lote completo antes de fin de mes. ¿Tiene sentido?"</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCCIÓN -->
+            <div class="area-block animate-on-scroll">
+                <div class="area-header produccion">
+                    <div class="area-emoji">🏭</div>
+                    <div>
+                        <h3>Producción</h3>
+                        <div class="area-sub">Reporte semanal — 5 minutos</div>
+                    </div>
+                </div>
+                <div class="area-body">
+                    <div class="report-item">
+                        <div class="report-num produccion">1</div>
+                        <div class="report-content">
+                            <strong>Plan de producción de la semana</strong>
+                            <p>Qué se va a producir, en qué orden, y cuándo va a estar listo para despacho. Ventas necesita saber esto para no prometer lo que no hay.</p>
+                            <div class="report-example">"Esta semana producimos: lunes-martes infusiones mezclas, miércoles tinturas, jueves envasado de yerba. Disponible para despacho desde el viernes."</div>
+                        </div>
+                    </div>
+                    <div class="report-item">
+                        <div class="report-num produccion">2</div>
+                        <div class="report-content">
+                            <strong>Cuellos de botella y capacidad</strong>
+                            <p>Si hay alguna máquina parada, si falta personal, si un proceso está demorado. Compras y Ventas ajustan sus planes en consecuencia.</p>
+                            <div class="report-example">"La envasadora de saquitos está en mantenimiento hasta el miércoles. La producción de saquitos se retrasa 2 días."</div>
+                        </div>
+                    </div>
+                    <div class="report-item">
+                        <div class="report-num produccion">3</div>
+                        <div class="report-content">
+                            <strong>Stock de producto terminado disponible</strong>
+                            <p>Qué productos están listos para despachar hoy. Esta es la foto real que Ventas necesita para saber qué puede vender y qué no.</p>
+                            <div class="report-example">"Stock actual: Manzanilla Flor Pura 1.200 unidades, Yerba 500g: 340 unidades, Tintura Valeriana: 80 unidades (stock bajo)."</div>
+                        </div>
+                    </div>
+                    <div class="report-item">
+                        <div class="report-num produccion">4</div>
+                        <div class="report-content">
+                            <strong>Alertas de calidad</strong>
+                            <p>Cualquier situación que pueda afectar la calidad del producto: lote observado, insumo que no cumple especificación, reclamo de control de calidad. Oasis no puede fallar en calidad.</p>
+                            <div class="report-example">"El último lote de aceite de rosa mosqueta tiene un color más claro de lo habitual. Dirección Técnica está evaluando. Recomendamos no despachar hasta tener confirmación."</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DIRECCIÓN -->
+            <div class="area-block animate-on-scroll">
+                <div class="area-header direccion">
+                    <div class="area-emoji">🎯</div>
+                    <div>
+                        <h3>Dirección</h3>
+                        <div class="area-sub">Ejes estratégicos y decisiones — 5 minutos</div>
+                    </div>
+                </div>
+                <div class="area-body">
+                    <div class="report-item">
+                        <div class="report-num direccion">1</div>
+                        <div class="report-content">
+                            <strong>Prioridades estratégicas de la semana</strong>
+                            <p>Qué es lo más importante para la empresa esta semana. Puede ser un lanzamiento, una decisión de pricing, la apertura de un nuevo canal, o un foco particular de producción. Alinea a las 3 áreas bajo una misma prioridad.</p>
+                            <div class="report-example">"Esta semana la prioridad es asegurar el stock de la promo de herboristería. Todo lo demás es secundario."</div>
+                        </div>
+                    </div>
+                    <div class="report-item">
+                        <div class="report-num direccion">2</div>
+                        <div class="report-content">
+                            <strong>Decisiones pendientes que necesitan resolución</strong>
+                            <p>Temas que las áreas no pueden resolver solas y necesitan que Dirección defina: aprobación de presupuesto, cambio de proveedor, ajuste de precio, lanzamiento de producto.</p>
+                            <div class="report-example">"Aprobamos el aumento de precio en tinturas un 10% a partir del 1 de mayo. Ventas, comunicarlo a los clientes esta semana."</div>
+                        </div>
+                    </div>
+                    <div class="report-item">
+                        <div class="report-num direccion">3</div>
+                        <div class="report-content">
+                            <strong>Arbitraje de conflictos entre áreas</strong>
+                            <p>Cuando Ventas necesita algo que Producción no puede dar, o cuando Compras tiene una limitación que afecta a todos, Dirección define la prioridad y la solución.</p>
+                            <div class="report-example">"Ventas quiere promo de cosmética pero Producción no tiene capacidad esta semana. Decisión: se posterga la promo 1 semana y se prioriza el lote de infusiones."</div>
+                        </div>
+                    </div>
+                    <div class="report-item">
+                        <div class="report-num direccion">4</div>
+                        <div class="report-content">
+                            <strong>Visión de mediano plazo</strong>
+                            <p>Compartir con las 3 áreas lo que viene en las próximas semanas/meses: nuevos productos, cambios de estrategia, viajes, eventos, certificaciones en trámite. Que todos sepan hacia dónde va la empresa.</p>
+                            <div class="report-example">"En mayo arrancamos con el e-commerce para consumidor final. Producción: van a empezar a ver pedidos unitarios, no por caja. Nos vamos preparando."</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 4: AGENDA -->
+    <div class="section" id="seccion-4">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-number">04</span>
+                <h2>Estructura de la reunión — 25 minutos</h2>
+                <p>Agenda fija, predecible, sin desvíos</p>
+            </div>
+
+            <div class="agenda-block animate-on-scroll">
+                <h3>Agenda semanal interáreas</h3>
+                <div class="agenda-row">
+                    <div class="agenda-time">0'-2'</div>
+                    <div class="agenda-what"><strong>Apertura:</strong> Dirección plantea la prioridad estratégica de la semana. Una frase. El norte.</div>
+                    <div class="agenda-who direccion">Dirección</div>
+                </div>
+                <div class="agenda-row">
+                    <div class="agenda-time">2'-7'</div>
+                    <div class="agenda-what"><strong>Reporte de Ventas:</strong> Promos que vienen, faltantes detectados, estado de expresos/despachos, feedback del mercado.</div>
+                    <div class="agenda-who ventas">Ventas</div>
+                </div>
+                <div class="agenda-row">
+                    <div class="agenda-time">7'-12'</div>
+                    <div class="agenda-what"><strong>Reporte de Compras:</strong> Estado de insumos, alertas de precio, respuesta a faltantes, oportunidades de compra.</div>
+                    <div class="agenda-who compras">Compras</div>
+                </div>
+                <div class="agenda-row">
+                    <div class="agenda-time">12'-17'</div>
+                    <div class="agenda-what"><strong>Reporte de Producción:</strong> Plan de producción, cuellos de botella, stock de producto terminado, alertas de calidad.</div>
+                    <div class="agenda-who produccion">Producción</div>
+                </div>
+                <div class="agenda-row">
+                    <div class="agenda-time">17'-22'</div>
+                    <div class="agenda-what"><strong>Resolución de cruces:</strong> Temas que involucran a más de un área. Decisiones que Dirección tiene que tomar. Conflictos que se arbitran ahí.</div>
+                    <div class="agenda-who todos">Todos</div>
+                </div>
+                <div class="agenda-row">
+                    <div class="agenda-time">22'-25'</div>
+                    <div class="agenda-what"><strong>Compromisos de salida:</strong> Cada área dice en una frase qué se lleva para la semana. Se registra. Se revisa la semana siguiente.</div>
+                    <div class="agenda-who todos">Todos</div>
+                </div>
+            </div>
+
+            <div class="highlight-box animate-on-scroll">
+                <h4>Reglas de la reunión</h4>
+                <ul>
+                    <li><strong>25 minutos. No más.</strong> Si un tema necesita más tiempo, se agenda una reunión aparte entre las áreas involucradas.</li>
+                    <li><strong>Cada área viene con su reporte preparado.</strong> La reunión no es para armar la información — es para compartirla.</li>
+                    <li><strong>Se registran los compromisos.</strong> La semana siguiente se empieza revisando si se cumplieron.</li>
+                    <li><strong>No se discuten temas operativos del día a día.</strong> Eso se resuelve entre áreas por fuera. Acá se ven los temas que cruzan áreas.</li>
+                    <li><strong>Dirección cierra.</strong> Si hay conflicto sin resolución, Dirección decide y se avanza.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 5: REGLAS OPERATIVAS -->
+    <div class="section" id="seccion-5">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-number">05</span>
+                <h2>Reglas operativas que se acuerdan en este circuito</h2>
+                <p>Criterios compartidos que evitan fricciones entre áreas</p>
+            </div>
+
+            <table class="data-table animate-on-scroll">
+                <thead>
+                    <tr>
+                        <th>Regla</th>
+                        <th>Qué significa</th>
+                        <th>Áreas que impacta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Expresos: despacho máximo cada 48 horas</strong></td>
+                        <td>Los pedidos expresos no se retienen indefinidamente. Se despachan como máximo cada 48 horas. Son dinero para la empresa y no pueden quedar varados.</td>
+                        <td>Producción + Ventas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Promos: anticipar mínimo 7 días</strong></td>
+                        <td>Ventas no puede lanzar una promo sin avisar a Producción y Compras con al menos 7 días de anticipación. Si no hay stock, la promo se posterga.</td>
+                        <td>Ventas → Producción → Compras</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Faltantes: respuesta en 24 horas</strong></td>
+                        <td>Cuando Ventas reporta un faltante, Compras tiene 24 horas para responder: cuándo llega el insumo, o si hay que buscar alternativa.</td>
+                        <td>Ventas → Compras</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Alertas de calidad: freno inmediato</strong></td>
+                        <td>Si Producción o Dirección Técnica detecta un problema de calidad, se frena el despacho de ese lote hasta tener confirmación. Oasis no puede fallar en calidad.</td>
+                        <td>Producción → Ventas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cambios de precio: comunicar antes de implementar</strong></td>
+                        <td>Ningún cambio de precio se implementa sin que las 4 áreas lo sepan. Ventas necesita comunicarlo a clientes, Compras evalúa el impacto en margen, Producción evalúa el impacto en volumen.</td>
+                        <td>Dirección → Todas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stock mínimo: definir por producto estrella</strong></td>
+                        <td>Los productos locomotora (Top 10 de rotación) tienen un nivel de stock mínimo acordado. Si se llega a ese nivel, Compras activa la reposición sin esperar que Ventas reporte faltante.</td>
+                        <td>Compras + Producción</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="objective-big animate-on-scroll">
+                <div class="label">El compromiso compartido</div>
+                <h3>Un solo propósito: que el producto correcto llegue al cliente correcto, en el momento correcto.</h3>
+                <p>Compras asegura el insumo. Producción lo transforma en producto. Ventas lo coloca en el mercado. Dirección alinea las prioridades. Ninguna de las 4 puede cumplir su objetivo sin las otras tres. Esta reunión semanal es el mecanismo que lo hace posible.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-brand">HIERBAS DEL OASIS</div>
+            <p class="footer-tagline">Circuito Interáreas Semanal</p>
+            <div class="footer-divider"></div>
+            <p class="footer-info">Documento confidencial · Abril 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

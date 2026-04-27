@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circuito de Compras · Hierbas del Oasis · 27 de Abril 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green-dark: #1f3a2a;
+            --green-medium: #2e5638;
+            --green-light: #4a7c59;
+            --green-gradient: linear-gradient(135deg, #1f3a2a 0%, #2e5638 50%, #4a7c59 100%);
+            --sage: #87a878;
+            --sage-light: #c8d8b8;
+            --olive: #6b8e23;
+            --honey: #d4a574;
+            --honey-light: #e8d5b0;
+            --cream: #f6f2e7;
+            --cream-dark: #ece4d2;
+            --text: #2a2e26;
+            --text-light: #5e6759;
+            --bg: #faf7ee;
+            --white: #ffffff;
+            --border: #d8d2bf;
+            --success: #2d7a3e;
+            --warning: #c47a2c;
+            --danger: #a8392c;
+            --info: #2c6b87;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+        /* HERO */
+        .hero {
+            background: var(--green-gradient);
+            color: white;
+            padding: 70px 0 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -20%;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(200,216,184,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero-content { position: relative; z-index: 2; }
+        .hero-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--sage-light);
+            border: 1px solid rgba(200,216,184,0.4);
+            padding: 6px 16px;
+            border-radius: 30px;
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 12px;
+        }
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.85);
+            font-weight: 300;
+            margin-bottom: 20px;
+            max-width: 720px;
+        }
+        .hero-meta { font-size: 0.85rem; color: var(--sage-light); letter-spacing: 1px; }
+        .hero-line {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--olive), var(--sage), var(--honey));
+        }
+
+        .section { padding: 50px 0; }
+        .section-header { margin-bottom: 28px; }
+        .section-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            color: var(--olive);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            display: block;
+            font-weight: 700;
+        }
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--green-dark);
+            margin-bottom: 8px;
+        }
+        .section-header p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* DIAGNOSIS BOX */
+        .diagnosis-box {
+            background: linear-gradient(135deg, #f5e2dd, #ecd0c8);
+            border-left: 4px solid var(--danger);
+            padding: 26px 30px;
+            border-radius: 0 14px 14px 0;
+            margin-bottom: 24px;
+        }
+        .diagnosis-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--green-dark);
+            margin-bottom: 10px;
+        }
+        .diagnosis-box ul {
+            margin-left: 22px;
+            margin-top: 8px;
+        }
+        .diagnosis-box ul li {
+            margin-bottom: 6px;
+            font-size: 0.92rem;
+            line-height: 1.65;
+        }
+
+        /* AS-IS VS TO-BE */
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 24px;
+        }
+        .compare-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 24px 26px;
+            border: 1px solid var(--border);
+        }
+        .compare-card.asis { border-top: 4px solid var(--danger); }
+        .compare-card.tobe { border-top: 4px solid var(--success); }
+        .compare-card .label {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+        .compare-card.asis .label { color: var(--danger); }
+        .compare-card.tobe .label { color: var(--success); }
+        .compare-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--green-dark);
+            margin-bottom: 12px;
+        }
+        .compare-card ul { margin-left: 20px; }
+        .compare-card ul li {
+            font-size: 0.88rem;
+            line-height: 1.65;
+            margin-bottom: 6px;
+        }
+
+        /* FLOW STEPS */
+        .flow-step {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px 28px;
+            margin-bottom: 12px;
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 22px;
+            align-items: start;
+            border-left: 5px solid var(--olive);
+        }
+        .flow-step .num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--olive);
+            line-height: 0.95;
+        }
+        .flow-step .body h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--green-dark);
+            margin-bottom: 6px;
+        }
+        .flow-step .body p {
+            font-size: 0.9rem;
+            color: var(--text);
+            line-height: 1.65;
+            margin-bottom: 6px;
+        }
+        .flow-step .body .meta {
+            display: flex;
+            gap: 14px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .flow-step .body .meta span {
+            font-size: 0.72rem;
+            background: var(--cream-dark);
+            color: var(--green-dark);
+            padding: 4px 10px;
+            border-radius: 16px;
+            font-weight: 600;
+        }
+        .flow-step .body .meta span.owner { background: var(--sage-light); }
+        .flow-step .body .meta span.input { background: #fbe6cf; color: #7a4f17; }
+
+        /* AXES (4 ejes de reporte) */
+        .axes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .axis-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 22px 24px;
+            border: 1px solid var(--border);
+            border-top: 4px solid var(--sage);
+        }
+        .axis-card .num {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: var(--olive);
+            font-weight: 800;
+            margin-bottom: 4px;
+            display: block;
+            text-transform: uppercase;
+        }
+        .axis-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: var(--green-dark);
+            margin-bottom: 8px;
+        }
+        .axis-card p {
+            font-size: 0.86rem;
+            line-height: 1.65;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+        .axis-card .meta {
+            font-size: 0.74rem;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        .axis-card .meta strong { color: var(--green-dark); }
+
+        /* QUESTIONS BLOCKS */
+        .q-block {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px 28px;
+            margin-bottom: 14px;
+            border-left: 4px solid var(--honey);
+        }
+        .q-block h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--green-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .q-block h3 .letter {
+            display: inline-flex;
+            width: 30px; height: 30px;
+            background: var(--honey);
+            color: var(--green-dark);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            font-weight: 800;
+            font-family: 'Inter', sans-serif;
+        }
+        .q-block p.intro {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            margin-left: 42px;
+        }
+        .q-block ol {
+            margin-left: 60px;
+            counter-reset: q;
+            list-style: none;
+        }
+        .q-block ol li {
+            counter-increment: q;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 4px;
+        }
+        .q-block ol li::before {
+            content: counter(q) ".";
+            position: absolute;
+            left: -28px;
+            color: var(--olive);
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* OVERLAP ALERT */
+        .overlap-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px 26px;
+            margin-bottom: 14px;
+            border-top: 4px solid var(--warning);
+        }
+        .overlap-card .tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            background: #f3dfc1;
+            color: #7a4f17;
+            padding: 3px 10px;
+            border-radius: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+        .overlap-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: var(--green-dark);
+            margin-bottom: 8px;
+        }
+        .overlap-card p {
+            font-size: 0.9rem;
+            line-height: 1.65;
+            margin-bottom: 8px;
+        }
+        .overlap-card .resolution {
+            background: #e0ecde;
+            border-left: 3px solid var(--success);
+            padding: 10px 14px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.86rem;
+            margin-top: 8px;
+        }
+        .overlap-card .resolution strong { color: var(--success); }
+
+        /* OBJECTIVE BIG */
+        .objective-big {
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-medium) 100%);
+            color: white;
+            padding: 42px 38px;
+            border-radius: 18px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .objective-big::before {
+            content: '';
+            position: absolute;
+            top: -100px; left: -100px;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(200,216,184,0.18) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .objective-big .label {
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--sage-light);
+            margin-bottom: 14px;
+        }
+        .objective-big h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 2;
+        }
+        .objective-big p {
+            font-size: 0.98rem;
+            opacity: 0.92;
+            max-width: 720px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            line-height: 1.7;
+        }
+
+        /* TIMELINE */
+        .timeline {
+            border-left: 3px solid var(--sage);
+            margin-left: 14px;
+            padding-left: 28px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 22px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px; top: 6px;
+            width: 16px; height: 16px;
+            background: var(--olive);
+            border: 3px solid var(--bg);
+            border-radius: 50%;
+        }
+        .timeline-item .when {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--olive);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .timeline-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: var(--green-dark);
+            margin-bottom: 6px;
+        }
+        .timeline-item p {
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--green-dark);
+            color: rgba(255,255,255,0.7);
+            padding: 36px 0;
+            text-align: center;
+        }
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--sage-light);
+            letter-spacing: 3px;
+        }
+        .footer-tagline { font-size: 0.78rem; margin-top: 4px; letter-spacing: 1px; color: var(--honey-light); }
+        .footer-divider {
+            width: 60px; height: 2px;
+            background: var(--olive);
+            margin: 14px auto;
+        }
+        .footer-meta { font-size: 0.7rem; opacity: 0.6; }
+
+        @media (max-width: 768px) {
+            .compare-grid, .axes-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 1.9rem; }
+            .flow-step { grid-template-columns: 1fr; }
+        }
+
+        @media print {
+            body { background: white; }
+            .hero { padding: 30px 0 20px; }
+            .section { padding: 24px 0; page-break-inside: avoid; }
+            .flow-step, .axis-card, .q-block, .overlap-card { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container hero-content">
+        <span class="hero-badge">Reunión circuito de compras · Sesión de trabajo</span>
+        <h1>Circuito de Compras — Cómo debería funcionar</h1>
+        <p class="hero-subtitle">Diagnóstico, diseño del circuito objetivo y preguntas para mapear el AS-IS con Leo. Meta de fondo: que el área de Compras opere con la mayor autonomía posible, dentro de una política clara y con Leo conduciendo el día a día.</p>
+        <p class="hero-meta">LUNES 27 DE ABRIL 2026 · 10:00 HS · GABRIEL + SABRINA + LEO + SERGIO</p>
+    </div>
+    <div class="hero-line"></div>
+</section>
+
+<!-- 01 OBJETIVO -->
+<section class="section">
+    <div class="container">
+        <div class="objective-big">
+            <div class="label">Por qué esta reunión</div>
+            <h3>Compras debe poder operar con autonomía — hoy no puede</h3>
+            <p>El viernes 24/04 el área no pudo entregar la información que pedimos para la dinámica CPV (Compras–Producción–Ventas). La salida de Karen dejó un vacío de costos y se solapan responsabilidades entre Leo, Roque y Sergio. Hoy <strong>diagnosticamos el circuito actual con Leo</strong> y <strong>diseñamos el circuito objetivo</strong> para que el área pase a operar con la mayor autonomía posible — Leo conduciendo el día a día, Sergio interviniendo por excepción, Antuara apoyando solo cuando hace falta.</p>
+        </div>
+
+        <div class="diagnosis-box">
+            <h3>Lo que encontramos en la reunión del viernes</h3>
+            <ul>
+                <li><strong>El área de Compras no tiene circuito formal.</strong> Funciona por inercia y criterio personal de Sergio.</li>
+                <li><strong>Costos se cayó tras la salida de Karen.</strong> Solo se actualizan cuando Sergio lo pide puntualmente.</li>
+                <li><strong>Stock se controla por duplicado.</strong> Roque (producción) y Leo (compras) están haciendo el mismo trabajo.</li>
+                <li><strong>No hay política de compras escrita.</strong> Stock objetivo (3 meses, mínimos, máximos) cambia según contexto.</li>
+                <li><strong>Pago de proveedores absorbió a Compras.</strong> Tareas que antes hacía Karen ahora se sumaron a Leo, restándole tiempo a costos y planificación.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 02 AS-IS vs TO-BE -->
+<section class="section" style="padding-top: 0;">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-number">01 · Lectura del circuito</span>
+            <h2>Cómo está hoy vs. cómo debería estar</h2>
+            <p>Lectura sintética para alinear el equipo antes de entrar al detalle.</p>
+        </div>
+
+        <div class="compare-grid">
+            <div class="compare-card asis">
+                <div class="label">AS-IS · Hoy</div>
+                <h4>Circuito reactivo y dependiente de Sergio</h4>
+                <ul>
+                    <li>Sergio decide cada compra (criterio en su cabeza)</li>
+                    <li>Compras reacciona a pedidos puntuales</li>
+                    <li>Costos se actualizan solo cuando alguien los pide</li>
+                    <li>Stock se chequea desde Producción y Compras en paralelo</li>
+                    <li>Sin reporte semanal estructurado</li>
+                    <li>Pago a proveedores consume el tiempo del área</li>
+                </ul>
+            </div>
+
+            <div class="compare-card tobe">
+                <div class="label">TO-BE · Objetivo</div>
+                <h4>Leo opera el circuito con autonomía</h4>
+                <ul>
+                    <li>Leo conduce el día a día bajo política escrita</li>
+                    <li>Sergio interviene solo por excepción (montos altos, casos fuera de criterio)</li>
+                    <li>Costos actualizados semanalmente, conectados a precios</li>
+                    <li>Stock chequeado por una sola área, con control cruzado</li>
+                    <li>Reporte semanal en 4 ejes los viernes</li>
+                    <li>Pago a proveedores con calendario armado por Gustavo</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 03 LOS 4 EJES DE REPORTE -->
+<section class="section" style="padding-top: 0;">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-number">02 · Reporte semanal de Compras</span>
+            <h2>Los 4 ejes que tiene que producir el área</h2>
+            <p>Información mínima viable que tiene que llegar todos los viernes a la reunión CPV.</p>
+        </div>
+
+        <div class="axes-grid">
+            <div class="axis-card">
+                <span class="num">Eje 1</span>
+                <h4>Estado de insumos críticos</h4>
+                <p>Qué insumos están en nivel bajo, cuáles tienen pedido en tránsito, cuáles tienen demora del proveedor.</p>
+                <div class="meta"><strong>Owner:</strong> Compras (Leo) · <strong>Frecuencia:</strong> Semanal · <strong>Output:</strong> Tablero compartido + reporte resumen</div>
+            </div>
+
+            <div class="axis-card">
+                <span class="num">Eje 2</span>
+                <h4>Alerta de precios y disponibilidad</h4>
+                <p>Tendencia de precios de proveedores, oportunidades por estacionalidad (manzanilla en marzo, etc.), insumos cuyo precio actualizado no tenemos.</p>
+                <div class="meta"><strong>Owner:</strong> Compras (Leo) · <strong>Input:</strong> Actualización quincenal de precios de proveedores (a sistematizar)</div>
+            </div>
+
+            <div class="axis-card">
+                <span class="num">Eje 3</span>
+                <h4>Faltantes confirmados y fechas</h4>
+                <p>Qué insumo falta hoy, qué pedido se espera y para cuándo, qué pedidos están demorados.</p>
+                <div class="meta"><strong>Owner:</strong> Compras (Leo) · <strong>Input cruzado:</strong> Producción (Roque) — qué necesita producir esta semana</div>
+            </div>
+
+            <div class="axis-card">
+                <span class="num">Eje 4</span>
+                <h4>Oportunidades de compra</h4>
+                <p>Cuándo conviene adelantar una compra por precio, cuándo conviene esperar, qué insumos rotan bien y justifican stock más alto.</p>
+                <div class="meta"><strong>Owner:</strong> Compras (Leo) · <strong>Input:</strong> Ventas (rotación) + Finanzas (caja)</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 04 FLUJO COMPLETO TO-BE -->
+<section class="section" style="padding-top: 0;">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-number">03 · Flujo del circuito objetivo</span>
+            <h2>Cómo debería funcionar Compras paso a paso</h2>
+            <p>Secuencia limpia desde la detección de necesidad hasta el reporte semanal.</p>
+        </div>
+
+        <div class="flow-step">
+            <div class="num">1</div>
+            <div class="body">
+                <h4>Detección de necesidad</h4>
+                <p>Compras identifica qué hay que comprar — por nivel mínimo de stock (criterio fijo por insumo), por demanda de Producción, o por oportunidad de mercado (precio, estacionalidad).</p>
+                <div class="meta"><span class="owner">Owner: Compras</span><span>Trigger: Stock + Producción + Mercado</span></div>
+            </div>
+        </div>
+
+        <div class="flow-step">
+            <div class="num">2</div>
+            <div class="body">
+                <h4>Validación cruzada con Producción y Ventas</h4>
+                <p>Antes de decidir, Compras confirma con Producción si está en plan producir y con Ventas si la rotación justifica la cantidad. Evita comprar de más o de menos.</p>
+                <div class="meta"><span class="owner">Owner: Compras (Leo)</span><span class="input">Input: Roque (Producción) + Sabrina (datos de rotación)</span></div>
+            </div>
+        </div>
+
+        <div class="flow-step">
+            <div class="num">3</div>
+            <div class="body">
+                <h4>Chequeo de caja y autorización por excepción</h4>
+                <p>Si la compra está dentro de la política (criterio fijo + monto bajo umbral acordado), Compras ejecuta directamente. Si es excepción (monto alto, insumo fuera de criterio o decisión estratégica), Compras eleva propuesta a Dirección. Caja se valida siempre con Gustavo antes de ejecutar.</p>
+                <div class="meta"><span class="owner">Owner: Compras (autonomía dentro de política)</span><span class="input">Input: Gustavo (caja) · Escala a Dirección solo por excepción</span></div>
+            </div>
+        </div>
+
+        <div class="flow-step">
+            <div class="num">4</div>
+            <div class="body">
+                <h4>Ejecución y carga en sistemas</h4>
+                <p>Compras emite el pedido al proveedor, recibe la mercadería, carga la factura en Tango y actualiza la planilla de costos en Drive.</p>
+                <div class="meta"><span class="owner">Owner: Compras</span><span>Sistemas: Tango + Drive</span></div>
+            </div>
+        </div>
+
+        <div class="flow-step">
+            <div class="num">5</div>
+            <div class="body">
+                <h4>Producción descuenta MP al hacer la orden de trabajo</h4>
+                <p>Roque mantiene su circuito actual: al imprimir orden de trabajo se descuenta materia prima del stock. Stock real al día garantizado.</p>
+                <div class="meta"><span class="owner">Owner: Producción (Roque)</span></div>
+            </div>
+        </div>
+
+        <div class="flow-step">
+            <div class="num">6</div>
+            <div class="body">
+                <h4>Reporte semanal CPV los viernes</h4>
+                <p>Compras lleva los 4 ejes a la reunión CPV. Producción suma stock de producto terminado + alertas de calidad (vía Martín). Dirección consolida prioridades y resuelve conflictos.</p>
+                <div class="meta"><span class="owner">Reunión: Viernes</span><span>Owners: Compras + Producción + Ventas + Dirección</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 05 SOLAPAMIENTOS A RESOLVER -->
+<section class="section" style="padding-top: 0;">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-number">04 · Lo que hay que destrabar</span>
+            <h2>Solapamientos a resolver en la reunión</h2>
+            <p>Tres puntos donde dos áreas hacen lo mismo o donde no está claro quién decide.</p>
+        </div>
+
+        <div class="overlap-card">
+            <span class="tag">Solapamiento 01</span>
+            <h4>Stock de insumos: Roque y Leo lo controlan en paralelo</h4>
+            <p>Sergio le pidió a Roque que revise stock de hierbas tras la salida de Karen, sin saber que Leo ya lo hacía. Resultado: dos personas mirando lo mismo, ninguna se siente responsable de cerrar el círculo.</p>
+            <div class="resolution"><strong>Propuesta:</strong> Compras (Leo) es responsable del stock de insumos. Producción (Roque) hace control cruzado mensual y mantiene el descuento por orden de trabajo. Producción suma el stock de producto terminado.</div>
+        </div>
+
+        <div class="overlap-card">
+            <span class="tag">Solapamiento 02</span>
+            <h4>Decisión de compra: Sergio decide cada compra y Leo no opera con autonomía</h4>
+            <p>Sergio a veces fija criterios distintos a los acordados (ejemplo: pedir comprar cuando había stock para 3 meses). Esto descalibra el circuito, le quita autonomía a Compras y bloquea la profesionalización del área.</p>
+            <div class="resolution"><strong>Propuesta:</strong> Sergio se mueve de "decisor diario" a "autorizador por excepción". Leo opera el circuito con autonomía dentro de la política escrita. Dirección interviene solo en excepciones (montos altos, decisiones estratégicas, salidas del criterio) — y cuando interviene, lo hace explícito y se documenta.</div>
+        </div>
+
+        <div class="overlap-card">
+            <span class="tag">Solapamiento 03</span>
+            <h4>Pagos a proveedores: absorbieron a Compras</h4>
+            <p>Tras la salida de Karen, Leo asumió tareas de análisis de cuenta y gestión de pagos que antes coordinaba Karen con Sergio. Esto le quita tiempo al laburo de costos y planificación.</p>
+            <div class="resolution"><strong>Propuesta:</strong> Gustavo arma el calendario de pagos (en curso). Compras solo libera autorización, no gestiona el pago. Análisis de cuenta queda en Gustavo + Sergio.</div>
+        </div>
+    </div>
+</section>
+
+<!-- 06 PREGUNTAS PARA LA REUNIÓN -->
+<section class="section" style="padding-top: 0;">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-number">05 · Preguntas de intervención</span>
+            <h2>Lo que tenemos que preguntarle a Leo</h2>
+            <p>Cuatro bloques. La idea es mapear el AS-IS sin asumir nada y ver qué de lo que hoy hace ya nos sirve para los 4 ejes.</p>
+        </div>
+
+        <div class="q-block">
+            <h3><span class="letter">A</span> Mapear el circuito actual</h3>
+            <p class="intro">Cómo está funcionando Compras hoy, paso a paso.</p>
+            <ol>
+                <li>¿Cómo te llega un pedido de compra? ¿Quién lo origina (Sergio, Producción, vos por stock bajo)?</li>
+                <li>¿Cómo decidís cuánto y cuándo comprar? ¿Hay un criterio fijo o vas viendo?</li>
+                <li>¿Quién autoriza la compra finalmente? ¿Hay umbrales por monto?</li>
+                <li>¿Cómo hacés el seguimiento del pedido desde que sale hasta que llega?</li>
+                <li>¿Cómo se carga la factura del proveedor en Tango?</li>
+                <li>¿Cómo se actualiza la planilla de costos en Drive cuando hay aumento?</li>
+                <li>¿Cuántas horas por semana te lleva todo este circuito?</li>
+                <li>¿Qué te frena hoy o te lleva más tiempo de lo que debería?</li>
+            </ol>
+        </div>
+
+        <div class="q-block">
+            <h3><span class="letter">B</span> Sobre los 4 ejes objetivo</h3>
+            <p class="intro">Validar cuán cerca o lejos estamos de poder reportar cada eje.</p>
+            <ol>
+                <li>Estado de insumos críticos: ¿podés saber HOY cuáles están en bajo? ¿En cuánto tiempo armás el listado?</li>
+                <li>Precios y disponibilidad: ¿tenés contacto directo con proveedores? ¿Cuántos activos tenés? ¿Te aceptarían mandarte actualizaciones de precios cada 15-30 días?</li>
+                <li>Faltantes y fechas: ¿podés proyectar cuándo va a llegar lo que pediste? ¿Cómo manejás las demoras?</li>
+                <li>Oportunidades de compra: ¿detectás cuándo conviene comprar por precio o estacionalidad? ¿Cómo lo registrás?</li>
+            </ol>
+        </div>
+
+        <div class="q-block">
+            <h3><span class="letter">C</span> Sobre coordinación y autonomía</h3>
+            <p class="intro">Cómo te conectás hoy con Producción, Dirección y Finanzas — y qué necesitarías para operar con más autonomía.</p>
+            <ol>
+                <li>¿Con qué frecuencia te coordinás con Roque sobre stock? ¿Hay un momento fijo o sucede cuando alguien pregunta?</li>
+                <li>Cuando Sergio te pide algo distinto al plan, ¿cómo lo procesás? ¿Qué te resulta más difícil de esa dinámica?</li>
+                <li>¿Quién te dice si una compra puede o no puede hacerse según caja disponible? ¿Cuándo te enterás?</li>
+                <li>¿Tenés visibilidad del calendario de pagos que está armando Gustavo?</li>
+                <li>¿Qué decisiones de compra te gustaría poder tomar sin escalar a Sergio? ¿Qué condiciones (umbrales, política escrita, datos) necesitarías para sentirte cómodo operando con más autonomía?</li>
+            </ol>
+        </div>
+
+        <div class="q-block">
+            <h3><span class="letter">D</span> Sobre lo operativo concreto</h3>
+            <p class="intro">Detalle del día a día — para entender qué se puede formalizar rápido.</p>
+            <ol>
+                <li>¿Hay algún tablero o reporte que ya estés haciendo y que podamos formalizar como base del reporte semanal?</li>
+                <li>Recepción de mercadería: ¿cómo se valida que llegó lo que se pidió? ¿Quién lo recibe y firma?</li>
+                <li>¿Qué tres tareas operativas, si te las sacáramos, te liberarían más tiempo para planificación?</li>
+                <li>De los 4 ejes propuestos, ¿cuál es el más fácil de cumplir esta misma semana? ¿Cuál el más difícil?</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<!-- 07 PRÓXIMOS PASOS -->
+<section class="section" style="padding-top: 0;">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-number">06 · Cronograma</span>
+            <h2>Próximos pasos post-reunión</h2>
+            <p>Compromisos para esta semana. La idea es llegar al viernes 8/05 con Compras reportando los 4 ejes.</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="when">Lunes 27/04 · Hoy 10 hs</div>
+                <h4>Reunión circuito de compras</h4>
+                <p>Mapear AS-IS con Leo · Validar política de compras · Definir solapamientos a resolver · Cerrar acuerdos preliminares.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="when">Lunes 27 · Tarde</div>
+                <h4>Documento del circuito TO-BE</h4>
+                <p>Gabriel + Sabrina consolidan lo trabajado en la reunión, formalizan el circuito objetivo y la política de compras inicial.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="when">Martes 28 - Miércoles 29</div>
+                <h4>Plantilla de reporte semanal de los 4 ejes</h4>
+                <p>Diseño del tablero compartido con los 4 ejes. Calendario de actualización de precios con proveedores. Distribución a Leo + Roque + Sergio.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="when">Jueves 30/04</div>
+                <h4>Gabriel viaja a Córdoba (biosalud)</h4>
+                <p>Frente comercial paralelo. Sabrina queda al frente de la consolidación del circuito de Compras.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="when">Viernes 1/05 · Feriado</div>
+                <h4>Sin reunión CPV</h4>
+                <p>Día del trabajador. Reunión recurrente CPV se reprograma al viernes 8/05.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="when">Viernes 8/05 · 8:00 hs</div>
+                <h4>Vuelta a la reunión CPV — Leo conduciendo Compras</h4>
+                <p>Compras llega con el primer reporte de los 4 ejes <strong>presentado por Leo en autonomía</strong> · Producción reporta stock de PT + alertas de calidad · Dirección consolida prioridades · Ventas comparte avance del cierre de abril y plan de mayo. Antuara acompaña como soporte, ya no como conductor del circuito.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-brand">HIERBAS DEL OASIS</div>
+        <div class="footer-tagline">Reunión Circuito de Compras</div>
+        <div class="footer-divider"></div>
+        <div class="footer-meta">27 de abril 2026 · Preparado por Antuara</div>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard Legales · Premium Mudanzas — Antuara</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --tinta:#1f1611;
+    --tinta-suave:#3d2e22;
+    --linea:#bfae97;
+    --acento:#7a4f2b;
+    --gris:#5a5043;
+    --rojo:#a13a2a;
+    --verde:#3d6b3a;
+    --ambar:#a47218;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Source Serif Pro', Georgia, serif;
+    color:var(--tinta);
+    background:#fff;
+    line-height:1.5;
+    font-size:11pt;
+  }
+  .pagina{
+    max-width:780px;
+    margin:0 auto;
+    padding:40px 56px;
+  }
+
+  .head{
+    border-bottom:2px solid var(--tinta);
+    padding-bottom:14px;
+    margin-bottom:24px;
+  }
+  .head .kicker{
+    font-size:9pt;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--acento);
+    margin-bottom:8px;
+    font-weight:600;
+  }
+  .head h1{
+    font-family:'Playfair Display', serif;
+    font-size:22pt;
+    font-weight:700;
+    color:var(--tinta);
+    line-height:1.15;
+    margin-bottom:10px;
+  }
+  .head .lead{
+    font-size:11pt;
+    line-height:1.5;
+    color:var(--tinta-suave);
+    margin-bottom:12px;
+    max-width:680px;
+  }
+  .head .meta{
+    display:flex;
+    gap:28px;
+    flex-wrap:wrap;
+    font-size:9.5pt;
+    color:var(--gris);
+  }
+  .head .meta span strong{
+    color:var(--tinta);
+    display:block;
+    font-weight:600;
+  }
+
+  section{margin-bottom:24px}
+  h2{
+    font-family:'Playfair Display', serif;
+    font-size:15pt;
+    font-weight:700;
+    color:var(--tinta);
+    margin-bottom:4px;
+    border-top:1px solid var(--linea);
+    padding-top:18px;
+  }
+  h2 .num{
+    color:var(--acento);
+    font-size:10pt;
+    font-weight:600;
+    letter-spacing:1.5px;
+    display:block;
+    margin-bottom:2px;
+    font-family:'Source Serif Pro', serif;
+    text-transform:uppercase;
+  }
+  h3{
+    font-family:'Playfair Display', serif;
+    font-size:12pt;
+    font-weight:700;
+    color:var(--tinta);
+    margin-top:14px;
+    margin-bottom:4px;
+  }
+  p{margin-bottom:8px;text-align:justify;hyphens:auto}
+  p.intro{
+    font-size:11pt;
+    color:var(--tinta-suave);
+    font-style:italic;
+    margin-bottom:12px;
+    text-align:left;
+  }
+  ul{margin:6px 0 10px 22px}
+  ul li{margin-bottom:4px;line-height:1.5}
+  strong{color:var(--tinta);font-weight:600}
+
+  .destacado{
+    border-left:3px solid var(--acento);
+    padding:10px 14px;
+    margin:12px 0;
+    background:#faf6f1;
+    page-break-inside:avoid;
+  }
+  .destacado p{margin-bottom:0;font-size:10.5pt}
+  .destacado strong{color:var(--tinta)}
+
+  .alerta{
+    border-left:3px solid var(--rojo);
+    padding:10px 14px;
+    margin:12px 0;
+    background:#f8efec;
+    page-break-inside:avoid;
+  }
+  .alerta p{margin-bottom:0;font-size:10.5pt}
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:10px 0 14px 0;
+    font-size:10pt;
+    page-break-inside:avoid;
+  }
+  thead th{
+    text-align:left;
+    border-bottom:2px solid var(--tinta);
+    padding:6px 8px 4px 0;
+    font-size:9pt;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--tinta);
+    font-weight:600;
+  }
+  tbody td{
+    padding:6px 8px 6px 0;
+    border-bottom:1px solid var(--linea);
+    vertical-align:top;
+    line-height:1.4;
+  }
+  tbody tr:last-child td{border-bottom:none}
+
+  .kpi-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:12px;
+    margin:12px 0;
+    page-break-inside:avoid;
+  }
+  .kpi{
+    border:1px solid var(--linea);
+    padding:10px 12px;
+    background:#fbf8f3;
+  }
+  .kpi .lbl{
+    font-size:8pt;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--gris);
+    font-weight:600;
+    margin-bottom:2px;
+  }
+  .kpi .val{
+    font-family:'Playfair Display', serif;
+    font-size:16pt;
+    color:var(--tinta);
+    font-weight:700;
+    line-height:1;
+    margin-bottom:2px;
+  }
+  .kpi .obj{font-size:8.5pt;color:var(--gris);line-height:1.3}
+  .kpi.verde{border-left:3px solid var(--verde)}
+  .kpi.ambar{border-left:3px solid var(--ambar)}
+  .kpi.rojo{border-left:3px solid var(--rojo)}
+
+  .chk{list-style:none;margin-left:0}
+  .chk li{
+    padding-left:24px;
+    position:relative;
+    margin-bottom:8px;
+    line-height:1.45;
+    font-size:10.5pt;
+  }
+  .chk li::before{
+    content:"□";
+    position:absolute;
+    left:0;
+    top:-1px;
+    color:var(--acento);
+    font-size:13pt;
+    line-height:1;
+  }
+
+  .pie{
+    margin-top:30px;
+    padding-top:10px;
+    border-top:1px solid var(--linea);
+    font-size:8.5pt;
+    color:var(--gris);
+    text-align:center;
+    letter-spacing:1px;
+  }
+
+  @media print{
+    body{font-size:10pt;line-height:1.45}
+    .pagina{padding:0;max-width:none}
+    @page{margin:14mm 14mm}
+    h1{font-size:20pt}
+    h2{page-break-after:avoid;font-size:13pt;padding-top:14px}
+    h3{page-break-after:avoid}
+    .destacado, .alerta, table, ul.chk, .kpi-grid{page-break-inside:avoid}
+    section{page-break-inside:auto;margin-bottom:18px}
+    a{color:var(--tinta);text-decoration:none}
+    .head{page-break-after:avoid}
+  }
+</style>
+</head>
+<body>
+
+<div class="pagina">
+
+<header class="head">
+  <div class="kicker">Antuara para Premium Mudanzas</div>
+  <h1>Dashboard de Legales — Tasa de incidencias bajo control</h1>
+  <p class="lead">Sistema simple para medir y revisar incidencias operativas (roturas, fisuras, lesiones, daños a terceros) con la regla del 3% como umbral. Para que Mati duerma mejor y cada equipo sepa cómo está jugando.</p>
+  <div class="meta">
+    <span>Cliente <strong>Premium Mudanzas</strong></span>
+    <span>Para <strong>Matias Casal</strong></span>
+    <span>Reunión <strong>28 abril 2026</strong></span>
+    <span>Versión <strong>v1.0 · 28 abril 2026</strong></span>
+  </div>
+</header>
+
+<section>
+  <h2><span class="num">01 · Por qué</span>El problema y el valor</h2>
+  <p>Premium hoy no puede responder en cinco minutos a la pregunta <strong>"¿cómo cerramos el mes en siniestralidad?"</strong>. La información existe pero está fragmentada entre Daniela, Cecilia, vendedores y equipos operativos. Sin un dashboard único, la siniestralidad se vuelve sensación: Mati cree que va al 3%, alguien cree que al 5%, nadie tiene la cifra.</p>
+  <p>El sector tiene un benchmark claro: <strong>la tasa debería estar entre 2% y 3%</strong>. Más arriba indica problema de proceso; más abajo, sin sistema de registro, casi siempre indica subreporte. Tener el dato limpio sirve para tres cosas concretas: tranquilidad operativa, defensa legal y diferencial comercial frente a clientes corporativos.</p>
+</section>
+
+<section>
+  <h2><span class="num">02 · El KPI</span>La regla del 3% — qué se mide y cómo se lee</h2>
+  <p><strong>Tasa de incidencias</strong> = mudanzas con al menos un incidente reportado / total de mudanzas ejecutadas en el mes. El conteo es por servicio, no por daño (una mudanza con varios incidentes cuenta como una).</p>
+
+  <div class="kpi-grid">
+    <div class="kpi verde">
+      <div class="lbl">KPI Principal</div>
+      <div class="val">≤ 3%</div>
+      <div class="obj">Mudanzas con incidente / mes</div>
+    </div>
+    <div class="kpi ambar">
+      <div class="lbl">KPI Económico</div>
+      <div class="val">≤ 1,5%</div>
+      <div class="obj">Costo siniestros / facturación</div>
+    </div>
+    <div class="kpi rojo">
+      <div class="lbl">KPI Crítico</div>
+      <div class="val">0</div>
+      <div class="obj">Incidentes graves o lesiones con baja</div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th style="width:14%">Color</th><th style="width:18%">Tasa</th><th style="width:68%">Acción</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Verde</td><td>0% – 3%</td><td>Operación bajo control. Revisión semanal estándar.</td></tr>
+      <tr><td>Ámbar</td><td>3% – 5%</td><td>Alerta. Identificar categoría o equipo con desvío y plan correctivo en 15 días.</td></tr>
+      <tr><td>Rojo</td><td>&gt; 5%</td><td>Revisión inmediata Mati + Daniela + Antuara. Plan de 30 días.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="destacado">
+    <p><strong>Antes de fijar el 3% como objetivo, hay que medir el real.</strong> Mati intuye que a veces estamos por arriba. Hipótesis razonable: el dato real de los últimos 6 meses está entre 4% y 7%. No es catástrofe — es la línea de base de cualquier empresa que nunca midió de manera unificada. Lo importante no es el número, es lo que hacemos con él.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">03 · Qué se registra</span>Categorías, gravedad, dashboard</h2>
+
+  <h3>Las seis categorías</h3>
+  <table>
+    <thead>
+      <tr><th style="width:8%">N°</th><th style="width:32%">Categoría</th><th style="width:60%">Qué incluye</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>01</td><td><strong>Roturas de bienes del cliente</strong></td><td>Muebles, vidrios, electrodomésticos, vajilla, obras de arte, equipos electrónicos.</td></tr>
+      <tr><td>02</td><td><strong>Fisuras y daños a inmuebles</strong></td><td>Paredes, marcos, pisos, ascensores, puertas, mármoles (origen y destino).</td></tr>
+      <tr><td>03</td><td><strong>Pérdidas, extravíos, faltantes</strong></td><td>Cajas faltantes, contenido distinto al inventario, olvidos en domicilio anterior.</td></tr>
+      <tr><td>04</td><td><strong>Lesiones del personal</strong></td><td>Esguinces, hernias, cortes, golpes, dolores lumbares (con o sin baja).</td></tr>
+      <tr><td>05</td><td><strong>Lesiones a terceros</strong></td><td>Clientes, vecinos, encargados de edificio, transeúntes.</td></tr>
+      <tr><td>06</td><td><strong>Daños a vehículos</strong></td><td>Choques, abolladuras, rayones (vehículos propios o de terceros).</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Tres niveles de gravedad por categoría</h3>
+  <table>
+    <thead>
+      <tr><th style="width:14%">Nivel</th><th style="width:36%">Criterio</th><th style="width:24%">Costo</th><th style="width:26%">Quién resuelve</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Leve</td><td>Resuelto en el momento, sin reclamo formal</td><td>Hasta 5% del valor</td><td>Líder operativo</td></tr>
+      <tr><td>Moderado</td><td>Reparación profesional, reclamo formal</td><td>5% – 25%</td><td>Daniela + administración</td></tr>
+      <tr><td>Grave</td><td>Compromiso estructural o lesión con baja</td><td>&gt; 25% o lesión</td><td>Mati + asesor legal</td></tr>
+    </tbody>
+  </table>
+
+  <h3>El dashboard (una sola hoja, cinco bloques)</h3>
+  <ul>
+    <li><strong>Resumen del mes:</strong> mudanzas, incidentes, tasa con semáforo, costo total y % sobre facturación.</li>
+    <li><strong>Distribución:</strong> matriz seis categorías × tres niveles, cantidad y costo por celda.</li>
+    <li><strong>Tendencia:</strong> tasa mensual últimos 12 meses con línea de objetivo del 3%.</li>
+    <li><strong>Ranking por equipo operativo:</strong> tasa propia comparada contra promedio Premium.</li>
+    <li><strong>Casos abiertos:</strong> con semáforo por antigüedad (verde &lt; 30 días, ámbar 30–60, rojo &gt; 60).</li>
+  </ul>
+  <p>Arranca en <strong>Google Sheets compartido</strong>. Migrar al CRM o a Notion solo después de tres meses con disciplina del registro funcionando.</p>
+</section>
+
+<section>
+  <h2><span class="num">04 · Cómo se opera</span>Cadencia y plan de implementación</h2>
+
+  <table>
+    <thead>
+      <tr><th style="width:24%">Cuándo</th><th style="width:24%">Quién</th><th style="width:52%">Qué se hace</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Diario · cierre de mudanza</td><td>Líder operativo</td><td>Registra incidentes (o "sin novedad") en formulario único.</td></tr>
+      <tr><td>Semanal · viernes 17 hs</td><td>Daniela + Cecilia</td><td>Revisión de incidentes, asignación de responsable, actualización del dashboard.</td></tr>
+      <tr><td>Mensual · primer lunes</td><td>Mati + Daniela + Antuara</td><td>Revisión de KPIs, decisiones estructurales, lecciones aprendidas.</td></tr>
+      <tr><td>Trimestral</td><td>Mati + asesor legal</td><td>Revisión de casos graves, seguros, alineación con clientes corporativos.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Plan de los próximos 30 días</h3>
+  <table>
+    <thead>
+      <tr><th style="width:24%">Semana</th><th style="width:76%">Hito</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1 · 28 abr – 4 may</td><td>Validar categorías y niveles. Definir dueño operativo (recomendación: Daniela). Diseñar formulario único.</td></tr>
+      <tr><td>2 · 5 – 11 may</td><td>Auditoría retroactiva oct 2025 – mar 2026: tasa real mes a mes, patrones, equipos sobrerepresentados.</td></tr>
+      <tr><td>3 · 12 – 18 may</td><td>Lanzamiento del registro hacia adelante. Capacitación corta a líderes operativos.</td></tr>
+      <tr><td>4 · 19 – 25 may</td><td>Calibración. Reunión formal Mati + Daniela + Antuara con dashboard de abril cerrado.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="alerta">
+    <p><strong>Regla de oro:</strong> nadie se penaliza por reportar; todos se penalizan por no reportar. Si un incidente aparece en un reclamo del cliente y no estaba en el registro interno, ahí sí hay consecuencia. Mati tiene que sostenerlo públicamente con el equipo o el sistema fracasa en dos meses.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">05 · Para conversar</span>Cinco preguntas a definir entre nosotros</h2>
+  <ul class="chk">
+    <li><strong>¿Daniela es la dueña operativa del dashboard?</strong> Con qué tiempo dedicado y autoridad para llamar la atención a un líder operativo.</li>
+    <li><strong>¿Sostenemos públicamente "no se penaliza por reportar"?</strong> Sin ese mensaje, el sistema fracasa.</li>
+    <li><strong>¿Qué hacemos si la auditoría retroactiva da por encima del 5%?</strong> ¿Lo comunicamos como objetivo de mejora, lo guardamos como dato interno, o cambiamos el umbral?</li>
+    <li><strong>¿Compartimos el dashboard con clientes corporativos?</strong> Bien presentado es diferencial enorme; mal presentado, pesadilla legal.</li>
+    <li><strong>¿Cuál es el presupuesto de prevención?</strong> Capacitación, equipamiento (cinturones, fajas, escaleras) y materiales. Sin presupuesto, bajar la tasa es voluntarismo.</li>
+  </ul>
+
+  <div class="destacado">
+    <p><strong>El acuerdo final:</strong> el 30 de mayo Mati debería poder responder con un solo número la pregunta "¿cómo vamos en siniestralidad?". Hoy no puede. Ese es el resultado concreto de los próximos 30 días.</p>
+  </div>
+</section>
+
+<div class="pie">
+  Antuara · Planificación Comercial · 28 abril 2026
+</div>
+
+</div>
+
+</body>
+</html>

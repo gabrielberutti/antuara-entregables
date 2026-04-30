@@ -3,526 +3,270 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hierbas del Oasis · Encuentro con Distribuidor Histórico de Córdoba · Abril 2026</title>
+<title>Hierbas del Oasis × Bio-Salud · Encuentro Estratégico Córdoba · Abril 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  /* Verdes herbales Oasis */
-  --gx:#101a0d;        /* verde casi negro, fondo profundo */
-  --gd:#1f3318;        /* verde oscuro principal */
-  --gm:#2f5024;        /* verde medio */
-  --gl:#5a7d3f;        /* verde sage */
-  --gp:#a3bd84;        /* verde claro */
-  --gpp:#d3e0bd;       /* verde muy claro */
-  /* Dorado herbal acento */
-  --au:#c9a96e;        /* dorado principal */
-  --aul:#e8d5b0;       /* dorado claro */
-  --aud:#9a7e44;       /* dorado oscuro */
-  /* Tonos cálidos */
-  --cream:#faf7ee;
-  --creamw:#f3edda;
-  --earth:#5a4628;
-  /* Texto */
-  --t:#0f1a0a;
-  --tl:#3d4a32;
-  --tm:#6a7560;
-  --tll:#9aa28e;
-  /* Otros */
-  --br:#d8d4c2;
-  --w:#ffffff;
+  --gx:#101a0d; --gd:#1f3318; --gm:#2f5024; --gl:#5a7d3f;
+  --gp:#a3bd84; --gpp:#d3e0bd;
+  --au:#c9a96e; --aul:#e8d5b0; --aud:#9a7e44;
+  --cream:#faf7ee; --creamw:#f3edda; --earth:#5a4628;
+  --t:#0f1a0a; --tl:#3d4a32; --tm:#6a7560; --tll:#9aa28e;
+  --br:#d8d4c2; --w:#ffffff;
+  --warn:#b8722a; --warnl:#f5e3cf;
+  --danger:#9a3a2c; --dangerl:#f3d8d2;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  font-family:'Inter',-apple-system,sans-serif;background:var(--cream);color:var(--t);
-  line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
-}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--cream);color:var(--t);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-/* ===== SCROLL PROGRESS BAR ===== */
-.scroll-progress{
-  position:fixed;top:0;left:0;height:3px;width:0;
-  background:linear-gradient(90deg,var(--au),var(--aul),var(--au));
-  z-index:1000;transition:width .12s ease-out;
-  box-shadow:0 0 18px rgba(201,169,110,.55);
-}
+/* ===== SCROLL PROGRESS ===== */
+.scroll-progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--au),var(--aul),var(--au));z-index:1000;transition:width .12s ease-out;box-shadow:0 0 18px rgba(201,169,110,.55)}
 
 /* ===== CURSOR SPOTLIGHT ===== */
-.spotlight{
-  position:fixed;width:600px;height:600px;border-radius:50%;
-  background:radial-gradient(circle,rgba(201,169,110,.07),transparent 65%);
-  pointer-events:none;z-index:1;transform:translate(-50%,-50%);
-  transition:opacity .4s;mix-blend-mode:screen;opacity:0;
-}
+.spotlight{position:fixed;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,.07),transparent 65%);pointer-events:none;z-index:1;transform:translate(-50%,-50%);transition:opacity .4s;mix-blend-mode:screen;opacity:0}
 body.dark-section .spotlight{opacity:1}
 
 /* ===== FLOATING NAV ===== */
-.float-nav{
-  position:fixed;top:50%;right:24px;transform:translateY(-50%);
-  display:flex;flex-direction:column;gap:14px;z-index:900;
-  opacity:0;transition:opacity .5s;
-}
+.float-nav{position:fixed;top:50%;right:24px;transform:translateY(-50%);display:flex;flex-direction:column;gap:14px;z-index:900;opacity:0;transition:opacity .5s}
 .float-nav.visible{opacity:1}
-.fnav-dot{
-  width:10px;height:10px;border-radius:50%;background:rgba(95,125,63,.3);
-  cursor:pointer;transition:all .3s;position:relative;
-}
+.fnav-dot{width:10px;height:10px;border-radius:50%;background:rgba(95,125,63,.3);cursor:pointer;transition:all .3s;position:relative}
 .fnav-dot:hover{background:var(--au);transform:scale(1.4)}
 .fnav-dot.active{background:var(--au);transform:scale(1.5);box-shadow:0 0 12px rgba(201,169,110,.6)}
-.fnav-dot::after{
-  content:attr(data-label);position:absolute;right:22px;top:50%;transform:translateY(-50%);
-  background:var(--gd);color:var(--cream);padding:6px 14px;border-radius:5px;
-  font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;
-  white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .3s;
-  font-family:'Inter';
-}
+.fnav-dot::after{content:attr(data-label);position:absolute;right:22px;top:50%;transform:translateY(-50%);background:var(--gd);color:var(--cream);padding:6px 14px;border-radius:5px;font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .3s;font-family:'Inter'}
 .fnav-dot:hover::after{opacity:1}
 
 /* ===== HERO ===== */
-.hero{
-  position:relative;min-height:96vh;
-  background:
-    radial-gradient(ellipse at 15% 25%, rgba(95,125,63,.35), transparent 55%),
-    radial-gradient(ellipse at 85% 75%, rgba(201,169,110,.18), transparent 55%),
-    linear-gradient(135deg, var(--gx) 0%, var(--gd) 45%, var(--gm) 100%);
-  color:var(--w);padding:90px 30px 110px;overflow:hidden;
-  display:flex;align-items:center;
-}
-
-/* Animated blobs */
-.blob{
-  position:absolute;border-radius:50%;filter:blur(80px);opacity:.35;
-  animation:float-blob 22s ease-in-out infinite;
-}
+.hero{position:relative;min-height:96vh;background:radial-gradient(ellipse at 15% 25%, rgba(95,125,63,.35), transparent 55%),radial-gradient(ellipse at 85% 75%, rgba(201,169,110,.18), transparent 55%),linear-gradient(135deg, var(--gx) 0%, var(--gd) 45%, var(--gm) 100%);color:var(--w);padding:90px 30px 110px;overflow:hidden;display:flex;align-items:center}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.35;animation:float-blob 22s ease-in-out infinite}
 .blob.b1{width:480px;height:480px;background:var(--gl);top:-120px;left:-100px;animation-duration:25s}
 .blob.b2{width:340px;height:340px;background:var(--au);bottom:-80px;right:-60px;animation-duration:30s;animation-delay:-7s;opacity:.22}
 .blob.b3{width:280px;height:280px;background:var(--gp);top:40%;right:20%;animation-duration:35s;animation-delay:-14s;opacity:.18}
-@keyframes float-blob{
-  0%,100%{transform:translate(0,0) scale(1)}
-  33%{transform:translate(60px,-40px) scale(1.08)}
-  66%{transform:translate(-40px,50px) scale(.95)}
-}
-
-/* Texture overlay */
-.hero::after{
-  content:"";position:absolute;inset:0;
-  background-image:
-    radial-gradient(circle at 20% 20%, rgba(255,255,255,.03) 1px, transparent 1px),
-    radial-gradient(circle at 70% 80%, rgba(255,255,255,.025) 1px, transparent 1px);
-  background-size:90px 90px,130px 130px;pointer-events:none;
-}
-
-.hero-bottom-line{
-  position:absolute;bottom:0;left:0;right:0;height:5px;
-  background:linear-gradient(90deg,transparent,var(--au) 25%,var(--aul) 50%,var(--au) 75%,transparent);
-}
-
+@keyframes float-blob{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(60px,-40px) scale(1.08)}66%{transform:translate(-40px,50px) scale(.95)}}
+.hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 20% 20%, rgba(255,255,255,.03) 1px, transparent 1px),radial-gradient(circle at 70% 80%, rgba(255,255,255,.025) 1px, transparent 1px);background-size:90px 90px,130px 130px;pointer-events:none}
+.hero-bottom-line{position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,transparent,var(--au) 25%,var(--aul) 50%,var(--au) 75%,transparent)}
 .hero-inner{max-width:1140px;margin:0 auto;position:relative;z-index:3;width:100%}
-
 .crest{display:flex;align-items:center;gap:16px;margin-bottom:42px}
-.crest-mark{
-  width:60px;height:60px;border:2px solid var(--au);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Playfair Display';font-size:1.5rem;color:var(--au);font-weight:700;
-  background:rgba(0,0,0,.22);position:relative;
-}
-.crest-mark::before{
-  content:"";position:absolute;inset:-4px;border:1px solid rgba(201,169,110,.25);border-radius:50%;
-}
+.crest-mark{width:60px;height:60px;border:2px solid var(--au);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display';font-size:1.5rem;color:var(--au);font-weight:700;background:rgba(0,0,0,.22);position:relative}
+.crest-mark::before{content:"";position:absolute;inset:-4px;border:1px solid rgba(201,169,110,.25);border-radius:50%}
 .crest-text{font-family:'Inter';font-size:.7rem;letter-spacing:5px;color:var(--gpp);text-transform:uppercase;font-weight:500}
 .crest-text strong{display:block;font-family:'Playfair Display';font-size:1.1rem;letter-spacing:3px;color:var(--w);margin-top:3px;font-weight:600}
-
-.hero-eyebrow{
-  display:inline-block;padding:10px 24px;border:1px solid rgba(201,169,110,.45);
-  border-radius:30px;font-size:.7rem;letter-spacing:4px;text-transform:uppercase;
-  color:var(--aul);margin-bottom:38px;background:rgba(0,0,0,.25);font-weight:500;
-  backdrop-filter:blur(6px);
-}
-
-.hero h1{
-  font-family:'Playfair Display';font-size:clamp(2.4rem,5.5vw,4.6rem);
-  font-weight:700;line-height:1.05;margin-bottom:32px;letter-spacing:-1.5px;
-}
+.hero-eyebrow{display:inline-block;padding:10px 24px;border:1px solid rgba(201,169,110,.45);border-radius:30px;font-size:.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--aul);margin-bottom:38px;background:rgba(0,0,0,.25);font-weight:500;backdrop-filter:blur(6px)}
+.hero h1{font-family:'Playfair Display';font-size:clamp(2.4rem,5.5vw,4.6rem);font-weight:700;line-height:1.05;margin-bottom:32px;letter-spacing:-1.5px}
 .hero h1 em{font-style:italic;color:var(--au);font-weight:600}
-
-.hero-sub{
-  font-size:1.22rem;color:var(--gpp);max-width:780px;line-height:1.7;font-weight:300;
-  border-left:2px solid var(--au);padding-left:28px;margin-bottom:50px;
-}
-
-.hero-meta{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:24px;
-  padding-top:42px;border-top:1px solid rgba(201,169,110,.25);max-width:960px;
-}
+.hero-sub{font-size:1.2rem;color:var(--gpp);max-width:760px;line-height:1.65;font-weight:300;border-left:2px solid var(--au);padding-left:28px;margin-bottom:50px}
+.hero-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:24px;padding-top:42px;border-top:1px solid rgba(201,169,110,.25);max-width:960px}
 .hero-meta-label{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--au);margin-bottom:9px;font-weight:600}
 .hero-meta-value{font-family:'Playfair Display';font-size:1.15rem;color:var(--w);font-weight:500}
+.scroll-hint{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);font-size:.65rem;letter-spacing:4px;color:var(--aul);text-transform:uppercase;font-weight:500;opacity:.7;animation:bounce 2.5s infinite}
+.scroll-hint::after{content:"";display:block;width:1px;height:30px;background:var(--au);margin:10px auto 0}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
 
-.scroll-hint{
-  position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
-  font-size:.65rem;letter-spacing:4px;color:var(--aul);text-transform:uppercase;
-  font-weight:500;opacity:.7;animation:bounce 2.5s infinite;
-}
-.scroll-hint::after{
-  content:"";display:block;width:1px;height:30px;background:var(--au);
-  margin:10px auto 0;
-}
-@keyframes bounce{
-  0%,100%{transform:translateX(-50%) translateY(0)}
-  50%{transform:translateX(-50%) translateY(8px)}
-}
-
-/* ===== CONTAINER ===== */
+/* ===== CONTAINER & SECTIONS ===== */
 .container{max-width:1140px;margin:0 auto;padding:0 32px}
-.section{padding:100px 0;border-bottom:1px solid var(--br);position:relative}
+.section{padding:90px 0;border-bottom:1px solid var(--br);position:relative}
 .section:last-of-type{border-bottom:none}
-
-.section-label{
-  display:inline-flex;align-items:center;gap:14px;
-  font-size:.65rem;letter-spacing:5px;text-transform:uppercase;
-  color:var(--gl);font-weight:700;margin-bottom:16px;
-}
-.section-label::before{
-  content:"";width:32px;height:1.5px;background:var(--au);
-}
-
-.section-title{
-  font-family:'Playfair Display';font-size:clamp(2rem,3.8vw,3rem);
-  color:var(--gd);font-weight:700;line-height:1.16;margin-bottom:20px;letter-spacing:-.5px;
-}
+.section-label{display:inline-flex;align-items:center;gap:14px;font-size:.65rem;letter-spacing:5px;text-transform:uppercase;color:var(--gl);font-weight:700;margin-bottom:16px}
+.section-label::before{content:"";width:32px;height:1.5px;background:var(--au)}
+.section-title{font-family:'Playfair Display';font-size:clamp(2rem,3.8vw,2.9rem);color:var(--gd);font-weight:700;line-height:1.16;margin-bottom:20px;letter-spacing:-.5px}
 .section-title em{font-style:italic;color:var(--gm);font-weight:600}
+.section-intro{font-size:1.08rem;color:var(--tl);max-width:820px;line-height:1.7;margin-bottom:46px}
 
-.section-intro{
-  font-size:1.12rem;color:var(--tl);max-width:800px;line-height:1.75;margin-bottom:54px;
-}
-
-/* ===== APERTURA EMOTIVA ===== */
-.opening-card{
-  background:linear-gradient(135deg,#fff 0%,var(--cream) 100%);
-  border:1px solid var(--br);border-left:5px solid var(--au);
-  padding:60px 64px;border-radius:8px;margin-bottom:34px;position:relative;
-  box-shadow:0 8px 40px rgba(31,51,24,.06);
-}
-.opening-card::before{
-  content:'"';position:absolute;top:-32px;left:38px;
-  font-family:'Playfair Display';font-size:7.5rem;color:var(--au);opacity:.4;line-height:1;font-weight:700;
-}
-.opening-text{
-  font-family:'Playfair Display';font-size:1.5rem;color:var(--gd);
-  line-height:1.55;font-weight:500;font-style:italic;margin-bottom:24px;
-}
+/* ===== APERTURA ===== */
+.opening-card{background:linear-gradient(135deg,#fff 0%,var(--cream) 100%);border:1px solid var(--br);border-left:5px solid var(--au);padding:54px 58px;border-radius:8px;margin-bottom:34px;position:relative;box-shadow:0 8px 40px rgba(31,51,24,.06)}
+.opening-card::before{content:'"';position:absolute;top:-30px;left:34px;font-family:'Playfair Display';font-size:7rem;color:var(--au);opacity:.4;line-height:1;font-weight:700}
+.opening-text{font-family:'Playfair Display';font-size:1.4rem;color:var(--gd);line-height:1.55;font-weight:500;font-style:italic;margin-bottom:20px}
+.opening-text:last-of-type{margin-bottom:24px}
 .opening-text strong{color:var(--gm);font-style:normal;font-weight:700}
 .opening-sign{font-size:.78rem;letter-spacing:3px;text-transform:uppercase;color:var(--gl);font-weight:600}
 
-.years-strip{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:0;
-  background:var(--gd);border-radius:10px;overflow:hidden;margin-top:38px;
-  position:relative;
-}
-.years-strip::before{
-  content:"";position:absolute;inset:0;
-  background:radial-gradient(circle at 50% 50%, rgba(201,169,110,.08), transparent 70%);
-}
-.year-block{padding:42px 30px;text-align:center;color:var(--w);border-right:1px solid rgba(201,169,110,.18);position:relative;z-index:2}
+.years-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--gd);border-radius:10px;overflow:hidden;margin-top:38px;position:relative}
+.years-strip::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%, rgba(201,169,110,.08), transparent 70%)}
+.year-block{padding:38px 28px;text-align:center;color:var(--w);border-right:1px solid rgba(201,169,110,.18);position:relative;z-index:2}
 .year-block:last-child{border-right:none}
-.year-num{font-family:'Playfair Display';font-size:3.4rem;color:var(--au);font-weight:700;line-height:1;margin-bottom:10px}
+.year-num{font-family:'Playfair Display';font-size:3.2rem;color:var(--au);font-weight:700;line-height:1;margin-bottom:10px}
 .year-label{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--gpp);font-weight:500}
 
-/* ===== EMPRESA HOY ===== */
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:32px}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+/* ===== GRIDS ===== */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
 
-.feature-card{
-  background:var(--w);border:1px solid var(--br);border-radius:14px;
-  padding:42px 36px;transition:all .35s cubic-bezier(.2,.8,.3,1);position:relative;
-  transform-style:preserve-3d;
-}
-.feature-card::before{
-  content:"";position:absolute;inset:0;border-radius:14px;
-  background:linear-gradient(135deg,rgba(201,169,110,.08),transparent 50%);
-  opacity:0;transition:opacity .35s;pointer-events:none;
-}
+/* ===== FEATURE CARDS ===== */
+.feature-card{background:var(--w);border:1px solid var(--br);border-radius:14px;padding:38px 32px;transition:all .35s cubic-bezier(.2,.8,.3,1);position:relative;transform-style:preserve-3d}
+.feature-card::before{content:"";position:absolute;inset:0;border-radius:14px;background:linear-gradient(135deg,rgba(201,169,110,.08),transparent 50%);opacity:0;transition:opacity .35s;pointer-events:none}
 .feature-card:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(31,51,24,.1);border-color:var(--au)}
 .feature-card:hover::before{opacity:1}
-
-.feature-num{
-  font-family:'Playfair Display';font-size:3.4rem;color:var(--au);
-  font-weight:700;line-height:1;opacity:.92;margin-bottom:14px;
-  display:flex;align-items:baseline;
-}
+.feature-num{font-family:'Playfair Display';font-size:3.2rem;color:var(--au);font-weight:700;line-height:1;opacity:.92;margin-bottom:12px;display:flex;align-items:baseline}
 .feature-num small{font-size:1.2rem;color:var(--gl);font-weight:600;margin-left:6px}
-.feature-title{
-  font-family:'Playfair Display';font-size:1.32rem;color:var(--gd);
-  font-weight:600;margin-bottom:12px;line-height:1.3;
-}
-.feature-desc{font-size:.95rem;color:var(--tl);line-height:1.7}
+.feature-title{font-family:'Playfair Display';font-size:1.3rem;color:var(--gd);font-weight:600;margin-bottom:10px;line-height:1.3}
+.feature-desc{font-size:.93rem;color:var(--tl);line-height:1.65}
 
 /* ===== CERTIFICACIONES ===== */
-.cert-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.cert{
-  background:var(--w);border:1px solid var(--br);border-radius:12px;
-  padding:34px 24px;text-align:center;transition:all .35s cubic-bezier(.2,.8,.3,1);
-  border-top:3px solid var(--au);position:relative;overflow:hidden;
-}
-.cert::after{
-  content:"";position:absolute;top:-100%;left:0;right:0;height:100%;
-  background:linear-gradient(180deg,rgba(201,169,110,.12),transparent);
-  transition:top .5s;
-}
+.cert{background:var(--w);border:1px solid var(--br);border-radius:12px;padding:30px 22px;text-align:center;transition:all .35s cubic-bezier(.2,.8,.3,1);border-top:3px solid var(--au);position:relative;overflow:hidden}
+.cert::after{content:"";position:absolute;top:-100%;left:0;right:0;height:100%;background:linear-gradient(180deg,rgba(201,169,110,.12),transparent);transition:top .5s}
 .cert:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(31,51,24,.1)}
 .cert:hover::after{top:0}
-.cert-icon{
-  width:68px;height:68px;margin:0 auto 18px;border-radius:50%;
-  background:linear-gradient(135deg,var(--aul),var(--au));
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Playfair Display';font-size:1.5rem;color:var(--gd);font-weight:700;
-  box-shadow:0 6px 20px rgba(201,169,110,.3);position:relative;z-index:2;
-}
-.cert-name{font-family:'Playfair Display';font-size:1.15rem;color:var(--gd);font-weight:700;margin-bottom:6px;position:relative;z-index:2}
-.cert-meta{font-size:.75rem;color:var(--tm);letter-spacing:.5px;position:relative;z-index:2}
+.cert-icon{width:64px;height:64px;margin:0 auto 16px;border-radius:50%;background:linear-gradient(135deg,var(--aul),var(--au));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display';font-size:1.3rem;color:var(--gd);font-weight:700;box-shadow:0 6px 20px rgba(201,169,110,.3);position:relative;z-index:2}
+.cert-name{font-family:'Playfair Display';font-size:1.05rem;color:var(--gd);font-weight:700;margin-bottom:6px;position:relative;z-index:2;line-height:1.25}
+.cert-meta{font-size:.72rem;color:var(--tm);letter-spacing:.5px;position:relative;z-index:2}
 
-.cert-narrative{
-  background:linear-gradient(135deg,var(--cream),var(--creamw));
-  border:1px solid var(--gpp);border-radius:12px;
-  padding:42px 48px;margin-top:42px;border-left:5px solid var(--gl);
-}
-.cert-narrative p{font-size:1.05rem;color:var(--gd);line-height:1.78}
-.cert-narrative strong{color:var(--gm);font-weight:700}
-
-/* ===== PLANTA ENTRE RÍOS ===== */
-.planta-card{
-  background:linear-gradient(120deg, var(--gd) 0%, var(--gm) 100%);
-  border-radius:18px;padding:64px 60px;color:var(--w);
-  position:relative;overflow:hidden;
-}
-.planta-card::after{
-  content:"";position:absolute;top:-80px;right:-80px;width:340px;height:340px;
-  border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,.18),transparent 70%);
-}
-.planta-card::before{
-  content:"";position:absolute;bottom:-100px;left:-60px;width:280px;height:280px;
-  border-radius:50%;background:radial-gradient(circle,rgba(163,189,132,.12),transparent 70%);
-}
+/* ===== PLANTA ===== */
+.planta-card{background:linear-gradient(120deg, var(--gd) 0%, var(--gm) 100%);border-radius:18px;padding:56px 54px;color:var(--w);position:relative;overflow:hidden}
+.planta-card::after{content:"";position:absolute;top:-80px;right:-80px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,.18),transparent 70%)}
+.planta-card::before{content:"";position:absolute;bottom:-100px;left:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(163,189,132,.12),transparent 70%)}
 .planta-eyebrow{font-size:.7rem;letter-spacing:4px;color:var(--au);text-transform:uppercase;margin-bottom:16px;font-weight:600;position:relative;z-index:2}
-.planta-title{font-family:'Playfair Display';font-size:2.1rem;color:var(--w);font-weight:600;margin-bottom:24px;line-height:1.25;position:relative;z-index:2}
-.planta-text{font-size:1.05rem;color:var(--gpp);line-height:1.78;max-width:780px;position:relative;z-index:2}
+.planta-title{font-family:'Playfair Display';font-size:1.9rem;color:var(--w);font-weight:600;margin-bottom:22px;line-height:1.25;position:relative;z-index:2}
+.planta-text{font-size:1.02rem;color:var(--gpp);line-height:1.7;max-width:780px;position:relative;z-index:2}
 .planta-text strong{color:var(--w);font-weight:600}
+.planta-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:36px;position:relative;z-index:2;padding-top:30px;border-top:1px solid rgba(201,169,110,.3)}
+.planta-stat-num{font-family:'Playfair Display';font-size:2.5rem;color:var(--au);font-weight:700;line-height:1;margin-bottom:8px}
+.planta-stat-num small{font-size:1.1rem}
+.planta-stat-label{font-size:.7rem;letter-spacing:2px;color:var(--gpp);text-transform:uppercase;font-weight:500}
 
-.planta-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;margin-top:42px;position:relative;z-index:2;padding-top:36px;border-top:1px solid rgba(201,169,110,.3)}
-.planta-stat-num{font-family:'Playfair Display';font-size:2.7rem;color:var(--au);font-weight:700;line-height:1;margin-bottom:8px}
-.planta-stat-num small{font-size:1.2rem}
-.planta-stat-label{font-size:.72rem;letter-spacing:2px;color:var(--gpp);text-transform:uppercase;font-weight:500}
-
-/* ===== AUTOMATIZACIÓN / IA ===== */
+/* ===== TECH ===== */
 .tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--br);border-radius:14px;overflow:hidden;background:var(--w)}
-.tech-side{padding:46px 40px;position:relative}
+.tech-side{padding:42px 38px;position:relative}
 .tech-side.dark{background:var(--cream);border-right:1px solid var(--br)}
-.tech-side.light{background:var(--w)}
 .tech-eyebrow{font-size:.65rem;letter-spacing:3px;color:var(--gl);text-transform:uppercase;font-weight:700;margin-bottom:14px}
-.tech-title{font-family:'Playfair Display';font-size:1.45rem;color:var(--gd);font-weight:600;margin-bottom:16px;line-height:1.3}
-.tech-text{font-size:.95rem;color:var(--tl);line-height:1.72}
-.tech-list{margin-top:20px;padding-left:0;list-style:none}
-.tech-list li{
-  padding:12px 0 12px 28px;font-size:.95rem;color:var(--t);position:relative;line-height:1.55;
-  border-bottom:1px solid rgba(216,212,194,.55);transition:padding-left .25s;
-}
+.tech-title{font-family:'Playfair Display';font-size:1.35rem;color:var(--gd);font-weight:600;margin-bottom:14px;line-height:1.3}
+.tech-list{margin-top:18px;padding-left:0;list-style:none}
+.tech-list li{padding:11px 0 11px 26px;font-size:.94rem;color:var(--t);position:relative;line-height:1.5;border-bottom:1px solid rgba(216,212,194,.55);transition:padding-left .25s}
 .tech-list li:last-child{border-bottom:none}
-.tech-list li:hover{padding-left:34px}
-.tech-list li::before{
-  content:"◆";position:absolute;left:0;top:12px;color:var(--au);font-size:.8rem;
-  transition:transform .3s;
-}
+.tech-list li:hover{padding-left:32px}
+.tech-list li::before{content:"◆";position:absolute;left:0;top:11px;color:var(--au);font-size:.75rem;transition:transform .3s}
 .tech-list li:hover::before{transform:rotate(180deg)}
 .tech-list strong{color:var(--gd);font-weight:600}
 
 /* ===== PRODUCTOS / RANKING ===== */
-.products-intro{
-  display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center;margin-bottom:42px;
-}
-.big-num{
-  font-family:'Playfair Display';font-size:7rem;color:var(--au);font-weight:800;
-  line-height:1;letter-spacing:-3px;text-align:right;
-  background:linear-gradient(135deg,var(--au),var(--aud));
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-}
-.big-num small{display:block;font-size:.95rem;color:var(--gm);letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-top:10px;-webkit-text-fill-color:var(--gm)}
-
-.ranking{
-  background:var(--w);border:1px solid var(--br);border-radius:12px;overflow:hidden;
-  box-shadow:0 4px 24px rgba(31,51,24,.04);
-}
-.ranking-row{
-  display:grid;grid-template-columns:60px 1fr 140px;gap:20px;
-  padding:22px 28px;border-bottom:1px solid var(--br);align-items:center;
-  transition:all .25s;
-}
+.products-intro{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;margin-bottom:38px}
+.big-num{font-family:'Playfair Display';font-size:6.5rem;color:var(--au);font-weight:800;line-height:1;letter-spacing:-3px;text-align:right;background:linear-gradient(135deg,var(--au),var(--aud));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.big-num small{display:block;font-size:.9rem;color:var(--gm);letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-top:10px;-webkit-text-fill-color:var(--gm)}
+.ranking{background:var(--w);border:1px solid var(--br);border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(31,51,24,.04)}
+.ranking-row{display:grid;grid-template-columns:60px 1fr 140px;gap:20px;padding:20px 26px;border-bottom:1px solid var(--br);align-items:center;transition:all .25s}
 .ranking-row:last-child{border-bottom:none}
-.ranking-row:not(.head):hover{background:var(--cream);padding-left:36px}
-.ranking-row.head{background:var(--gd);color:var(--w);font-size:.7rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;padding:16px 28px}
-.ranking-pos{
-  font-family:'Playfair Display';font-size:1.7rem;color:var(--au);
-  font-weight:700;text-align:center;
-}
+.ranking-row:not(.head):hover{background:var(--cream);padding-left:34px}
+.ranking-row.head{background:var(--gd);color:var(--w);font-size:.7rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;padding:14px 26px}
+.ranking-pos{font-family:'Playfair Display';font-size:1.7rem;color:var(--au);font-weight:700;text-align:center}
 .ranking-row.head .ranking-pos{color:var(--gpp);font-family:'Inter';font-size:.7rem}
-.ranking-name{font-weight:500;color:var(--gd);font-size:.98rem}
-.ranking-name span{display:block;font-size:.78rem;color:var(--tm);font-weight:400;margin-top:4px}
+.ranking-name{font-weight:500;color:var(--gd);font-size:.97rem}
+.ranking-name span{display:block;font-size:.76rem;color:var(--tm);font-weight:400;margin-top:3px}
 .ranking-row.head .ranking-name span{display:none}
 .ranking-row.head .ranking-name{color:var(--gpp);font-size:.7rem;font-weight:700}
-.ranking-tag{
-  text-align:right;font-size:.78rem;color:var(--gd);
-  background:var(--gpp);padding:6px 12px;border-radius:20px;font-weight:600;
-  display:inline-block;justify-self:end;
-}
+.ranking-tag{text-align:right;font-size:.76rem;color:var(--gd);background:var(--gpp);padding:5px 12px;border-radius:20px;font-weight:600;display:inline-block;justify-self:end}
 .ranking-row.head .ranking-tag{background:transparent;color:var(--gpp);font-weight:700}
 
-/* ===== EQUIPO COMERCIAL ===== */
-.team-card{
-  background:linear-gradient(135deg,#fff,var(--cream));
-  border:1px solid var(--br);border-radius:14px;padding:46px 40px;
-  border-top:4px solid var(--au);transition:all .35s cubic-bezier(.2,.8,.3,1);
-}
+/* ===== EQUIPO ===== */
+.team-card{background:linear-gradient(135deg,#fff,var(--cream));border:1px solid var(--br);border-radius:14px;padding:42px 38px;border-top:4px solid var(--au);transition:all .35s cubic-bezier(.2,.8,.3,1)}
 .team-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(31,51,24,.08)}
-.team-card h3{font-family:'Playfair Display';font-size:1.55rem;color:var(--gd);font-weight:600;margin-bottom:16px;line-height:1.3}
-.team-card p{color:var(--tl);font-size:.97rem;line-height:1.72}
-.team-list{margin-top:26px;display:grid;gap:14px}
-.team-item{
-  display:flex;align-items:flex-start;gap:14px;padding:16px 20px;
-  background:rgba(255,255,255,.65);border-radius:10px;border-left:3px solid var(--gl);
-  transition:all .25s;backdrop-filter:blur(4px);
-}
+.team-card h3{font-family:'Playfair Display';font-size:1.45rem;color:var(--gd);font-weight:600;margin-bottom:14px;line-height:1.3}
+.team-list{margin-top:20px;display:grid;gap:12px}
+.team-item{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;background:rgba(255,255,255,.65);border-radius:10px;border-left:3px solid var(--gl);transition:all .25s;backdrop-filter:blur(4px)}
 .team-item:hover{border-left-color:var(--au);transform:translateX(4px);background:#fff}
-.team-item-bullet{
-  width:8px;height:8px;border-radius:50%;background:var(--au);
-  margin-top:8px;flex-shrink:0;box-shadow:0 0 0 3px rgba(201,169,110,.18);
-}
-.team-item-text{font-size:.92rem;color:var(--t);line-height:1.6}
+.team-item-bullet{width:8px;height:8px;border-radius:50%;background:var(--au);margin-top:8px;flex-shrink:0;box-shadow:0 0 0 3px rgba(201,169,110,.18)}
+.team-item-text{font-size:.9rem;color:var(--t);line-height:1.55}
 .team-item-text strong{color:var(--gd);font-weight:600}
 
-/* ===== PROPUESTA COMERCIAL ===== */
-.offer-hero{
-  background:linear-gradient(135deg,var(--gx) 0%,var(--gd) 50%,var(--gm) 100%);
-  border-radius:18px;padding:70px 64px;color:var(--w);
-  position:relative;overflow:hidden;margin-bottom:38px;
-}
-.offer-hero::before{
-  content:"";position:absolute;inset:0;
-  background:
-    radial-gradient(circle at 80% 30%, rgba(201,169,110,.22), transparent 55%),
-    radial-gradient(circle at 20% 80%, rgba(163,189,132,.12), transparent 55%);
-}
-.offer-eyebrow{
-  font-size:.65rem;letter-spacing:5px;color:var(--au);text-transform:uppercase;
-  font-weight:700;margin-bottom:18px;position:relative;z-index:2;
-}
-.offer-title{
-  font-family:'Playfair Display';font-size:2.3rem;color:var(--w);font-weight:700;
-  margin-bottom:24px;line-height:1.2;position:relative;z-index:2;letter-spacing:-.4px;
-}
-.offer-title em{font-style:italic;color:var(--au);font-weight:600}
-.offer-sub{
-  font-size:1.08rem;color:var(--gpp);line-height:1.78;max-width:780px;
-  position:relative;z-index:2;border-left:2px solid var(--au);padding-left:24px;
-}
+/* ===== ESPEJO HONESTO (datos reales) ===== */
+.mirror-intro{background:linear-gradient(135deg,#fff8ed,#fae9d2);border:1.5px solid var(--warn);border-left:5px solid var(--warn);border-radius:12px;padding:36px 42px;margin-bottom:34px;position:relative}
+.mirror-intro p{font-family:'Playfair Display';font-size:1.25rem;color:var(--earth);line-height:1.55;font-style:italic;font-weight:500}
+.mirror-intro p strong{color:var(--gd);font-style:normal;font-weight:700}
 
-.offer-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px}
-.pillar{
-  background:var(--w);border:1px solid var(--br);border-radius:12px;
-  padding:38px 30px;border-top:3px solid var(--au);transition:all .35s cubic-bezier(.2,.8,.3,1);
-  position:relative;overflow:hidden;
-}
-.pillar::before{
-  content:"";position:absolute;top:0;left:0;right:0;height:0;
-  background:linear-gradient(180deg,rgba(201,169,110,.06),transparent);
-  transition:height .4s;
-}
+.coverage-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:34px}
+.coverage-item{background:var(--w);border:1px solid var(--br);border-radius:12px;padding:24px 26px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;transition:all .3s}
+.coverage-item:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(31,51,24,.06)}
+.coverage-cat{font-family:'Playfair Display';font-size:1.1rem;color:var(--gd);font-weight:600;margin-bottom:8px}
+.coverage-bar{height:8px;background:var(--cream);border-radius:6px;overflow:hidden;position:relative;width:240px;max-width:100%}
+.coverage-bar-fill{height:100%;border-radius:6px;transition:width 1.4s cubic-bezier(.2,.8,.3,1);width:0}
+.coverage-bar-fill.zero{background:linear-gradient(90deg,var(--danger),#c25441);min-width:6px}
+.coverage-bar-fill.low{background:linear-gradient(90deg,var(--warn),#d49658)}
+.coverage-bar-fill.mid{background:linear-gradient(90deg,var(--au),var(--aud))}
+.coverage-bar-fill.high{background:linear-gradient(90deg,var(--gl),var(--gm))}
+.coverage-bar-fill.full{background:linear-gradient(90deg,var(--gm),var(--gd))}
+.coverage-meta{font-size:.78rem;color:var(--tm);margin-top:6px}
+.coverage-pct{font-family:'Playfair Display';font-size:2rem;color:var(--gd);font-weight:700;line-height:1;text-align:right;min-width:80px}
+.coverage-pct.zero{color:var(--danger)}
+.coverage-pct.low{color:var(--warn)}
+.coverage-pct.high{color:var(--gm)}
+.coverage-pct small{display:block;font-size:.65rem;color:var(--tm);letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-top:4px;font-family:'Inter'}
+
+.mirror-conclusion{background:var(--gd);color:var(--w);border-radius:14px;padding:46px 50px;text-align:center;position:relative;overflow:hidden;margin-top:30px}
+.mirror-conclusion::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center, rgba(201,169,110,.14), transparent 70%)}
+.mirror-conclusion-label{font-size:.7rem;letter-spacing:5px;color:var(--au);text-transform:uppercase;font-weight:700;margin-bottom:16px;position:relative;z-index:2}
+.mirror-conclusion-text{font-family:'Playfair Display';font-size:1.5rem;color:var(--w);font-weight:500;line-height:1.5;font-style:italic;max-width:780px;margin:0 auto;position:relative;z-index:2}
+.mirror-conclusion-text strong{color:var(--au);font-style:normal;font-weight:700}
+
+/* ===== OPORTUNIDADES ===== */
+.opps-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:30px}
+.opp-card{background:var(--w);border:1px solid var(--br);border-radius:14px;padding:32px 30px;border-left:4px solid var(--au);transition:all .35s cubic-bezier(.2,.8,.3,1);position:relative;overflow:hidden}
+.opp-card:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(31,51,24,.08)}
+.opp-card.priority{border-left-color:var(--danger);background:linear-gradient(135deg,#fff,#fdf2ee)}
+.opp-rank{font-family:'Playfair Display';font-size:.75rem;color:var(--au);font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
+.opp-card.priority .opp-rank{color:var(--danger)}
+.opp-cat{font-family:'Playfair Display';font-size:1.4rem;color:var(--gd);font-weight:700;margin-bottom:8px;line-height:1.25}
+.opp-stat{font-size:.85rem;color:var(--tm);margin-bottom:14px}
+.opp-stat strong{color:var(--gd);font-weight:600}
+.opp-actionable{font-size:.93rem;color:var(--tl);line-height:1.6;padding-top:14px;border-top:1px solid var(--br)}
+.opp-badge{position:absolute;top:18px;right:20px;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;background:var(--danger);color:var(--w);padding:4px 10px;border-radius:12px;font-weight:700}
+.opp-card:not(.priority) .opp-badge{background:var(--au);color:var(--gd)}
+
+/* ===== PROPUESTA ===== */
+.offer-hero{background:linear-gradient(135deg,var(--gx) 0%,var(--gd) 50%,var(--gm) 100%);border-radius:18px;padding:62px 60px;color:var(--w);position:relative;overflow:hidden;margin-bottom:34px}
+.offer-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 30%, rgba(201,169,110,.22), transparent 55%),radial-gradient(circle at 20% 80%, rgba(163,189,132,.12), transparent 55%)}
+.offer-eyebrow{font-size:.65rem;letter-spacing:5px;color:var(--au);text-transform:uppercase;font-weight:700;margin-bottom:18px;position:relative;z-index:2}
+.offer-title{font-family:'Playfair Display';font-size:2.1rem;color:var(--w);font-weight:700;margin-bottom:22px;line-height:1.2;position:relative;z-index:2;letter-spacing:-.4px}
+.offer-title em{font-style:italic;color:var(--au);font-weight:600}
+.offer-sub{font-size:1.05rem;color:var(--gpp);line-height:1.7;max-width:760px;position:relative;z-index:2;border-left:2px solid var(--au);padding-left:24px}
+
+.offer-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:30px}
+.pillar{background:var(--w);border:1px solid var(--br);border-radius:12px;padding:34px 28px;border-top:3px solid var(--au);transition:all .35s cubic-bezier(.2,.8,.3,1);position:relative;overflow:hidden}
+.pillar::before{content:"";position:absolute;top:0;left:0;right:0;height:0;background:linear-gradient(180deg,rgba(201,169,110,.06),transparent);transition:height .4s}
 .pillar:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(31,51,24,.1)}
 .pillar:hover::before{height:100%}
-.pillar-num{font-family:'Playfair Display';font-size:.85rem;color:var(--au);font-weight:700;letter-spacing:3px;margin-bottom:12px;text-transform:uppercase;position:relative;z-index:2}
-.pillar h4{font-family:'Playfair Display';font-size:1.25rem;color:var(--gd);font-weight:600;margin-bottom:14px;line-height:1.3;position:relative;z-index:2}
-.pillar p{font-size:.93rem;color:var(--tl);line-height:1.72;position:relative;z-index:2}
+.pillar-num{font-family:'Playfair Display';font-size:.82rem;color:var(--au);font-weight:700;letter-spacing:3px;margin-bottom:10px;text-transform:uppercase;position:relative;z-index:2}
+.pillar h4{font-family:'Playfair Display';font-size:1.2rem;color:var(--gd);font-weight:600;margin-bottom:12px;line-height:1.3;position:relative;z-index:2}
+.pillar p{font-size:.92rem;color:var(--tl);line-height:1.7;position:relative;z-index:2}
 
-.unique-claim{
-  background:linear-gradient(135deg,#fffae8 0%,var(--creamw) 100%);
-  border:2px solid var(--au);border-radius:16px;padding:52px 54px;margin-top:38px;
-  text-align:center;position:relative;
-  box-shadow:0 8px 40px rgba(201,169,110,.15);
-}
-.unique-claim::before{
-  content:"⬥";position:absolute;top:-16px;left:50%;transform:translateX(-50%);
-  background:var(--cream);padding:0 16px;color:var(--au);font-size:1.5rem;
-}
-.unique-claim-label{font-size:.7rem;letter-spacing:5px;color:var(--gl);text-transform:uppercase;font-weight:700;margin-bottom:16px}
-.unique-claim-text{
-  font-family:'Playfair Display';font-size:1.55rem;color:var(--gd);
-  font-weight:600;line-height:1.5;font-style:italic;
-}
+.unique-claim{background:linear-gradient(135deg,#fffae8 0%,var(--creamw) 100%);border:2px solid var(--au);border-radius:16px;padding:46px 50px;margin-top:34px;text-align:center;position:relative;box-shadow:0 8px 40px rgba(201,169,110,.15)}
+.unique-claim::before{content:"⬥";position:absolute;top:-16px;left:50%;transform:translateX(-50%);background:var(--cream);padding:0 16px;color:var(--au);font-size:1.5rem}
+.unique-claim-label{font-size:.7rem;letter-spacing:5px;color:var(--gl);text-transform:uppercase;font-weight:700;margin-bottom:14px}
+.unique-claim-text{font-family:'Playfair Display';font-size:1.45rem;color:var(--gd);font-weight:600;line-height:1.5;font-style:italic}
 .unique-claim-text strong{color:var(--gm);font-style:normal;font-weight:700}
 
 /* ===== POR QUÉ AHORA ===== */
-.why-now{
-  background:var(--w);border:1px solid var(--br);border-radius:14px;
-  padding:54px 54px;
-}
+.why-now{background:var(--w);border:1px solid var(--br);border-radius:14px;padding:48px}
 .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
-.why-col{padding:0 32px;border-right:1px solid var(--br)}
+.why-col{padding:0 30px;border-right:1px solid var(--br)}
 .why-col:last-child{border-right:none}
-.why-col h4{font-family:'Playfair Display';font-size:1.35rem;color:var(--gd);font-weight:600;margin-bottom:20px}
+.why-col h4{font-family:'Playfair Display';font-size:1.3rem;color:var(--gd);font-weight:600;margin-bottom:18px}
 .why-col ul{list-style:none;padding:0}
-.why-col li{
-  padding:14px 0 14px 28px;font-size:.97rem;color:var(--t);line-height:1.65;
-  border-bottom:1px solid rgba(216,212,194,.55);position:relative;transition:padding-left .25s;
-}
-.why-col li:hover{padding-left:34px}
-.why-col li::before{content:"→";position:absolute;left:0;top:14px;color:var(--au);font-weight:700;transition:transform .3s}
+.why-col li{padding:13px 0 13px 26px;font-size:.95rem;color:var(--t);line-height:1.6;border-bottom:1px solid rgba(216,212,194,.55);position:relative;transition:padding-left .25s}
+.why-col li:hover{padding-left:32px}
+.why-col li::before{content:"→";position:absolute;left:0;top:13px;color:var(--au);font-weight:700;transition:transform .3s}
 .why-col li:hover::before{transform:translateX(4px)}
 .why-col li:last-child{border-bottom:none}
 
-.convergence{
-  background:linear-gradient(135deg,var(--gd),var(--gm));color:var(--w);
-  border-radius:14px;padding:54px;margin-top:38px;text-align:center;position:relative;overflow:hidden;
-}
-.convergence::before{
-  content:"";position:absolute;inset:0;
-  background:radial-gradient(ellipse at center, rgba(201,169,110,.12), transparent 70%);
-}
-.convergence-label{font-size:.7rem;letter-spacing:5px;color:var(--au);text-transform:uppercase;font-weight:700;margin-bottom:20px;position:relative;z-index:2}
-.convergence-text{font-family:'Playfair Display';font-size:1.75rem;color:var(--w);font-weight:500;line-height:1.5;font-style:italic;max-width:870px;margin:0 auto;position:relative;z-index:2}
+.convergence{background:linear-gradient(135deg,var(--gd),var(--gm));color:var(--w);border-radius:14px;padding:50px;margin-top:34px;text-align:center;position:relative;overflow:hidden}
+.convergence::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center, rgba(201,169,110,.12), transparent 70%)}
+.convergence-label{font-size:.7rem;letter-spacing:5px;color:var(--au);text-transform:uppercase;font-weight:700;margin-bottom:18px;position:relative;z-index:2}
+.convergence-text{font-family:'Playfair Display';font-size:1.7rem;color:var(--w);font-weight:500;line-height:1.5;font-style:italic;max-width:870px;margin:0 auto;position:relative;z-index:2}
 .convergence-text strong{color:var(--au);font-style:normal;font-weight:700}
 
 /* ===== CIERRE ===== */
-.closing{
-  background:
-    radial-gradient(ellipse at 20% 30%, rgba(201,169,110,.12), transparent 55%),
-    radial-gradient(ellipse at 80% 70%, rgba(95,125,63,.18), transparent 55%),
-    linear-gradient(135deg,var(--gx) 0%, var(--gd) 50%, var(--gm) 100%);
-  color:var(--w);padding:100px 30px;text-align:center;position:relative;overflow:hidden;
-}
-.closing::before{
-  content:"";position:absolute;top:0;left:0;right:0;height:5px;
-  background:linear-gradient(90deg,transparent,var(--au) 30%,var(--aul) 50%,var(--au) 70%,transparent);
-}
-.closing-eyebrow{font-size:.7rem;letter-spacing:6px;color:var(--au);text-transform:uppercase;font-weight:700;margin-bottom:26px;position:relative;z-index:2}
-.closing-title{
-  font-family:'Playfair Display';font-size:clamp(2.1rem,4.2vw,3.4rem);
-  color:var(--w);font-weight:700;line-height:1.2;margin-bottom:32px;letter-spacing:-.5px;position:relative;z-index:2;
-}
+.closing{background:radial-gradient(ellipse at 20% 30%, rgba(201,169,110,.12), transparent 55%),radial-gradient(ellipse at 80% 70%, rgba(95,125,63,.18), transparent 55%),linear-gradient(135deg,var(--gx) 0%, var(--gd) 50%, var(--gm) 100%);color:var(--w);padding:90px 30px;text-align:center;position:relative;overflow:hidden}
+.closing::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,transparent,var(--au) 30%,var(--aul) 50%,var(--au) 70%,transparent)}
+.closing-eyebrow{font-size:.7rem;letter-spacing:6px;color:var(--au);text-transform:uppercase;font-weight:700;margin-bottom:24px;position:relative;z-index:2}
+.closing-title{font-family:'Playfair Display';font-size:clamp(2rem,4vw,3.2rem);color:var(--w);font-weight:700;line-height:1.2;margin-bottom:30px;letter-spacing:-.5px;position:relative;z-index:2}
 .closing-title em{font-style:italic;color:var(--au);font-weight:600}
-.closing-text{
-  font-size:1.18rem;color:var(--gpp);max-width:800px;margin:0 auto 42px;
-  line-height:1.82;font-weight:300;position:relative;z-index:2;
-}
-.closing-sign{
-  display:inline-block;border-top:1px solid rgba(201,169,110,.4);
-  padding-top:26px;margin-top:26px;position:relative;z-index:2;
-}
-.closing-sign-line{font-family:'Playfair Display';font-size:1.25rem;color:var(--w);font-weight:500;font-style:italic;margin-bottom:8px}
+.closing-text{font-size:1.12rem;color:var(--gpp);max-width:780px;margin:0 auto 38px;line-height:1.78;font-weight:300;position:relative;z-index:2}
+.closing-sign{display:inline-block;border-top:1px solid rgba(201,169,110,.4);padding-top:24px;margin-top:24px;position:relative;z-index:2}
+.closing-sign-line{font-family:'Playfair Display';font-size:1.2rem;color:var(--w);font-weight:500;font-style:italic;margin-bottom:6px}
 .closing-sign-meta{font-size:.7rem;letter-spacing:4px;color:var(--au);text-transform:uppercase;font-weight:600}
 
 /* ===== FOOTER ===== */
-footer{
-  background:var(--gx);color:var(--gpp);padding:42px 30px;text-align:center;
-  font-size:.78rem;letter-spacing:2px;
-}
+footer{background:var(--gx);color:var(--gpp);padding:38px 30px;text-align:center;font-size:.78rem;letter-spacing:2px}
 footer strong{font-family:'Playfair Display';color:var(--au);letter-spacing:3px;font-weight:600}
 
 /* ===== ANIMATIONS ===== */
@@ -530,28 +274,25 @@ footer strong{font-family:'Playfair Display';color:var(--au);letter-spacing:3px;
 .animate-on-scroll.visible{opacity:1;transform:translateY(0)}
 
 /* ===== BACK TO TOP ===== */
-.back-top{
-  position:fixed;bottom:30px;right:30px;width:48px;height:48px;border-radius:50%;
-  background:var(--gd);color:var(--au);border:1px solid rgba(201,169,110,.3);
-  display:flex;align-items:center;justify-content:center;cursor:pointer;
-  font-size:1.2rem;opacity:0;pointer-events:none;transition:all .4s;z-index:900;
-  box-shadow:0 6px 24px rgba(31,51,24,.25);
-}
+.back-top{position:fixed;bottom:30px;right:30px;width:48px;height:48px;border-radius:50%;background:var(--gd);color:var(--au);border:1px solid rgba(201,169,110,.3);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;opacity:0;pointer-events:none;transition:all .4s;z-index:900;box-shadow:0 6px 24px rgba(31,51,24,.25)}
 .back-top.visible{opacity:1;pointer-events:auto}
 .back-top:hover{background:var(--au);color:var(--gd);transform:translateY(-3px)}
 
 /* ===== RESPONSIVE ===== */
 @media (max-width:900px){
-  .grid-2,.grid-3,.cert-grid,.tech-grid,.products-intro,.offer-pillars,.why-grid,.planta-stats,.years-strip{grid-template-columns:1fr}
-  .why-col{border-right:none;border-bottom:1px solid var(--br);padding:26px 0}
+  .grid-2,.grid-3,.grid-4,.tech-grid,.products-intro,.offer-pillars,.why-grid,.planta-stats,.years-strip,.coverage-grid,.opps-grid{grid-template-columns:1fr}
+  .why-col{border-right:none;border-bottom:1px solid var(--br);padding:24px 0}
   .why-col:last-child{border-bottom:none}
-  .opening-card,.planta-card,.offer-hero,.unique-claim,.why-now,.convergence{padding:42px 30px}
-  .section{padding:64px 0}
+  .opening-card,.planta-card,.offer-hero,.unique-claim,.why-now,.convergence,.mirror-conclusion,.mirror-intro{padding:36px 26px}
+  .section{padding:60px 0}
   .hero{padding:60px 20px 80px;min-height:auto}
   .ranking-row{grid-template-columns:50px 1fr 100px;gap:14px;padding:18px 22px}
   .container{padding:0 22px}
   .float-nav,.scroll-hint{display:none}
-  .big-num{text-align:left;font-size:5.5rem}
+  .big-num{text-align:left;font-size:5.2rem}
+  .coverage-item{grid-template-columns:1fr;gap:10px}
+  .coverage-bar{width:100%}
+  .coverage-pct{text-align:left}
 }
 
 /* ===== PRINT ===== */
@@ -559,7 +300,7 @@ footer strong{font-family:'Playfair Display';color:var(--au);letter-spacing:3px;
   *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
   .scroll-progress,.spotlight,.float-nav,.back-top,.scroll-hint{display:none!important}
   .section{page-break-before:always;padding:40px 0}
-  .hero,.opening-card,.planta-card,.feature-card,.cert,.offer-hero,.unique-claim,.convergence,.closing{break-inside:avoid}
+  .hero,.opening-card,.planta-card,.feature-card,.cert,.offer-hero,.unique-claim,.convergence,.closing,.mirror-conclusion,.opp-card,.coverage-item{break-inside:avoid}
   .animate-on-scroll{opacity:1!important;transform:none!important}
   body{background:#fff}
 }
@@ -579,13 +320,15 @@ footer strong{font-family:'Playfair Display';color:var(--au);letter-spacing:3px;
   <div class="fnav-dot" data-target="tech" data-label="Tecnología"></div>
   <div class="fnav-dot" data-target="productos" data-label="Productos"></div>
   <div class="fnav-dot" data-target="equipo" data-label="Equipo"></div>
+  <div class="fnav-dot" data-target="espejo" data-label="Donde estamos"></div>
+  <div class="fnav-dot" data-target="oportunidades" data-label="Oportunidades"></div>
   <div class="fnav-dot" data-target="propuesta" data-label="Propuesta"></div>
   <div class="fnav-dot" data-target="cierre" data-label="Cierre"></div>
 </nav>
 
 <button class="back-top" aria-label="Volver arriba">↑</button>
 
-<!-- ============ HERO ============ -->
+<!-- HERO -->
 <section class="hero" id="hero" data-dark="true">
   <div class="blob b1"></div>
   <div class="blob b2"></div>
@@ -595,26 +338,26 @@ footer strong{font-family:'Playfair Display';color:var(--au);letter-spacing:3px;
     <div class="crest">
       <div class="crest-mark">H</div>
       <div class="crest-text">
-        Hierbas del Oasis
-        <strong>DESDE 2005 · ARGENTINA</strong>
+        Hierbas del Oasis × Bio-Salud
+        <strong>CÓRDOBA · ABRIL 2026</strong>
       </div>
     </div>
-    <div class="hero-eyebrow">Encuentro · Distribuidor histórico Córdoba · Abril 2026</div>
-    <h1>Veinte años caminando<br><em>el mismo camino.</em><br>Y un horizonte nuevo<br>para los próximos veinte.</h1>
+    <div class="hero-eyebrow">Encuentro estratégico · Distribuidor histórico</div>
+    <h1>Más de veinte años<br><em>en el mismo camino.</em><br>Un horizonte nuevo<br>para los próximos veinte.</h1>
     <p class="hero-sub">
-      Esta presentación no es un pitch comercial. Es la actualización honesta del momento que está atravesando Hierbas del Oasis, contada al socio que estuvo desde el principio. Un repaso de lo que se transformó, lo que está por venir, y por qué creemos que esta es la mejor oportunidad que la marca tuvo en dos décadas para conquistar Córdoba.
+      Una actualización honesta del momento de Hierbas del Oasis, contada al socio que estuvo desde el principio. Lo que se transformó, lo que viene, y por qué este es el mejor momento para que Bio-Salud gane Córdoba.
     </p>
     <div class="hero-meta">
       <div>
-        <div class="hero-meta-label">Encuentro</div>
-        <div class="hero-meta-value">Distribuidor Córdoba</div>
+        <div class="hero-meta-label">Para</div>
+        <div class="hero-meta-value">Bio-Salud · Córdoba</div>
       </div>
       <div>
         <div class="hero-meta-label">Relación</div>
         <div class="hero-meta-value">Más de 20 años</div>
       </div>
       <div>
-        <div class="hero-meta-label">Representa</div>
+        <div class="hero-meta-label">Presentado por</div>
         <div class="hero-meta-value">Hierbas del Oasis</div>
       </div>
       <div>
@@ -626,7 +369,7 @@ footer strong{font-family:'Playfair Display';color:var(--au);letter-spacing:3px;
   <div class="scroll-hint">Recorré la presentación</div>
 </section>
 
-<!-- ============ APERTURA EMOTIVA ============ -->
+<!-- APERTURA -->
 <section class="section" id="apertura">
   <div class="container">
     <div class="section-label">Apertura</div>
@@ -634,10 +377,10 @@ footer strong{font-family:'Playfair Display';color:var(--au);letter-spacing:3px;
 
     <div class="opening-card animate-on-scroll">
       <p class="opening-text">
-        Hace más de veinte años, cuando muchas cosas eran distintas y la palabra valía un acuerdo, vos confiaste en Hierbas del Oasis. Nos abriste Córdoba. Pusiste tu nombre, tu red de clientes, tu trabajo y tu reputación al servicio de una marca que recién empezaba a construirse en el interior. Lo que la marca es hoy en Córdoba, lo es <strong>gracias a esa decisión tuya</strong>.
+        Hace más de veinte años, <strong>Bio-Salud</strong> confió en Hierbas del Oasis. Nos abrieron Córdoba. Pusieron nombre, red, trabajo y reputación al servicio de una marca que recién se construía en el interior. Lo que somos hoy en Córdoba, <strong>lo somos gracias a esa decisión</strong>.
       </p>
       <p class="opening-text">
-        Por eso, sentarme hoy con vos a contarte cómo viene la nueva etapa de la empresa <strong>es para mí un honor</strong>, no un trámite comercial. Y por eso quisimos prepararnos como corresponde: ordenar lo que está pasando, mostrar lo que viene, y proponerte algo serio para construir juntos los próximos veinte años.
+        Por eso esta presentación <strong>no es un trámite comercial. Es un honor.</strong> Y una invitación a construir juntos los próximos veinte años.
       </p>
       <div class="opening-sign">Equipo Comercial · Hierbas del Oasis</div>
     </div>
@@ -645,11 +388,11 @@ footer strong{font-family:'Playfair Display';color:var(--au);letter-spacing:3px;
     <div class="years-strip animate-on-scroll">
       <div class="year-block">
         <div class="year-num"><span data-count="20">0</span>+</div>
-        <div class="year-label">Años de relación comercial</div>
+        <div class="year-label">Años junto a Bio-Salud</div>
       </div>
       <div class="year-block">
         <div class="year-num">1</div>
-        <div class="year-label">Plaza estratégica · Córdoba</div>
+        <div class="year-label">Aliado estratégico en Córdoba</div>
       </div>
       <div class="year-block">
         <div class="year-num">∞</div>
@@ -659,63 +402,63 @@ footer strong{font-family:'Playfair Display';color:var(--au);letter-spacing:3px;
   </div>
 </section>
 
-<!-- ============ EMPRESA HOY ============ -->
+<!-- EMPRESA HOY -->
 <section class="section" id="empresa">
   <div class="container">
     <div class="section-label">Quiénes somos hoy</div>
     <h2 class="section-title">La empresa que conocés,<br><em>transformada para escalar.</em></h2>
     <p class="section-intro">
-      Hierbas del Oasis dejó de ser una marca artesanal para convertirse en una compañía con estructura industrial, certificaciones internacionales y una red comercial profesional. Lo que sigue intacto es el ADN: producto noble, naturalidad real, y palabra cumplida.
+      Estructura industrial, certificaciones internacionales y red comercial profesional. ADN intacto: producto noble, naturalidad real, palabra cumplida.
     </p>
 
     <div class="grid-3">
       <div class="feature-card animate-on-scroll tilt">
         <div class="feature-num"><span data-count="60">0</span><small>+</small></div>
         <div class="feature-title">Colaboradores</div>
-        <div class="feature-desc">35 personas en Buenos Aires y 25 en la planta de Entre Ríos. Estructura industrial real, no un emprendimiento.</div>
+        <div class="feature-desc">35 en CABA · 25 en planta Entre Ríos. Estructura industrial real.</div>
       </div>
       <div class="feature-card animate-on-scroll tilt">
-        <div class="feature-num"><span data-count="600">0</span><small>+</small></div>
+        <div class="feature-num"><span data-count="500">0</span><small>+</small></div>
         <div class="feature-title">Productos en cartera</div>
-        <div class="feature-desc">Infusiones, yerba mate, tinturas, cosmética natural y suplementos. Profundidad de cartera que ningún competidor del rubro tiene.</div>
+        <div class="feature-desc">Infusiones, yerba mate, tinturas, cosmética y suplementos. Profundidad única en el rubro.</div>
       </div>
       <div class="feature-card animate-on-scroll tilt">
-        <div class="feature-num"><span data-count="80">0</span><small>+</small></div>
+        <div class="feature-num"><span data-count="100">0</span><small>+</small></div>
         <div class="feature-title">Proveedores activos</div>
-        <div class="feature-desc">Diversificación consolidada de la base de proveedores. Continuidad de abastecimiento garantizada.</div>
+        <div class="feature-desc">Diversificación consolidada. Continuidad de abastecimiento garantizada.</div>
       </div>
     </div>
 
-    <div class="grid-3" style="margin-top:26px">
+    <div class="grid-3" style="margin-top:24px">
       <div class="feature-card animate-on-scroll tilt">
         <div class="feature-num">2</div>
         <div class="feature-title">Plantas operativas</div>
-        <div class="feature-desc">Operación administrativa y comercial en CABA. Producción industrial en Entre Ríos.</div>
+        <div class="feature-desc">CABA: administración y comercial. Entre Ríos: producción industrial.</div>
       </div>
       <div class="feature-card animate-on-scroll tilt">
-        <div class="feature-num">5</div>
+        <div class="feature-num">6</div>
         <div class="feature-title">Áreas certificantes</div>
-        <div class="feature-desc">FDA, Marca Argentina, Sello Orgánico, Libre de Gluten, controles de calidad propios.</div>
+        <div class="feature-desc">FDA, Marca Argentina, Orgánico, Sin TACC, RNE/RNPA, control de calidad propio.</div>
       </div>
       <div class="feature-card animate-on-scroll tilt">
         <div class="feature-num"><span data-count="100">0</span><small>%</small></div>
         <div class="feature-title">Capital propio</div>
-        <div class="feature-desc">Crecimiento financiado con generación propia, sin apalancamiento bancario que comprometa la operación.</div>
+        <div class="feature-desc">Crecimiento financiado con generación propia, sin apalancamiento bancario.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ CERTIFICACIONES ============ -->
+<!-- CERTIFICACIONES -->
 <section class="section" id="cert" style="background:var(--cream)">
   <div class="container">
-    <div class="section-label">Certificaciones</div>
-    <h2 class="section-title">El producto<br><em>que ya pasó todos los exámenes.</em></h2>
+    <div class="section-label">Certificaciones y respaldo técnico</div>
+    <h2 class="section-title">Producto que pasa<br><em>todos los exámenes.</em></h2>
     <p class="section-intro">
-      Hoy un consumidor compra primero confianza y después producto. Por eso invertimos años en obtener las certificaciones que más pesan en góndola, en farmacia y en dietética. Cada una de estas estampas es una venta más fácil para vos.
+      Cada estampa es un argumento comercial real. Confianza primero, producto después.
     </p>
 
-    <div class="cert-grid">
+    <div class="grid-3">
       <div class="cert animate-on-scroll">
         <div class="cert-icon">FDA</div>
         <div class="cert-name">FDA</div>
@@ -731,35 +474,38 @@ footer strong{font-family:'Playfair Display';color:var(--au);letter-spacing:3px;
         <div class="cert-name">Sello Orgánico</div>
         <div class="cert-meta">Producción certificada</div>
       </div>
+    </div>
+    <div class="grid-3" style="margin-top:22px">
       <div class="cert animate-on-scroll">
         <div class="cert-icon">SG</div>
         <div class="cert-name">Sin TACC</div>
         <div class="cert-meta">Libre de gluten</div>
       </div>
-    </div>
-
-    <div class="cert-narrative animate-on-scroll">
-      <p>
-        Estas certificaciones no son un detalle técnico, son <strong>argumentos comerciales reales</strong> que tu fuerza de venta puede usar todos los días. Nos abren la puerta de canales premium (dietéticas top, herboristerías especializadas, farmacias naturales), nos protegen frente a competidores artesanales sin respaldo, y nos dejan listos para canales de exportación cuando decidamos dar ese salto. <strong>Para Córdoba, esto significa que vendés tranquilo</strong>: el cliente final tiene cinco motivos objetivos para elegir nuestro producto antes que cualquier otro del rubro.
-      </p>
+      <div class="cert animate-on-scroll">
+        <div class="cert-icon">DT</div>
+        <div class="cert-name">2 Directores Técnicos</div>
+        <div class="cert-meta">Por planta operativa</div>
+      </div>
+      <div class="cert animate-on-scroll">
+        <div class="cert-icon">RN</div>
+        <div class="cert-name">RNE + RNPA</div>
+        <div class="cert-meta">Todos los productos</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ PLANTA ENTRE RÍOS ============ -->
+<!-- PLANTA -->
 <section class="section" id="planta" data-dark="true">
   <div class="container">
     <div class="section-label">Capacidad productiva</div>
-    <h2 class="section-title">Una planta industrial<br><em>preparada para el crecimiento.</em></h2>
+    <h2 class="section-title">Una planta industrial<br><em>preparada para crecer.</em></h2>
 
     <div class="planta-card animate-on-scroll">
       <div class="planta-eyebrow">Entre Ríos · Núcleo productivo</div>
-      <div class="planta-title">La planta no es un cuello de botella. Es una palanca de crecimiento.</div>
+      <div class="planta-title">La planta no es cuello de botella. Es palanca.</div>
       <p class="planta-text">
-        En los últimos años invertimos fuerte en consolidar la planta de Entre Ríos como el núcleo productivo de la compañía. Hoy operamos con un solo turno y todavía contamos con <strong>capacidad ociosa disponible</strong>. Eso significa que cuando Córdoba tracciona volumen, no hay que pedirte que esperes: el segundo turno se activa y la mercadería sale.
-      </p>
-      <p class="planta-text" style="margin-top:20px">
-        Esto es exactamente lo que un distribuidor necesita escuchar de su proveedor: <strong>capacidad real, escalable, lista para acompañar el crecimiento que vos generes en tu plaza</strong>.
+        Operamos un solo turno con <strong>capacidad ociosa disponible</strong>. Cuando Bio-Salud tracciona volumen, el segundo turno se activa y la mercadería sale. Capacidad real, escalable, lista para acompañar.
       </p>
       <div class="planta-stats">
         <div>
@@ -779,35 +525,29 @@ footer strong{font-family:'Playfair Display';color:var(--au);letter-spacing:3px;
   </div>
 </section>
 
-<!-- ============ AUTOMATIZACIÓN / IA ============ -->
+<!-- TECH -->
 <section class="section" id="tech" style="background:var(--cream)">
   <div class="container">
     <div class="section-label">Modernización operativa</div>
     <h2 class="section-title">Automatización e IA<br><em>al servicio del distribuidor.</em></h2>
     <p class="section-intro">
-      Estamos incorporando tecnología en toda la cadena: desde la toma de pedidos hasta el seguimiento de cada cliente. No es modernización para la foto. Es para que vos pidas mejor, recibas más rápido, y dispongas de información comercial accionable.
+      Tecnología en toda la cadena para que Bio-Salud pida mejor, reciba más rápido, y opere con información comercial accionable.
     </p>
 
     <div class="tech-grid animate-on-scroll">
       <div class="tech-side dark">
         <div class="tech-eyebrow">Automatización de procesos</div>
         <div class="tech-title">Pedidos, stock y logística sin fricción</div>
-        <p class="tech-text">
-          Estamos sistematizando el flujo de pedidos de punta a punta, con seguimiento en tiempo real y alertas automáticas para evitar quiebres de stock o demoras de despacho.
-        </p>
         <ul class="tech-list">
           <li><strong>Confirmación automática</strong> de pedidos en menos de 24hs</li>
           <li><strong>Visibilidad de stock</strong> antes de tomar el pedido</li>
-          <li><strong>Trazabilidad logística</strong> desde planta hasta tu depósito</li>
+          <li><strong>Trazabilidad logística</strong> desde planta hasta el depósito</li>
           <li><strong>Circuito de reclamos</strong> con resolución máxima de 48hs</li>
         </ul>
       </div>
       <div class="tech-side light">
         <div class="tech-eyebrow">Inteligencia artificial aplicada</div>
         <div class="tech-title">Inteligencia comercial accionable</div>
-        <p class="tech-text">
-          Estamos integrando inteligencia artificial al análisis comercial: rotación por SKU, comportamiento por canal, alertas de oportunidad. Todo lo que antes se intuía, ahora se mide.
-        </p>
         <ul class="tech-list">
           <li><strong>Ranking de productos</strong> con mayor rotación por canal</li>
           <li><strong>Sugerencias de mix</strong> según perfil de cliente</li>
@@ -819,20 +559,20 @@ footer strong{font-family:'Playfair Display';color:var(--au);letter-spacing:3px;
   </div>
 </section>
 
-<!-- ============ PRODUCTOS / RANKING ============ -->
+<!-- PRODUCTOS -->
 <section class="section" id="productos">
   <div class="container">
     <div class="section-label">Portfolio</div>
-    <h2 class="section-title">Más de 600 productos.<br><em>Vos vendés los que más giran.</em></h2>
+    <h2 class="section-title">Más de 500 productos.<br><em>Bio-Salud vende los que más giran.</em></h2>
 
     <div class="products-intro">
       <div>
         <p class="section-intro" style="margin-bottom:0">
-          Te llevás la profundidad de cartera más amplia del rubro, pero <strong style="color:var(--gd)">no tenés que hacer prueba y error</strong>. Ya tenemos identificados los productos de mayor rotación por canal, por ticket promedio y por estacionalidad. La curva de aprendizaje la hicimos nosotros. Vos arrancás directamente con los ganadores.
+          Profundidad de cartera más amplia del rubro, sin prueba y error. Ya identificamos los productos de mayor rotación por canal y por ticket. <strong style="color:var(--gd)">Bio-Salud arranca con los ganadores.</strong>
         </p>
       </div>
       <div class="big-num animate-on-scroll">
-        <span data-count="600">0</span><small>productos en cartera</small>
+        <span data-count="500">0</span>+<small>productos en cartera</small>
       </div>
     </div>
 
@@ -844,85 +584,219 @@ footer strong{font-family:'Playfair Display';color:var(--au);letter-spacing:3px;
       </div>
       <div class="ranking-row">
         <div class="ranking-pos">1</div>
-        <div class="ranking-name">Yerba mate <span>Volumen alto · ticket repetitivo · base de cartera</span></div>
-        <div class="ranking-tag">Top rotación</div>
-      </div>
-      <div class="ranking-row">
-        <div class="ranking-pos">2</div>
-        <div class="ranking-name">Infusiones (té e hierbas) <span>Estacionalidad fría · margen alto · gran variedad</span></div>
-        <div class="ranking-tag">Margen alto</div>
-      </div>
-      <div class="ranking-row">
-        <div class="ranking-pos">3</div>
         <div class="ranking-name">Tinturas madre <span>Producto premium · diferencial certificado · alto valor</span></div>
         <div class="ranking-tag">Premium</div>
       </div>
       <div class="ranking-row">
-        <div class="ranking-pos">4</div>
+        <div class="ranking-pos">2</div>
+        <div class="ranking-name">Infusiones (té y hierbas) <span>Estacionalidad fría · margen alto · gran variedad</span></div>
+        <div class="ranking-tag">Margen alto</div>
+      </div>
+      <div class="ranking-row">
+        <div class="ranking-pos">3</div>
         <div class="ranking-name">Suplementos naturales <span>Mercado en expansión · ticket alto · recurrencia</span></div>
         <div class="ranking-tag">En crecimiento</div>
       </div>
       <div class="ranking-row">
-        <div class="ranking-pos">5</div>
+        <div class="ranking-pos">4</div>
         <div class="ranking-name">Cosmética natural <span>Diversificación · cliente nuevo · upsell sobre cartera</span></div>
         <div class="ranking-tag">Diversificación</div>
       </div>
-    </div>
-
-    <div class="cert-narrative animate-on-scroll" style="margin-top:32px">
-      <p>
-        Para Córdoba, la propuesta es clara: <strong>arrancás con un mix curado de productos top de cada categoría</strong>, validados por la rotación real del resto del país, y vas escalando profundidad de cartera a medida que tu equipo y tus clientes lo absorben. No te empujamos los 600 SKUs el primer día: te entregamos un plan de ramp-up por canal.
-      </p>
+      <div class="ranking-row">
+        <div class="ranking-pos">5</div>
+        <div class="ranking-name">Yerba mate <span>Volumen alto · ticket repetitivo · base de cartera</span></div>
+        <div class="ranking-tag">Top volumen</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ EQUIPO COMERCIAL ============ -->
+<!-- EQUIPO -->
 <section class="section" id="equipo" style="background:var(--cream)">
   <div class="container">
     <div class="section-label">Equipo y soporte</div>
     <h2 class="section-title">Reestructuramos toda<br><em>la operación comercial.</em></h2>
     <p class="section-intro">
-      Sabemos que durante muchos años el soporte comercial al distribuidor fue inconsistente. Lo asumimos. Por eso, en los últimos meses rediseñamos el equipo de raíz: nuevos roles, circuitos administrativos profesionalizados, y un esquema de seguimiento que hace que el distribuidor deje de ser "uno más" para pasar a ser un cliente estratégico con acompañamiento dedicado.
+      Asumimos que el soporte fue inconsistente durante años. Lo rediseñamos de raíz: roles nuevos, circuitos profesionalizados, acompañamiento dedicado. Bio-Salud deja de ser una cuenta más, pasa a ser un cliente estratégico.
     </p>
 
     <div class="grid-2">
       <div class="team-card animate-on-scroll">
-        <h3>Una estructura comercial nueva</h3>
-        <p>El equipo dejó de funcionar de manera reactiva. Hoy hay roles definidos, métricas semanales, reuniones de seguimiento y herramientas digitales que permiten al distribuidor tener un único interlocutor responsable.</p>
+        <h3>Estructura comercial nueva</h3>
         <div class="team-list">
-          <div class="team-item"><div class="team-item-bullet"></div><div class="team-item-text"><strong>Responsable comercial dedicado</strong> para tu cuenta. Un solo interlocutor para todo lo que necesites.</div></div>
-          <div class="team-item"><div class="team-item-bullet"></div><div class="team-item-text"><strong>Administración comercial profesionalizada.</strong> Pedidos, facturación y entregas con tiempos garantizados.</div></div>
-          <div class="team-item"><div class="team-item-bullet"></div><div class="team-item-text"><strong>Política de precios unificada.</strong> Sin sorpresas, con anticipación de cualquier cambio.</div></div>
-          <div class="team-item"><div class="team-item-bullet"></div><div class="team-item-text"><strong>Circuito de reclamos formal.</strong> Resolución máxima 48hs, no más conversaciones perdidas.</div></div>
+          <div class="team-item"><div class="team-item-bullet"></div><div class="team-item-text"><strong>Responsable comercial dedicado.</strong> Un solo interlocutor para Bio-Salud.</div></div>
+          <div class="team-item"><div class="team-item-bullet"></div><div class="team-item-text"><strong>Administración profesionalizada.</strong> Pedidos, facturación y entregas con tiempos garantizados.</div></div>
+          <div class="team-item"><div class="team-item-bullet"></div><div class="team-item-text"><strong>Política de precios unificada.</strong> Sin sorpresas, anticipación de cambios.</div></div>
+          <div class="team-item"><div class="team-item-bullet"></div><div class="team-item-text"><strong>Reclamos formales.</strong> Resolución máxima 48hs.</div></div>
         </div>
       </div>
 
       <div class="team-card animate-on-scroll">
-        <h3>Acompañamiento comercial real</h3>
-        <p>No te entregamos solo mercadería: te entregamos un plan de cuenta. Trabajamos como socios estratégicos para que vos crezcas en tu plaza, porque cuando vos crecés, nosotros crecemos.</p>
+        <h3>Acompañamiento real</h3>
         <div class="team-list">
-          <div class="team-item"><div class="team-item-bullet"></div><div class="team-item-text"><strong>Plan de cuenta semestral.</strong> Objetivos compartidos de sell-in y sell-out, revisados trimestralmente.</div></div>
-          <div class="team-item"><div class="team-item-bullet"></div><div class="team-item-text"><strong>Soporte de trade marketing.</strong> Material de punto de venta, capacitación a tu fuerza de venta, acciones promocionales conjuntas.</div></div>
-          <div class="team-item"><div class="team-item-bullet"></div><div class="team-item-text"><strong>Calendario promocional anticipado.</strong> Vas a saber con tres meses de anticipación qué se viene en cada categoría.</div></div>
-          <div class="team-item"><div class="team-item-bullet"></div><div class="team-item-text"><strong>Reuniones de gestión periódicas.</strong> Revisión conjunta de números y oportunidades, no solo "cobrar el mes".</div></div>
+          <div class="team-item"><div class="team-item-bullet"></div><div class="team-item-text"><strong>Plan de cuenta semestral.</strong> Objetivos compartidos sell-in / sell-out.</div></div>
+          <div class="team-item"><div class="team-item-bullet"></div><div class="team-item-text"><strong>Trade marketing.</strong> Material PDV, capacitación, promociones conjuntas.</div></div>
+          <div class="team-item"><div class="team-item-bullet"></div><div class="team-item-text"><strong>Calendario anticipado.</strong> 3 meses de visibilidad de promociones por categoría.</div></div>
+          <div class="team-item"><div class="team-item-bullet"></div><div class="team-item-text"><strong>Reuniones de gestión.</strong> Revisión conjunta, no solo cobranza.</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ PROPUESTA COMERCIAL ============ -->
+<!-- ESPEJO HONESTO -->
+<section class="section" id="espejo">
+  <div class="container">
+    <div class="section-label">Donde estamos parados hoy</div>
+    <h2 class="section-title">El espejo honesto<br><em>de la relación.</em></h2>
+
+    <div class="mirror-intro animate-on-scroll">
+      <p>
+        Si miramos los datos de los últimos 14 meses con la misma honestidad con la que se construyó esta relación, hay una verdad que no podemos esquivar: <strong>el volumen de compra de Bio-Salud refleja una falta de acompañamiento de nuestro lado y una distancia operativa que no se condice con el cariño y la confianza que tenemos por la sociedad.</strong> El potencial está intacto. Lo que faltó fue sistema entre los dos.
+      </p>
+    </div>
+
+    <div class="coverage-grid animate-on-scroll">
+
+      <div class="coverage-item">
+        <div>
+          <div class="coverage-cat">Tinturas Madre</div>
+          <div class="coverage-bar"><div class="coverage-bar-fill zero" data-pct="0"></div></div>
+          <div class="coverage-meta">0 de 30 productos · #1 en rotación general</div>
+        </div>
+        <div class="coverage-pct zero">0<small>% cobertura</small></div>
+      </div>
+
+      <div class="coverage-item">
+        <div>
+          <div class="coverage-cat">Mieles</div>
+          <div class="coverage-bar"><div class="coverage-bar-fill zero" data-pct="0"></div></div>
+          <div class="coverage-meta">0 de 7 formatos · sin compras</div>
+        </div>
+        <div class="coverage-pct zero">0<small>% cobertura</small></div>
+      </div>
+
+      <div class="coverage-item">
+        <div>
+          <div class="coverage-cat">Línea Premium (Gines · Latas Yerba)</div>
+          <div class="coverage-bar"><div class="coverage-bar-fill zero" data-pct="0"></div></div>
+          <div class="coverage-meta">Categorías nuevas sin activar</div>
+        </div>
+        <div class="coverage-pct zero">0<small>% cobertura</small></div>
+      </div>
+
+      <div class="coverage-item">
+        <div>
+          <div class="coverage-cat">Suplementos Dietarios</div>
+          <div class="coverage-bar"><div class="coverage-bar-fill low" data-pct="33"></div></div>
+          <div class="coverage-meta">5 de 15 productos top con compras</div>
+        </div>
+        <div class="coverage-pct low">33<small>% cobertura</small></div>
+      </div>
+
+      <div class="coverage-item">
+        <div>
+          <div class="coverage-cat">Yerba Mate</div>
+          <div class="coverage-bar"><div class="coverage-bar-fill low" data-pct="45"></div></div>
+          <div class="coverage-meta">5 de 11 SKUs · sin línea premium</div>
+        </div>
+        <div class="coverage-pct low">45<small>% cobertura</small></div>
+      </div>
+
+      <div class="coverage-item">
+        <div>
+          <div class="coverage-cat">Cosmética Natural</div>
+          <div class="coverage-bar"><div class="coverage-bar-fill mid" data-pct="53"></div></div>
+          <div class="coverage-meta">16 de 30 · aceites premium sin tracción</div>
+        </div>
+        <div class="coverage-pct">53<small>% cobertura</small></div>
+      </div>
+
+      <div class="coverage-item">
+        <div>
+          <div class="coverage-cat">Doy Pack Infusiones</div>
+          <div class="coverage-bar"><div class="coverage-bar-fill high" data-pct="80"></div></div>
+          <div class="coverage-meta">12 de 15 · línea Yuyitos sin activar</div>
+        </div>
+        <div class="coverage-pct high">80<small>% cobertura</small></div>
+      </div>
+
+      <div class="coverage-item">
+        <div>
+          <div class="coverage-cat">Línea Mujeres</div>
+          <div class="coverage-bar"><div class="coverage-bar-fill full" data-pct="100"></div></div>
+          <div class="coverage-meta">8 de 8 productos · cobertura plena</div>
+        </div>
+        <div class="coverage-pct high">100<small>% cobertura</small></div>
+      </div>
+
+    </div>
+
+    <div class="mirror-conclusion animate-on-scroll">
+      <div class="mirror-conclusion-label">La lectura honesta</div>
+      <div class="mirror-conclusion-text">
+        "Bio-Salud trabaja hoy con una <strong>fracción</strong> del catálogo. La categoría #1 en rotación, las líneas premium y los lanzamientos nuevos están en cero. <strong>No es por falta de cariño ni por falta de capacidad. Es por falta de sistema entre los dos. Eso es exactamente lo que venimos a poner sobre la mesa.</strong>"
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPORTUNIDADES -->
+<section class="section" id="oportunidades" style="background:var(--cream)">
+  <div class="container">
+    <div class="section-label">Las cuatro oportunidades concretas</div>
+    <h2 class="section-title">Donde está el crecimiento<br><em>que no estamos capturando.</em></h2>
+    <p class="section-intro">
+      Cuatro frentes de crecimiento inmediato, ordenados por impacto comercial sobre Bio-Salud.
+    </p>
+
+    <div class="opps-grid">
+      <div class="opp-card priority animate-on-scroll">
+        <div class="opp-badge">Prioridad 1</div>
+        <div class="opp-rank">Frente principal</div>
+        <div class="opp-cat">Activar Tinturas Madre</div>
+        <div class="opp-stat"><strong>30</strong> SKUs en el top de rotación · <strong>0</strong> compras de Bio-Salud en 14 meses</div>
+        <div class="opp-actionable">Categoría #1 del ranking general. Producto premium con diferencial certificado y margen alto. Mix curado de 8 tinturas top como kit de arranque.</div>
+      </div>
+
+      <div class="opp-card priority animate-on-scroll">
+        <div class="opp-badge">Prioridad 2</div>
+        <div class="opp-rank">Frente premium</div>
+        <div class="opp-cat">Suplementos Dietarios</div>
+        <div class="opp-stat"><strong>10</strong> de 15 top SKUs sin compras · cobertura actual <strong>33%</strong></div>
+        <div class="opp-actionable">Mercado en franca expansión, ticket alto y recurrencia mensual. Ampliar mix sobre los 5 ya validados con kit de 6 nuevos suplementos foco.</div>
+      </div>
+
+      <div class="opp-card animate-on-scroll">
+        <div class="opp-badge">Prioridad 3</div>
+        <div class="opp-rank">Frente de margen</div>
+        <div class="opp-cat">Aceites y Premium Cosmética</div>
+        <div class="opp-stat"><strong>14</strong> aceites premium con 0 unidades · solo shampoos y cremas activos</div>
+        <div class="opp-actionable">Aceites de rosa mosqueta, almendras, jojoba, argán, palta. Categoría premium de cosmética con público fidelizable y ticket por encima del promedio.</div>
+      </div>
+
+      <div class="opp-card animate-on-scroll">
+        <div class="opp-badge">Prioridad 4</div>
+        <div class="opp-rank">Frente nuevo</div>
+        <div class="opp-cat">Líneas premium y lanzamientos</div>
+        <div class="opp-stat">Mieles, Gines, Latas de Yerba premium, Doypacks Yuyitos · todos en <strong>0</strong></div>
+        <div class="opp-actionable">Productos diseñados para góndola premium y regalería. Permiten a Bio-Salud conquistar dietéticas top y nuevos canales que hoy no compran productos básicos.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPUESTA -->
 <section class="section" id="propuesta">
   <div class="container">
     <div class="section-label">Propuesta comercial</div>
-    <h2 class="section-title">Lo que te ofrecemos<br><em>para ganar Córdoba por escándalo.</em></h2>
+    <h2 class="section-title">Lo que ofrecemos a Bio-Salud<br><em>para ganar Córdoba por escándalo.</em></h2>
 
     <div class="offer-hero animate-on-scroll">
-      <div class="offer-eyebrow">Propuesta exclusiva · Distribuidor histórico</div>
-      <div class="offer-title">El mejor descuento mayorista que tiene Hierbas del Oasis<br><em>en toda la Argentina.</em></div>
+      <div class="offer-eyebrow">Propuesta exclusiva · Bio-Salud</div>
+      <div class="offer-title">El mejor descuento mayorista de Hierbas del Oasis<br><em>en toda la Argentina.</em></div>
       <p class="offer-sub">
-        Lo decimos sin vueltas porque es la verdad: ningún distribuidor del país tiene la condición comercial que estamos poniendo arriba de la mesa para vos. Veinte años de relación se honran con hechos, no con promesas. Esta condición está pensada para que tu rentabilidad mayorista sea imbatible y para que puedas competir en góndola con cualquier marca que aparezca en Córdoba.
+        Sin vueltas: ningún distribuidor del país tiene la condición que ponemos sobre la mesa para Bio-Salud. Veinte años se honran con hechos, no con promesas. Tu rentabilidad mayorista, imbatible. Tu posición en góndola, indefendible para cualquier competidor.
       </p>
     </div>
 
@@ -930,36 +804,36 @@ footer strong{font-family:'Playfair Display';color:var(--au);letter-spacing:3px;
       <div class="pillar animate-on-scroll tilt">
         <div class="pillar-num">Pilar 01</div>
         <h4>Condición comercial diferencial</h4>
-        <p>Esquema de descuento mayorista único en el país, que te deja un margen de operación con el cual ningún competidor puede pelear sin destruir su rentabilidad.</p>
+        <p>Esquema de descuento mayorista único en el país. Margen de operación con el cual ningún competidor puede pelear sin destruir su rentabilidad.</p>
       </div>
       <div class="pillar animate-on-scroll tilt">
         <div class="pillar-num">Pilar 02</div>
-        <h4>Exclusividad estratégica en la plaza</h4>
-        <p>Compromiso de cuidado del canal: no salimos a vender por encima tuyo en Córdoba. Tu trabajo se respeta y se protege.</p>
+        <h4>Exclusividad estratégica de plaza</h4>
+        <p>Compromiso de cuidado del canal: no vendemos por encima de Bio-Salud en Córdoba. Tu trabajo se respeta y se protege.</p>
       </div>
       <div class="pillar animate-on-scroll tilt">
         <div class="pillar-num">Pilar 03</div>
-        <h4>Soporte comercial y de marketing</h4>
-        <p>Acompañamiento de trade marketing, material de PDV, capacitación a tu equipo y plan promocional consensuado para activar el sell-out.</p>
+        <h4>Soporte comercial y trade marketing</h4>
+        <p>Acompañamiento de trade, material PDV, capacitación a tu equipo y plan promocional consensuado para activar el sell-out real.</p>
       </div>
     </div>
 
     <div class="unique-claim animate-on-scroll">
       <div class="unique-claim-label">Lo que esto significa en la práctica</div>
       <div class="unique-claim-text">
-        "Tenés <strong>la mejor mercadería del rubro</strong>, con <strong>las mejores certificaciones del mercado</strong>, comprada con <strong>el mejor descuento de la Argentina</strong>, respaldado por <strong>una planta industrial con capacidad de sobra</strong> y <strong>un equipo comercial dedicado a vos</strong>. La pregunta no es si podés ganar Córdoba: es <strong>cuán rápido lo querés hacer</strong>."
+        "Bio-Salud tiene <strong>la mejor mercadería del rubro</strong>, con <strong>las mejores certificaciones del mercado</strong>, comprada con <strong>el mejor descuento de la Argentina</strong>, respaldada por <strong>capacidad industrial de sobra</strong> y <strong>un equipo dedicado</strong>. La pregunta no es si pueden ganar Córdoba: es <strong>cuán rápido lo quieren hacer</strong>."
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ POR QUÉ AHORA ============ -->
+<!-- POR QUÉ AHORA -->
 <section class="section" style="background:var(--cream)">
   <div class="container">
     <div class="section-label">Por qué este es el momento</div>
     <h2 class="section-title">Una convergencia<br><em>que no se da dos veces.</em></h2>
     <p class="section-intro">
-      Hay momentos en el ciclo de una marca donde se alinean producto, capacidad, equipo y propuesta comercial. Para Hierbas del Oasis, ese momento es ahora. Y el primer distribuidor en aprovecharlo se queda con la plaza.
+      Para Hierbas del Oasis, ese momento es ahora. Y Bio-Salud llega primero a la plaza.
     </p>
 
     <div class="why-now animate-on-scroll">
@@ -971,19 +845,19 @@ footer strong{font-family:'Playfair Display';color:var(--au);letter-spacing:3px;
             <li>Política de precios unificada y anticipable</li>
             <li>Circuito de pedidos y reclamos sistematizado</li>
             <li>Planta de Entre Ríos con capacidad ociosa lista</li>
-            <li>Inteligencia artificial aplicada al análisis comercial</li>
-            <li>Certificaciones internacionales que respaldan el producto</li>
+            <li>IA aplicada al análisis comercial</li>
+            <li>Certificaciones que respaldan cada producto</li>
           </ul>
         </div>
         <div class="why-col">
-          <h4>Lo que te habilita a vos</h4>
+          <h4>Lo que habilita a Bio-Salud</h4>
           <ul>
-            <li>Vender un producto certificado, con argumentos sólidos</li>
+            <li>Vender producto certificado con argumentos sólidos</li>
             <li>Tomar pedidos sabiendo que hay stock y entrega</li>
             <li>Operar con la mejor condición comercial del país</li>
-            <li>Tener un único interlocutor responsable de tu cuenta</li>
-            <li>Recibir información comercial inteligente y anticipada</li>
-            <li>Construir un plan de cuenta estratégico, no transaccional</li>
+            <li>Tener un único interlocutor responsable</li>
+            <li>Recibir información comercial inteligente</li>
+            <li>Construir un plan de cuenta estratégico</li>
           </ul>
         </div>
       </div>
@@ -992,21 +866,21 @@ footer strong{font-family:'Playfair Display';color:var(--au);letter-spacing:3px;
     <div class="convergence animate-on-scroll">
       <div class="convergence-label">Convergencia estratégica</div>
       <div class="convergence-text">
-        Producto certificado <strong>+</strong> capacidad productiva escalable<br>
+        Producto certificado <strong>+</strong> capacidad escalable<br>
         <strong>+</strong> condición comercial imbatible<br>
-        <strong>+</strong> equipo comercial profesionalizado<br>
-        <strong>=</strong> la oportunidad histórica para conquistar Córdoba.
+        <strong>+</strong> equipo comercial dedicado<br>
+        <strong>=</strong> la oportunidad histórica de conquistar Córdoba.
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ CIERRE EMOTIVO ============ -->
+<!-- CIERRE -->
 <section class="closing" id="cierre" data-dark="true">
   <div class="closing-eyebrow">Para cerrar</div>
-  <h2 class="closing-title">No te estamos vendiendo nada nuevo.<br><em>Te estamos invitando a seguir construyendo.</em></h2>
+  <h2 class="closing-title">No estamos vendiendo nada nuevo.<br><em>Te invitamos a seguir construyendo.</em></h2>
   <p class="closing-text">
-    Los próximos veinte años de Hierbas del Oasis se van a escribir con los socios que estuvieron desde el principio y que entiendan que esto no es una transacción: es una <strong style="color:var(--w)">relación</strong>. Si Córdoba se desarrolla con vos al frente, la empresa entera crece, y eso nos compromete a todos a estar a la altura. Gracias por veinte años. Y gracias, sobre todo, por la conversación que vamos a tener hoy.
+    Los próximos veinte años los escribimos con los socios que estuvieron desde el principio. Si Córdoba se desarrolla con <strong style="color:var(--w)">Bio-Salud</strong> al frente, la empresa entera crece. Gracias por veinte años. Y gracias, sobre todo, por la conversación de hoy.
   </p>
   <div class="closing-sign">
     <div class="closing-sign-line">"Las relaciones largas no se mantienen: se renuevan."</div>
@@ -1015,11 +889,10 @@ footer strong{font-family:'Playfair Display';color:var(--au);letter-spacing:3px;
 </section>
 
 <footer>
-  <strong>HIERBAS DEL OASIS</strong> · Naturaleza certificada desde 2005 · Encuentro con distribuidor histórico de Córdoba · Abril 2026
+  <strong>HIERBAS DEL OASIS × BIO-SALUD</strong> · Naturaleza certificada desde 2005 · Encuentro estratégico Córdoba · Abril 2026
 </footer>
 
 <script>
-/* ===== Scroll progress bar ===== */
 const progressBar = document.querySelector('.scroll-progress');
 window.addEventListener('scroll', () => {
   const h = document.documentElement;
@@ -1027,7 +900,6 @@ window.addEventListener('scroll', () => {
   progressBar.style.width = scrolled + '%';
 });
 
-/* ===== Cursor spotlight (active solo en secciones oscuras) ===== */
 const spotlight = document.querySelector('.spotlight');
 document.addEventListener('mousemove', (e) => {
   spotlight.style.left = e.clientX + 'px';
@@ -1036,9 +908,8 @@ document.addEventListener('mousemove', (e) => {
 const darkSections = document.querySelectorAll('[data-dark="true"]');
 const darkObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      document.body.classList.add('dark-section');
-    } else {
+    if (entry.isIntersecting) document.body.classList.add('dark-section');
+    else {
       const anyDark = Array.from(darkSections).some(s => {
         const r = s.getBoundingClientRect();
         return r.top < window.innerHeight && r.bottom > 0;
@@ -1049,12 +920,10 @@ const darkObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 darkSections.forEach(s => darkObserver.observe(s));
 
-/* ===== Animate on scroll + counters ===== */
 const animateObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       e.target.classList.add('visible');
-      // Counters
       e.target.querySelectorAll('[data-count]').forEach(el => {
         if (el.dataset.done) return;
         el.dataset.done = '1';
@@ -1070,15 +939,17 @@ const animateObserver = new IntersectionObserver((entries) => {
         };
         requestAnimationFrame(tick);
       });
+      e.target.querySelectorAll('[data-pct]').forEach(el => {
+        if (el.dataset.done) return;
+        el.dataset.done = '1';
+        const pct = parseInt(el.dataset.pct, 10);
+        setTimeout(() => { el.style.width = pct + '%'; }, 200);
+      });
     }
   });
 }, { threshold: 0.18 });
-document.querySelectorAll('.animate-on-scroll, .years-strip, .planta-card, .big-num').forEach(el => animateObserver.observe(el));
+document.querySelectorAll('.animate-on-scroll, .years-strip, .planta-card, .big-num, .feature-card, .planta-stats, .coverage-grid').forEach(el => animateObserver.observe(el));
 
-/* También observar feature-cards para counters aunque no tengan animate-on-scroll */
-document.querySelectorAll('.feature-card, .planta-stats').forEach(el => animateObserver.observe(el));
-
-/* ===== Tilt 3D suave en cards ===== */
 document.querySelectorAll('.tilt').forEach(card => {
   card.addEventListener('mousemove', (e) => {
     const r = card.getBoundingClientRect();
@@ -1086,20 +957,15 @@ document.querySelectorAll('.tilt').forEach(card => {
     const y = (e.clientY - r.top) / r.height - 0.5;
     card.style.transform = `perspective(900px) rotateY(${x * 4}deg) rotateX(${-y * 4}deg) translateY(-6px)`;
   });
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = '';
-  });
+  card.addEventListener('mouseleave', () => { card.style.transform = ''; });
 });
 
-/* ===== Floating nav (fade in tras hero) + active state ===== */
 const floatNav = document.querySelector('.float-nav');
 const sections = document.querySelectorAll('section[id]');
 const dots = document.querySelectorAll('.fnav-dot');
-
 window.addEventListener('scroll', () => {
   if (window.scrollY > window.innerHeight * 0.6) floatNav.classList.add('visible');
   else floatNav.classList.remove('visible');
-
   let active = 'hero';
   sections.forEach(s => {
     const r = s.getBoundingClientRect();
@@ -1107,14 +973,12 @@ window.addEventListener('scroll', () => {
   });
   dots.forEach(d => d.classList.toggle('active', d.dataset.target === active));
 });
-
 dots.forEach(d => {
   d.addEventListener('click', () => {
     document.getElementById(d.dataset.target)?.scrollIntoView({ behavior: 'smooth' });
   });
 });
 
-/* ===== Back to top ===== */
 const backTop = document.querySelector('.back-top');
 window.addEventListener('scroll', () => {
   backTop.classList.toggle('visible', window.scrollY > window.innerHeight);

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descripción de Puesto · Daniela Gonzales — Referenta Comercial | Premium Mudanzas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1b2a4a;
+            --primary-light: #2d4a7a;
+            --gold: #d4a843;
+            --gold-light: #f0dca8;
+            --bg: #fafaf8;
+            --white: #ffffff;
+            --gray-50: #f8f9fa;
+            --gray-100: #f0f1f3;
+            --gray-200: #e2e4e8;
+            --gray-300: #c5c8d0;
+            --gray-600: #6b7280;
+            --gray-700: #4a5568;
+            --gray-800: #2d3748;
+            --success: #2e7d32;
+            --warning: #e65100;
+            --danger: #c0392b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--gray-800); line-height: 1.65; font-size: 15px; }
+        .header { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: var(--white); padding: 2.5rem 2rem; }
+        .header-content { max-width: 880px; margin: 0 auto; }
+        .header-badge { display: inline-block; background: rgba(212,168,67,0.18); border: 1px solid var(--gold); color: var(--gold); padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.72rem; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 1rem; }
+        .header h1 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.2; }
+        .header .subtitle { font-size: 1rem; opacity: 0.85; max-width: 700px; }
+        .header-meta { display: flex; gap: 1.8rem; margin-top: 1.4rem; font-size: 0.8rem; opacity: 0.7; flex-wrap: wrap; }
+        .container { max-width: 880px; margin: 0 auto; padding: 2.5rem 2rem; }
+        h2 { font-family: 'Playfair Display', serif; color: var(--primary); font-size: 1.45rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--gold); }
+        h3 { font-family: 'Playfair Display', serif; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.6rem; margin-top: 1.2rem; }
+        h4 { color: var(--primary); font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
+        p { margin-bottom: 0.85rem; }
+        .section { margin-bottom: 2.2rem; }
+        ul, ol { margin-left: 1.2rem; margin-bottom: 0.85rem; }
+        li { margin-bottom: 0.35rem; }
+        strong { color: var(--primary); }
+        .lead { font-size: 1.02rem; color: var(--gray-700); margin-bottom: 1.2rem; }
+        .identity-box { background: var(--white); border: 1px solid var(--gray-200); border-left: 4px solid var(--gold); border-radius: 8px; padding: 1.4rem 1.5rem; margin-bottom: 1.5rem; }
+        .identity-box dl { display: grid; grid-template-columns: 200px 1fr; gap: 0.6rem 1rem; }
+        .identity-box dt { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--gray-600); font-weight: 600; padding-top: 0.1rem; }
+        .identity-box dd { font-size: 0.95rem; color: var(--gray-800); }
+        .responsibility-block { background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.2rem 1.4rem; margin-bottom: 1rem; position: relative; }
+        .responsibility-block .block-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.6rem; gap: 1rem; flex-wrap: wrap; }
+        .responsibility-block .block-tag { display: inline-block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); font-weight: 700; }
+        .responsibility-block .weight { font-size: 0.78rem; color: var(--gray-600); font-weight: 600; background: var(--gray-100); padding: 0.18rem 0.6rem; border-radius: 12px; }
+        .responsibility-block h4 { margin-bottom: 0.5rem; font-size: 1rem; }
+        .responsibility-block ul { margin-bottom: 0; }
+        .change-box { background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.2rem 1.4rem; margin-bottom: 1rem; }
+        .change-box .change-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: center; }
+        .change-col { padding: 0.8rem 1rem; border-radius: 8px; }
+        .change-col.before { background: #fef2f2; border: 1px solid #fecaca; }
+        .change-col.after { background: #f0fdf4; border: 1px solid #bbf7d0; }
+        .change-col h5 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem; font-weight: 700; }
+        .change-col.before h5 { color: var(--danger); }
+        .change-col.after h5 { color: var(--success); }
+        .change-col p { margin: 0; font-size: 0.88rem; line-height: 1.4; }
+        .arrow { color: var(--gold); font-size: 1.4rem; font-weight: 700; }
+        .not-list { background: #fef9f5; border: 1px solid #f5e0d0; border-left: 4px solid var(--warning); border-radius: 8px; padding: 1.1rem 1.3rem; }
+        .not-list h4 { color: var(--warning); margin-bottom: 0.5rem; }
+        .not-list ul { margin-bottom: 0; }
+        .tools-grid { display: grid; grid-template-columns: 1fr; gap: 0.9rem; margin-bottom: 1rem; }
+        .tool-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.1rem 1.3rem; border-left: 4px solid var(--gold); }
+        .tool-card .tool-num { display: inline-block; font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.5rem; font-weight: 700; margin-right: 0.5rem; line-height: 1; }
+        .tool-card h4 { display: inline; font-size: 1rem; }
+        .tool-card .tool-body { margin-top: 0.6rem; }
+        .tool-card dl { display: grid; grid-template-columns: 130px 1fr; gap: 0.3rem 0.8rem; font-size: 0.88rem; margin-top: 0.5rem; }
+        .tool-card dt { font-weight: 600; color: var(--gray-700); }
+        .tool-card dd { color: var(--gray-700); }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; font-size: 0.88rem; background: var(--white); }
+        th { background: var(--primary); color: var(--white); padding: 0.65rem 0.9rem; text-align: left; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.6px; }
+        td { padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--gray-200); vertical-align: top; }
+        tr:nth-child(even) td { background: var(--gray-50); }
+        .callout { background: #fdfaf0; border-left: 4px solid var(--gold); padding: 1rem 1.2rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; font-size: 0.93rem; }
+        .callout strong { color: var(--primary); }
+        .next-steps { background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.2rem 1.4rem; }
+        .next-steps ol { margin-left: 1.5rem; }
+        .next-steps li { margin-bottom: 0.55rem; }
+        .footer { background: var(--primary); color: var(--white); padding: 2rem; text-align: center; margin-top: 2rem; }
+        .footer .brand { color: var(--gold); font-weight: 700; letter-spacing: 2.5px; font-size: 0.85rem; margin-bottom: 0.3rem; }
+        .footer p { opacity: 0.7; font-size: 0.78rem; }
+        .workload-summary { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.55rem; margin-bottom: 1.4rem; }
+        .workload-stat { background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 1rem 0.9rem; text-align: center; border-top: 3px solid var(--gold); }
+        .workload-stat .stat-num { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 700; color: var(--primary); line-height: 1.1; }
+        .workload-stat .stat-num .unit { font-size: 0.85rem; font-weight: 400; color: var(--gray-600); }
+        .workload-stat .stat-label { font-size: 0.72rem; color: var(--gray-600); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.4rem; line-height: 1.3; }
+        @media print {
+            .header { padding: 1.5rem; }
+            .container { padding: 1.5rem; }
+            .responsibility-block, .tool-card, .change-box, .next-steps, .identity-box { break-inside: avoid; box-shadow: none; }
+            body { font-size: 0.85rem; }
+        }
+        @media (max-width: 720px) {
+            .header h1 { font-size: 1.5rem; }
+            .identity-box dl, .tool-card dl { grid-template-columns: 1fr; gap: 0.2rem 0; }
+            .identity-box dt, .tool-card dt { padding-top: 0.4rem; }
+            .change-box .change-grid { grid-template-columns: 1fr; }
+            .arrow { transform: rotate(90deg); margin: 0 auto; }
+            .header-meta { flex-direction: column; gap: 0.4rem; }
+            .workload-summary { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="header-badge">Antuara Consultora &middot; Mandos Medios &middot; Entregable 07</div>
+            <h1>Descripción de Puesto · Daniela Gonzales</h1>
+            <p class="subtitle">Referenta Comercial y de Administración Comercial</p>
+            <div class="header-meta">
+                <span>Premium Mudanzas</span>
+                <span>02 de mayo de 2026 · v1.0</span>
+                <span>Actualiza la Matriz de Roles del 22/04/2026</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="section">
+            <h2>1 · Contexto del puesto</h2>
+            <p class="lead">El puesto de Daniela ya figuraba en la Matriz de Roles del 22 de abril abarcando administración, RRHH y soporte comercial. El diagnóstico de capacidades de esa misma fecha identificó la brecha que ella misma volvió a plantear el 28 de abril: cubre tres áreas a la vez y nada se completa con la profundidad que el negocio necesita.</p>
+            <p>La reunión del 28 de abril cierra una decisión que estaba pendiente desde la reconfiguración de posiciones: el rol se enfoca en lo comercial. Daniela no es vendedora y no tiene por qué serlo, pero sí es quien lee la organización, anticipa conflictos y redistribuye tareas (la llamada del cash flow Marcos / Cecilia es el caso que lo demuestra). Ese talento se canaliza ahora hacia un puesto con foco, herramientas y respaldo de Mati.</p>
+
+            <div class="change-box">
+                <div class="change-grid">
+                    <div class="change-col before">
+                        <h5>Antes (22/04/2026)</h5>
+                        <p>Tres áreas en simultáneo: administración, RRHH y soporte comercial. Brecha crítica de priorización 4/10.</p>
+                    </div>
+                    <div class="arrow">&rarr;</div>
+                    <div class="change-col after">
+                        <h5>Ahora (02/05/2026)</h5>
+                        <p>Referenta Comercial y de Administración Comercial. Foco 70% en lo comercial. RRHH formal y administración general salen del alcance; queda el cuidado humano del equipo comercial.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>2 · Identidad del puesto</h2>
+            <div class="identity-box">
+                <dl>
+                    <dt>Nombre del puesto</dt>
+                    <dd>Referenta Comercial y de Administración Comercial</dd>
+
+                    <dt>Misión</dt>
+                    <dd>Ser el sistema nervioso del equipo comercial. Sostener la disciplina operativa diaria, leer las métricas, anticipar problemas, activar acciones cuando la venta cae y entregar a Mati información ejecutable que lo descomprima de la operación.</dd>
+
+                    <dt>Referente final</dt>
+                    <dd>Mati</dd>
+
+                    <dt>Equipo más cercano</dt>
+                    <dd>Facu, Lucas Salinas y Gabriela en ventas. Acompañamiento compartido con Antuara a Federico (Comunicación Digital).</dd>
+
+                    <dt>Articula con</dt>
+                    <dd>Marcos (administración / cash flow), Yamila (administración / postventa), Cecilia (administración), Lucas (logística), Florencia (alquiler de mobiliario)</dd>
+
+                    <dt>Dedicación</dt>
+                    <dd>Full time · lunes a viernes 8 a 17 hs · sábados 8 a 13 hs</dd>
+
+                    <dt>Sede</dt>
+                    <dd>Pilar (lunes, miércoles, viernes y sábado) · Munro (martes y jueves) — ajustable según definición de Mati</dd>
+                </dl>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>3 · Mapa de responsabilidades</h2>
+            <p>Cuatro bloques que ordenan el foco semanal. Los porcentajes son orientativos: indican dónde tiene que estar la atención, no minutos exactos.</p>
+
+            <div class="workload-summary">
+                <div class="workload-stat">
+                    <div class="stat-num">35<span class="unit">%</span></div>
+                    <div class="stat-label">Equipo comercial</div>
+                </div>
+                <div class="workload-stat">
+                    <div class="stat-num">25<span class="unit">%</span></div>
+                    <div class="stat-label">RRHH y Compras</div>
+                </div>
+                <div class="workload-stat">
+                    <div class="stat-num">15<span class="unit">%</span></div>
+                    <div class="stat-label">Administración comercial</div>
+                </div>
+                <div class="workload-stat">
+                    <div class="stat-num">15<span class="unit">%</span></div>
+                    <div class="stat-label">Reportes a Mati</div>
+                </div>
+                <div class="workload-stat">
+                    <div class="stat-num">10<span class="unit">%</span></div>
+                    <div class="stat-label">Acompañamiento a Federico</div>
+                </div>
+            </div>
+
+            <div class="responsibility-block">
+                <div class="block-header">
+                    <span class="block-tag">Bloque A · Acompañamiento del equipo comercial (operativo y humano)</span>
+                    <span class="weight">~35% del foco</span>
+                </div>
+                <ul>
+                    <li>Sostener el tablero de actividad diaria del equipo comercial (consultas, presupuestos, cierres)</li>
+                    <li>Mantener una reunión 1:1 semanal con cada vendedor (Facu, Lucas Salinas, Gabriela)</li>
+                    <li>Conducir la reunión de cierre semanal del equipo</li>
+                    <li>Detectar desvíos antes de fin de mes y activar el protocolo de escalamiento</li>
+                    <li>Sostener conversaciones de seguimiento cuando un vendedor está por debajo del objetivo de manera sostenida</li>
+                    <li>Acompañar el onboarding de nuevos integrantes del equipo comercial</li>
+                    <li>Cuidar el clima del equipo: leer señales de desgaste, articular ausencias y vacaciones, ser puente con Mati cuando aparece una situación humana</li>
+                </ul>
+            </div>
+
+            <div class="responsibility-block">
+                <div class="block-header">
+                    <span class="block-tag">Bloque B · Recursos Humanos y Compras</span>
+                    <span class="weight">~25% del foco</span>
+                </div>
+                <ul>
+                    <li>Gestión completa del personal: asistencia, vacaciones, viajes, ausencias, apercibimientos, felicitaciones</li>
+                    <li>Liquidación de sueldos: centraliza la información que después Cecilia liquida a fin de mes</li>
+                    <li>Contratos del personal nuevo</li>
+                    <li>Altas y bajas (con apoyo de Cecilia en el armado formal)</li>
+                    <li>Entrevistas y selección cuando hay búsqueda abierta</li>
+                    <li>Compras y proveedores: uniformes, stock, insumos, materiales — pide presupuestos, decide y coordina</li>
+                </ul>
+            </div>
+
+            <div class="responsibility-block">
+                <div class="block-header">
+                    <span class="block-tag">Bloque C · Administración Comercial</span>
+                    <span class="weight">~15% del foco</span>
+                </div>
+                <ul>
+                    <li>Asegurar que la documentación comercial esté en orden (presupuestos, contratos, condiciones)</li>
+                    <li>Coordinar con administración general lo que necesita el equipo de ventas para vender</li>
+                    <li>Detectar fricciones administrativas que estén frenando ventas y plantearlas</li>
+                </ul>
+            </div>
+
+            <div class="responsibility-block">
+                <div class="block-header">
+                    <span class="block-tag">Bloque D · Reportes a Mati</span>
+                    <span class="weight">~15% del foco</span>
+                </div>
+                <ul>
+                    <li>Pulso diario por mensaje a Mati con los cuatro datos del día</li>
+                    <li>Reporte diario de ausencias del personal operativo (lo pidió Mati el 02/05)</li>
+                    <li>Reporte semanal los viernes con análisis de la semana</li>
+                    <li>Reporte mensual de ventas con desglose por vendedor (cierres individuales + visitas asistidas que terminaron en cierre). El primer formato ya está en uso y se va mejorando con Antuara hasta llegar a una versión limpia y lista para Mati.</li>
+                    <li>Análisis mensual con lectura cualitativa y propuesta de acciones</li>
+                </ul>
+            </div>
+
+            <div class="responsibility-block">
+                <div class="block-header">
+                    <span class="block-tag">Bloque E · Acompañamiento compartido a Federico</span>
+                    <span class="weight">~10% del foco</span>
+                </div>
+                <ul>
+                    <li>Acompañamiento diario al trabajo de Federico (Comunicación Digital)</li>
+                    <li>Participación en las sesiones 2-1 con Antuara durante los primeros 90 días</li>
+                    <li>Validación operativa: confirma que el calendario se ejecuta y que las publicaciones salen</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>4 · Lo que NO le corresponde</h2>
+            <p>El alcance se cuida tanto en lo que incluye como en lo que excluye. La redefinición saca del puesto los frentes que estaban generando la sobrecarga.</p>
+            <div class="not-list">
+                <ul>
+                    <li><strong>Vender ella.</strong> No es su perfil ni es lo que el puesto necesita. Su valor es acompañar y activar, no cerrar.</li>
+                    <li><strong>Cierres comerciales.</strong> Son del equipo comercial (Facu, Lucas Salinas).</li>
+                    <li><strong>Decisiones comerciales finales.</strong> Precios especiales, descuentos no protocolados, condiciones excepcionales — son de Mati.</li>
+                    <li><strong>Cash flow general y gestión de pagos.</strong> Quedan en administración con Marcos como referente. Daniela cruza información cuando hace falta.</li>
+                    <li><strong>Logística y operaciones.</strong> Es de Lucas.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>5 · Marco de Acompañamiento Comercial — Las cinco herramientas</h2>
+            <p class="lead">Estas son las herramientas concretas que tiene Daniela para activar el equipo comercial sin necesidad de vender ella. Cada una con su frecuencia, formato y umbral de activación. Este marco es el que le permite responder cuando "la semana viene floja".</p>
+
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <span class="tool-num">1</span>
+                    <h4>Tablero de actividad diaria</h4>
+                    <div class="tool-body">
+                        <dl>
+                            <dt>Qué mide</dt>
+                            <dd>Consultas recibidas, presupuestos enviados, cierres del día, por vendedor</dd>
+                            <dt>Cuándo</dt>
+                            <dd>Primera tarea de la mañana (8:00 — 8:30)</dd>
+                            <dt>Formato</dt>
+                            <dd>Planilla simple compartida — el tablero ya existe en Premium Mudanzas (TABLERO-DIRECCION-PM.xlsx) y se reutiliza</dd>
+                            <dt>Umbral</dt>
+                            <dd>Si la actividad cae bajo el umbral semanal definido con Mati, se activa la herramienta 4</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <span class="tool-num">2</span>
+                    <h4>1:1 semanal con cada vendedor</h4>
+                    <div class="tool-body">
+                        <dl>
+                            <dt>Duración</dt>
+                            <dd>20 minutos por vendedor</dd>
+                            <dt>Cuándo</dt>
+                            <dd>Lunes o martes, agendado fijo</dd>
+                            <dt>Estructura</dt>
+                            <dd>Revisión de números de la semana anterior · obstáculos detectados · plan de la semana en curso · 3 oportunidades prioritarias del pipeline</dd>
+                            <dt>Cierre</dt>
+                            <dd>Daniela registra los compromisos del vendedor para auditarlos al cierre de la semana</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <span class="tool-num">3</span>
+                    <h4>Reunión de cierre semanal del equipo</h4>
+                    <div class="tool-body">
+                        <dl>
+                            <dt>Duración</dt>
+                            <dd>45 minutos</dd>
+                            <dt>Cuándo</dt>
+                            <dd>Viernes a las 16 hs</dd>
+                            <dt>Estructura</dt>
+                            <dd>Lectura conjunta de números · revisión cualitativa de oportunidades clave · compromisos para la semana siguiente</dd>
+                            <dt>Conduce</dt>
+                            <dd>Daniela. Mati participa cuando lo decide; no es invitado fijo.</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <span class="tool-num">4</span>
+                    <h4>Protocolo de escalamiento</h4>
+                    <div class="tool-body">
+                        <dl>
+                            <dt>Cuándo se activa</dt>
+                            <dd>Cuando la actividad semanal del equipo cae bajo el 70% del objetivo, o cuando un vendedor cae bajo ese umbral por dos semanas seguidas</dd>
+                            <dt>Acción</dt>
+                            <dd>Daniela escala a Mati con una propuesta concreta — no solo el dato, también la lectura y la acción sugerida</dd>
+                            <dt>Tiempo</dt>
+                            <dd>No espera a fin de mes. La activación es la misma semana que se detecta el desvío.</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <span class="tool-num">5</span>
+                    <h4>Conversación de seguimiento con un vendedor</h4>
+                    <div class="tool-body">
+                        <dl>
+                            <dt>Cuándo se aplica</dt>
+                            <dd>Cuando un vendedor sostiene desempeño por debajo del objetivo durante un mes</dd>
+                            <dt>Qué puede hacer Daniela</dt>
+                            <dd>Sostener la conversación, plantear el problema con datos, acordar plan de mejora a 30 días</dd>
+                            <dt>Qué no</dt>
+                            <dd>Tomar decisiones de continuidad — si después de los 30 días no hay mejora, escala a Mati con el documento de la conversación</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout">
+                <strong>El principio detrás de las cinco herramientas:</strong> Daniela no tiene que vender. Tiene que tener visibilidad para detectar el problema temprano, herramientas para intervenir antes de que escale, y respaldo para sostener conversaciones que un vendedor no quiere tener consigo mismo. Eso es acompañamiento, no venta. Estas cinco herramientas viven en el Bloque A; los demás bloques del puesto (RRHH y Compras, Administración Comercial, Reportes a Mati y Acompañamiento a Federico) tienen sus propias rutinas.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>6 · Reportes a Mati</h2>
+            <p>Tres reportes con frecuencia y formato definidos. Resuelven la frustración planteada por Mati ("hace siete meses pido un cash flow") trasladada al circuito comercial: la información ejecutable llega antes de que tenga que pedirla.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Reporte</th>
+                        <th>Frecuencia</th>
+                        <th>Contenido</th>
+                        <th>Formato</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Pulso diario</strong></td>
+                        <td>Lunes a sábado · 17 hs</td>
+                        <td>Consultas del día · presupuestos enviados · cierres · alerta si aplica</td>
+                        <td>WhatsApp o mail breve, 4 líneas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Resumen semanal</strong></td>
+                        <td>Viernes · al cierre del día</td>
+                        <td>Ventas vs objetivo de la semana · pipeline al cierre · actividad del equipo · 3 alertas prioritarias</td>
+                        <td>Mail con tabla y comentario corto</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Análisis mensual</strong></td>
+                        <td>Primer día hábil del mes</td>
+                        <td>Mes vs objetivo · lectura cualitativa de qué funcionó y qué no · propuesta de acciones para el mes siguiente</td>
+                        <td>Documento corto (1 página)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>7 · KPIs propios del puesto</h2>
+            <p>Los indicadores se ordenan en dos capas: lo que Daniela hace (controlable directo) y lo que el puesto entrega (resultado del equipo que acompaña).</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Indicador</th>
+                        <th>Tipo</th>
+                        <th>Meta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tablero diario actualizado todos los días hábiles</td>
+                        <td>Controlable directo</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>1:1 semanales con cada vendedor</td>
+                        <td>Controlable directo</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Reportes a Mati entregados en tiempo</td>
+                        <td>Controlable directo</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Activación del protocolo de escalamiento cuando aplica</td>
+                        <td>Controlable directo</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Equipo comercial alcanza ≥85% del objetivo mensual</td>
+                        <td>Resultado del equipo</td>
+                        <td>Meta de gestión</td>
+                    </tr>
+                    <tr>
+                        <td>Reducción del tiempo entre consulta recibida y presupuesto enviado</td>
+                        <td>Resultado del equipo</td>
+                        <td>Tendencia descendente</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>8 · Plan de desarrollo</h2>
+            <p>Las brechas identificadas en el diagnóstico de capacidades del 22 de abril se reordenan a la luz del nuevo alcance:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Brecha previa</th>
+                        <th>Tratamiento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Priorización (4/10 — requerido 8)</td>
+                        <td>Se resuelve estructuralmente al reducir el alcance del puesto a un solo eje (lo comercial). El problema no era de Daniela, era del rol.</td>
+                    </tr>
+                    <tr>
+                        <td>Autonomía (5/10 — requerido 7)</td>
+                        <td>Coaching mensual con Antuara durante los primeros 90 días. Las cinco herramientas le dan estructura para decidir sin pedir permiso para todo.</td>
+                    </tr>
+                    <tr>
+                        <td>RRHH formal (5/10 — requerido 7)</td>
+                        <td>Sale del alcance del puesto. No se desarrolla.</td>
+                    </tr>
+                    <tr>
+                        <td>Herramientas digitales (uso básico)</td>
+                        <td>Capacitación práctica sobre el tablero comercial y los reportes a Mati. Antuara entrega plantilla y acompaña la primera semana.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>9 · Próximos pasos</h2>
+            <div class="next-steps">
+                <ol>
+                    <li><strong>Validación con Mati</strong> — presentación del puesto redefinido. Decisión sobre quién absorbe RRHH y administración general.</li>
+                    <li><strong>Comunicación al equipo comercial</strong> — Daniela y Mati comunican el rol formalizado. Es importante que el equipo entienda que Daniela tiene respaldo de Mati para coordinar el día a día.</li>
+                    <li><strong>Implementación del tablero diario</strong> — primera semana en marcha (semana del 5 de mayo).</li>
+                    <li><strong>Primera ronda de 1:1 con vendedores</strong> — semana del 5 de mayo.</li>
+                    <li><strong>Primera reunión de cierre del equipo</strong> — viernes 9 de mayo a las 16 hs.</li>
+                    <li><strong>Revisión 30 días con Antuara</strong> — primera evaluación del rol con datos reales y ajustes al marco.</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <div class="brand">ANTUARA</div>
+        <p>Consultoría de Planificación Comercial Estratégica · Documento de trabajo · Premium Mudanzas</p>
+    </div>
+</body>
+</html>

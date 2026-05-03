@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descripción de Puesto · Federico — Comunicación Digital | Premium Mudanzas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1b2a4a;
+            --primary-light: #2d4a7a;
+            --gold: #d4a843;
+            --gold-light: #f0dca8;
+            --bg: #fafaf8;
+            --white: #ffffff;
+            --gray-50: #f8f9fa;
+            --gray-100: #f0f1f3;
+            --gray-200: #e2e4e8;
+            --gray-300: #c5c8d0;
+            --gray-600: #6b7280;
+            --gray-700: #4a5568;
+            --gray-800: #2d3748;
+            --success: #2e7d32;
+            --warning: #e65100;
+            --danger: #c0392b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--gray-800); line-height: 1.65; font-size: 15px; }
+        .header { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: var(--white); padding: 2.5rem 2rem; }
+        .header-content { max-width: 880px; margin: 0 auto; }
+        .header-badge { display: inline-block; background: rgba(212,168,67,0.18); border: 1px solid var(--gold); color: var(--gold); padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.72rem; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 1rem; }
+        .header h1 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.2; }
+        .header .subtitle { font-size: 1rem; opacity: 0.85; max-width: 700px; }
+        .header-meta { display: flex; gap: 1.8rem; margin-top: 1.4rem; font-size: 0.8rem; opacity: 0.7; flex-wrap: wrap; }
+        .container { max-width: 880px; margin: 0 auto; padding: 2.5rem 2rem; }
+        h2 { font-family: 'Playfair Display', serif; color: var(--primary); font-size: 1.45rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--gold); }
+        h3 { font-family: 'Playfair Display', serif; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.6rem; margin-top: 1.2rem; }
+        h4 { color: var(--primary); font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
+        p { margin-bottom: 0.85rem; }
+        .section { margin-bottom: 2.2rem; }
+        ul, ol { margin-left: 1.2rem; margin-bottom: 0.85rem; }
+        li { margin-bottom: 0.35rem; }
+        strong { color: var(--primary); }
+        .lead { font-size: 1.02rem; color: var(--gray-700); margin-bottom: 1.2rem; }
+        .identity-box { background: var(--white); border: 1px solid var(--gray-200); border-left: 4px solid var(--gold); border-radius: 8px; padding: 1.4rem 1.5rem; margin-bottom: 1.5rem; }
+        .identity-box dl { display: grid; grid-template-columns: 200px 1fr; gap: 0.6rem 1rem; }
+        .identity-box dt { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--gray-600); font-weight: 600; padding-top: 0.1rem; }
+        .identity-box dd { font-size: 0.95rem; color: var(--gray-800); }
+        .responsibility-block { background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.2rem 1.4rem; margin-bottom: 1rem; }
+        .responsibility-block .block-tag { display: inline-block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); font-weight: 700; margin-bottom: 0.4rem; }
+        .responsibility-block h4 { margin-bottom: 0.6rem; font-size: 1rem; }
+        .responsibility-block ul { margin-bottom: 0; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+        .col-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.1rem 1.3rem; }
+        .col-card.success { border-left: 4px solid var(--success); }
+        .col-card.warning { border-left: 4px solid var(--warning); }
+        .col-card h4 { margin-bottom: 0.6rem; }
+        .col-card.success h4 { color: var(--success); }
+        .col-card.warning h4 { color: var(--warning); }
+        .not-list { background: #fef9f5; border: 1px solid #f5e0d0; border-left: 4px solid var(--warning); border-radius: 8px; padding: 1.1rem 1.3rem; }
+        .not-list h4 { color: var(--warning); margin-bottom: 0.5rem; }
+        .not-list ul { margin-bottom: 0; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; font-size: 0.88rem; background: var(--white); }
+        th { background: var(--primary); color: var(--white); padding: 0.65rem 0.9rem; text-align: left; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.6px; }
+        td { padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--gray-200); vertical-align: top; }
+        tr:nth-child(even) td { background: var(--gray-50); }
+        .timeline { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+        .timeline-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.1rem 1.2rem; border-top: 3px solid var(--gold); }
+        .timeline-card .phase { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); font-weight: 700; margin-bottom: 0.35rem; }
+        .timeline-card h4 { font-size: 0.95rem; margin-bottom: 0.5rem; }
+        .timeline-card ul { margin: 0; font-size: 0.85rem; }
+        .workload-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin-bottom: 1.2rem; }
+        .workload-stat { background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 1rem 1.1rem; text-align: center; }
+        .workload-stat .stat-num { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; color: var(--primary); line-height: 1.1; }
+        .workload-stat .stat-num .unit { font-size: 0.85rem; font-weight: 400; color: var(--gray-600); }
+        .workload-stat .stat-label { font-size: 0.72rem; color: var(--gray-600); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.3rem; }
+        .workload-stat.gold { border-top: 3px solid var(--gold); }
+        .workload-stat.warning { border-top: 3px solid var(--warning); }
+        .workload-stat.success { border-top: 3px solid var(--success); }
+        .bar-list { background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.2rem 1.4rem; margin-bottom: 1rem; }
+        .bar-row { display: grid; grid-template-columns: 180px 1fr 80px; align-items: center; gap: 0.8rem; margin-bottom: 0.55rem; font-size: 0.88rem; }
+        .bar-row:last-child { margin-bottom: 0; }
+        .bar-row .bar-label { color: var(--gray-800); font-weight: 500; }
+        .bar-row .bar-track { height: 22px; background: var(--gray-100); border-radius: 4px; overflow: hidden; position: relative; }
+        .bar-row .bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold) 0%, #c4982d 100%); border-radius: 4px; display: flex; align-items: center; padding-left: 0.5rem; color: var(--white); font-weight: 600; font-size: 0.72rem; min-width: 30px; }
+        .bar-row .bar-hours { text-align: right; color: var(--gray-700); font-weight: 600; font-size: 0.85rem; }
+        .bar-row.total { border-top: 2px solid var(--gray-200); padding-top: 0.6rem; margin-top: 0.6rem; }
+        .bar-row.total .bar-label { color: var(--primary); font-weight: 700; }
+        .bar-row.total .bar-fill { background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%); }
+        .bar-row.total .bar-hours { color: var(--primary); font-weight: 700; }
+        .production-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.8rem; margin-bottom: 1rem; }
+        .production-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 1rem 1.1rem; text-align: center; border-top: 3px solid var(--gold); }
+        .production-card .num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--primary); line-height: 1; margin-bottom: 0.2rem; }
+        .production-card .num .unit { font-size: 0.78rem; font-weight: 400; color: var(--gray-600); }
+        .production-card .label { font-size: 0.82rem; color: var(--gray-800); font-weight: 600; line-height: 1.3; margin-top: 0.4rem; }
+        .production-card .channel { font-size: 0.7rem; color: var(--gray-600); margin-top: 0.3rem; }
+        .calibration-rules { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-bottom: 1rem; }
+        .rule-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 1rem 1.2rem; }
+        .rule-card.up { border-left: 4px solid var(--success); }
+        .rule-card.hold { border-left: 4px solid var(--warning); }
+        .rule-card h5 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.5rem; font-weight: 700; }
+        .rule-card.up h5 { color: var(--success); }
+        .rule-card.hold h5 { color: var(--warning); }
+        .rule-card ul { font-size: 0.85rem; margin: 0; }
+        .callout { background: #fdfaf0; border-left: 4px solid var(--gold); padding: 1rem 1.2rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; font-size: 0.93rem; }
+        .callout strong { color: var(--primary); }
+        .next-steps { background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.2rem 1.4rem; }
+        .next-steps ol { margin-left: 1.5rem; }
+        .next-steps li { margin-bottom: 0.55rem; }
+        .footer { background: var(--primary); color: var(--white); padding: 2rem; text-align: center; margin-top: 2rem; }
+        .footer .brand { color: var(--gold); font-weight: 700; letter-spacing: 2.5px; font-size: 0.85rem; margin-bottom: 0.3rem; }
+        .footer p { opacity: 0.7; font-size: 0.78rem; }
+        @media print {
+            .header { padding: 1.5rem; }
+            .container { padding: 1.5rem; }
+            .responsibility-block, .col-card, .timeline-card, .next-steps, .identity-box { break-inside: avoid; box-shadow: none; }
+            body { font-size: 0.85rem; }
+        }
+        @media (max-width: 720px) {
+            .header h1 { font-size: 1.5rem; }
+            .identity-box dl { grid-template-columns: 1fr; gap: 0.2rem 0; }
+            .identity-box dt { padding-top: 0.6rem; }
+            .two-col, .timeline { grid-template-columns: 1fr; }
+            .header-meta { flex-direction: column; gap: 0.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="header-badge">Antuara Consultora &middot; Mandos Medios &middot; Entregable 06</div>
+            <h1>Descripción de Puesto · Federico</h1>
+            <p class="subtitle">Responsable de Comunicación Digital</p>
+            <div class="header-meta">
+                <span>Premium Mudanzas</span>
+                <span>02 de mayo de 2026 · v1.0</span>
+                <span>Documento de trabajo para validación interna</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="section">
+            <h2>1 · Contexto del puesto</h2>
+            <p class="lead">Este puesto se define ahora porque el área de comunicación digital de Premium Mudanzas necesita estructura. Hasta esta semana convivían dos esfuerzos parciales (Guido y Federico) sin un mapa de responsabilidades claro. Con la salida de Guido y la decisión de cerrar la puerta a canjes que no aportan al posicionamiento, hay que reordenar.</p>
+            <p>Federico ya está dentro de la empresa, tiene buen vínculo con el equipo y viene aportando en piezas concretas (edición, presencia frente a cámara, acompañamiento puntual). Lo que falta es darle un puesto que lo proteja: una descripción que defina qué le toca, qué no le toca, cómo se lo supervisa y cómo se lo capacita en los próximos noventa días.</p>
+            <div class="callout">
+                <strong>Hipótesis de partida:</strong> Federico es un buen ejecutor, predispuesto y con onda. Le falta planificación y constancia. Por lo tanto, el puesto se diseña con una capa fuerte de supervisión y un plan de capacitación 30/60/90 hasta confirmar que puede sostener el trabajo de manera autónoma.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>2 · Identidad del puesto</h2>
+            <div class="identity-box">
+                <dl>
+                    <dt>Nombre del puesto</dt>
+                    <dd>Responsable de Comunicación Digital</dd>
+
+                    <dt>Misión</dt>
+                    <dd>Traducir la estrategia comercial y de marca de Premium Mudanzas a contenido digital ejecutado con constancia. Registrar y editar el material que da identidad a la marca. Apoyar a Facu en la coordinación de vínculos con figuras públicas cuando lo necesita.</dd>
+
+                    <dt>Referente directo</dt>
+                    <dd>Daniela González (área comercial)</dd>
+
+                    <dt>Mentoría metodológica</dt>
+                    <dd>Antuara (Gabriel Berutti) durante la curva de aprendizaje 30/60/90 días</dd>
+
+                    <dt>Referente final</dt>
+                    <dd>Mati</dd>
+
+                    <dt>Trabaja en coordinación con</dt>
+                    <dd>Facu (en ventas), Brian (acompañamiento en producción audiovisual), Martín (SEO técnico)</dd>
+
+                    <dt>Carga horaria</dt>
+                    <dd>Lunes a viernes de 8 a 17 hs &middot; sábados de 8 a 13 hs</dd>
+                </dl>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>3 · Mapa de responsabilidades</h2>
+            <p>El puesto se ordena en dos bloques: comunicación digital (función principal) y vínculo institucional (función secundaria, descongestiona a Facu).</p>
+
+            <div class="responsibility-block">
+                <span class="block-tag">Bloque A · Comunicación Digital</span>
+                <h4>1. Calendario editorial mensual</h4>
+                <ul>
+                    <li>Planificación de cápsulas de contenido por canal (Instagram, Facebook, TikTok, LinkedIn, YouTube)</li>
+                    <li>Asume el calendario de LinkedIn que hoy gestiona Yamila — la descongestiona y centraliza la comunicación digital en un solo puesto</li>
+                    <li>Distribución entre eje duro (autoridad: casos, educación, tips) y eje blando (humanidad: detrás de escena, aprendizajes)</li>
+                    <li>Revisión y validación con Antuara durante la curva de aprendizaje</li>
+                </ul>
+            </div>
+
+            <div class="responsibility-block">
+                <span class="block-tag">Bloque A · Comunicación Digital</span>
+                <h4>2. Community Manager</h4>
+                <ul>
+                    <li>Publicación de las piezas según calendario</li>
+                    <li>Redacción de copies con tono Premium Mudanzas</li>
+                    <li>Respuesta básica a comentarios e interacciones (las consultas comerciales se derivan al circuito de venta)</li>
+                    <li>Absorber comunidades: comentar y participar desde Premium en perfiles estratégicos (Luzu, Muscari y similares) para crecer engagement de manera orgánica</li>
+                </ul>
+            </div>
+
+            <div class="responsibility-block">
+                <span class="block-tag">Bloque A · Comunicación Digital</span>
+                <h4>3. Filmmaker — grabación de contenido</h4>
+                <ul>
+                    <li>Registro de mudanzas, equipo, instalaciones, casos relevantes</li>
+                    <li>Grabación frente a cámara cuando el guion lo requiere (Federico ya tiene rodaje)</li>
+                    <li>Cuidado de planos, audio y encuadre con apoyo de Brian si es necesario</li>
+                </ul>
+            </div>
+
+            <div class="responsibility-block">
+                <span class="block-tag">Bloque A · Comunicación Digital</span>
+                <h4>4. Edición de contenido</h4>
+                <ul>
+                    <li>Postproducción de los videos</li>
+                    <li>Adaptación al formato de cada red</li>
+                    <li>Cumplimiento de los tiempos de salida del calendario</li>
+                </ul>
+            </div>
+
+            <div class="responsibility-block">
+                <span class="block-tag">Bloque B · Soporte a Facu en vínculos con figuras públicas</span>
+                <h4>5. Colaborador a demanda</h4>
+                <ul>
+                    <li>El primer contacto con figuras públicas hoy lo sostiene Facu — las consultas que entran por Instagram las deriva Gaby directamente a él</li>
+                    <li>Federico interviene como colaborador cuando Facu lo necesita: por volumen (varios canjes en simultáneo) o por falta de tiempo (perfiles que demandan acompañamiento extra)</li>
+                    <li>Coordinación logística una vez que un canje fue aprobado por Dirección (subir el reel, coordinar el material, hacer el seguimiento del entregable)</li>
+                    <li>Aplicación del criterio "no se cierran canjes que no aportan al posicionamiento" — los aprueba Mati con Antuara</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>4 · Lo que NO le corresponde</h2>
+            <p>El alcance se cuida tanto en lo que incluye como en lo que excluye. Estos puntos quedan fuera del puesto:</p>
+            <div class="not-list">
+                <ul>
+                    <li><strong>Pauta digital pagada:</strong> requiere conocimiento de algoritmos y administración de presupuesto. Recae en Antuara o se terceriza con un proveedor especializado.</li>
+                    <li><strong>Lenguaje SEO técnico:</strong> queda en Martín.</li>
+                    <li><strong>Decisiones operativas durante una mudanza:</strong> son del líder de mudanza. Federico no toma este tipo de decisiones aunque esté presente en el operativo.</li>
+                    <li><strong>Cierre de canjes y aprobación de colaboraciones con figuras públicas:</strong> aprueba Mati con apoyo de Antuara.</li>
+                    <li><strong>Cierres comerciales:</strong> son del equipo de ventas.</li>
+                    <li><strong>Decisiones de marca:</strong> son de Dirección con apoyo de Antuara.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>5 · Capital de partida y curva de desarrollo</h2>
+            <div class="two-col">
+                <div class="col-card success">
+                    <h4>Lo que ya tiene</h4>
+                    <ul>
+                        <li>Predisposición y onda</li>
+                        <li>Buena imagen frente a cámara</li>
+                        <li>Vínculo natural con el equipo</li>
+                        <li>Conocimiento operativo del negocio</li>
+                        <li>Capacidad de edición</li>
+                        <li>Voluntad de aprender</li>
+                    </ul>
+                </div>
+                <div class="col-card warning">
+                    <h4>Lo que va a desarrollar</h4>
+                    <ul>
+                        <li>Constancia en la ejecución</li>
+                        <li>Planificación (no solo ejecución)</li>
+                        <li>Criterio editorial (qué publicar y por qué)</li>
+                        <li>Disciplina de calendario</li>
+                        <li>Lectura básica de métricas de redes</li>
+                        <li>Autonomía en el día a día</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>6 · Calibración de carga y techo de producción</h2>
+            <p class="lead">El puesto entra en una jornada full time L-V de 8 a 17 hs + sábado 8 a 13 hs (~45 hs semanales efectivas). En régimen estable, las tareas asignadas ocupan unas 29 horas por semana en promedio, dejando margen para imprevistos, producción extra y aprendizaje. Durante la curva inicial cada tarea toma más tiempo, por eso se establece un techo de producción para los primeros 30 días que después se calibra.</p>
+
+            <div class="workload-summary">
+                <div class="workload-stat gold">
+                    <div class="stat-num">45<span class="unit"> hs</span></div>
+                    <div class="stat-label">Jornada semanal disponible</div>
+                </div>
+                <div class="workload-stat success">
+                    <div class="stat-num">~29<span class="unit"> hs</span></div>
+                    <div class="stat-label">Carga estimada en régimen</div>
+                </div>
+                <div class="workload-stat warning">
+                    <div class="stat-num">~16<span class="unit"> hs</span></div>
+                    <div class="stat-label">Margen para imprevistos y curva</div>
+                </div>
+            </div>
+
+            <h3>Distribución estimada del tiempo semanal</h3>
+            <div class="bar-list">
+                <div class="bar-row">
+                    <div class="bar-label">Edición de contenido</div>
+                    <div class="bar-track"><div class="bar-fill" style="width: 100%;">10 hs</div></div>
+                    <div class="bar-hours">8-12 hs</div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Grabación / filmmaker</div>
+                    <div class="bar-track"><div class="bar-fill" style="width: 60%;">6 hs</div></div>
+                    <div class="bar-hours">4-8 hs</div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Community Manager</div>
+                    <div class="bar-track"><div class="bar-fill" style="width: 40%;">4 hs</div></div>
+                    <div class="bar-hours">3-5 hs</div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Calendario editorial</div>
+                    <div class="bar-track"><div class="bar-fill" style="width: 25%;">2.5 hs</div></div>
+                    <div class="bar-hours">2-3 hs</div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Vínculo institucional</div>
+                    <div class="bar-track"><div class="bar-fill" style="width: 25%;">2.5 hs</div></div>
+                    <div class="bar-hours">2-3 hs</div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Reuniones (1:1, 2-1, mensual)</div>
+                    <div class="bar-track"><div class="bar-fill" style="width: 25%;">2.5 hs</div></div>
+                    <div class="bar-hours">2-3 hs</div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Métricas y reportes</div>
+                    <div class="bar-track"><div class="bar-fill" style="width: 15%;">1.5 hs</div></div>
+                    <div class="bar-hours">1-2 hs</div>
+                </div>
+                <div class="bar-row total">
+                    <div class="bar-label">Total asignado</div>
+                    <div class="bar-track"><div class="bar-fill" style="width: 64%;">29 hs sobre 45 disponibles</div></div>
+                    <div class="bar-hours">~29 hs</div>
+                </div>
+            </div>
+
+            <h3>Techo de producción inicial · Días 1 a 30</h3>
+            <p>Estos son los volúmenes de salida acordados para el primer mes. Buscan dejar aire para que Federico aprenda sin sobrecargarse. Se calibran en la revisión de 30 días según realidad observada.</p>
+            <div class="production-grid">
+                <div class="production-card">
+                    <div class="num">4<span class="unit"> /sem</span></div>
+                    <div class="label">Publicaciones de feed</div>
+                    <div class="channel">Instagram + Facebook</div>
+                </div>
+                <div class="production-card">
+                    <div class="num">1<span class="unit"> /sem</span></div>
+                    <div class="label">Reel o video corto</div>
+                    <div class="channel">Instagram + TikTok</div>
+                </div>
+                <div class="production-card">
+                    <div class="num">8<span class="unit"> /sem</span></div>
+                    <div class="label">Historias</div>
+                    <div class="channel">Instagram + Facebook</div>
+                </div>
+                <div class="production-card">
+                    <div class="num">1<span class="unit"> /sem</span></div>
+                    <div class="label">Publicación LinkedIn</div>
+                    <div class="channel">B2B</div>
+                </div>
+                <div class="production-card">
+                    <div class="num">1<span class="unit"> /sem</span></div>
+                    <div class="label">Acción de vínculo institucional</div>
+                    <div class="channel">Famosos / canjes filtrados</div>
+                </div>
+                <div class="production-card">
+                    <div class="num">≤4<span class="unit"> hs</span></div>
+                    <div class="label">Respuesta a DMs y comentarios</div>
+                    <div class="channel">Tiempo hábil</div>
+                </div>
+            </div>
+
+            <h3>Criterios para calibrar a los 30 días</h3>
+            <div class="calibration-rules">
+                <div class="rule-card up">
+                    <h5>Subir el techo si</h5>
+                    <ul>
+                        <li>Se cumple el 100% del techo inicial sin sobrecarga</li>
+                        <li>La calidad creativa está aprobada por Antuara</li>
+                        <li>Federico cierra cada semana sin extender horario</li>
+                        <li>Hay banco de contenido grabado disponible</li>
+                    </ul>
+                </div>
+                <div class="rule-card hold">
+                    <h5>Mantener o bajar si</h5>
+                    <ul>
+                        <li>Federico llega al final de la semana con piezas pendientes</li>
+                        <li>La edición se acumula y empuja publicaciones</li>
+                        <li>La calidad cae cuando aumenta el volumen</li>
+                        <li>El equipo necesita acompañamiento extra en mudanzas</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="callout">
+                <strong>Cuándo se terceriza puntualmente:</strong> si una pieza requiere edición compleja (videos largos, reels con muchos cortes, motion graphics) y consumiría más de 4 horas, esa pieza puede tercerizarse para no comprometer el resto del calendario. La decisión la valida Antuara durante los primeros 90 días.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>7 · Circuito de trabajo semanal</h2>
+            <p>Distribución base. Se ajusta con Federico en la primera reunión, según el ritmo real de producción y los días de mudanzas relevantes.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Día</th>
+                        <th>Mañana</th>
+                        <th>Tarde</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Lunes</strong></td>
+                        <td>Revisión del calendario semanal · agenda de grabaciones</td>
+                        <td>Producción de contenido (grabación o edición)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Martes</strong></td>
+                        <td>Publicación + Community Manager</td>
+                        <td>Producción de contenido</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Miércoles</strong></td>
+                        <td>1:1 semanal con Daniela (20 min) · CM</td>
+                        <td>Edición</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Jueves</strong></td>
+                        <td>Disponibilidad para grabación de campo / acompañamiento si aplica</td>
+                        <td>Edición · publicación</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Viernes</strong></td>
+                        <td>Cierre de semana · lectura de métricas</td>
+                        <td>Planificación de la semana siguiente</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="callout">
+                <strong>Producción concentrada:</strong> la grabación de contenido se concentra en uno o dos días al inicio del mes, no se distribuye día a día. La meta es tener el banco de contenido grabado al comienzo del ciclo y dedicar el resto del mes a edición, publicación y CM. Excepción: cuando una mudanza estratégica o un canje requiere registro en el momento.
+            </div>
+            <div class="callout">
+                <strong>Reuniones fijas:</strong> 1:1 semanal con Daniela los miércoles · 2-1 quincenal (Federico + Daniela + Antuara) durante los primeros 90 días · revisión mensual con Mati incluida en la agenda comercial.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>8 · Plan de capacitación 30 / 60 / 90 días</h2>
+            <div class="timeline">
+                <div class="timeline-card">
+                    <span class="phase">Días 1 — 30</span>
+                    <h4>Inducción</h4>
+                    <ul>
+                        <li>Sesión inicial con Antuara: cápsulas, audiencia, calendario, criterio editorial</li>
+                        <li>Brian acompaña en producción audiovisual</li>
+                        <li>Federico arma el primer calendario asistido</li>
+                        <li>Antuara revisa cada pieza antes de publicar</li>
+                    </ul>
+                </div>
+                <div class="timeline-card">
+                    <span class="phase">Días 31 — 60</span>
+                    <h4>Práctica supervisada</h4>
+                    <ul>
+                        <li>Federico arma calendario, Antuara revisa</li>
+                        <li>Aumenta autonomía en CM y respuestas</li>
+                        <li>Empieza a leer métricas básicas semanales</li>
+                        <li>Revisión de la primera ronda de KPIs</li>
+                    </ul>
+                </div>
+                <div class="timeline-card">
+                    <span class="phase">Días 61 — 90</span>
+                    <h4>Autonomía progresiva</h4>
+                    <ul>
+                        <li>Federico arma y ejecuta calendario sin asistencia diaria</li>
+                        <li>Reportes semanales propios</li>
+                        <li>Evaluación de continuidad y ajustes al puesto</li>
+                        <li>Decisión sobre qué frentes terceriza Antuara y cuáles asume Federico</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="callout">
+                <strong>Proyección post-90 días:</strong> si Federico sostiene el calendario de Premium con autonomía y calidad consistente, queda abierta la posibilidad de que asuma también el manejo de redes de SAAI. No es compromiso ni meta, es horizonte. La decisión se evalúa tras la revisión de los 90 días.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>9 · KPIs y revisión de desempeño</h2>
+            <p>Las metas concretas se definen en la primera revisión de 30 días, una vez calibrado el ritmo real de producción. Lo que se mide desde el día uno:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Indicador</th>
+                        <th>Meta</th>
+                        <th>Frecuencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cumplimiento del calendario editorial publicado</td>
+                        <td>≥90%</td>
+                        <td>Semanal</td>
+                    </tr>
+                    <tr>
+                        <td>Producción de cápsulas por canal</td>
+                        <td>A definir según calendario</td>
+                        <td>Semanal</td>
+                    </tr>
+                    <tr>
+                        <td>Tiempo de respuesta en DMs y comentarios</td>
+                        <td>≤4 horas hábiles</td>
+                        <td>Semanal</td>
+                    </tr>
+                    <tr>
+                        <td>Crecimiento neto de seguidores (Instagram)</td>
+                        <td>A definir tras revisión 30 días</td>
+                        <td>Mensual</td>
+                    </tr>
+                    <tr>
+                        <td>Engagement promedio</td>
+                        <td>A definir tras revisión 30 días</td>
+                        <td>Mensual</td>
+                    </tr>
+                    <tr>
+                        <td>Calidad creativa (revisión cualitativa Antuara)</td>
+                        <td>Aprobado</td>
+                        <td>Mensual</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="callout">
+                <strong>Responsabilidad compartida durante los 90 días:</strong> Antuara asume la responsabilidad final sobre la calidad de las redes mientras Federico transita su curva de aprendizaje. A partir del día 91 esa responsabilidad pasa a Federico, con Daniela como referente directo.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>10 · Próximos pasos</h2>
+            <div class="next-steps">
+                <ol>
+                    <li><strong>Validación con Daniela</strong> — revisión del documento y ajustes antes de presentárselo a Mati.</li>
+                    <li><strong>Presentación a Mati</strong> — coordinada con Daniela. Decisión sobre carga horaria y formalización.</li>
+                    <li><strong>Conversación con Federico</strong> — Antuara y Daniela presentan el rol, las expectativas y el plan 30/60/90.</li>
+                    <li><strong>Sesión de inducción inicial</strong> — Antuara entrega los insumos: criterio editorial, plantilla de calendario, mapa de cápsulas.</li>
+                    <li><strong>Primer calendario asistido</strong> — entrega en 7 días desde la inducción.</li>
+                    <li><strong>Revisión 30 días</strong> — primera evaluación formal con KPIs ajustados a la realidad observada.</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <div class="brand">ANTUARA</div>
+        <p>Consultoría de Planificación Comercial Estratégica · Documento de trabajo · Premium Mudanzas</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Honorarios Ctrl.S · Proyecto Arboria · Validación Santiago · v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bd:#3b2314;--bm:#5c3a1e;--bl:#7a4f2b;--g:#c9a96e;--gl:#e8d5b0;
+  --t:#2d2d2d;--tl:#6b6b6b;--bg:#faf6f1;--w:#ffffff;--br:#e0d5c8;
+  --ok:#27ae60;--wrn:#e67e22;--err:#c0392b;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--t);background:var(--bg);line-height:1.7;font-size:15px}
+.container{max-width:1000px;margin:0 auto;padding:0 44px}
+@media(max-width:760px){.container{padding:0 22px}}
+
+.hero{background:linear-gradient(135deg,var(--bd),var(--bm) 55%,var(--bl));color:var(--w);padding:74px 0 80px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-100px;right:-120px;width:480px;height:480px;border:1px solid rgba(201,169,110,.12);border-radius:50%}
+.hero::after{content:"";position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,var(--g),transparent)}
+.hero-inner{position:relative;z-index:2}
+.hero .badge{display:inline-block;padding:6px 16px;border:1px solid var(--g);border-radius:24px;font-size:.66rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gl);margin-bottom:24px;font-weight:500}
+.hero h1{font-family:'Playfair Display',serif;font-size:2.55rem;font-weight:700;line-height:1.18;margin-bottom:14px;letter-spacing:-.3px;max-width:840px}
+.hero h1 em{font-style:italic;color:var(--g)}
+.hero .subtitle{font-size:1rem;font-weight:300;color:var(--gl);max-width:740px;line-height:1.6;margin-bottom:26px}
+.hero .meta{margin-top:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:20px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12)}
+.hero .meta .item .lbl{font-size:.6rem;letter-spacing:2.2px;text-transform:uppercase;color:var(--gl);font-weight:600;margin-bottom:5px}
+.hero .meta .item .val{font-family:'Playfair Display',serif;font-size:1rem;color:var(--w);font-weight:600;line-height:1.4}
+
+section{padding:46px 0}
+section:nth-child(odd){background:var(--w)}
+section + section{border-top:1px solid var(--br)}
+.section-label{display:inline-block;font-size:.62rem;letter-spacing:2.4px;text-transform:uppercase;color:var(--g);font-weight:700;margin-bottom:8px}
+.section-title{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:var(--bd);line-height:1.22;margin-bottom:14px;letter-spacing:-.2px;max-width:780px}
+.section-title em{font-style:italic;color:var(--bl)}
+.section-intro{font-size:1rem;color:var(--tl);line-height:1.78;margin-bottom:20px;max-width:800px}
+p{font-size:.95rem;color:var(--t);line-height:1.78;margin-bottom:14px;max-width:800px}
+p strong{color:var(--bd);font-weight:600}
+h3.sub{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--bd);margin:22px 0 10px;font-weight:700}
+
+.hlb{border-left:4px solid var(--g);background:linear-gradient(95deg,rgba(232,213,176,.4),rgba(232,213,176,.05));padding:18px 24px;border-radius:0 9px 9px 0;margin:20px 0;font-size:.97rem;line-height:1.75;max-width:820px}
+.hlb strong{color:var(--bd);font-weight:600}
+.hlb.bl{border-left-color:var(--bl);background:linear-gradient(95deg,rgba(122,79,43,.07),rgba(122,79,43,.01))}
+.hlb.warn{border-left-color:var(--wrn);background:linear-gradient(95deg,rgba(230,126,34,.08),rgba(230,126,34,.01))}
+.hlb.err{border-left-color:var(--err);background:linear-gradient(95deg,rgba(192,57,43,.08),rgba(192,57,43,.01))}
+.hlb.ok{border-left-color:var(--ok);background:linear-gradient(95deg,rgba(39,174,96,.08),rgba(39,174,96,.01))}
+
+table{width:100%;max-width:900px;border-collapse:collapse;margin:18px 0;font-size:.91rem;background:var(--w);border:1px solid var(--br);border-radius:8px;overflow:hidden}
+thead th{background:var(--bd);color:var(--w);text-align:left;padding:12px 16px;font-size:.7rem;letter-spacing:1.6px;text-transform:uppercase;font-weight:600}
+thead th.right{text-align:right}
+tbody td{padding:12px 16px;border-bottom:1px solid var(--br);vertical-align:top;line-height:1.62}
+tbody td.right{text-align:right;font-variant-numeric:tabular-nums}
+tbody tr:last-child td{border-bottom:none}
+tbody tr.total td{background:var(--bg);font-weight:700;color:var(--bd);border-top:2px solid var(--g)}
+tbody tr.subtotal td{background:rgba(201,169,110,.08);font-weight:600;color:var(--bd)}
+td strong{color:var(--bd);font-weight:600}
+td .pct{font-size:.78rem;color:var(--g);font-weight:600;letter-spacing:.5px}
+
+.lista{list-style:none;padding:0;margin:14px 0 6px;max-width:820px}
+.lista li{padding:10px 0 10px 26px;position:relative;border-bottom:1px dashed var(--br);font-size:.94rem;line-height:1.7;color:var(--t)}
+.lista li:last-child{border-bottom:none}
+.lista li::before{content:"";position:absolute;left:0;top:18px;width:9px;height:9px;background:var(--g);border-radius:50%}
+.lista li strong{color:var(--bd);font-weight:600;display:block;margin-bottom:2px}
+.lista li span{color:var(--tl);font-size:.86rem;line-height:1.6;display:block}
+.lista li.check::before{background:var(--ok)}
+.lista li.warn::before{background:var(--wrn)}
+.lista li.err::before{background:var(--err)}
+
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:22px 0;max-width:900px}
+.kpi{background:var(--w);border:1px solid var(--br);border-top:4px solid var(--g);border-radius:8px;padding:18px 20px}
+section:nth-child(odd) .kpi{background:var(--bg)}
+.kpi .lbl{font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--g);font-weight:700;margin-bottom:6px}
+.kpi .num{font-family:'Playfair Display',serif;font-size:1.85rem;color:var(--bd);font-weight:700;line-height:1;margin-bottom:6px;letter-spacing:-.5px}
+.kpi .num small{font-size:.74rem;color:var(--tl);font-weight:400}
+.kpi .desc{font-size:.8rem;color:var(--tl);line-height:1.55}
+
+.range-box{background:var(--w);border:1px solid var(--br);border-radius:10px;padding:24px 28px;margin:22px 0;max-width:880px}
+section:nth-child(odd) .range-box{background:var(--bg)}
+.range-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin:14px 0 0}
+@media(max-width:760px){.range-grid{grid-template-columns:1fr}}
+.range-col{padding:16px 18px;border-radius:8px;background:var(--bg)}
+section:nth-child(odd) .range-col{background:var(--w)}
+.range-col.salida{border:2px solid var(--g)}
+.range-col.media{border:2px solid var(--bl)}
+.range-col.piso{border:2px solid var(--wrn)}
+.range-col .tag{font-size:.6rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.range-col.salida .tag{color:var(--g)}
+.range-col.media .tag{color:var(--bl)}
+.range-col.piso .tag{color:var(--wrn)}
+.range-col h4{font-family:'Playfair Display',serif;font-size:1rem;color:var(--bd);margin-bottom:8px;font-weight:700;line-height:1.3}
+.range-col .num{font-family:'Playfair Display',serif;font-size:1.55rem;color:var(--bd);font-weight:700;line-height:1;margin:6px 0;letter-spacing:-.5px}
+.range-col .num small{font-size:.7rem;color:var(--tl);font-weight:400}
+.range-col p{font-size:.8rem;line-height:1.55;color:var(--tl);margin:6px 0 0}
+
+.summary-box{background:linear-gradient(135deg,var(--bd),var(--bm));color:var(--w);padding:34px 38px;border-radius:12px;margin:22px 0;max-width:900px;position:relative;overflow:hidden}
+.summary-box::before{content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(201,169,110,.18),transparent 70%);border-radius:50%}
+.summary-box .inner{position:relative;z-index:2}
+.summary-box .lbl{font-size:.62rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gl);margin-bottom:8px;font-weight:700}
+.summary-box h3{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--w);margin-bottom:10px;font-weight:700}
+.summary-box .desc{color:var(--gl);font-size:.9rem;line-height:1.65;max-width:600px}
+
+.scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0;max-width:880px}
+@media(max-width:760px){.scenario-grid{grid-template-columns:1fr}}
+.scenario{background:var(--w);border:1px solid var(--br);border-radius:8px;padding:18px 20px}
+section:nth-child(odd) .scenario{background:var(--bg)}
+.scenario .tag{font-size:.6rem;letter-spacing:1.8px;text-transform:uppercase;font-weight:700;margin-bottom:6px;color:var(--bl)}
+.scenario h4{font-family:'Playfair Display',serif;font-size:1rem;color:var(--bd);margin-bottom:8px;font-weight:700;line-height:1.3}
+.scenario p{font-size:.84rem;line-height:1.6;color:var(--tl);margin:0}
+
+.q-box{background:var(--w);border:2px solid var(--g);border-radius:10px;padding:22px 26px;margin:18px 0;max-width:880px}
+section:nth-child(odd) .q-box{background:var(--bg)}
+.q-box .lbl{font-size:.62rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--g);font-weight:700;margin-bottom:8px}
+.q-box h3{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--bd);margin-bottom:10px;font-weight:700;line-height:1.3}
+.q-box p{font-size:.9rem;color:var(--t);line-height:1.7;margin:0}
+
+footer{background:var(--bd);color:var(--gl);padding:46px 0 36px;text-align:center;position:relative}
+footer::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--g),transparent)}
+footer .brand{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--g);font-weight:700;letter-spacing:2.5px;margin-bottom:5px}
+footer .tag{font-size:.62rem;letter-spacing:2.5px;color:var(--gl);text-transform:uppercase;margin-bottom:18px}
+footer .meta{font-size:.74rem;color:var(--gl);opacity:.7;margin-top:14px;line-height:1.65}
+
+@media print{
+  *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  section{page-break-inside:avoid;padding:28px 0}
+  .hlb,.kpi,.summary-box,.q-box,.range-box,.scenario{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container hero-inner">
+    <div class="badge">Antuara × Ctrl.S · Documento interno · v2 · Abril 2026</div>
+    <h1>Honorarios Ctrl.S · Proyecto <em>Arboria</em><br><span style="font-size:1.35rem;font-weight:400;color:var(--gl);font-style:italic">Documento de validación con argumentos de blindaje y rangos de negociación</span></h1>
+    <p class="subtitle">Versión 2 del documento. Incorpora análisis de % sobre PEM como argumento de blindaje, rangos de negociación con piso defendible, escenarios alternativos según pueda reclamar Antonio, recalibración de Dirección de Obras (firma colegial), estimación de horas y rentabilidad real, plan B sin financiación, y ángulo estratégico "primer proyecto en España".</p>
+    <div class="meta">
+      <div class="item"><div class="lbl">Para</div><div class="val">Santiago · Delfina</div></div>
+      <div class="item"><div class="lbl">De</div><div class="val">Gabriel Berutti · Antuara</div></div>
+      <div class="item"><div class="lbl">Proyecto</div><div class="val">Arboria Mairena del Aljarafe</div></div>
+      <div class="item"><div class="lbl">Fecha</div><div class="val">29 de abril de 2026 · v2</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- 01 · CONTRATO -->
+<section>
+  <div class="container">
+    <span class="section-label">01 · El contrato de partida</span>
+    <h2 class="section-title">Lo que la promotora se comprometió a pagar <em>al estudio ganador</em></h2>
+    <p class="section-intro">Las Bases del Concurso establecen el siguiente esquema de honorarios. Es la torta sobre la que vamos a trabajar.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width:30%">Concepto</th>
+          <th style="width:12%" class="right">%</th>
+          <th style="width:23%" class="right">Importe</th>
+          <th style="width:35%">Hito de pago</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Anteproyecto</strong></td><td class="right">5%</td><td class="right">17.500 €</td><td>100% al fallo del concurso (cobrado)</td></tr>
+        <tr><td><strong>Proyecto Básico</strong></td><td class="right">25%</td><td class="right">87.500 €</td><td>100% al Acta de Inicio de Obra</td></tr>
+        <tr><td><strong>Proyecto de Ejecución</strong></td><td class="right">40%</td><td class="right">140.000 €</td><td>85% certif. obra + 15% en hitos finales</td></tr>
+        <tr><td><strong>Dirección de Obras</strong></td><td class="right">30%</td><td class="right">105.000 €</td><td>85% certif. obra + 15% en hitos finales</td></tr>
+        <tr class="total"><td>Total contrato</td><td class="right">100%</td><td class="right">350.000 €</td><td>+ IVA</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub">El argumento de blindaje · % sobre PEM</h3>
+    <p>El proyecto Arboria tiene 7.095,81 m² construidos (46 viviendas + 15 lofts/comerciales + zonas comunes). En la zona de Sevilla/Mairena, el PEM (Presupuesto de Ejecución Material) para construcción residencial de calidad media-alta ronda los <strong>1.300-1.500 €/m²</strong>, lo que da una estimación conservadora de:</p>
+
+    <div class="kpi-grid">
+      <div class="kpi"><div class="lbl">PEM estimado</div><div class="num">~9-10,5M € <small>conservador</small></div><div class="desc">7.095,81 m² × 1.300-1.500 €/m²</div></div>
+      <div class="kpi"><div class="lbl">Honorarios contrato</div><div class="num">350.000 € <small>+ IVA</small></div><div class="desc">Lo que la promotora se comprometió a pagar al estudio</div></div>
+      <div class="kpi"><div class="lbl">% sobre PEM</div><div class="num" style="color:var(--err)">~3,5% <small>del PEM</small></div><div class="desc">Estándar mercado España: 6-10% del PEM</div></div>
+      <div class="kpi"><div class="lbl">Brecha vs mercado</div><div class="num" style="color:var(--err)">-50 a -65% <small>bajo precio</small></div><div class="desc">El contrato ya está muy por debajo del estándar</div></div>
+    </div>
+
+    <div class="hlb err"><strong>Argumento de blindaje (clave para la negociación con la promotora).</strong> Los 350.000 € del contrato representan apenas un 3,5% del PEM estimado del proyecto. El estándar de mercado en España para honorarios completos de arquitectura (Anteproyecto + Básico + Ejecución + Dirección) es 6-10% del PEM. <strong>El equipo profesional ya está aceptando un contrato un 50-65% por debajo del precio de mercado.</strong> No hay margen para recortes adicionales — al contrario, hay argumento sólido para pedir honorarios complementarios para la fase de pre-venta.</div>
+
+    <div class="hlb warn"><strong>Dato crítico de las Bases.</strong> El Proyecto Básico se redacta a riesgo hasta la obtención de la financiación definitiva mediante préstamo promotor. Sin financiación, los 87.500 € de Fase 2 no se cobran. Esto requiere un Plan B que se desarrolla en la Sección 8.</div>
+  </div>
+</section>
+
+<!-- 02 · EQUIPO -->
+<section>
+  <div class="container">
+    <span class="section-label">02 · El equipo configurado</span>
+    <h2 class="section-title">Quién aporta qué <em>en este proyecto</em></h2>
+    <p class="section-intro">Tras la reunión del 29 de abril, el equipo profesional quedó configurado. Estos son los actores que tienen que repartirse los 350.000 €.</p>
+
+    <ul class="lista">
+      <li><strong>Ctrl.S Arquitectura (Santiago + Delfina + proyectista nuevo)</strong><span>Liderazgo técnico de diseño · modelado BIM/Revit completo · sistema BMO (BIM Master Office) · coordinación general · integración de las contribuciones de Antonio e ingenieros locales · producción de planos comerciales y renders. Factura desde Argentina (con precedente).</span></li>
+      <li><strong>Antonio (arquitecto local · COAS Sevilla)</strong><span>Aporte sobre normativa local · alzados, secciones y memorias técnicas · cumplimiento del CTE y LOE · <strong>firma colegial del proyecto ante el Ayuntamiento</strong> · <strong>responsabilidad civil decenal (10 años)</strong> · interlocución con el Ayuntamiento de Mairena del Aljarafe.</span></li>
+      <li><strong>Pepe (coordinador de obra)</strong><span>Coordinación operativa con la promotora · supervisión de cumplimiento local · presencia en obra durante la ejecución · nexo entre el estudio y la Dirección Integrada del Proyecto.</span></li>
+      <li><strong>Ingenieros locales</strong><span>Cálculos de estructura · instalaciones · telecomunicaciones · sanitaria. Subcontratos del estudio para entregables técnicos especializados.</span></li>
+    </ul>
+
+    <div class="hlb bl"><strong>Sobre Antonio y la firma colegial.</strong> Antonio no aporta solo "normativa local". Aporta una pieza que Ctrl.S no puede aportar: la firma del proyecto ante el Ayuntamiento y el Colegio de Arquitectos de Sevilla, que conlleva responsabilidad civil decenal sobre el edificio (LOE: 10 años de garantía estructural, 3 de habitabilidad, 1 de acabados). <strong>Eso justifica que Antonio cobre alto en todas las fases donde la firma es indispensable</strong> — especialmente Dirección de Obras, donde firma actas y responde por incidencias.</div>
+  </div>
+</section>
+
+<!-- 03 · LO QUE ANTONIO YA ENTREGÓ -->
+<section>
+  <div class="container">
+    <span class="section-label">03 · Estado actual del Proyecto Básico</span>
+    <h2 class="section-title">Lo que Antonio ya entregó <em>y lo que falta</em></h2>
+    <p class="section-intro">El 1 de mayo Antonio compartió 10 archivos DWG con la base geométrica del proyecto. Esto cubre aproximadamente el 35-45% del trabajo del Proyecto Básico.</p>
+
+    <h3 class="sub">Lo que ya está entregado por Antonio</h3>
+    <ul class="lista">
+      <li class="check"><strong>Plantas generales del edificio (6 archivos)</strong><span>Sótano · planta baja · segunda · tercera · cuarta · cubierta. Falta planta primera (probable error u olvido, confirmar).</span></li>
+      <li class="check"><strong>Plantas de tipologías de viviendas (4 archivos)</strong><span>Vivienda 2 dorm · vivienda 3 dorm agrupados · vivienda 3 dorm padres-hijos · agrupación de pisos 3-3-2.</span></li>
+    </ul>
+
+    <h3 class="sub">Lo que falta para completar el Proyecto Básico</h3>
+    <ul class="lista">
+      <li class="warn"><strong>Geometría complementaria — a cargo de Antonio</strong><span>Alzados · secciones · planta primera. Lo más urgente son las fachadas (renders comerciales).</span></li>
+      <li class="warn"><strong>Memorias técnicas — a cargo de Antonio</strong><span>Memoria descriptiva, constructiva, justificación urbanística, cumplimiento CTE (DB-SI, DB-HS, DB-HE, DB-SUA, DB-HR), accesibilidad.</span></li>
+      <li class="warn"><strong>Modelado BIM completo — a cargo de Ctrl.S</strong><span>Levantar todo el edificio en Revit sobre la base DWG de Antonio. Esto es lo más caro y lo que justifica el peso de Ctrl.S en el reparto.</span></li>
+      <li class="warn"><strong>Cuadro de superficies oficial — Ctrl.S (con apoyo de Antonio)</strong><span>Útiles, construidas, con parte proporcional de zonas comunes según RD 218/2005 y Orden ECO/805/2003.</span></li>
+      <li class="warn"><strong>PEM y material comercial — Ctrl.S</strong><span>Estimación de PEM, planos comerciales, fachadas para renders, visualizaciones 3D para pre-venta, coordinación BMO.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 04 · DISTRIBUCIÓN POR FASE -->
+<section>
+  <div class="container">
+    <span class="section-label">04 · Distribución propuesta por fase</span>
+    <h2 class="section-title">Cuánto le toca a cada actor <em>fase por fase</em></h2>
+    <p class="section-intro">Esta es la distribución base. Más abajo se presentan escenarios alternativos según pueda reclamar Antonio o Pepe.</p>
+
+    <h3 class="sub">Fase 1 · Anteproyecto (17.500 €) — ya cobrado</h3>
+    <table>
+      <thead><tr><th>Actor</th><th class="right" style="width:14%">%</th><th class="right" style="width:18%">Importe</th><th>Justificación</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Ctrl.S</strong></td><td class="right">100%</td><td class="right">17.500 €</td><td>Trabajo realizado pre-incorporación de Antonio. Ganó el concurso. Ya cobrado.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub">Fase 2 · Proyecto Básico (87.500 €)</h3>
+    <table>
+      <thead><tr><th>Actor</th><th class="right" style="width:14%">%</th><th class="right" style="width:18%">Importe</th><th>Justificación</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Ctrl.S</strong></td><td class="right">45%</td><td class="right">39.375 €</td><td>Modelado BIM completo · sistema BMO · cuadro de superficies oficial · PEM · planos comerciales · renders · coordinación general</td></tr>
+        <tr><td><strong>Antonio</strong></td><td class="right">40%</td><td class="right">35.000 €</td><td>Plantas (entregadas) · alzados · secciones · memorias · cumplimiento normativo · firma colegial</td></tr>
+        <tr><td><strong>Pepe</strong></td><td class="right">15%</td><td class="right">13.125 €</td><td>Coordinación operativa · interlocución con la promotora · supervisión local</td></tr>
+        <tr class="total"><td>Total Fase 2</td><td class="right">100%</td><td class="right">87.500 €</td><td>—</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub">Fase 3 · Proyecto de Ejecución (140.000 €)</h3>
+    <table>
+      <thead><tr><th>Actor</th><th class="right" style="width:14%">%</th><th class="right" style="width:18%">Importe</th><th>Justificación</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Ctrl.S</strong></td><td class="right">37%</td><td class="right">51.800 €</td><td>Coordinación BIM · integración de ingenierías en BMO · documentación gráfica · mediciones · liderazgo técnico</td></tr>
+        <tr><td><strong>Antonio</strong></td><td class="right">35%</td><td class="right">49.000 €</td><td>Firma colegial · responsabilidad civil decenal sobre el edificio · memorias de ejecución · cumplimiento detallado</td></tr>
+        <tr><td><strong>Pepe</strong></td><td class="right">15%</td><td class="right">21.000 €</td><td>Coordinación operativa · pliegos · contratación de constructora</td></tr>
+        <tr><td><strong>Ingenieros locales</strong></td><td class="right">13%</td><td class="right">18.200 €</td><td>Cálculos de estructura, instalaciones, telecomunicaciones, sanitaria</td></tr>
+        <tr class="total"><td>Total Fase 3</td><td class="right">100%</td><td class="right">140.000 €</td><td>—</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub">Fase 4 · Dirección de Obras (105.000 €) <span style="color:var(--err);font-size:.78rem;font-weight:600">— RECALIBRADA</span></h3>
+    <table>
+      <thead><tr><th>Actor</th><th class="right" style="width:14%">%</th><th class="right" style="width:18%">Importe</th><th>Justificación</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Antonio</strong></td><td class="right">55%</td><td class="right">57.750 €</td><td><strong>Dirección de obra in situ · firma de actas · responsabilidad civil plena · garantía decenal LOE</strong>. Lo hace Antonio porque está en España y tiene número de colegiado.</td></tr>
+        <tr><td><strong>Pepe</strong></td><td class="right">25%</td><td class="right">26.250 €</td><td>Coordinación operativa diaria · supervisión de avances · interlocución con la constructora</td></tr>
+        <tr><td><strong>Ctrl.S</strong></td><td class="right">15%</td><td class="right">15.750 €</td><td><strong>Supervisión técnica BIM · actualización modelo as-built · resolución de incidencias de diseño</strong>. NO Dirección de Obras formal (Ctrl.S no está en España, no firma).</td></tr>
+        <tr><td><strong>Ingenieros locales</strong></td><td class="right">5%</td><td class="right">5.250 €</td><td>Soporte puntual durante la obra cuando haga falta intervención técnica</td></tr>
+        <tr class="total"><td>Total Fase 4</td><td class="right">100%</td><td class="right">105.000 €</td><td>—</td></tr>
+      </tbody>
+    </table>
+
+    <div class="hlb warn"><strong>Por qué bajamos a Ctrl.S del 20% al 15% en Dirección de Obras.</strong> La Dirección de Obras es un cargo legal con presencia física en España. Ctrl.S no puede asumirlo: no tiene firma colegial. Lo que sí puede aportar es supervisión técnica BIM y actualización del modelo as-built. Esa pieza vale 15.750 €, no 21.000 €. Reconocer esto desde el inicio evita conflictos con Antonio más adelante y construye credibilidad en la conversación.</div>
+
+    <h3 class="sub" style="margin-top:30px">Escenarios alternativos según pueda reclamar el equipo</h3>
+    <p>La distribución base supone que los actores aceptan los % propuestos. Si Antonio o Pepe reclaman más, estos son los escenarios de contingencia.</p>
+
+    <div class="scenario-grid">
+      <div class="scenario">
+        <div class="tag">Escenario A</div>
+        <h4>Si Antonio reclama 45% en Proyecto Básico</h4>
+        <p><strong>Argumento:</strong> "yo ya entregué las plantas, estoy haciendo alzados y memorias, firmo todo." Subir Antonio a 45% (39.375 €) y bajar Ctrl.S a 40% (35.000 €). Pepe queda igual en 15%. Ctrl.S pierde 4.375 €.</p>
+      </div>
+      <div class="scenario">
+        <div class="tag">Escenario B</div>
+        <h4>Si Antonio reclama 45% en Ejecución</h4>
+        <p><strong>Argumento:</strong> "asumo responsabilidad decenal sobre el edificio." Subir Antonio a 45% (63.000 €), bajar Ctrl.S a 30% (42.000 €). Ingenieros y Pepe quedan igual. Ctrl.S pierde 9.800 €.</p>
+      </div>
+      <div class="scenario">
+        <div class="tag">Escenario C</div>
+        <h4>Si Pepe reclama 30% en Dirección de Obras</h4>
+        <p><strong>Argumento:</strong> "estoy todo el día en obra." Subir Pepe a 30% (31.500 €), bajar Antonio a 50% (52.500 €). Ctrl.S y Ingenieros quedan igual. Defendible — Pepe es el que está cada día.</p>
+      </div>
+      <div class="scenario">
+        <div class="tag">Escenario D</div>
+        <h4>Si Antonio reclama solo 12-15% para Pepe</h4>
+        <p><strong>Argumento:</strong> "Pepe es parte de la promotora, no del estudio." Bajar Pepe a 12% en Básico y Ejecución, lo libera para que Ctrl.S y Antonio se queden con más. Ctrl.S podría subir a 47% en Básico y 39% en Ejecución.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · TOTAL CTRL.S CON RANGOS -->
+<section>
+  <div class="container">
+    <span class="section-label">05 · Lo que captura Ctrl.S</span>
+    <h2 class="section-title">El total para el estudio <em>con rango de negociación</em></h2>
+    <p class="section-intro">No presento un solo número. Presento posición de salida, recomendación y piso. Esto le da a Santi margen real para negociar.</p>
+
+    <div class="range-box">
+      <div class="range-grid">
+        <div class="range-col salida">
+          <div class="tag">● Posición de salida</div>
+          <h4>Si todo sale como propongo</h4>
+          <div class="num">~133.000 € <small>+ IVA · 38%</small></div>
+          <p>Distribución óptima: Ctrl.S 47% Básico, 38% Ejecución, 15% DO. Antonio acepta 38% global. Pepe a 15%.</p>
+        </div>
+        <div class="range-col media">
+          <div class="tag">● Recomendación</div>
+          <h4>Distribución base propuesta</h4>
+          <div class="num">124.425 € <small>+ IVA · 35,5%</small></div>
+          <p>La que hoy proponemos: 45% Básico, 37% Ejecución, 15% DO. Es defendible y razonable.</p>
+        </div>
+        <div class="range-col piso">
+          <div class="tag">● Piso de negociación</div>
+          <h4>No bajamos de aquí</h4>
+          <div class="num">~115.500 € <small>+ IVA · 33%</small></div>
+          <p>Si Antonio reclama 45% en Ejecución y Pepe 30% en DO, este es el mínimo. Por debajo, no compensa el esfuerzo.</p>
+        </div>
+      </div>
+    </div>
+
+    <table>
+      <thead><tr><th style="width:35%">Fase</th><th class="right" style="width:18%">Total fase</th><th class="right" style="width:14%">% Ctrl.S</th><th class="right" style="width:18%">Ctrl.S captura</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr><td>Anteproyecto</td><td class="right">17.500 €</td><td class="right">100%</td><td class="right"><strong>17.500 €</strong></td><td>Cobrado ✓</td></tr>
+        <tr><td>Proyecto Básico</td><td class="right">87.500 €</td><td class="right">45%</td><td class="right"><strong>39.375 €</strong></td><td>A riesgo (hasta financiación)</td></tr>
+        <tr><td>Proyecto de Ejecución</td><td class="right">140.000 €</td><td class="right">37%</td><td class="right"><strong>51.800 €</strong></td><td>Pendiente</td></tr>
+        <tr><td>Dirección de Obras</td><td class="right">105.000 €</td><td class="right">15%</td><td class="right"><strong>15.750 €</strong></td><td>Pendiente</td></tr>
+        <tr class="total"><td>Total Ctrl.S (recomendación)</td><td class="right">350.000 €</td><td class="right">35,5%</td><td class="right"><strong>124.425 €</strong></td><td>+ IVA</td></tr>
+      </tbody>
+    </table>
+
+    <div class="summary-box">
+      <div class="inner">
+        <div class="lbl">Honorarios Ctrl.S por Arboria · Recomendación final</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:2.6rem;color:var(--g);font-weight:700;line-height:1;margin:14px 0;letter-spacing:-1px">124.425 € <span style="font-size:1rem;color:var(--gl);font-weight:400">+ IVA · 35,5%</span></h3>
+        <p class="desc">Distribución que reconoce el peso real del estudio en cada fase, recalibrada con la limitación legal de la firma colegial. Pisó: 33% (115.500 €). Salida: 38% (133.000 €). Recomendación: 35,5% (124.425 €).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 · HORAS Y RENTABILIDAD -->
+<section>
+  <div class="container">
+    <span class="section-label">06 · Estimación de horas y rentabilidad</span>
+    <h2 class="section-title">¿Vale la pena el esfuerzo? <em>Análisis de horas reales</em></h2>
+    <p class="section-intro">Antes de validar el número, conviene cruzar honorarios con horas estimadas para ver la tarifa horaria real que captura Ctrl.S.</p>
+
+    <table>
+      <thead><tr><th style="width:50%">Concepto</th><th class="right" style="width:25%">Horas estimadas</th><th class="right" style="width:25%">Período</th></tr></thead>
+      <tbody>
+        <tr><td>Modelado BIM completo en Revit (4 tipologías + 6 plantas)</td><td class="right">420-700 hs</td><td class="right">May - Jul 2026</td></tr>
+        <tr><td>Sistema BMO + integración + capacitación de asesores</td><td class="right">40-80 hs</td><td class="right">May 2026</td></tr>
+        <tr><td>Coordinación general del equipo (reuniones lun + mié)</td><td class="right">200-400 hs</td><td class="right">May 2026 - Dic 2027</td></tr>
+        <tr><td>Producción comercial (planos, fachadas, renders)</td><td class="right">100-180 hs</td><td class="right">May - Jul 2026</td></tr>
+        <tr><td>Documentación de Proyecto de Ejecución</td><td class="right">200-400 hs</td><td class="right">Ago 2026 - Mar 2027</td></tr>
+        <tr><td>Supervisión técnica BIM durante obra (as-built)</td><td class="right">80-150 hs</td><td class="right">Mar 2027 - Dic 2027</td></tr>
+        <tr class="total"><td>Total estimado de horas Ctrl.S</td><td class="right">1.040-1.910 hs</td><td class="right">~18-24 meses</td></tr>
+      </tbody>
+    </table>
+
+    <div class="kpi-grid">
+      <div class="kpi"><div class="lbl">Horas punto medio</div><div class="num">~1.475 hs</div><div class="desc">Estimación intermedia para todo el proyecto</div></div>
+      <div class="kpi"><div class="lbl">Honorarios Ctrl.S</div><div class="num">124.425 € <small>+ IVA</small></div><div class="desc">Recomendación final del documento</div></div>
+      <div class="kpi"><div class="lbl">Tarifa horaria implícita</div><div class="num" style="color:var(--wrn)">~84 €/hora</div><div class="desc">Tarifa estudio profesional España: 70-100 €/hora</div></div>
+      <div class="kpi"><div class="lbl">Lectura</div><div class="num" style="color:var(--ok);font-size:1.1rem">Razonable</div><div class="desc">Está dentro del rango profesional, ajustado pero defendible</div></div>
+    </div>
+
+    <div class="hlb"><strong>Lectura.</strong> A 124.425 € sobre ~1.475 horas, la tarifa horaria implícita es de 84 €/hora, dentro del rango profesional español (70-100 €/hora). Si el proyecto demanda más horas (por ejemplo, 1.700 hs), la tarifa cae a 73 €/hora. Si se estira a 1.910 hs, baja a 65 €/hora — cerca del piso de rentabilidad. <strong>Por debajo del piso de 115.500 €, la tarifa horaria cae a 60-67 €/hora, lo cual ya no es razonable</strong> para un estudio que aporta liderazgo técnico y BIM.</div>
+  </div>
+</section>
+
+<!-- 07 · PLAN B SIN FINANCIACIÓN -->
+<section>
+  <div class="container">
+    <span class="section-label">07 · Plan B · escenario sin financiación</span>
+    <h2 class="section-title">Qué hacer si <em>el préstamo promotor no llega</em></h2>
+    <p class="section-intro">Las Bases dicen que el Proyecto Básico se redacta a riesgo hasta que haya financiación. Si la financiación no llega, los 39.375 € de Ctrl.S en Fase 2 quedan sin cobrar. Hay que tener un plan.</p>
+
+    <h3 class="sub">Tres mecanismos de protección a negociar con la promotora</h3>
+    <ul class="lista">
+      <li class="check"><strong>Mecanismo 1 · Adelanto del 30% del Proyecto Básico al iniciar trabajos</strong><span>Pedir 26.250 € adelantados (30% de 87.500 €) cuando se firma la adenda al contrato. Eso garantiza cobro mínimo aunque la financiación se retrase. El 70% restante se paga al Acta de Inicio de Obra.</span></li>
+      <li class="check"><strong>Mecanismo 2 · Honorarios complementarios para la pre-venta (fee mensual)</strong><span>3.000 €/mes durante 3 meses (mayo-julio). Cubre el trabajo de coordinación + producción comercial que no entra en el contrato base. Total: 9.000 €. Es independiente del Proyecto Básico — se cobra mes a mes.</span></li>
+      <li class="warn"><strong>Mecanismo 3 · Cláusula de freno por falta de financiación (defensivo)</strong><span>Si pasados 6 meses desde la entrega del Proyecto Básico no hay financiación formalizada, Ctrl.S detiene producción del Proyecto de Ejecución hasta que se confirme. Esto evita que el equipo siga trabajando "a riesgo" sin perspectiva real de cobro.</span></li>
+    </ul>
+
+    <div class="hlb ok"><strong>Si se logran activar los Mecanismos 1 y 2.</strong> Ctrl.S asegura cobro de 26.250 € (adelanto Proyecto Básico) + 9.000 € (fee complementario) = <strong>35.250 € + IVA garantizados en los próximos 4 meses</strong>, independientemente de si llega o no la financiación bancaria. Eso baja muchísimo el riesgo del "a riesgo" que establecen las Bases.</div>
+  </div>
+</section>
+
+<!-- 08 · ÁNGULO ESTRATÉGICO -->
+<section>
+  <div class="container">
+    <span class="section-label">08 · Ángulo estratégico</span>
+    <h2 class="section-title">Arboria como <em>primer proyecto en Europa</em></h2>
+    <p class="section-intro">Hay un dato que no aparece en los números pero pesa en cómo Santi tiene que pararse en la conversación: este es el primer proyecto de Ctrl.S en España. Eso tiene dos lecturas, y conviene tenerlas claras.</p>
+
+    <h3 class="sub">Lectura 1 · Lo que justifica aceptar un % menor al de mercado</h3>
+    <p>Un estudio establecido en España con experiencia local y firma propia podría defender el 6-10% sobre PEM como honorarios completos. Ctrl.S no puede defender ese porcentaje porque no firma. Lo que sí puede capitalizar es <strong>el valor estratégico de tener este proyecto en el portfolio</strong>:</p>
+
+    <ul class="lista">
+      <li><strong>Caso emblema visible en Sevilla</strong><span>Proyecto residencial de 46 viviendas + lofts, posicionado en una zona de demanda creciente. Genera referencia profesional para captar nuevos clientes en España y resto de Europa.</span></li>
+      <li><strong>Apertura del mercado europeo</strong><span>Una vez ejecutada la obra, Ctrl.S puede usar Arboria como caso comercial para ampliar a otros mercados europeos. La inversión inicial (acepto cobrar menos que el estándar) se compensa con la entrada al mercado.</span></li>
+      <li><strong>Construcción de vínculo con Job y Javier (referidos)</strong><span>Si la promotora queda satisfecha, hay potencial de recomendación a otros desarrolladores españoles. Ese flujo de referidos puede valer mucho más que los 350.000 € del contrato actual.</span></li>
+    </ul>
+
+    <h3 class="sub">Lectura 2 · Lo que NO puede ser excusa</h3>
+    <p>El "primer proyecto" no puede usarse como argumento de la promotora para pagar menos. Ctrl.S asume costos que un estudio español no asume:</p>
+
+    <ul class="lista">
+      <li class="err"><strong>Riesgo cambiario</strong><span>Cobro en euros, gastos del estudio en pesos argentinos. Cualquier devaluación o apreciación afecta directamente la rentabilidad.</span></li>
+      <li class="err"><strong>Distancia y zona horaria</strong><span>Reuniones a horarios complejos, viajes ocasionales, complejidad operativa.</span></li>
+      <li class="err"><strong>Imposibilidad de firmar</strong><span>Necesidad de incorporar a Antonio, lo que diluye honorarios. Pero también elimina riesgos de responsabilidad legal española.</span></li>
+    </ul>
+
+    <div class="hlb bl"><strong>Posicionamiento sugerido para Santi en la conversación con Job.</strong> "Estamos invirtiendo en este proyecto más allá del cash inmediato, porque vemos su valor estratégico. Pero esa inversión tiene un piso: por debajo de cierto número, el proyecto deja de tener sentido económico para el estudio. Estamos buscando un equilibrio que reconozca ambas cosas — el valor de la oportunidad y la viabilidad del trabajo."</div>
+  </div>
+</section>
+
+<!-- 09 · CIERRE Y VALIDACIÓN -->
+<section>
+  <div class="container">
+    <span class="section-label">09 · Lo que necesito que validés</span>
+    <h2 class="section-title">Cinco decisiones para arrancar</h2>
+
+    <div class="q-box">
+      <div class="lbl">Pregunta 1</div>
+      <h3>¿El rango de negociación 33-38% está bien calibrado?</h3>
+      <p>Recomendación: 35,5% (124.425 €). Salida: 38% (~133.000 €). Piso: 33% (~115.500 €). ¿Te hace sentido este rango o querés moverlo? Si querés que el piso sea más alto, lo justifico con el ángulo de horas y rentabilidad.</p>
+    </div>
+
+    <div class="q-box">
+      <div class="lbl">Pregunta 2</div>
+      <h3>¿La distribución por fase está alineada con cómo vos ves el aporte real?</h3>
+      <p>Ctrl.S 45% Básico, 37% Ejecución, 15% DO. Antonio 40% Básico, 35% Ejecución, 55% DO. Pepe 15% pre-obra y 25% obra. ¿Hay alguna fase donde te parezca que Ctrl.S debería capturar más o menos?</p>
+    </div>
+
+    <div class="q-box">
+      <div class="lbl">Pregunta 3</div>
+      <h3>¿Llevamos los 3 mecanismos de protección a la conversación con Job?</h3>
+      <p>Adelanto 30% Proyecto Básico (26.250 €) + Fee mensual coordinación (9.000 €) + Cláusula de freno por falta de financiación. Los tres juntos protegen al estudio de quedar sin cobrar trabajo ya entregado.</p>
+    </div>
+
+    <div class="q-box">
+      <div class="lbl">Pregunta 4</div>
+      <h3>¿Cuándo conversás los números con Antonio y con Pepe?</h3>
+      <p>El reparto interno tiene que estar acordado antes de la próxima reunión con la promotora. Si esperan demasiado, alguno puede plantear su propio número y romper el equilibrio. Mi recomendación: charla individual con Antonio esta semana, charla con Pepe después.</p>
+    </div>
+
+    <div class="q-box">
+      <div class="lbl">Pregunta 5</div>
+      <h3>¿Querés que el ángulo "primer proyecto en España" entre en la conversación con la promotora, o lo dejamos solo como posicionamiento interno?</h3>
+      <p>Si lo usás con Job, tiene que ser estratégicamente: "estamos invirtiendo, pero hay un piso". Si no querés exponerlo, queda como argumento interno para Santi y nada más. Las dos opciones son válidas.</p>
+    </div>
+
+    <div class="hlb bl" style="margin-top:24px"><strong>Próximo paso operativo.</strong> Si validás esta versión 2, redacto la propuesta económica complementaria para la promotora (Zaid + Flow Up) con los tres mecanismos de protección, lista para que la lleves a la próxima reunión. En paralelo, vos podés tener las conversaciones internas con Antonio y Pepe para cerrar el reparto.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="brand">antuara × CTRL.S</div>
+    <div class="tag">Documento interno de validación · v2</div>
+    <div class="meta">Honorarios Ctrl.S · Proyecto Arboria Mairena del Aljarafe<br>Para validación de Santiago y Delfina · 29 de abril de 2026 · Versión 2</div>
+  </div>
+</footer>
+
+</body>
+</html>

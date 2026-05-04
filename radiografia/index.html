@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Radiografía Comercial — Antuara · Gabriel Berutti</title>
+<meta name="description" content="Una sesión de 90 minutos. Siete días después, el mapa estratégico de tu PyME entregado en vivo, con tres acciones concretas para ejecutar esa misma semana. USD 1.500." />
+<meta name="author" content="Gabriel Berutti — Antuara" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://gabrielberutti.github.io/antuara-entregables/radiografia/" />
+<meta property="og:title" content="Radiografía Comercial — Antuara" />
+<meta property="og:description" content="Diagnóstico estratégico de tu PyME en 7 días. Sesión en vivo, mapa de 7 páginas, 3 acciones concretas para esta semana." />
+<meta property="og:image" content="https://gabrielberutti.github.io/antuara-entregables/radiografia/og-image.png" />
+<meta property="og:locale" content="es_AR" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Radiografía Comercial — Antuara" />
+<meta name="twitter:description" content="Diagnóstico estratégico de tu PyME en 7 días. Una sesión, un mapa, tres acciones para esta semana." />
+<meta name="twitter:image" content="https://gabrielberutti.github.io/antuara-entregables/radiografia/og-image.png" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%232C1810'/%3E%3Ctext x='50' y='65' text-anchor='middle' font-family='serif' font-size='52' font-weight='700' fill='%23B8893E'%3EA%3C/text%3E%3C/svg%3E" />
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Radiografía Comercial",
+  "provider": {
+    "@type": "Person",
+    "name": "Gabriel Berutti",
+    "jobTitle": "Fundador",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Antuara"
+    }
+  },
+  "description": "Diagnóstico estratégico de PyMEs entregado en 7 días, con sesión diagnóstica de 90 minutos y entrega en vivo del mapa estratégico.",
+  "areaServed": ["Argentina", "Latinoamérica", "España", "Estados Unidos"],
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Radiografía Comercial — Latinoamérica",
+      "price": "1500",
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Offer",
+      "name": "Radiografía Comercial — España y EE. UU.",
+      "price": "2500",
+      "priceCurrency": "USD"
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --marron-profundo: #2C1810;
+    --marron-medio: #3A2418;
+    --marron-claro: #5C3A22;
+    --dorado: #B8893E;
+    --dorado-claro: #C9A961;
+    --crema: #F8F4EE;
+    --crema-claro: #FAF6F0;
+    --texto: #1A1410;
+    --texto-medio: #4A3A28;
+    --linea: rgba(184, 137, 62, 0.25);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--crema);
+    color: var(--texto);
+    line-height: 1.7;
+    font-weight: 400;
+    font-size: 17px;
+  }
+  .container { max-width: 980px; margin: 0 auto; padding: 0 32px; }
+  h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-height: 1.25; color: var(--marron-profundo); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--marron-profundo) 0%, var(--marron-medio) 100%);
+    color: var(--crema);
+    padding: 96px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -20%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(201, 169, 97, 0.08) 0%, transparent 70%);
+  }
+  .hero .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--dorado-claro);
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    color: var(--crema);
+    font-size: 64px;
+    margin-bottom: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 em { font-style: italic; color: var(--dorado-claro); font-weight: 400; }
+  .hero .lead {
+    font-size: 21px;
+    line-height: 1.55;
+    color: rgba(248, 244, 238, 0.85);
+    max-width: 720px;
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(201, 169, 97, 0.25);
+    padding-top: 32px;
+  }
+  .hero-meta-item .label {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dorado-claro);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .hero-meta-item .value {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--crema);
+  }
+  .hero-meta-item.precio .value { color: var(--dorado-claro); }
+
+  /* SECCIONES */
+  section { padding: 96px 0; }
+  section.alt { background: var(--crema-claro); }
+  .section-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--dorado);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-size: 44px;
+    margin-bottom: 32px;
+    max-width: 780px;
+    letter-spacing: -0.015em;
+  }
+  .section-lead {
+    font-size: 19px;
+    color: var(--texto-medio);
+    max-width: 680px;
+    margin-bottom: 48px;
+    line-height: 1.65;
+  }
+
+  /* BLOQUE PROBLEMA */
+  .sintomas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+  }
+  .sintoma {
+    background: white;
+    padding: 32px;
+    border-left: 3px solid var(--dorado);
+    border-radius: 2px;
+  }
+  .sintoma .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    color: var(--dorado);
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+  }
+  .sintoma h3 { font-size: 22px; margin-bottom: 10px; color: var(--marron-profundo); }
+  .sintoma p { color: var(--texto-medio); font-size: 16px; line-height: 1.6; }
+
+  /* BLOQUE QUÉ ES */
+  .secciones-radiografia {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 60px;
+    margin-top: 48px;
+  }
+  .seccion-rx {
+    border-top: 1px solid var(--linea);
+    padding-top: 24px;
+  }
+  .seccion-rx .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: var(--dorado);
+    font-weight: 400;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+  .seccion-rx h4 { font-size: 19px; margin-bottom: 10px; }
+  .seccion-rx p { color: var(--texto-medio); font-size: 15px; }
+
+  /* PROCESO */
+  .proceso {
+    margin-top: 56px;
+    position: relative;
+  }
+  .paso {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 40px;
+    padding: 32px 0;
+    border-top: 1px solid var(--linea);
+  }
+  .paso:last-child { border-bottom: 1px solid var(--linea); }
+  .paso-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    color: var(--dorado);
+    line-height: 1;
+    font-weight: 400;
+  }
+  .paso h3 { font-size: 24px; margin-bottom: 10px; }
+  .paso .duracion {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dorado);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .paso p { color: var(--texto-medio); font-size: 16px; max-width: 620px; }
+
+  /* CASOS */
+  .casos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-top: 48px;
+  }
+  .caso {
+    background: white;
+    padding: 40px 48px;
+    border-top: 4px solid var(--dorado);
+    box-shadow: 0 1px 3px rgba(44, 24, 16, 0.04);
+  }
+  .caso-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .caso h3 { font-size: 28px; }
+  .caso .rubro {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dorado);
+    font-weight: 600;
+  }
+  .caso .titular {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-style: italic;
+    color: var(--marron-claro);
+    margin-bottom: 24px;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+  .caso-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .caso-body h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--dorado);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .caso-body p { font-size: 15.5px; color: var(--texto-medio); line-height: 1.6; }
+
+  /* PRECIO */
+  .precio-box {
+    background: linear-gradient(135deg, var(--marron-profundo) 0%, var(--marron-medio) 100%);
+    color: var(--crema);
+    padding: 64px 56px;
+    border-radius: 4px;
+    margin-top: 48px;
+    text-align: center;
+    position: relative;
+  }
+  .precio-badge {
+    display: inline-block;
+    background: var(--dorado);
+    color: var(--marron-profundo);
+    padding: 8px 20px;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+  .precio-box h3 {
+    color: var(--crema);
+    font-size: 30px;
+    margin-bottom: 32px;
+  }
+  .precio-tiers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    max-width: 720px;
+    margin: 0 auto 32px;
+  }
+  .tier {
+    padding: 32px;
+    border: 1px solid rgba(201, 169, 97, 0.3);
+  }
+  .tier:first-child { border-right: none; }
+  .tier .region {
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--dorado-claro);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .tier .monto {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    color: var(--crema);
+    line-height: 1;
+    font-weight: 400;
+    margin-bottom: 6px;
+  }
+  .tier .moneda {
+    font-size: 13px;
+    color: var(--dorado-claro);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .precio-incluye {
+    color: rgba(248, 244, 238, 0.85);
+    font-size: 15.5px;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .precio-incluye strong { color: var(--dorado-claro); font-weight: 600; }
+
+  /* QUOTE */
+  .quote {
+    border-left: 3px solid var(--dorado);
+    padding: 24px 0 24px 32px;
+    margin: 48px 0;
+    max-width: 720px;
+  }
+  .quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    line-height: 1.45;
+    color: var(--marron-profundo);
+    font-style: italic;
+    font-weight: 500;
+  }
+  .quote cite {
+    display: block;
+    margin-top: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--texto-medio);
+    font-style: normal;
+    letter-spacing: 0.05em;
+  }
+
+  /* AUTOR */
+  .autor {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-top: 48px;
+    padding: 40px;
+    background: white;
+    border-left: 3px solid var(--dorado);
+  }
+  .autor-foto {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--marron-profundo), var(--marron-claro));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dorado-claro);
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 400;
+  }
+  .autor h3 { font-size: 26px; margin-bottom: 8px; }
+  .autor .cargo {
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dorado);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .autor p { color: var(--texto-medio); font-size: 16px; line-height: 1.65; margin-bottom: 16px; }
+  .autor a {
+    color: var(--marron-profundo);
+    text-decoration: none;
+    border-bottom: 1px solid var(--dorado);
+    font-weight: 500;
+    margin-right: 20px;
+    font-size: 15px;
+  }
+  .autor a:hover { color: var(--dorado); }
+
+  /* FAQ */
+  .faq {
+    margin-top: 48px;
+  }
+  .faq-item {
+    border-top: 1px solid var(--linea);
+    padding: 28px 0;
+  }
+  .faq-item:last-child { border-bottom: 1px solid var(--linea); }
+  .faq-item h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: var(--marron-profundo);
+  }
+  .faq-item p {
+    color: var(--texto-medio);
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  /* CTA */
+  .cta-final {
+    background: var(--marron-profundo);
+    color: var(--crema);
+    padding: 96px 0;
+    text-align: center;
+  }
+  .cta-final h2 {
+    color: var(--crema);
+    font-size: 46px;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  .cta-final .subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--dorado-claro);
+    font-size: 22px;
+    margin-bottom: 32px;
+  }
+  .cta-final p {
+    font-size: 18px;
+    color: rgba(248, 244, 238, 0.75);
+    max-width: 580px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+  }
+  .btn {
+    display: inline-block;
+    background: var(--dorado);
+    color: var(--marron-profundo);
+    padding: 20px 48px;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    font-size: 16px;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .btn:hover {
+    background: var(--dorado-claro);
+    transform: translateY(-1px);
+  }
+  .cta-secondary {
+    display: block;
+    margin-top: 24px;
+    color: rgba(201, 169, 97, 0.75);
+    font-size: 14px;
+    text-decoration: none;
+  }
+  .cta-secondary:hover { color: var(--dorado-claro); }
+
+  /* FOOTER */
+  footer {
+    background: var(--marron-profundo);
+    color: rgba(248, 244, 238, 0.55);
+    padding: 40px 0;
+    border-top: 1px solid rgba(201, 169, 97, 0.15);
+    font-size: 14px;
+    text-align: center;
+  }
+  footer strong { color: var(--dorado-claro); font-weight: 500; }
+  footer a { color: rgba(201, 169, 97, 0.8); text-decoration: none; }
+  footer a:hover { color: var(--dorado-claro); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 42px; }
+    .hero .lead { font-size: 18px; }
+    .section-title { font-size: 32px; }
+    .sintomas, .secciones-radiografia, .caso-body, .precio-tiers, .autor { grid-template-columns: 1fr; }
+    .tier:first-child { border-right: 1px solid rgba(201, 169, 97, 0.3); border-bottom: none; }
+    .paso { grid-template-columns: 1fr; gap: 16px; }
+    .precio-box, .caso, .autor { padding: 32px 24px; }
+    .autor { text-align: center; }
+    .autor-foto { margin: 0 auto; }
+    .cta-final h2 { font-size: 34px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Para dueños de PyMEs · Diagnóstico estratégico</div>
+    <h1>Radiografía<br>Comercial</h1>
+    <p class="lead">Un mapa estratégico de tu negocio en siete páginas, entregado en vivo al séptimo día. Para que el lunes siguiente sepas exactamente qué mover.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="label">Sesión</div>
+        <div class="value">90 minutos</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Entrega</div>
+        <div class="value">Día 7, en vivo</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Acción inmediata</div>
+        <div class="value">3 quick wins</div>
+      </div>
+      <div class="hero-meta-item precio">
+        <div class="label">Inversión desde</div>
+        <div class="value">USD 1.500</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">El problema</div>
+    <h2 class="section-title">Si dirigís una PyME, probablemente reconozcas alguno de estos síntomas.</h2>
+    <p class="section-lead">No son problemas distintos. Son la misma cosa expresándose de formas diferentes: una arquitectura comercial que dejó de alcanzar para el ritmo del mercado actual.</p>
+
+    <div class="sintomas">
+      <div class="sintoma">
+        <div class="num">01</div>
+        <h3>Oportunidades que se diluyen</h3>
+        <p>El equipo dice que "están las cotizaciones afuera", pero nadie sabe cuántas, en qué estado, ni quién va a hacer el seguimiento esta semana.</p>
+      </div>
+      <div class="sintoma">
+        <div class="num">02</div>
+        <h3>Decisiones por intuición</h3>
+        <p>Sentís que algo no funciona pero no podés señalar dónde exactamente. Y cuando intentás explicarlo, te das cuenta de que no tenés los datos que necesitás.</p>
+      </div>
+      <div class="sintoma">
+        <div class="num">03</div>
+        <h3>Capacidad ejecutiva absorbida por lo urgente</h3>
+        <p>Trabajás más horas que nunca pero la sensación es que la empresa avanza menos que antes. Lo importante queda esperando a que termine la semana — y la semana nunca termina.</p>
+      </div>
+      <div class="sintoma">
+        <div class="num">04</div>
+        <h3>Asesores que entregan PDFs</h3>
+        <p>Has consultado antes. Te dieron documentos extensos que nunca terminaste de implementar, porque eran planes, no carriles para actuar mañana.</p>
+      </div>
+      <div class="sintoma">
+        <div class="num">05</div>
+        <h3>Todo pasa por vos</h3>
+        <p>Si te ausentás una semana, el ritmo se corta. La empresa funciona porque vos estás. No porque haya un sistema que la sostenga sin vos.</p>
+      </div>
+    </div>
+
+    <div class="quote">
+      <p>"Cuando un dueño escucha por primera vez una articulación clara de su problema focal, ya está convencido."</p>
+      <cite>El diagnóstico es la venta — tesis fundacional del método Antuara</cite>
+    </div>
+  </div>
+</section>
+
+<!-- QUÉ ES -->
+<section class="alt">
+  <div class="container">
+    <div class="section-eyebrow">Qué es · Mostrar antes de pedir</div>
+    <h2 class="section-title">La Radiografía Comercial es un mapa estratégico de siete páginas que ves por primera vez en una sesión en vivo.</h2>
+    <p class="section-lead">No es un PDF de ochenta páginas. No se manda por email. Se presenta. Lo leés en treinta minutos. Y al lunes siguiente sabés exactamente qué mover.</p>
+
+    <div class="secciones-radiografia">
+      <div class="seccion-rx">
+        <div class="num">01</div>
+        <h4>Tu empresa hoy</h4>
+        <p>La foto. Resumen ejecutivo más cuatro datos clave: facturación, equipo, clientes, canal principal.</p>
+      </div>
+      <div class="seccion-rx">
+        <div class="num">02</div>
+        <h4>El problema central</h4>
+        <p>Tu problema focal articulado en una sola oración. Más tres a cinco descriptores que muestran cómo se manifiesta.</p>
+      </div>
+      <div class="seccion-rx">
+        <div class="num">03</div>
+        <h4>Mapa de problemas</h4>
+        <p>Diagrama visual de cinco a ocho nodos. Causas arriba, efectos abajo. Para que veas cómo se conectan tus síntomas.</p>
+      </div>
+      <div class="seccion-rx">
+        <div class="num">04</div>
+        <h4>Los tres nudos críticos</h4>
+        <p>Exactamente tres frentes de ataque. Para cada uno: qué pasa hoy, por qué es crítico, cuál es el estado deseado.</p>
+      </div>
+      <div class="seccion-rx">
+        <div class="num">05</div>
+        <h4>La brecha</h4>
+        <p>Cuadro comparativo: situación hoy contra situación alcanzable en noventa días. Impacto cuantificado de la inacción.</p>
+      </div>
+      <div class="seccion-rx">
+        <div class="num">06</div>
+        <h4>Hoja de ruta 90 días</h4>
+        <p>Cronograma visual en cuatro fases. Desde quick wins en la semana uno hasta consolidación en la semana doce.</p>
+      </div>
+      <div class="seccion-rx">
+        <div class="num">07</div>
+        <h4>Quick wins</h4>
+        <p>Tres acciones concretas, ejecutables esta semana, sin depender de Antuara. Resultado visible inmediato.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">Cómo funciona</div>
+    <h2 class="section-title">Cuatro pasos en siete días. Sin pre-llamadas de venta. La sesión es el producto.</h2>
+
+    <div class="proceso">
+      <div class="paso">
+        <div class="paso-num">01</div>
+        <div>
+          <div class="duracion">Día 0 a 3 — Pre-onboarding</div>
+          <h3>Cuestionario diagnóstico</h3>
+          <p>Recibís un cuestionario de treinta preguntas diseñadas para que en la sesión no perdamos tiempo en lo que se podía resolver por escrito. Lo completás cuando puedas. Yo lo leo y preparo la sesión con hipótesis iniciales.</p>
+        </div>
+      </div>
+
+      <div class="paso">
+        <div class="paso-num">02</div>
+        <div>
+          <div class="duracion">Día 4 — Sesión diagnóstica</div>
+          <h3>Noventa minutos juntos</h3>
+          <p>Una sola sesión, estructura fija de seis bloques: empresa, propuesta de valor, proceso comercial, equipo y estructura, números, problema según vos. La sesión se graba para no tener que tomar notas mientras conversamos.</p>
+        </div>
+      </div>
+
+      <div class="paso">
+        <div class="paso-num">03</div>
+        <div>
+          <div class="duracion">Día 5 a 6 — Producción</div>
+          <h3>Trabajo silencioso</h3>
+          <p>Mientras vos seguís con tu agenda, yo trabajo el material. Articulo el problema focal en tu lenguaje, armo el mapa de problemas, identifico los tres nudos críticos, cuantifico la brecha y diseño los quick wins. Salen entre dos y tres horas de procesamiento intenso.</p>
+        </div>
+      </div>
+
+      <div class="paso">
+        <div class="paso-num">04</div>
+        <div>
+          <div class="duracion">Día 7 — Entrega en vivo</div>
+          <h3>Sesión de presentación</h3>
+          <p>Sesenta minutos. Te presento la Radiografía completa, sección por sección. No es un envío por email para que la leas vos. Es un encuentro donde vemos tu negocio juntos por primera vez y respondemos cualquier duda. Te llevás el documento, los quick wins y un orden mental que no tenías.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASOS REALES -->
+<section class="alt">
+  <div class="container">
+    <div class="section-eyebrow">Casos reales</div>
+    <h2 class="section-title">Cinco rubros distintos. Una sola filosofía.</h2>
+    <p class="section-lead">Estos cinco clientes están aplicando Antuara hoy. Sin marketing masivo, sin pauta — solo con metodología y ritmo de seguimiento.</p>
+
+    <div class="casos">
+      <div class="caso">
+        <div class="caso-header">
+          <h3>Hierbas del Oasis</h3>
+          <div class="rubro">Infusiones · 20+ años · 8 personas</div>
+        </div>
+        <p class="titular">"En marzo perdieron 274 oportunidades comerciales. No por falta de demanda — por falta de sistema."</p>
+        <div class="caso-body">
+          <div>
+            <h4>Diagnóstico</h4>
+            <p>El problema focal no era falta de demanda — era ausencia de arquitectura de seguimiento. Cada vendedor tenía su libreta, sin visibilidad cruzada ni cadencia compartida.</p>
+          </div>
+          <div>
+            <h4>Resultado</h4>
+            <p>Reuniones semanales con datos individuales por vendedor, política de precios definida, circuito de reclamos en 48 horas, accountability instaurada. Pasaron del ruido al ritmo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="caso">
+        <div class="caso-header">
+          <h3>Ctrl.S</h3>
+          <div class="rubro">Arquitectura · Argentina + España</div>
+        </div>
+        <p class="titular">"Querían dejar de vender horas y empezar a vender estrategia."</p>
+        <div class="caso-body">
+          <div>
+            <h4>Diagnóstico</h4>
+            <p>Estudio que cobraba como ejecutor técnico cuando el valor entregado era estratégico. Tenían el conocimiento; faltaba el marco para cobrarlo distinto.</p>
+          </div>
+          <div>
+            <h4>Resultado</h4>
+            <p>Seis frentes estratégicos entregados. Más de 230 horas de planificación documentada que el cliente español usa todas las semanas. Reposicionamiento de ejecutor a asesor estratégico.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="caso">
+        <div class="caso-header">
+          <h3>MACNA</h3>
+          <div class="rubro">Construcción y obras civiles</div>
+        </div>
+        <p class="titular">"El problema no era el plan — era el ritmo de seguimiento."</p>
+        <div class="caso-body">
+          <div>
+            <h4>Diagnóstico</h4>
+            <p>Plan estratégico aprobado pero implementación diluida en reuniones generales sin foco. La cadencia interna se perdía en lo urgente.</p>
+          </div>
+          <div>
+            <h4>Resultado</h4>
+            <p>Agendas 1 a 1 con miembros clave, checklists de obra, decisiones operativas estructuradas. Cada reunión termina con tres decisiones tomadas y un responsable asignado.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="caso">
+        <div class="caso-header">
+          <h3>Falhaus</h3>
+          <div class="rubro">Diseño de mobiliario · Showroom CABA</div>
+        </div>
+        <p class="titular">"386 leads acumulados con apenas el 5% en estado correcto. Pasión humana sin sistema = leads perdidos."</p>
+        <div class="caso-body">
+          <div>
+            <h4>Diagnóstico</h4>
+            <p>190 reuniones sin seguimiento. Entre el 80% y el 90% de las cotizaciones sin que nadie las llamara después. Federico tenía el motor; faltaban los rieles.</p>
+          </div>
+          <div>
+            <h4>Resultado</h4>
+            <p>Lead scoring 0-100, pipeline de 6 etapas, CRM operativo de 4 clics, estrategia B2B2C activada con revendedores y representantes regionales. El motor humano ahora corre sobre un sistema.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="caso">
+        <div class="caso-header">
+          <h3>Premium Mudanzas</h3>
+          <div class="rubro">Mudanzas premium Argentina</div>
+        </div>
+        <p class="titular">"26 figuras públicas argentinas los eligen. Pero su presencia digital era 4,2 sobre 10."</p>
+        <div class="caso-body">
+          <div>
+            <h4>Diagnóstico</h4>
+            <p>Activo de marca difícil de replicar (figuras públicas como clientes), pero presencia digital muy por detrás del competidor principal. Gap corporativo amenazaba el posicionamiento aspiracional.</p>
+          </div>
+          <div>
+            <h4>Resultado</h4>
+            <p>Auditoría digital integral en 8 secciones, plan de cierre del gap corporativo en 3 horizontes, cadencia de implementación. Sin perder el posicionamiento aspiracional ya construido.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTOR -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">Quién está detrás</div>
+    <h2 class="section-title">Trabajás directamente conmigo, todas las semanas.</h2>
+
+    <div class="autor">
+      <div class="autor-foto">GB</div>
+      <div>
+        <h3>Gabriel Berutti</h3>
+        <div class="cargo">Fundador · Antuara</div>
+        <p>Consultor de planificación comercial estratégica. Trabajo en simultáneo con cinco PyMEs activas en Argentina y España, más una cartera de potenciales en cierre. Antes de fundar Antuara dirigí una PyME — entiendo el problema desde adentro, no desde un PowerPoint.</p>
+        <p>El compromiso es directo: en la Radiografía y en cualquier acompañamiento posterior, no hay juniors rotativos, no hay equipos delegados. Trabajás con quien firma.</p>
+        <a href="mailto:gabrielberutti@antuara.com">gabrielberutti@antuara.com</a>
+        <a href="https://www.linkedin.com/in/gabrielberutti/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIO -->
+<section class="alt">
+  <div class="container">
+    <div class="section-eyebrow">Inversión</div>
+    <h2 class="section-title">Un precio. Sin escalones ocultos. Sin upsells durante la sesión.</h2>
+    <p class="section-lead">Pago único. Cubre el cuestionario, la sesión diagnóstica de 90 minutos, las dos a tres horas de producción, el documento final entregado en vivo, y los tres quick wins en tu agenda de la semana siguiente.</p>
+
+    <div class="precio-box">
+      <div class="precio-badge">Acreditable al 100%</div>
+      <h3>Radiografía Comercial</h3>
+      <div class="precio-tiers">
+        <div class="tier">
+          <div class="region">Latinoamérica</div>
+          <div class="monto">1.500</div>
+          <div class="moneda">USD · Pago único</div>
+        </div>
+        <div class="tier">
+          <div class="region">España y EE. UU.</div>
+          <div class="monto">2.500</div>
+          <div class="moneda">USD · Pago único</div>
+        </div>
+      </div>
+      <p class="precio-incluye">Si después de la entrega decidís continuar con un acompañamiento de implementación, <strong>el monto de la Radiografía se acredita íntegramente al primer mes de trabajo conjunto</strong>. No es un descuento — es la misma plata, recolocada donde más impacto tiene.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">Preguntas frecuentes</div>
+    <h2 class="section-title">Lo que más me preguntan antes de reservar.</h2>
+
+    <div class="faq">
+      <div class="faq-item">
+        <h3>¿Y si no tenemos los datos a mano?</h3>
+        <p>El cuestionario te pide lo que ya sabés — no exige reportes ni planillas. Si no tenés un dato, lo trabajamos con estimaciones. La Radiografía es estratégica, no contable.</p>
+      </div>
+      <div class="faq-item">
+        <h3>¿Funciona si somos un equipo de 3 personas?</h3>
+        <p>Sí. La Radiografía aplica desde unipersonales con equipo extendido hasta empresas de 30 personas. Lo que cambia es el tipo de nudos críticos que aparecen, no la metodología.</p>
+      </div>
+      <div class="faq-item">
+        <h3>¿Y si el problema focal no es comercial sino operativo o financiero?</h3>
+        <p>La Radiografía es comercial pero la Cadena de Valor Organizacional cubre toda la operación. Si en la sesión aparece que el cuello no es ventas sino operaciones o márgenes, lo nombramos. Algunos clientes empiezan creyendo que tienen un problema comercial y descubren otra cosa.</p>
+      </div>
+      <div class="faq-item">
+        <h3>¿Cuándo es buen momento para hacerla?</h3>
+        <p>Cuando sentís que la empresa avanza menos de lo que debería para el esfuerzo que pone, o cuando estás por tomar una decisión grande (contratar, expandir, cerrar línea, vender) y querés tenerla bien fundamentada.</p>
+      </div>
+      <div class="faq-item">
+        <h3>¿Cómo se paga?</h3>
+        <p>Transferencia bancaria (USD o pesos al cambio del día) o tarjeta vía PayPal/Wise. Pago anticipado al confirmar agenda. Comprobante automático al recibir el cuestionario.</p>
+      </div>
+      <div class="faq-item">
+        <h3>¿Qué pasa después?</h3>
+        <p>Si querés continuar con un acompañamiento de implementación, conversamos al final de la sesión de entrega. Si preferís llevártela e implementarla sola, también está bien — la Radiografía es tuya y los quick wins se pueden ejecutar sin Antuara.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="container">
+    <h2>El diagnóstico es la venta.</h2>
+    <div class="subtitle">Acción para crecer.</div>
+    <p>Si lo que buscás es alguien que te muestre tu negocio con claridad y te ponga en acción esta semana, conversemos.</p>
+    <a href="mailto:gabrielberutti@antuara.com?subject=Quiero%20reservar%20una%20Radiograf%C3%ADa%20Comercial&body=Hola%20Gabriel%2C%0A%0AMi%20empresa%20es%20%5Bnombre%5D%20y%20me%20interesa%20reservar%20una%20Radiograf%C3%ADa%20Comercial.%0A%0AGracias." class="btn">Reservar mi Radiografía</a>
+    <a href="mailto:gabrielberutti@antuara.com?subject=Tengo%20una%20duda%20sobre%20la%20Radiograf%C3%ADa" class="cta-secondary">¿Tenés alguna duda? Escribime directo</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <strong>Antuara</strong> · Planificación comercial estratégica · Buenos Aires<br>
+    Gabriel Berutti · <a href="mailto:gabrielberutti@antuara.com">gabrielberutti@antuara.com</a> · <a href="https://www.linkedin.com/in/gabrielberutti/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Acción para crecer — Manifesto Antuara · Gabriel Berutti</title>
+<meta name="description" content="Manifesto público de Antuara. Por qué la planificación comercial tradicional ya no alcanza, y cuál es la lectura distinta que aplico en cinco PyMEs hispanohablantes." />
+<meta name="author" content="Gabriel Berutti — Antuara" />
+
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gabrielberutti.github.io/antuara-entregables/manifesto/" />
+<meta property="og:title" content="Acción para crecer — Manifesto Antuara" />
+<meta property="og:description" content="Lo que veo después de trabajar con cinco PyMEs en simultáneo. El director que avanza no es el que más sabe — es el que actúa." />
+<meta property="og:locale" content="es_AR" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Acción para crecer — Manifesto Antuara" />
+<meta name="twitter:description" content="El director que avanza no es el que más sabe. Es el que actúa." />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%232C1810'/%3E%3Ctext x='50' y='65' text-anchor='middle' font-family='serif' font-size='52' font-weight='700' fill='%23B8893E'%3EA%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --marron-profundo: #2C1810;
+    --marron-medio: #3A2418;
+    --marron-claro: #5C3A22;
+    --dorado: #B8893E;
+    --dorado-claro: #C9A961;
+    --crema: #F8F4EE;
+    --crema-claro: #FAF6F0;
+    --texto: #1A1410;
+    --texto-medio: #4A3A28;
+    --linea: rgba(184, 137, 62, 0.25);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--crema);
+    color: var(--texto);
+    line-height: 1.85;
+    font-weight: 400;
+    font-size: 18px;
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--marron-profundo) 0%, var(--marron-medio) 100%);
+    color: var(--crema);
+    padding: 120px 0 100px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -20%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(201, 169, 97, 0.08) 0%, transparent 70%);
+  }
+  .hero .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--dorado-claro);
+    font-weight: 500;
+    margin-bottom: 32px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    color: var(--crema);
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+  }
+  .hero h1 em { font-style: italic; color: var(--dorado-claro); font-weight: 400; }
+  .hero .subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 26px;
+    color: rgba(248, 244, 238, 0.9);
+    font-weight: 400;
+    margin-bottom: 40px;
+  }
+  .hero .autor {
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--dorado-claro);
+    font-weight: 500;
+    border-top: 1px solid rgba(201, 169, 97, 0.25);
+    padding-top: 24px;
+    display: inline-block;
+  }
+
+  /* CONTENIDO */
+  .content { padding: 96px 0; }
+  .content section { margin-bottom: 72px; }
+  .content section:last-child { margin-bottom: 0; }
+
+  .content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--marron-profundo);
+    margin-bottom: 32px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .content h2 .roman {
+    color: var(--dorado);
+    font-weight: 400;
+    font-size: 32px;
+    display: block;
+    margin-bottom: 8px;
+    letter-spacing: 0.1em;
+  }
+  .content p {
+    margin-bottom: 24px;
+    color: var(--texto);
+    font-size: 18px;
+    line-height: 1.85;
+  }
+  .content p strong {
+    color: var(--marron-profundo);
+    font-weight: 600;
+  }
+  .content blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 28px;
+    line-height: 1.4;
+    color: var(--marron-profundo);
+    border-left: 3px solid var(--dorado);
+    padding: 16px 0 16px 32px;
+    margin: 40px 0;
+    font-weight: 500;
+  }
+
+  /* CASOS */
+  .caso {
+    background: white;
+    padding: 32px 36px;
+    border-left: 3px solid var(--dorado);
+    margin-bottom: 24px;
+  }
+  .caso-nombre {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--marron-profundo);
+    margin-bottom: 4px;
+  }
+  .caso-rubro {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dorado);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .caso p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 0;
+    color: var(--texto-medio);
+  }
+
+  /* LISTA NEGACIONES */
+  .negacion {
+    border-top: 1px solid var(--linea);
+    padding: 24px 0;
+  }
+  .negacion:last-child { border-bottom: 1px solid var(--linea); }
+  .negacion p {
+    margin-bottom: 0;
+    font-size: 17px;
+  }
+  .negacion strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--marron-profundo);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  /* CIERRE INVITACIÓN */
+  .invitacion {
+    background: linear-gradient(135deg, var(--marron-profundo) 0%, var(--marron-medio) 100%);
+    color: var(--crema);
+    padding: 80px 0;
+    text-align: left;
+  }
+  .invitacion .container { max-width: 760px; }
+  .invitacion h2 {
+    color: var(--crema);
+    font-size: 42px;
+    margin-bottom: 24px;
+  }
+  .invitacion h2 .roman { color: var(--dorado-claro); }
+  .invitacion p {
+    color: rgba(248, 244, 238, 0.9);
+    font-size: 19px;
+    margin-bottom: 24px;
+    line-height: 1.7;
+  }
+  .invitacion p strong {
+    color: var(--dorado-claro);
+  }
+  .precio-bloque {
+    background: rgba(201, 169, 97, 0.1);
+    border-left: 3px solid var(--dorado);
+    padding: 24px 28px;
+    margin: 32px 0;
+  }
+  .precio-bloque .monto {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--dorado-claro);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .precio-bloque .detalle {
+    font-size: 15px;
+    color: rgba(248, 244, 238, 0.75);
+    line-height: 1.6;
+  }
+  .btn {
+    display: inline-block;
+    background: var(--dorado);
+    color: var(--marron-profundo);
+    padding: 18px 40px;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    font-size: 15px;
+    border-radius: 2px;
+    margin-top: 16px;
+    transition: all 0.2s;
+  }
+  .btn:hover {
+    background: var(--dorado-claro);
+    transform: translateY(-1px);
+  }
+  .firma {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(201, 169, 97, 0.25);
+  }
+  .firma .nombre {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--crema);
+    font-weight: 600;
+  }
+  .firma .cargo {
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--dorado-claro);
+    font-weight: 500;
+    margin-top: 4px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--marron-profundo);
+    color: rgba(248, 244, 238, 0.55);
+    padding: 32px 0;
+    border-top: 1px solid rgba(201, 169, 97, 0.15);
+    font-size: 14px;
+    text-align: center;
+  }
+  footer strong { color: var(--dorado-claro); font-weight: 500; }
+  footer a { color: rgba(201, 169, 97, 0.8); text-decoration: none; }
+
+  @media (max-width: 768px) {
+    .hero { padding: 80px 0; }
+    .hero h1 { font-size: 50px; }
+    .hero .subtitle { font-size: 21px; }
+    .content { padding: 64px 0; }
+    .content h2 { font-size: 30px; }
+    .content blockquote { font-size: 22px; padding-left: 20px; }
+    .invitacion h2 { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Manifesto · Antuara · Mayo 2026</div>
+    <h1>Acción para <em>crecer</em>.</h1>
+    <p class="subtitle">Lo que veo después de trabajar con cinco PyMEs en simultáneo.</p>
+    <div class="autor">Por Gabriel Berutti</div>
+  </div>
+</section>
+
+<!-- CONTENIDO -->
+<section class="content">
+  <div class="container">
+
+    <section>
+      <h2><span class="roman">I</span>Lo que veo</h2>
+      <p>Trabajo con dueños de PyMEs todos los días. Hay un patrón que se repite y que todavía no tiene nombre.</p>
+      <p>El dueño promedio que me llama no tiene un problema de capacidad. Tiene un problema de ritmo.</p>
+      <p>Sabe qué hacer. Sabe vender. Conoce su rubro mejor que nadie. Lo que pasa es que el mercado se mueve más rápido que sus decisiones, su agenda lo sobrepasa, y los procesos que hace cinco años funcionaban ya no le alcanzan. Termina la semana habiendo apagado incendios. La empresa avanza menos que antes y él trabaja más que nunca.</p>
+      <p>A ese dueño la consultoría tradicional le ofrece un PDF de ochenta páginas y dos meses para implementarlo. La consultoría de redes le ofrece "encontrarte a vos mismo" y "conectar con tu para qué". Las dos llegan tarde y por motivos opuestos: una es demasiado lenta, la otra es humo.</p>
+      <p>Lo que hace falta es otra cosa. <strong>Tangibilidad.</strong> Algo que el dueño pueda tocar. Una decisión que pueda tomar el martes. Una métrica que pueda medir el viernes. Un proceso que pueda implementar el lunes.</p>
+      <blockquote>El cliente bueno no quiere que lo ayuden a sentirse mejor con su empresa — quiere que su empresa funcione mejor.</blockquote>
+      <p>Esas son dos cosas distintas y no siempre se resuelven en el mismo orden.</p>
+      <p>Lo que veo, después de trabajar con cinco PyMEs distintas en simultáneo, es esto: en este mercado, el director que avanza no es el que más sabe. <strong>Es el que actúa.</strong></p>
+      <p>Por eso digo <strong>acción para crecer</strong>. No es un eslogan. Es un filtro.</p>
+    </section>
+
+    <section>
+      <h2><span class="roman">II</span>Cinco casos reales</h2>
+      <p>No hablo de marcos teóricos. Hablo de cinco empresas que están aplicando esto ahora mismo.</p>
+
+      <div class="caso">
+        <div class="caso-nombre">Hierbas del Oasis</div>
+        <div class="caso-rubro">Infusiones · 20+ años · 8 personas</div>
+        <p>En marzo perdieron 274 oportunidades comerciales por falta de seguimiento. El problema focal no era falta de demanda — era no tener un sistema. Hoy tienen reuniones de ventas semanales con datos individuales por vendedor, política de precios definida, circuito de reclamos en 48 horas. Pasaron del ruido al ritmo.</p>
+      </div>
+
+      <div class="caso">
+        <div class="caso-nombre">Ctrl.S</div>
+        <div class="caso-rubro">Arquitectura · Argentina + España</div>
+        <p>Querían dejar de vender horas y empezar a vender estrategia. Tenían el conocimiento; les faltaba el marco. Entregamos seis frentes estratégicos con más de 230 horas de planificación documentada que el cliente español ya usa todas las semanas.</p>
+      </div>
+
+      <div class="caso">
+        <div class="caso-nombre">MACNA</div>
+        <div class="caso-rubro">Construcción y obras civiles</div>
+        <p>El plan estratégico estaba aprobado pero la implementación se diluía en reuniones generales sin foco. Diseñamos agendas de 1 a 1 con los miembros clave, checklists de obra, y una cadencia donde cada reunión termina con tres decisiones tomadas y un responsable asignado.</p>
+      </div>
+
+      <div class="caso">
+        <div class="caso-nombre">Falhaus</div>
+        <div class="caso-rubro">Diseño de mobiliario · Showroom CABA</div>
+        <p>Federico, su líder comercial, tiene una pasión por vender que no se enseña en ningún curso. Pero tenía 386 leads acumulados con apenas el 5% en estado correcto, 190 reuniones sin seguimiento, y entre el 80% y el 90% de las cotizaciones sin que nadie llamara después. La pasión humana sin sistema produce el mismo resultado que la falta de pasión: leads perdidos. Diseñamos un sistema de lead scoring, un pipeline de seis etapas y un CRM operativo de cuatro clics. Federico sigue siendo el motor; ahora tiene rieles.</p>
+      </div>
+
+      <div class="caso">
+        <div class="caso-nombre">Premium Mudanzas</div>
+        <div class="caso-rubro">Mudanzas premium Argentina</div>
+        <p>Empresa con un activo de marca difícil de replicar: 26 figuras públicas argentinas la han contratado. Pero la presencia digital quedaba muy por detrás del competidor principal, con score 4,2 sobre 10 en auditoría integral. Diseñamos un plan de cierre del gap corporativo en tres horizontes, sin perder el posicionamiento aspiracional que la marca ya tenía.</p>
+      </div>
+
+      <p style="margin-top: 32px;">Cinco rubros distintos. Cinco arquitecturas distintas. La misma filosofía: <strong>diagnóstico claro, acción concreta, ritmo sostenido.</strong></p>
+    </section>
+
+    <section>
+      <h2><span class="roman">III</span>El método: el diagnóstico es la venta</h2>
+      <p>El primer entregable de Antuara no es un PDF de ochenta páginas. Es un mapa de siete páginas que el cliente recibe en vivo, presentado en una sola sesión, con tres acciones concretas para ejecutar esa misma semana.</p>
+      <p>Lo llamo <strong>Radiografía Comercial</strong> y opera bajo una sola regla:</p>
+      <blockquote>Mostrar antes de pedir.</blockquote>
+      <p>Cuando un dueño escucha por primera vez una articulación clara de su problema focal — la distancia entre donde está su empresa y donde podría estar — ya está convencido. <strong>No le vendo servicios. Le muestro su negocio.</strong> El que decide después es él.</p>
+      <p>Detrás de la Radiografía hay dos herramientas propias: <strong>PROBES</strong> (un proceso de diez pasos para identificar el problema focal y diseñar las estrategias) y <strong>CVO — Cadena de Valor Organizacional</strong> (el mapa de dónde se pierde valor en toda la operación). Las dos están al servicio de una sola cosa: que el dueño salga de la primera sesión sabiendo qué mover el lunes.</p>
+    </section>
+
+    <section>
+      <h2><span class="roman">IV</span>Lo que Antuara no es</h2>
+      <p>Para que quede explícito.</p>
+
+      <div class="negacion">
+        <p><strong>No soy un mentor que te ayuda a encontrarte.</strong>Si lo que necesitás es trabajo personal, hay terapeutas y coaches profesionales que lo hacen mejor que cualquier consultor.</p>
+      </div>
+
+      <div class="negacion">
+        <p><strong>No soy un consultor de redes que promete diez clientes en treinta días.</strong>Esa promesa no existe. La construcción comercial seria toma entre 90 y 180 días para mostrar tracción y entre 12 y 24 meses para consolidar. El que te promete menos te miente.</p>
+      </div>
+
+      <div class="negacion">
+        <p><strong>No soy una consultora grande.</strong>No te entrego un PDF de ochenta páginas, no te facturo retainers de cinco cifras al mes, no te mando juniors rotativos. Trabajás directamente conmigo, todas las semanas, sobre tu negocio real.</p>
+      </div>
+
+      <div class="negacion">
+        <p><strong>No prometo resultados mágicos.</strong>Trabajo con datos y con la realidad de cada empresa. Si el problema focal pide cambios estructurales que el dueño no quiere hacer, le digo que no puedo ayudarlo. Es preferible perder esa venta a entregar humo.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="roman">V</span>Por qué ahora</h2>
+      <p>La banda intermedia del mercado está casi vacía.</p>
+      <p>Las consultoras grandes no atienden PyMEs porque la matemática no les cierra. Sus equipos están diseñados para clientes con retainers altos y juniors rotativos. Para una PyME, ese modelo es inviable.</p>
+      <p>La oferta accesible para PyMEs está dominada por consultores generalistas o por gurús de redes sociales que prometen mucho y entregan poco. La banda intermedia — el rigor metodológico de las grandes consultoras al ritmo y precio de un asesor cercano — está casi vacía.</p>
+      <p><strong>Antuara la ocupa.</strong></p>
+    </section>
+
+  </div>
+</section>
+
+<!-- INVITACIÓN -->
+<section class="invitacion">
+  <div class="container">
+    <h2><span class="roman">VI</span>La invitación</h2>
+    <p>Si lo que buscás es alguien que te muestre tu negocio con claridad — el problema focal articulado en una frase, el mapa visual de cómo se conectan tus síntomas, los tres frentes críticos donde mover, las acciones concretas para ejecutar esta semana — entonces conversemos.</p>
+    <p><strong>La Radiografía Comercial está pensada para eso.</strong> Una sesión diagnóstica de noventa minutos. Siete días después, te entrego en vivo un mapa que vas a poder leer en treinta minutos. Y vas a saber qué hacer el lunes a la mañana.</p>
+
+    <div class="precio-bloque">
+      <div class="monto">USD 1.500 (LATAM) · USD 2.500 (España y EE. UU.)</div>
+      <div class="detalle">Pago único. Si después decidimos seguir trabajando juntos en un acompañamiento de implementación, el monto se acredita íntegro al primer mes.</div>
+    </div>
+
+    <p>Sin pre-llamadas de venta. Sin propuestas extensas previas. <strong>La sesión es el producto.</strong></p>
+    <p style="margin-top: 32px;"><strong>Acción para crecer.</strong> No es un eslogan. Es lo que separa a las empresas que avanzan de las que se quedan en el plan.</p>
+
+    <a href="mailto:gabrielberutti@antuara.com?subject=Quiero%20reservar%20una%20Radiograf%C3%ADa%20Comercial" class="btn">Reservar mi Radiografía</a>
+
+    <div class="firma">
+      <div class="nombre">Gabriel Berutti</div>
+      <div class="cargo">Fundador · Antuara</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <strong>Antuara</strong> · Planificación comercial estratégica · Buenos Aires<br>
+    <a href="mailto:gabrielberutti@antuara.com">gabrielberutti@antuara.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
